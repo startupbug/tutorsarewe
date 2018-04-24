@@ -1,0 +1,98 @@
+
+
+
+/*for desktop*/
+@media only screen and (min-device-width : 320px) and (max-device-width : 767px) {
+
+
+  .top-header {
+    padding: 0px 15px;
+     width: 100%; 
+    float: right;
+    margin-top: 10px;
+}
+
+ul.top-header-nav li {
+  
+    font-size: 11px;
+    
+}
+
+header {
+  
+    position: relative;
+   
+}
+
+ul.header-nav {
+    width: 100%;
+   
+}
+.header-text h2 {
+    font-size: 16px;
+   
+}
+.header-text h3 {
+    font-size: 16px;
+   
+}
+.header-text p {
+    font-size: 8px;
+   
+}
+.f_about {
+    font-size: 12px;
+  
+    display: inline;
+}
+
+.f_main {
+    
+    top: 0px;
+    
+}
+
+.header-text {
+    
+    top: -40%;
+   
+}
+
+.btn_check {
+   
+    margin-bottom: 30px;
+}
+
+h3.f_text {
+    font-size: 45px;
+    
+}
+span.f_icon1 {
+   
+    font-size: 12px;
+   
+}
+ul.f_site {
+    
+    float: left;
+}
+h3.f_get {
+    font-size: 12px;
+   
+}
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .btn_check {
+   
+    margin-bottom: 30px;
+}
+ul.f_site {
+  
+    margin-top: -26px;
+}
+
+   
+    
+}
+}
