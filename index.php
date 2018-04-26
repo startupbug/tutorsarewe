@@ -135,13 +135,14 @@
             </div>
             <div class="col-md-4 col-sm-6 col-xs-12 text-center">
                <img src="assets/images/image1.png" class="img-responsive info_img">
-               <h3 class="f_online">Online and Offline</h3>
-               <p class="f_meet">We can meet the student online or we can come <br>to your home or designated location. You don’t <br>have to worry. We have tutors ASAP (AS SOON <br>AS POSSIBLE) and PRN (AS needed). We can <br>help you or your child succeed.</p>
+               <h3 class="f_online">Quality Scores</h3>
+               <p class="f_meet">We have highly qualified tutors to meet you or <br>your child’s tutoring needs</p>
             </div>
             <div class="col-md-4 col-sm-6 col-xs-12 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0">
                <img src="assets/images/image1.png" class="img-responsive info_img">
-               <h3 class="f_online">Online and Offline</h3>
-               <p class="f_meet">We can meet the student online or we can come <br>to your home or designated location. You don’t <br>have to worry. We have tutors ASAP (AS SOON <br>AS POSSIBLE) and PRN (AS needed). We can <br>help you or your child succeed.</p>
+               <h3 class="f_online">Reviews & Ratings</h3>
+               <p class="f_meet">No more emails, Calls or messaging friends for <br>recommendations - Get acces to real reviews<br>
+in seconds</p>
             </div>
          </div>
       </div>
@@ -196,35 +197,35 @@
       <div class="row">
          <h3 class="added_course">Recent Added Courses</h3>
          <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-            <img src="assets/images/images1.png" class="img-responsive">
+            <img src="assets/images/images1.png" class="img-responsive f_margin">
             <h3 class="full_time">Full Time Tutoring</h3>
             <p class="f_vul">Voluptatem accusantium doloremque</p>
          </div>
          <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-            <img src="assets/images/images2.png" class="img-responsive">
+            <img src="assets/images/images2.png" class="img-responsive f_margin">
             <h3 class="full_time">Science Fair Help</h3>
             <p class="f_vul">Voluptatem accusantium doloremque</p>
          </div>
          <div class="col-md-4 col-sm-6 col-xs-12 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0">
-            <img src="assets/images/images3.png" class="img-responsive">
+            <img src="assets/images/images3.png" class="img-responsive f_margin">
             <h3 class="full_time">Social Studies</h3>
             <p class="f_vul">Voluptatem accusantium doloremque</p>
          </div>
       </div>
       <div class="row">
          <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-            <img src="assets/images/images1.png" class="img-responsive">
-            <h3 class="full_time">Full Time Tutoring</h3>
+            <img src="assets/images/images1.png" class="img-responsive f_margin">
+            <h3 class="full_time">French</h3>
             <p class="f_vul">Voluptatem accusantium doloremque</p>
          </div>
          <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-            <img src="assets/images/images2.png" class="img-responsive">
-            <h3 class="full_time">Science Fair Help</h3>
+            <img src="assets/images/images2.png" class="img-responsive f_margin">
+            <h3 class="full_time">Early Childhood Tutoring</h3>
             <p class="f_vul">Voluptatem accusantium doloremque</p>
          </div>
          <div class="col-md-4 col-sm-6 col-xs-12 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0">
-            <img src="assets/images/images3.png" class="img-responsive">
-            <h3 class="full_time">Social Studies</h3>
+            <img src="assets/images/images3.png" class="img-responsive f_margin">
+            <h3 class="full_time">Math</h3>
             <p class="f_vul">Voluptatem accusantium doloremque</p>
          </div>
       </div>
@@ -261,10 +262,10 @@
             <img src="assets/images/logo2.png" class="img-responsive">
          </div>
          <div class="col-md-2 col-sm-6 col-xs-6">
-            <img src="assets/images/logo3.png" class="img-responsive">
+            <img src="assets/images/logo3.png" class="img-responsive f_width">
          </div>
          <div class="col-md-2 col-sm-6 col-xs-6">
-            <img src="assets/images/logo4.png" class="img-responsive">
+            <img src="assets/images/logo4.png" class="img-responsive f_width1">
          </div>
          <div class="col-md-2 col-sm-6 col-xs-6">
             <img src="assets/images/logo5.png" class="img-responsive">

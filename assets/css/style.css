@@ -1,7 +1,6 @@
 @charset "utf-8";
 
 
-
 /* CSS Document */
 /* =Reset default browser CSS.
 -------------------------------------------------------------- */
@@ -669,3 +668,25 @@ span.f_icon1 {
     margin-right: 6px;
 }
 
+.f_phone {
+    margin-left: 12px;
+    padding-right: 10px;
+}
+
+.f_phone:hover {
+  
+    color: #ed7275;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: #ed7275 !important;
+}
+
+.f_icon:hover {
+    color: #ed7275;
+   
+}
+
+.f_margin {
+    margin: 0 auto;
+}
