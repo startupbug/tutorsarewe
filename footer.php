@@ -1,5 +1,5 @@
 <footer>
-   <section class="footer_main">
+     <section class="footer_main">
       <div class="container">
          <div class="row">
             <div class="col-md-2 col-sm-6 col-xs-6">
@@ -104,8 +104,8 @@
             </ul>
          </div>
          <div class="col-md-3 col-sm-6 col-xs-6">
-            <h3 class="f_get">TUTORS BY LOCATION</h3>
-            <ul class="f_list">
+            <!--<h3 class="f_get">TUTORS BY LOCATION</h3>-->
+            <ul class="f_list f_list1">
                <li class="list-item">
                   Trigonometry
                </li>
@@ -130,8 +130,8 @@
             </ul>
          </div>
          <div class="col-md-3 col-sm-6 col-xs-6">
-            <h3 class="f_get">TUTORS BY LOCATION</h3>
-            <ul class="f_list">
+            <!--<h3 class="f_get">TUTORS BY LOCATION</h3>-->
+            <ul class="f_list f_list1">
                <li class="list-item">
                   Spanish
                </li>
@@ -156,7 +156,7 @@
             </ul>
          </div>
          <div class="col-md-4 col-sm-6 col-xs-6">
-            <h3 class="f_get">TUTORS BY LOCATION</h3>
+            <h3 class="f_get f_margin">TUTORS BY LOCATION</h3>
             <ul class="f_list">
                <li class="list-item">
                   Bon Air

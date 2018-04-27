@@ -36,7 +36,12 @@
       <!-- Responsive -->
       <link href="assets/css/responsive.css" rel="stylesheet">
    </head>
-   <body>
+
+   <?php
+      $uri = explode('/', $_SERVER['REQUEST_URI']);
+      $class = trim(end($uri), ".php");
+   ?>
+   <body class="<?php echo $class ? $class : 'index'; ?>">
       <div id="wrapper">
       <header>
          <div class="container">

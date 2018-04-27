@@ -18,7 +18,7 @@ ul.top-header-nav li {
     
 }
 
-header {
+.index header {
   
     position: relative;
    
@@ -101,6 +101,7 @@ width: 48%;
     .btn_check {
    
     margin-bottom: 30px;
+    text-align: center;
 }
 ul.f_site {
   
@@ -114,7 +115,7 @@ ul.f_site {
 
 .f_width {
     width: 33%;
-    margin-top: 16px;
+    margin-top: 16px !important;
     margin-left: -6px;
 }
 .f_width1 {
@@ -123,4 +124,116 @@ ul.f_site {
     margin-left: 10px;
 }
 
+img.log_f {
+    /* height: 100px !important; */
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 34px;
 }
+
+.f_logo {
+    text-align: center;
+    margin: 0 auto;
+}
+
+h3.f_check {
+   
+    text-align: center;
+}
+
+p.f_per {
+   
+    text-align: center;
+}
+h3.f_text {
+   
+    text-align: center;
+}
+p.f_tutor {
+   
+    text-align: center;
+}
+.index header {
+    position: relative;
+}
+
+.header-text {
+   
+    top: -10%;
+   
+}
+
+.f_main {
+    
+    top: 0px;
+    
+}
+.top-header {
+   
+    width: auto;
+   
+}
+h3.f_margin {
+    margin-top: -167px !important;
+}
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation:landscape){
+
+    ul.f_site {
+    margin-top: 12px;
+}
+
+.f_width {
+    width: auto;
+     margin-top: 0px !important; 
+    
+}
+
+.f_width1 {
+    width: auto;
+    
+}
+h3.f_margin {
+    margin-top: 50px !important;
+}
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 767px) and (orientation:landscape){
+
+    .f_main {
+    
+    top: -99px !important;
+   
+}
+
+h3.f_check {
+   
+     text-align: center;
+}
+p.f_per {
+  
+    text-align: center;
+}
+.btn_check {
+   
+    text-align: center;
+}
+
+.f_logo {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.f_width1 {
+     width: auto;
+    margin-bottom: 10px !important;
+    
+}
+
+.f_width {
+     width: auto;
+    margin-top: 16px !important;
+   
+}
+    }

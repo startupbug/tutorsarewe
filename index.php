@@ -33,13 +33,13 @@
             <section id="tabs">
                <nav>
                   <div class="nav nav-tabs nav-fill f_nav" id="nav-tab" role="tablist">
-                     <div class="col-md-3 col-md-offset-1">
+                     <div class="col-md-3 col-sm-3 col-md-offset-1">
                         <a class="nav-item nav-link f_tab" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa fa-home f_home" aria-hidden="true"></i>Home Tutoring</a>
                      </div>
-                     <div class="col-md-3 col-md-offset-1">
+                     <div class="col-md-3 col-sm-3 col-md-offset-1">
                         <a class="nav-item nav-link f_tab" id="nav-contact-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa fa-desktop f_home"></i>Online Tutoring</a>
                      </div>
-                     <div class="col-md-3 col-md-offset-1">
+                     <div class="col-md-3 col-sm-3 col-md-offset-1">
                         <a class="nav-item nav-link f_tab" id="nav-about-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><i class="fa fa-hourglass-half f_home"></i>Full Time</a>
                      </div>
                   </div>
@@ -134,12 +134,12 @@
                <p class="f_meet">We can meet the student online or we can come <br>to your home or designated location. You don’t <br>have to worry. We have tutors ASAP (AS SOON <br>AS POSSIBLE) and PRN (AS needed). We can <br>help you or your child succeed.</p>
             </div>
             <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-               <img src="assets/images/image1.png" class="img-responsive info_img">
+               <img src="assets/images/image2.png" class="img-responsive info_img">
                <h3 class="f_online">Quality Scores</h3>
                <p class="f_meet">We have highly qualified tutors to meet you or <br>your child’s tutoring needs</p>
             </div>
             <div class="col-md-4 col-sm-6 col-xs-12 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0">
-               <img src="assets/images/image1.png" class="img-responsive info_img">
+               <img src="assets/images/image3.png" class="img-responsive info_img">
                <h3 class="f_online">Reviews & Ratings</h3>
                <p class="f_meet">No more emails, Calls or messaging friends for <br>recommendations - Get acces to real reviews<br>
 in seconds</p>
@@ -196,39 +196,41 @@ in seconds</p>
    <div class="container">
       <div class="row">
          <h3 class="added_course">Recent Added Courses</h3>
-         <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+         <div class="col-md-4 col-sm-4 col-xs-12 text-center">
             <img src="assets/images/images1.png" class="img-responsive f_margin">
             <h3 class="full_time">Full Time Tutoring</h3>
             <p class="f_vul">Voluptatem accusantium doloremque</p>
          </div>
-         <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+         <div class="col-md-4 col-sm-4 col-xs-12 text-center">
             <img src="assets/images/images2.png" class="img-responsive f_margin">
             <h3 class="full_time">Science Fair Help</h3>
             <p class="f_vul">Voluptatem accusantium doloremque</p>
          </div>
-         <div class="col-md-4 col-sm-6 col-xs-12 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0">
+         <div class="col-md-4 col-sm-4 col-xs-12 text-center">
             <img src="assets/images/images3.png" class="img-responsive f_margin">
             <h3 class="full_time">Social Studies</h3>
             <p class="f_vul">Voluptatem accusantium doloremque</p>
          </div>
       </div>
+     
       <div class="row">
-         <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+         <div class="col-md-4 col-sm-4 col-xs-12 text-center">
             <img src="assets/images/images1.png" class="img-responsive f_margin">
             <h3 class="full_time">French</h3>
             <p class="f_vul">Voluptatem accusantium doloremque</p>
          </div>
-         <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+         <div class="col-md-4 col-sm-4 col-xs-12 text-center">
             <img src="assets/images/images2.png" class="img-responsive f_margin">
             <h3 class="full_time">Early Childhood Tutoring</h3>
             <p class="f_vul">Voluptatem accusantium doloremque</p>
          </div>
-         <div class="col-md-4 col-sm-6 col-xs-12 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0">
+         <div class="col-md-4 col-sm-4 col-xs-12 text-center">
             <img src="assets/images/images3.png" class="img-responsive f_margin">
             <h3 class="full_time">Math</h3>
             <p class="f_vul">Voluptatem accusantium doloremque</p>
          </div>
       </div>
+      
    </div>
 </section>
 <section class="f_choose">
@@ -256,22 +258,22 @@ in seconds</p>
       <h3 class="added_course">Featured on</h3>
       <div class="row">
          <div class="col-md-2 col-sm-6 col-xs-6">
-            <img src="assets/images/logo1.png" class="img-responsive">
+            <img src="assets/images/logo1.png" class="img-responsive f_logo">
          </div>
          <div class="col-md-2 col-sm-6 col-xs-6">
-            <img src="assets/images/logo2.png" class="img-responsive">
+            <img src="assets/images/logo2.png" class="img-responsive f_logo">
          </div>
          <div class="col-md-2 col-sm-6 col-xs-6">
-            <img src="assets/images/logo3.png" class="img-responsive f_width">
+            <img src="assets/images/logo3.png" class="img-responsive f_width f_logo">
          </div>
          <div class="col-md-2 col-sm-6 col-xs-6">
-            <img src="assets/images/logo4.png" class="img-responsive f_width1">
+            <img src="assets/images/logo4.png" class="img-responsive f_width1 f_logo">
          </div>
          <div class="col-md-2 col-sm-6 col-xs-6">
-            <img src="assets/images/logo5.png" class="img-responsive">
+            <img src="assets/images/logo5.png" class="img-responsive f_logo">
          </div>
          <div class="col-md-2 col-sm-6 col-xs-6">
-            <img src="assets/images/logo6.png" class="img-responsive">
+            <img src="assets/images/logo6.png" class="img-responsive f_logo">
          </div>
       </div>
    </div>
