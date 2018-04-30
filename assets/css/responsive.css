@@ -139,6 +139,11 @@ h3.f_take {
    
     margin-bottom: 10px;
 }
+img.fulltime_img {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 30px;
+}
 
 }
 
@@ -240,6 +245,11 @@ p.p_tutors {
    
     font-size: 17px;
   
+}
+img.fulltime_img {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 30px;
 }
 }
 
