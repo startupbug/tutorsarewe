@@ -1,5 +1,5 @@
 <?php include 'header.php'; ?>
-<section class="tutor">
+   <section class="tutor">
    <div class="container-fluid">
       <div class="row">
          <div class="col-md-12 f_padding">

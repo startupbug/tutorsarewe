@@ -131,7 +131,7 @@
          </div>
          <div class="col-md-3 col-sm-6 col-xs-6">
             <!--<h3 class="f_get">TUTORS BY LOCATION</h3>-->
-            <ul class="f_list f_list1">
+            <ul class="f_list f_list1 f_borderright">
                <li class="list-item">
                   Spanish
                </li>
@@ -155,7 +155,7 @@
                </li>
             </ul>
          </div>
-         <div class="col-md-4 col-sm-6 col-xs-6">
+         <div class="col-md-offset-1 col-md-3 col-sm-6 col-xs-6">
             <h3 class="f_get f_margin">TUTORS BY LOCATION</h3>
             <ul class="f_list">
                <li class="list-item">
