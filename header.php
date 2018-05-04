@@ -55,7 +55,7 @@
                   <ul class="top-header-nav">
                      <li><i class="fa fa-phone f_phone" aria-hidden="true"></i>:  1-877-3- TUTORS 1877-388-8677</li>
                      <li class="f_right"><i class="fa fa-search f_phone"></i>: Search For Tutors</li>
-                     <li class="f_right"><i class="fa fa-user f_phone"></i><a href="login.php">: Login/Register</a></li>
+                     <li class="f_right"><i class="fa fa-user f_phone"></i><a href="login.php">: Login</a>/<a href="signup_faq.php">Register</a></li>
                   </ul>
                </div>
                <div class="col-md-12 col-sm-12 col-xs-12">

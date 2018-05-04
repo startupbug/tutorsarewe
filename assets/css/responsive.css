@@ -168,6 +168,11 @@ section.aboutus {
    
     margin-bottom: 50px;
 }
+.navbar-toggle {
+  
+    margin-top: -50px;
+    
+}
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
@@ -283,6 +288,18 @@ h3.f_student {
     
     margin-top: 15px;
 }
+.num_tutor {
+ 
+    float: none;
+}
+.navbar-toggle {
+   
+    margin-top: -23px;
+    margin-right: -4px;
+   
+}
+
+
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation:landscape){
@@ -307,6 +324,12 @@ h3.f_margin {
 p.p_take {
     font-size: 16px;
     
+}
+.navbar-toggle {
+    
+    margin-top: -16px;
+    margin-right: -17px;
+   
 }
 }
 
@@ -365,6 +388,14 @@ p.p_take {
 .f_star {
    
     margin-top: 10px;
+}
+
+.num_tutor {
+ 
+    float: none;
+}
+.navbar-toggle {
+    margin-top: -18px;
 }
     }
 

@@ -39,7 +39,7 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
                         How do I search for tutors?
                         </a>
                      </h4>
@@ -53,7 +53,7 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
                         How do I sign up for tutoring?
                         </a>
                      </h4>
@@ -67,7 +67,7 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
                         What happens after I sign up?
                         </a>
                      </h4>
@@ -81,7 +81,7 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
                         Must the student take the pre test?
                         </a>
                      </h4>
@@ -95,7 +95,7 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
                         How much does the pre test cost?
                         </a>
                      </h4>
@@ -109,7 +109,7 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
                         How much does the online class cost?
                         </a>
                      </h4>
@@ -123,7 +123,7 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
                         I want to hire a full time or a travel tutor- what do I do?
                         </a>
                      </h4>
@@ -137,7 +137,7 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent" data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
                         Do you check the background check of tutors?
                         </a>
                      </h4>
@@ -151,7 +151,7 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent" data-toggle="collapse" data-parent="#accordion" href="#collapseNine">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine">
                         How can I get a copy of tutor’s background check?
                         </a>
                      </h4>
@@ -165,7 +165,7 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">
                         How does the client referral program work?
                         </a>
                      </h4>

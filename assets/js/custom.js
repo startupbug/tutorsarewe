@@ -13,3 +13,9 @@ $(this).parent().find(".fa fa-angle-down").removeClass("fa fa-angle-down").addCl
 	var slider = new Slider('#ex2', {});
 	
   } );
+
+
+ $(".f_tab").click(function(){
+$(".f_tab").removeClass("active-tab");
+$(this).addClass("active-tab")
+})

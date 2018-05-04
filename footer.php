@@ -191,9 +191,11 @@
             </div>
             <div class="col-md-6">
                <ul class="f_site">
-                  <li>Sitemap</li>
-                  <li>Terms of Use</li>
-                  <li>Privacy Policy</li>
+                  <li><a href="testimonial.php">Testimonial</a></li>
+                  <li><a href="blog.php">Blog</a></li>
+                  <li><a href="faq.php">FAQ</a></li>
+                  <!--<li>Terms of Use</li>
+                  <li>Privacy Policy</li>-->
                </ul>
             </div>
          </div>
@@ -211,33 +213,16 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <!-- Carousel-min -->
 <script src="assets/js/owl.carousel.min.js"></script>
-<!-- Wow-min-js -->
-<script src="assets/js/wow.min.js"></script>
-<!-- masonry-grid-js -->
-<script src="assets/js/masonry.pkgd.min.js"></script>
 <!-- alertify-js -->
 <script src="assets/js/alertify.min.js"></script>
-<!-- juqeyr custom validatoin plugin-js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
-<!-- custom validatoin-js -->
-<script src="assets/js/custom_validatiion.js"></script>
-<!-- mobile-menu-js -->
-<script src="assets/plugins/menu/js/jquery.mmenu.all.js"></script>
-<script src="assets/plugins/menu/js/jquery.mhead.js"></script>
 <!-- Animation AOS JS -->
 <script src="assets/js/aos.js"></script>
 <!-- Animation JS -->
-<script src="assets/js/modernizr.custom.js"></script> 
-<!-- script-js -->
 <script src="assets/js/script.js"></script>
 <!-- Custom-js -->
 <script src="assets/js/custom.js"></script>
 <!--Myclass-->
-<script>
-  $( function() {
-    $( "#slider" ).slider();
-  } );
-  </script>
+
 </div>
 </body>
 </html>

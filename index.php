@@ -4,7 +4,7 @@
       <div class="row">
          <div class="col-md-12 f_padding">
             <div class="img_banner">
-               <img src="assets/images/banner2.png" class="img-responsive">
+               <img src="assets/images/banner2.png" class="img_home">
             </div>
             <div class="header-text">
                <div class="col-md-12 text-center">
@@ -34,7 +34,7 @@
                <nav>
                   <div class="nav nav-tabs nav-fill f_nav" id="nav-tab" role="tablist">
                      <div class="col-md-3 col-sm-3 col-md-offset-1">
-                        <a class="nav-item nav-link f_tab" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa fa-home f_home" aria-hidden="true"></i>Home Tutoring</a>
+                        <a class="nav-item nav-link f_tab active-tab" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa fa-home f_home" aria-hidden="true"></i>Home Tutoring</a>
                      </div>
                      <div class="col-md-3 col-sm-3 col-md-offset-1">
                         <a class="nav-item nav-link f_tab" id="nav-contact-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa fa-desktop f_home"></i>Online Tutoring</a>
@@ -50,21 +50,21 @@
                         <div class="form-group col-md-6 f_bottom">
                            <select class="form-control f_color" id="emailFrom" name="emailFrom">
                               <option>Type of Course</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio Rodriguez (sergio.rodriguez@tix.com)</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia Mahoney (sergio.rodriguez@tix.com)</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore (sergio.rodriguez@tix.com)</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger (sergio.rodriguez@tix.com)</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea (sergio.rodriguez@tix.com)</option>
+                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
+                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
+                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
+                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
+                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
                            </select>
                         </div>
                         <div class="form-group col-md-3 f_bottom">
                            <select class="form-control f_color" id="emailFrom" name="emailFrom">
                               <option>Select Location</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio Rodriguez (sergio.rodriguez@tix.com)</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia Mahoney (sergio.rodriguez@tix.com)</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore (sergio.rodriguez@tix.com)</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger (sergio.rodriguez@tix.com)</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea (sergio.rodriguez@tix.com)</option>
+                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
+                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
+                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
+                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
+                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
                            </select>
                         </div>
                         <div class="col-md-3 f_bottom"><button type="submit" class="btn btn-default f_color button_tour">SEARCH TOUR</button></div>
@@ -75,21 +75,21 @@
                         <div class="form-group col-md-6 f_bottom">
                            <select class="form-control f_color" id="emailFrom" name="emailFrom">
                               <option>Type of Course</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio Rodriguez (sergio.rodriguez@tix.com)</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia Mahoney (sergio.rodriguez@tix.com)</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore (sergio.rodriguez@tix.com)</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger (sergio.rodriguez@tix.com)</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea (sergio.rodriguez@tix.com)</option>
+                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
+                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
+                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
+                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
+                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
                            </select>
                         </div>
                         <div class="form-group col-md-3 f_bottom">
                            <select class="form-control f_color" id="emailFrom" name="emailFrom">
                               <option>Select Location</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio Rodriguez (sergio.rodriguez@tix.com)</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia Mahoney (sergio.rodriguez@tix.com)</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore (sergio.rodriguez@tix.com)</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger (sergio.rodriguez@tix.com)</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea (sergio.rodriguez@tix.com)</option>
+                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
+                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
+                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
+                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
+                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
                            </select>
                         </div>
                         <div class="col-md-3 f_bottom"><button type="submit" class="btn btn-default f_color button_tour">SEARCH TOUR</button></div>
@@ -100,21 +100,21 @@
                         <div class="form-group col-md-6 f_bottom">
                            <select class="form-control f_color" id="emailFrom" name="emailFrom">
                               <option>Type of Course</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio Rodriguez (sergio.rodriguez@tix.com)</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia Mahoney (sergio.rodriguez@tix.com)</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore (sergio.rodriguez@tix.com)</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger (sergio.rodriguez@tix.com)</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea (sergio.rodriguez@tix.com)</option>
+                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
+                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
+                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
+                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
+                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
                            </select>
                         </div>
                         <div class="form-group col-md-3 f_bottom">
                            <select class="form-control f_color" id="emailFrom" name="emailFrom">
                               <option>Select Location</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio Rodriguez (sergio.rodriguez@tix.com)</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia Mahoney (sergio.rodriguez@tix.com)</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore (sergio.rodriguez@tix.com)</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger (sergio.rodriguez@tix.com)</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea (sergio.rodriguez@tix.com)</option>
+                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
+                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
+                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
+                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
+                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
                            </select>
                         </div>
                         <div class="col-md-3 f_bottom"><button type="submit" class="btn btn-default f_color button_tour">SEARCH TOUR</button></div>
