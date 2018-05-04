@@ -277,10 +277,10 @@ ul.top-header-nav li {
     padding: 15px;
 }
 
-.btn-min-block {
+/*.btn-min-block {
     min-width: 170px;
     line-height: 26px;
-}
+}*/
 
 .btn-theme {
     color: #fff;
@@ -746,7 +746,7 @@ h3.f_tutor {
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
-  float: left;
+  
 }
 
 .menu__header {
@@ -1222,7 +1222,7 @@ p.f_does {
 
 section.fulltime_tutor {
     margin-top: 40px;
-    margin-bottom: 50px;
+   
 }
 
 p.f_time {
@@ -1283,7 +1283,7 @@ h3.f_joy {
     font-size: 20px;
     color: #646464;
     font-family: 'ProximaNovaAlt-Regular';
-    padding-left: 29px;
+    padding-left: 40px;
 }
 
 .border_testimonial {
@@ -1298,8 +1298,8 @@ p.content_testimonial {
     font-size: 18px;
     color: #747474;
     font-family: 'ProximaNovaAlt-Regular';
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 42px;
+    padding-right: 42px;
     margin-top: 5px;
 }
 
@@ -1407,4 +1407,405 @@ a.f_forgot {
     font-size: 18px;
     color: #ed7275;
     font-family: 'ProximaNovaAlt-Regular';
+}
+
+.f_course {
+    color: #ed7275;
+    font-size: 19px;
+    font-family: 'ProximaNova-Semibold';
+    
+    margin-bottom: 5px;
+}
+
+.select_f {
+    
+    color: #a6a6a6;
+    font-size: 16px;
+    font-family: 'ProximaNovaAlt-Regular';
+}
+
+section.findtutoring_job {
+    padding-top: 50px;
+    padding-bottom: 40px;
+}
+h3.f_lefttutor {
+    color: #646464;
+    font-size: 20px;
+    font-family: 'ProximaNova-Semibold';
+}
+
+p.f_findcontent {
+    font-size: 15px;
+    color: #747474;
+   font-family: 'ProximaNovaAlt-Regular';
+    line-height: 21px;
+    padding-bottom: 10px;
+}
+
+a.f_detail {
+    color: #ed7275;
+    font-size: 16px;
+    font-family: 'ProximaNovaAlt-Regular';
+
+}
+
+p.f_posted {
+    color: #747474;
+    font-size: 16px;
+    font-family: 'ProximaNovaAlt-Regular';
+    padding-top: 15px;
+    padding-bottom: 35px;
+}
+
+.f_viewjob {
+    font-size: 18px;
+    background-color: #ed7275;
+    border: 1px solid #ed7275;
+    font-family: 'ProximaNova-Semibold';
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.f_buttonview {
+    margin-top: 25px;
+}
+.f_viewjob:hover {
+    font-size: 18px;
+    background-color: #ed7275;
+    border: 1px solid #ed7275;
+    font-family: 'ProximaNova-Semibold';
+    padding-left: 25px;
+    padding-right: 25px;
+    color: white;
+}
+.find_mainjob {
+    border: 1px solid #e1e1e1;
+}
+
+.f_mainborder {
+    border: 1px solid #e1e1e1;
+    margin: 0 auto;
+    margin-top: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border-radius: 2px;
+}
+
+.f_showjob {
+    font-size: 18px;
+    background-color: #ED7274 !important;
+    font-family: 'ProximaNova-Semibold';
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.f_showjob:hover {
+    font-size: 18px;
+    background-color: #ED7274 !important;
+    font-family: 'ProximaNova-Semibold';
+    padding-left: 35px;
+    padding-right: 35px;
+    color: white;
+}
+.f_buttonshow {
+    margin-top: 20px;
+    text-align: center;
+}
+
+a.f_faqcontent {
+    color: #646464;
+    font-size: 20px;
+    font-family: 'ProximaNovaAlt-Regular';
+    margin-left: 10px;
+}
+
+.s_border_header {
+    background-color: transparent !important;
+   
+}
+
+.f_mainfaq {
+    margin-top: 12px;
+    margin-bottom: 18px !important;
+}
+
+
+
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: left;        /* adjust as needed */
+    color: grey;         /* adjust as needed */
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.f_body {
+    font-size: 18px;
+    color: #747474;
+    font-family: 'ProximaNovaAlt-Regular';
+}
+
+section.signup_faq {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.f_signupborder {
+    border: 1px solid #e1e1e1;
+    background-color: #f8f8f8;
+    margin-top: 8px;
+}
+
+h3.f_apply {
+    text-align: center;
+}
+
+p.f_easily {
+    color: #646464;
+    font-size: 18px;
+    font-family: 'ProximaNovaAlt-Light';
+    text-align: center;
+}
+
+input#Inputphonenumber::placeholder {
+    font-size: 18px;
+    color: #a6a6a6;
+    font-family: 'ProximaNovaAlt-Regular';
+}
+.f_label span {
+    color: #ed7275;
+}
+
+.f_body {
+    background-color: #f8f8f8;
+}
+h3.f_student {
+    margin: auto;
+}
+
+span.nav__item-text:hover {
+  
+    color: #ed7275;
+}
+
+h3.f_class {
+    color: #ed7275;
+    font-size: 20px;
+    font-family: 'ProximaNova-Semibold';
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.checkbox_search {
+    margin-right: 10px !important;
+}
+
+section.search {
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+span.days {
+    color: #646464;
+    font-size: 18px;
+    font-family: 'ProximaNovaAlt-Regular';
+}
+
+
+
+.searchField {
+    display: inline-block;
+    width: 100%;
+    height: 38px;
+    margin: 0 auto;
+    border: 1px solid grey;
+    font-size: 20px;
+    outline: grey;
+    padding: 5px;
+    padding-right: 50px;
+    cursor: pointer;
+    color: grey;
+    box-sizing: border-box;
+}
+.searchInput {
+    position: relative;
+}
+.searchInput .glyphicon {
+    position: absolute;
+    z-index: 2;
+    left: 12px;
+    font-size: 18px;
+    width: 24px;
+    color: #a6a6a6;
+    text-align: center;
+    padding: 6px 0;
+    top: 5px;
+    cursor: pointer;
+}
+
+.btn_search:hover {
+   
+    color: #ffffff;
+}
+
+.btn_search {
+    font-family: 'ProximaNova-Semibold';
+    background-color: #ed7275;
+    width: 100%;
+    font-size: 18px;
+    color: #ffffff;
+}
+p.f_fit {
+    font-size: 20px;
+    color: #646464;
+    font-family: 'ProximaNovaAlt-Regular';
+    margin-top: 8px;
+}
+
+h3.search_name {
+    color: #646464;
+    font-size: 20px;
+    font-family: 'ProximaNovaAlt-Regular';
+}
+
+ul.search_list {
+    display: inline-flex;
+    margin-top: 10px;
+}
+.f_star {
+    margin-left: 2px;
+    margin-right: 2px;
+    color: #eeb223;
+}
+
+.search_name span {
+    color: #646464;
+    font-size: 18px;
+    font-family: 'ProximaNovaAlt-Regular';
+}
+
+.f_clock {
+    margin-right: 5px;
+    color: #619e00;
+    font-size: 18px;
+}
+
+.border_search {
+    border-right: 1px solid #e1e1e1;
+}
+
+.btn_result {
+    font-family: 'ProximaNova-Semibold';
+    background-color: #ed7275;
+    font-size: 18px;
+    color: #ffffff;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.btn_result:hover {
+    
+    color: #ffffff;
+    
+}
+.f_resultbtn {
+    text-align: center;
+    margin-top: 35px;
+}
+
+.img_last {
+    padding-top: 50px;
+}
+
+.f_margintop h2 {
+    margin-top: 135px;
+}
+
+.f_iconcomma {
+    font-size: 28px;
+    color: #ed7275;
+    padding-left: 15px;
+
+}
+
+ul.top-header-nav li a {
+    
+    font-size: 15px;
+    color: #ffffff;
+    font-family: 'ProximaNova-Semibold';
+}
+
+.input-group .icon-addon .form-control {
+    border-radius: 0;
+}
+
+.icon-addon {
+    position: relative;
+    color: #555;
+    display: block;
+}
+
+.icon-addon:after,
+.icon-addon:before {
+    display: table;
+    content: " ";
+}
+
+.icon-addon:after {
+    clear: both;
+}
+
+
+.icon-addon.addon-md .glyphicon,
+.icon-addon .glyphicon, 
+.icon-addon.addon-md .fa,
+.icon-addon .fa {
+    position: absolute;
+    z-index: 2;
+    left: 10px;
+    font-size: 14px;
+    width: 20px;
+    margin-left: -2.5px;
+    text-align: center;
+    padding: 10px 0;
+    top: 1px
+}
+.f_paddingright {
+    padding-left: 35px;
+}
+
+.slider-handle {
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background-color: white !important;
+    background-image: -webkit-linear-gradient(top,#e6e7e7 0,#c1c3c4 100%);
+    background-image: -o-linear-gradient(top,#337ab7 0,#2e6da4 100%);
+    /* background-image: linear-gradient(to bottom,#337ab7 0,#2e6da4 100%); */
+    /* background-repeat: repeat-x; */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7',endColorstr='#ff2e6da4',GradientType=0);
+    filter: none;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    /* box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05); */
+    /* border: 0 solid transparent; */
+}
+
+
+.slider-track {
+    position: absolute;
+    cursor: pointer;
+    background-image: -webkit-linear-gradient(top,#ed7275 0,#f9f9f9 100%);
+    background-image: -o-linear-gradient(top,#f5f5f5 0,#f9f9f9 100%);
+    background-image: linear-gradient(to bottom,#ed7275 0,#ed7275 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5',endColorstr='#fff9f9f9',GradientType=0);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 2px rgb(237, 114, 117);
+    border-radius: 4px;
 }

@@ -1,3 +1,4 @@
+<?php $base_url = 'http://localhost/tutorareus/'?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -10,6 +11,10 @@
       <link href="assets/css/bootstrap.min.css" rel="stylesheet">
       <!-- FontAwesome -->
       <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+      <!-- UI Jquery -->
+      <link href="assets/css/jquery-ui.css" rel="stylesheet">
+      <!-- UI Jquery -->
+      <link href="assets/css/bootstrap-slider.min.css" rel="stylesheet">
       <!-- Animate -->
       <link href="assets/css/animate.css" rel="stylesheet">
       <!-- Owl Slider -->
@@ -50,7 +55,7 @@
                   <ul class="top-header-nav">
                      <li><i class="fa fa-phone f_phone" aria-hidden="true"></i>:  1-877-3- TUTORS 1877-388-8677</li>
                      <li class="f_right"><i class="fa fa-search f_phone"></i>: Search For Tutors</li>
-                     <li class="f_right"><i class="fa fa-user f_phone"></i>: Login/Register</li>
+                     <li class="f_right"><i class="fa fa-user f_phone"></i><a href="login.php">: Login/Register</a></li>
                   </ul>
                </div>
                <div class="col-md-12 col-sm-12 col-xs-12">
@@ -66,53 +71,61 @@
                         </div>
                         <div class="collapse navbar-collapse" id="myNavbar">
                            <ul class="nav navbar-nav header-nav">
-                              <li class="dropdown">
-                                 <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" href="#">FIND A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <ul class="dropdown-menu">
+                              <li class="">
+                                 <a class="f_dropdown" href="<?php echo $base_url; ?>search.php">FIND A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
+                                 <!--<ul class="dropdown-menu">
                                     <li><a href="#">Page 1-1</a></li>
                                     <li><a href="#">Page 1-2</a></li>
                                     <li><a href="#">Page 1-3</a></li>
-                                 </ul>
+                                 </ul>-->
                               </li>
-                              <li class="dropdown">
-                                 <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" href="#">HOW IT WORKS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
+                              <!--<li class="dropdown">
+                                 <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" href="howitworks.php">HOW IT WORKS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <ul class="dropdown-menu">
                                     <li><a href="#">Page 1-1</a></li>
                                     <li><a href="#">Page 1-2</a></li>
                                     <li><a href="#">Page 1-3</a></li>
                                  </ul>
+                              </li>-->
+                              <li class="">
+                                 <a class="f_dropdown" href="howitworks.php">HOW IT WORKS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
+                                 <!--<ul class="dropdown-menu">
+                                    <li><a href="#">Page 1-1</a></li>
+                                    <li><a href="#">Page 1-2</a></li>
+                                    <li><a href="#">Page 1-3</a></li>
+                                 </ul>-->
                               </li>
-                              <li class="dropdown">
-                                 <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" href="#">START TUTORING  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <ul class="dropdown-menu">
+                              <li class="">
+                                 <a class="f_dropdown" href="findtutoringjob.php">START TUTORING  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
+                                 <!--<ul class="dropdown-menu">
                                     <li><a href="#">Page 1-1</a></li>
                                     <li><a href="#">Page 1-2</a></li>
                                     <li><a href="#">Page 1-3</a></li>
-                                 </ul>
+                                 </ul>-->
                               </li>
-                              <li class="dropdown">
-                                 <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" href="#">BECOME A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <ul class="dropdown-menu">
+                              <li class="">
+                                 <a class="f_dropdown" href="fulltimetutor.php">BECOME A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
+                                 <!--<ul class="dropdown-menu">
                                     <li><a href="#">Page 1-1</a></li>
                                     <li><a href="#">Page 1-2</a></li>
                                     <li><a href="#">Page 1-3</a></li>
-                                 </ul>
+                                 </ul>-->
                               </li>
-                              <li class="dropdown">
-                                 <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" href="#">PUBLICATIONS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <ul class="dropdown-menu">
+                              <li class="">
+                                 <a class="f_dropdown" href="publication.php">PUBLICATIONS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
+                                 <!--<ul class="dropdown-menu">
                                     <li><a href="#">Page 1-1</a></li>
                                     <li><a href="#">Page 1-2</a></li>
                                     <li><a href="#">Page 1-3</a></li>
-                                 </ul>
+                                 </ul>-->
                               </li>
-                              <li class="dropdown">
-                                 <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" href="#">ABOUT US  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <ul class="dropdown-menu">
+                              <li class="">
+                                 <a class="f_dropdown" href="aboutus.php">ABOUT US  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
+                                 <!--<ul class="dropdown-menu">
                                     <li><a href="#">Page 1-1</a></li>
                                     <li><a href="#">Page 1-2</a></li>
                                     <li><a href="#">Page 1-3</a></li>
-                                 </ul>
+                                 </ul>-->
                               </li>
                            </ul>
                         </div>
@@ -122,3 +135,4 @@
             </div>
          </div>
       </header>
+      

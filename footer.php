@@ -202,6 +202,10 @@
 </footer>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="assets/js/jquery-3.1.1.min.js"></script>
+<!-- UI Jquery -->
+<script src="assets/js/jquery-ui.js"></script>
+<!-- UI Jquery -->
+<script src="assets/js/bootstrap-slider.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- Bootstrap -->
 <script src="assets/js/bootstrap.min.js"></script>
@@ -229,6 +233,11 @@
 <!-- Custom-js -->
 <script src="assets/js/custom.js"></script>
 <!--Myclass-->
+<script>
+  $( function() {
+    $( "#slider" ).slider();
+  } );
+  </script>
 </div>
 </body>
 </html>

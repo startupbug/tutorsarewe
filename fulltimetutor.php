@@ -31,5 +31,23 @@
          </div>
       </div>
    </div>
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-md-12 f_padding">
+            <div class="img_last"><img src="assets/images/fulltime_image.png" class="img-responsive"></div>
+
+            <div class="header-text f_margintop">
+               <div class="col-md-12 text-center">
+                  <h2>
+                     There are 0 Lessons taught already!
+                  </h2>
+                 
+                 
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
 </section>
 <?php include 'footer.php'; ?>

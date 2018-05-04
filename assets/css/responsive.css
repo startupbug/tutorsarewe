@@ -144,7 +144,30 @@ img.fulltime_img {
     margin: 0 auto;
     margin-top: 30px;
 }
-
+h3.f_student {
+    margin: 12px;
+}
+h3.search_name {
+    
+    margin-top: 10px;
+}
+.img_searchresp {
+    text-align: center;
+    margin: 0 auto;
+}
+.f_clock {
+   
+    margin-top: 13px;
+}
+.f_buttonview {
+  
+    margin: 0 auto;
+    text-align: center;
+}
+section.aboutus {
+   
+    margin-bottom: 50px;
+}
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
@@ -251,6 +274,15 @@ img.fulltime_img {
     margin: 0 auto;
     margin-top: 30px;
 }
+section.aboutus {
+   
+    margin-bottom: 50px;
+}
+
+h3.f_student {
+    
+    margin-top: 15px;
+}
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation:landscape){
@@ -329,6 +361,10 @@ h3.f_take {
 p.p_take {
    
     text-align: center;
+}
+.f_star {
+   
+    margin-top: 10px;
 }
     }
 
