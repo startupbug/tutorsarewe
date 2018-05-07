@@ -131,7 +131,7 @@
          </div>
          <div class="col-md-3 col-sm-6 col-xs-6">
             <!--<h3 class="f_get">TUTORS BY LOCATION</h3>-->
-            <ul class="f_list f_list1 f_borderright">
+            <ul class="f_list f_list1 f_borderright f_spanish">
                <li class="list-item">
                   Spanish
                </li>
@@ -194,7 +194,8 @@
                   <li><a href="testimonial.php">Testimonial</a></li>
                   <li><a href="blog.php">Blog</a></li>
                   <li><a href="faq.php">FAQ</a></li>
-                  <!--<li>Terms of Use</li>
+                  <!--<li>Sitemap</li>
+                  <li>Terms of Use</li>
                   <li>Privacy Policy</li>-->
                </ul>
             </div>

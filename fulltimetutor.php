@@ -20,7 +20,16 @@
                <img src="assets/images/timetutor1.png" class="img-responsive fulltime_img">
             </div>
          </div>
-         <div class="row">
+         <!-- Mobile Html -->
+         <div class="row f_xs_view">
+            <div class="col-xs-12 text-center">
+               <h3 class="f_register">Interested in becoming a<br>full time tutor</h3>
+               <img src="assets/images/timetutor3.png" class="img-responsive fulltime_img">
+               <div class="time_click"><a href="#">CLICK HERE</a></div>
+            </div>
+         </div>
+         <!-- Desktop Html -->
+         <div class="row f_md_view">
             <div class="col-md-6">
                <img src="assets/images/timetutor3.png" class="img-responsive fulltime_img">
             </div>

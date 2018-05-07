@@ -13,7 +13,7 @@
                   <ul class="nav">
                      <li class="nav__item">
                         <a href="#" class="nav__item-link">
-                        <span class="nav__item-text">For Student</span>
+                        <span class="nav__item-text active">For Student</span>
                         </a>   
                      </li>
                      <li class="nav__item">

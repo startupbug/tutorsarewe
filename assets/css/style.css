@@ -321,8 +321,9 @@ ul.top-header-nav li {
 }
 
 .f_about:hover {
-    color: #ed7275;
-    background-color: white;
+    color: white;
+    background-color: #ed7275;
+    border: 1px solid #ed7275;
 }
 
 h3.f_content {
@@ -514,6 +515,7 @@ h3.full_time {
     color: #646464;
     margin-top: 10px;
     font-family: 'ProximaNova-Bold' !important;
+    text-align: left;
 }
 
 p.f_vul {
@@ -521,6 +523,8 @@ p.f_vul {
     color: #747474;
     font-family: 'ProximaNova-Semibold';
     margin-bottom: 50px;
+    text-align: left;
+    font-style: italic;
 }
 
 .f_side_padding {
@@ -723,7 +727,8 @@ span.f_icon1 {
 }
 
 .f_margin {
-    margin: 0 auto;
+    
+    width: 100%;
 }
 
 
@@ -947,7 +952,8 @@ h3.f_margintop {
     margin-top: 130px !important;
 }
 section.blog_tutor {
-    margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 .num_tutor {
@@ -1824,4 +1830,31 @@ color: #ed7275;
     color: #afabaa;
     font-size: 16px;
     font-family: 'ProximaNovaAlt-Regular';
+}
+
+span.nav__item-text.active {
+    color: #ed7275;
+}
+
+.f_bycourse {
+    width: 30%;
+}
+
+.f_bylocation {
+    width: 30%;
+}
+
+.btn.focus, .btn:focus, .btn:hover {
+    color: white;
+    text-decoration: none;
+}
+.f_size {
+    width: 11%;
+}
+
+.f_xs_view{
+    display: none;
+}
+.f_md_view{
+    display: block;
 }

@@ -25,8 +25,16 @@
 				<img src="assets/images/work_image1.png" class="img-responsive f_imgres">
 			</div>
 		</div>
-
-		<div class="row">
+		<!--Mobile-->
+		<div class="row f_xs_view">
+			<div class="col-xs-12">
+				<h3 class="f_take">2. Tell us your needs</h3>
+				<p class="p_take">What subjects do you need help with? What location are you meeting the tutor at? Is it in-home, online or at a designated place? Once, this questions are answered. You are all set.. We will match you.</p>
+			  	<img src="assets/images/work_image2.png" class="img-responsive f_imgres">
+            </div>
+		</div>
+        <!--Desktop-->
+		<div class="row f_md_view">
 			<div class="col-md-6">
 			  <img src="assets/images/work_image2.png" class="img-responsive f_imgres">
             </div>
