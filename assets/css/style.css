@@ -1869,7 +1869,14 @@ span.nav__item-text.active {
    margin: auto;
 }
 
+
+
 .w3-black, .w3-hover-black:hover {
-    color: #fff!important;
-    background-color: transparent;
+    color: #000!important;
+    background-color: transparent !important;
+}
+
+.w3-button:hover {
+    color: #000!important;
+    background-color: transparent !important;
 }
