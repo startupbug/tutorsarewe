@@ -33,6 +33,8 @@
       <!-- <link rel="stylesheet" type="text/css" href="assets/css/default.css" />
          <link rel="stylesheet" type="text/css" href="assets/css/component.css" /> -->
       <!-- AOS Animation -->
+      <link rel="stylesheet" href="assets/css/w3.css">
+      
       <link href="assets/css/aos.css" rel="stylesheet">
       <!-- style.css -->
       <link href="assets/css/style.css" rel="stylesheet">

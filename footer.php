@@ -222,8 +222,6 @@
 <script src="assets/js/script.js"></script>
 <!-- Custom-js -->
 <script src="assets/js/custom.js"></script>
-<!--Myclass-->
-
 </div>
 </body>
 </html>
