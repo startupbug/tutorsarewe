@@ -56,19 +56,37 @@
 				 <img src="assets/images/work_image3.png" class="img-responsive f_imgres">
 			</div>
 		</div>
+		<!--Mobile-->
+		<div class="row">
+		<div class="col-md-6">
+				
+				<h3 class="f_take f_start f_xs_view">4. Start tutoring</h3>
+				
+		</div>
+		</div>
+		<!--Mobile-->
+        <!--Desktop-->
 		<div class="row f_worklast">
 			<div class="col-md-6">
 				<img src="assets/images/work_image4.png" class="img-responsive f_imgres">
-				<h3 class="f_take f_start">4. Start tutoring</h3>
+				<h3 class="f_take f_start f_md_view">4. Start tutoring</h3>
 				
 			 
             </div>
+             <!--Mobile-->
+            <div class="col-md-6">
+				 
+				<h3 class="f_take f_start f_xs_view">5. Succeed</h3>
+				
+			</div>
+			<!--Mobile-->
 			<div class="col-md-6">
 				 <img src="assets/images/work_image5.png" class="img-responsive f_imgres">
-				<h3 class="f_take f_start">5. Succeed</h3>
+				<h3 class="f_take f_start f_md_view">5. Succeed</h3>
 				
 			</div>
 		</div>
+		<!--Desktop-->
 	</div>
 	</section>
 

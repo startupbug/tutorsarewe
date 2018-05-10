@@ -478,6 +478,7 @@ img.f_img1 {
 
 section.info {
     padding-bottom: 60px;
+    padding-top: 25px
 }
 
 .img_math {
@@ -1858,3 +1859,4 @@ span.nav__item-text.active {
 .f_md_view{
     display: block;
 }
+

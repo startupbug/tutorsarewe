@@ -154,7 +154,7 @@ h3.f_student {
 }
 h3.search_name {
     
-    margin-top: 10px;
+    margin-top: 0px;
 }
 .img_searchresp {
     text-align: center;
@@ -162,7 +162,7 @@ h3.search_name {
 }
 .f_clock {
    
-    margin-top: 13px;
+    margin-top: 2px;
 }
 .f_buttonview {
   
@@ -204,6 +204,14 @@ p.about_content {
 }
 h3.f_margintop {
     margin-top: 50px;
+}
+.f_ipad {
+    padding-left: 17px;
+    padding-right: 17px;
+}
+.f_iphone {
+    padding-left: 15px;
+    padding-right: 22px;
 }
 }
 
@@ -394,6 +402,14 @@ section.info {
    
     padding-top: 15px !important;
 }
+.f_ipad {
+    padding-left: 17px;
+    padding-right: 17px;
+}
+.f_iphone {
+    padding-left: 15px;
+    padding-right: 22px;
+}
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation:landscape){
@@ -457,6 +473,8 @@ p.f_time {
 .f_xs_view {
     display: none;
 }
+
+
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 767px) and (orientation:landscape){
@@ -533,6 +551,9 @@ p.f_time {
 h3.f_margintop {
     margin-top: 30px !important;
 }
+h3.f_iphone {
+    margin-top: 7px;
+}
     }
 
 
@@ -582,3 +603,13 @@ h3.f_margintop {
     
 }
 }*/
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation:landscape){
+.f_iphone {
+    padding-left: 15px;
+    padding-right: 22px;
+}
+h3.search_name {
+    margin-top: 1px;
+}
+}

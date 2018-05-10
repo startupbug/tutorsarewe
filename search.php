@@ -134,7 +134,7 @@
                      <li><i class="fa fa-star f_star"></i></li>
                      <li><i class="fa fa-star f_star"></i></li>
                      <li>
-                        <h3 class="search_name">5.0(367)</h3>
+                        <h3 class="search_name f_iphone">5.0(367)</h3>
                      </li>
                   </ul>
                   <ul class="search_list">
@@ -166,7 +166,7 @@
                      <li><i class="fa fa-star f_star"></i></li>
                      <li><i class="fa fa-star f_star"></i></li>
                      <li>
-                        <h3 class="search_name">5.0(367)</h3>
+                        <h3 class="search_name f_iphone">5.0(367)</h3>
                      </li>
                   </ul>
                   <ul class="search_list">

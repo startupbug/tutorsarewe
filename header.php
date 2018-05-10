@@ -1,4 +1,4 @@
-<?php $base_url = 'http://localhost/tutorareus/'?>
+<?php $base_url = 'http://site.startupbug.net:6888/tutorsarewe/frontend/'?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
