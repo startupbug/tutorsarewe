@@ -1819,6 +1819,7 @@ ul.top-header-nav li a {
 }
 .img_home {
     width: 100%;
+    height: 650px;
 }
 
 a.active-tab {
@@ -1858,5 +1859,26 @@ span.nav__item-text.active {
 }
 .f_md_view{
     display: block;
+
+}   
+.mySlides {display:none;}   
+.w3-section, .w3-code {
+   margin-top: 0px !important;
+   margin-bottom: 0px !important;
+}
+.w3-content {
+   max-width: 100%;
+   margin: auto;
 }
 
+
+
+.w3-black, .w3-hover-black:hover {
+    color: #000!important;
+    background-color: transparent !important;
+}
+
+.w3-button:hover {
+    color: #000!important;
+    background-color: transparent !important;
+}

@@ -1,6 +1,31 @@
 <?php include 'header.php'; ?>
-   <section class="tutor">
-   <div class="container-fluid">
+<section class="tutor">
+   <div class="w3-content  w3-display-container w3-section">
+      <img class="mySlides img_home" src="assets/images/banner2.png" class="img-responsive">
+      <img class="mySlides img_home" src="assets/images/slide1.jpg" class="img-responsive">
+      <img class="mySlides img_home" src="assets/images/timetutor1.jpg" class="img-responsive">
+      <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+      <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+      <div class="header-text">
+         <div class="col-md-12 text-center">
+            <h2>
+               Online Learning Anytime, Anywhere!
+            </h2>
+            <br>
+            <h3>
+               Search - Register - Excel
+            </h3>
+            <p>Tutors Are US is a subsidiary of Available Group LLC. We are here to meet your needs. Our teaching philosophy is <br>teaching with fun and to create “A” student. Lets turn you into an A student in 3 easy steps</p>
+            <br>
+            <div class="">
+               <a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="#">ABOUT US</a><a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="#">CONTACT US</a>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   
+   <!-- <div class="container-fluid">
       <div class="row">
          <div class="col-md-12 f_padding">
             <div class="img_banner">
@@ -24,7 +49,7 @@
             </div>
          </div>
       </div>
-   </div>
+   </div> -->
    <div class="container">
       <div class="row">
          <div class="col-md-12 f_main">
@@ -278,4 +303,5 @@ in seconds</p>
       </div>
    </div>
 </section>
+
 <?php include 'footer.php'; ?>
