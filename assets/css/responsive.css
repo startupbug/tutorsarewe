@@ -42,7 +42,7 @@ ul.header-nav {
    
 }
 .header-text p {
-    font-size: 8px;
+    font-size: 6px;
    
 }
 .f_about {
@@ -59,7 +59,7 @@ ul.header-nav {
 
 .header-text {
     
-    top: 22%;
+    top: -43%;
    
 }
 
@@ -205,6 +205,16 @@ p.about_content {
 h3.f_margintop {
     margin-top: 50px;
 }
+.w3-black, .w3-hover-black:hover {
+  
+    font-size: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.f_btnpadding {
+    padding-left: 20px;
+    padding-right: 20px;
+}
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
@@ -278,7 +288,7 @@ p.f_tutor {
 
 .header-text {
    
-    top: -10%;
+    top: -17%;
    
 }
 
@@ -457,6 +467,9 @@ p.f_time {
 .f_xs_view {
     display: none;
 }
+.header-text {
+    top: 3%;
+}
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 767px) and (orientation:landscape){
@@ -532,6 +545,9 @@ p.f_time {
 }
 h3.f_margintop {
     margin-top: 30px !important;
+}
+.header-text {
+    top: -11%;
 }
     }
 

@@ -18,7 +18,7 @@
             <p>Tutors Are US is a subsidiary of Available Group LLC. We are here to meet your needs. Our teaching philosophy is <br>teaching with fun and to create “A” student. Lets turn you into an A student in 3 easy steps</p>
             <br>
             <div class="">
-               <a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="#">ABOUT US</a><a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="#">CONTACT US</a>
+               <a class="btn btn-theme btn-sm btn-min-block f_about f_size f_btnpadding" href="#">ABOUT US</a><a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="#">CONTACT US</a>
             </div>
          </div>
       </div>
