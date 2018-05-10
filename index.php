@@ -23,8 +23,6 @@
          </div>
       </div>
    </div>
-
-   
    <!-- <div class="container-fluid">
       <div class="row">
          <div class="col-md-12 f_padding">
@@ -43,13 +41,13 @@
                   <p>Tutors Are US is a subsidiary of Available Group LLC. We are here to meet your needs. Our teaching philosophy is <br>teaching with fun and to create “A” student. Lets turn you into an A student in 3 easy steps</p>
                   <br>
                   <div class="">
-                     <a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="#">ABOUT US</a><a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="#">CONTACT US</a>
+                     <a class="btn btn-theme btn-sm btn-min-block f_about f_size f_iphone" href="#">ABOUT US</a><a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="#">CONTACT US</a>
                   </div>
                </div>
             </div>
          </div>
       </div>
-   </div> -->
+      </div> -->
    <div class="container">
       <div class="row">
          <div class="col-md-12 f_main">
@@ -167,7 +165,8 @@
                <img src="assets/images/image3.png" class="img-responsive info_img">
                <h3 class="f_online">Reviews & Ratings</h3>
                <p class="f_meet">No more emails, Calls or messaging friends for <br>recommendations - Get acces to real reviews<br>
-in seconds</p>
+                  in seconds
+               </p>
             </div>
          </div>
       </div>
@@ -237,7 +236,6 @@ in seconds</p>
             <p class="f_vul">Voluptatem accusantium doloremque</p>
          </div>
       </div>
-     
       <div class="row">
          <div class="col-md-4 col-sm-4 col-xs-12 text-center">
             <img src="assets/images/images1.png" class="img-responsive f_margin">
@@ -255,7 +253,6 @@ in seconds</p>
             <p class="f_vul">Voluptatem accusantium doloremque</p>
          </div>
       </div>
-      
    </div>
 </section>
 <section class="f_choose">
@@ -303,5 +300,4 @@ in seconds</p>
       </div>
    </div>
 </section>
-
 <?php include 'footer.php'; ?>

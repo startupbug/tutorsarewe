@@ -3,7 +3,6 @@
    <div class="container">
       <div class="row">
          <div class="col-md-3">
-         
             <h3 class="f_tutor">FAQ</h3>
             <div class="menu">
                <header class="menu__header">
@@ -21,20 +20,12 @@
                         <span class="nav__item-text">For Tutor</span>
                         </a>   
                      </li>
-                    
-                     
-                    
                   </ul>
                </div>
             </div>
-        
-           
          </div>
-         
          <div class="col-md-8 col-md-offset-1">
-         	<h3 class="f_course f_student">For Student</h3>
-            
-          
+            <h3 class="f_course f_student">For Student</h3>
             <div class="panel-group" id="accordion">
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
@@ -177,10 +168,8 @@
                   </div>
                </div>
             </div>
-           
          </div>
       </div>
    </div>
 </section>
-
 <?php include 'footer.php'; ?>

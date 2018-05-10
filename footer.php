@@ -1,5 +1,5 @@
 <footer>
-     <section class="footer_main">
+   <section class="footer_main">
       <div class="container">
          <div class="row">
             <div class="col-md-2 col-sm-6 col-xs-6">
@@ -132,7 +132,7 @@
          <div class="col-md-3 col-sm-6 col-xs-6">
             <!--<h3 class="f_get">TUTORS BY LOCATION</h3>-->
             <ul class="f_list f_list1 f_borderright f_spanish">
-               <li class="list-item">
+               <li class="list-item padding_top">
                   Spanish
                </li>
                <li class="list-item">
@@ -195,8 +195,8 @@
                   <li><a href="blog.php">Blog</a></li>
                   <li><a href="faq.php">FAQ</a></li>
                   <!--<li>Sitemap</li>
-                  <li>Terms of Use</li>
-                  <li>Privacy Policy</li>-->
+                     <li>Terms of Use</li>
+                     <li>Privacy Policy</li>-->
                </ul>
             </div>
          </div>
