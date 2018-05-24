@@ -1,24 +1,24 @@
 <footer>
-   <section class="footer_main">
+      <section class="footer_main">
       <div class="container">
          <div class="row">
             <div class="col-md-2 col-sm-6 col-xs-6">
                <h3 class="f_get">GET TO KNOW US</h3>
                <ul f_list>
                   <li class="list-item">
-                     About Us
+                     <a href="aboutus.php">About Us</a>
                   </li>
                   <li class="list-item">
                      Terms And Conditions
                   </li>
                   <li class="list-item">
-                     Search For A Tutor
+                     <a href="search.php">Search For A Tutor</a>
                   </li>
                   <li class="list-item">
                      Search For A Student
                   </li>
                   <li class="list-item">
-                     Become A Tutor
+                    <a href="fulltimetutor.php"> Become A Tutor</a>
                   </li>
                </ul>
             </div>
@@ -26,13 +26,13 @@
                <h3 class="f_get">QUICK LINK</h3>
                <ul f_list>
                   <li class="list-item">
-                     How it Works
+                     <a href="howitworks.php">How it Works
                   </li>
                   <li class="list-item">
-                     Start Tutoring
+                     <a href="findtutoringjob.php">Start Tutoring</a>
                   </li>
                   <li class="list-item">
-                     Publications
+                     <a href="publication.php">Publications</a>
                   </li>
                   <li class="list-item">
                      Partners

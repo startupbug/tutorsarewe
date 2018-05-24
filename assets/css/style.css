@@ -1890,3 +1890,10 @@ span.nav__item-text.active {
     margin-left: 30px;
     margin-right: 30px;
 }
+
+.list-item a {
+    color: #afabaa;
+    font-size: 16px;
+    font-family: 'ProximaNovaAlt-Regular';
+    padding-bottom: 5px;
+}
