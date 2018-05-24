@@ -26,7 +26,7 @@
       <link href="<?php echo $base_url ?>assets/css/validationEngine.jquery.css" rel="stylesheet">
       <!--Jquery custom Validation -->
       <link href="<?php echo $base_url ?>assets/css/custom_validatiion.css" rel="stylesheet">
-     
+      <link href="<?php echo $base_url ?>dashboard/assets/css/dashboard.css" rel="stylesheet">
       <!--Mobile menu -->
       <!--  <link href="assets/plugins/menu/css/hamburgers.css" rel="stylesheet">
          <link href="assets/plugins/menu/css/jquery.mmenu.all.css" rel="stylesheet">
@@ -99,14 +99,7 @@
                                     <li><a href="#">Page 1-3</a></li>
                                  </ul>-->
                               </li>
-                              <li class="">
-                                 <a class="f_dropdown" href="findtutoringjob.php">START TUTORING  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
+                              
                               <li class="">
                                  <a class="f_dropdown" href="fulltimetutor.php">BECOME A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <!--<ul class="dropdown-menu">
@@ -125,6 +118,14 @@
                               </li>
                               <li class="">
                                  <a class="f_dropdown" href="aboutus.php">ABOUT US  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
+                                 <!--<ul class="dropdown-menu">
+                                    <li><a href="#">Page 1-1</a></li>
+                                    <li><a href="#">Page 1-2</a></li>
+                                    <li><a href="#">Page 1-3</a></li>
+                                 </ul>-->
+                              </li>
+                              <li class="">
+                                 <a class="f_name" href="#">JOHN DOE</a>
                                  <!--<ul class="dropdown-menu">
                                     <li><a href="#">Page 1-1</a></li>
                                     <li><a href="#">Page 1-2</a></li>
