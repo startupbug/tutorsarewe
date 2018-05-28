@@ -1890,3 +1890,7 @@ span.nav__item-text.active {
     margin-left: 30px;
     margin-right: 30px;
 }
+
+#teach_div {
+    display: none;
+}

@@ -153,63 +153,55 @@
          <div class="col-md-5 col-md-offset-1 f_signupborder">
             <h3 class="f_course f_apply">Apply Now</h3>
             <p class="f_easily">Easily find students looking for help in your subjects.</p>
-            <form role="form">
+                 @include('partials.error_section')
+            <form role="form" method="post" action="{{route('register_post')}}">
                <!--<div class="form-group">
                   <label for="exampleInputEmail1" class="f_label">Email</label>
                   <input type="email" class="form-control f_control" id="exampleInputEmail1" placeholder="email">
                   </div>-->
                <div class="form-group">
                   <label for="exampleInputEmail1" class="f_label">Register As<span>*</span></label>
-                  <select class="form-control select_f" id="emailFrom" name="emailFrom">
-                     <option>Select</option>
-                     <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio Rodriguez (sergio.rodriguez@tix.com)</option>
-                     <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia Mahoney (sergio.rodriguez@tix.com)</option>
-                     <option value="Steve Moore|steve.moore@tix.com">Steve Moore (sergio.rodriguez@tix.com)</option>
-                     <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger (sergio.rodriguez@tix.com)</option>
-                     <option value="Luke Perria|luke.perria@tix.com">Luke Perea (sergio.rodriguez@tix.com)</option>
+                  <select class="form-control select_f" id="roleSelect" name="role_id">
+                     <option value="2">Student</option>
+                     <option value="3">Teacher</option>
                   </select>
                </div>
                <div class="form-group">
                   <label for="exampleInputfirstname" class="f_label">First Name<span>*</span></label>
-                  <input type="type" class="form-control f-control" id="exampleInputfirstname" placeholder="">
+                  <input type="type" class="form-control f-control" name="first_name" id="exampleInputfirstname" placeholder="">
                </div>
                <div class="form-group">
                   <label for="exampleInputlastname" class="f_label">Last Name<span>*</span></label>
-                  <input type="type" class="form-control f-control" id="exampleInputlastname" placeholder="">
-               </div>
-               <div class="form-group">
-                  <label for="exampleInputlastname" class="f_label">Last Name<span>*</span></label>
-                  <input type="type" class="form-control f-control" id="exampleInputlastname" placeholder="">
+                  <input type="type" class="form-control f-control" name="last_name" id="exampleInputlastname" placeholder="">
                </div>
                <div class="form-group">
                   <label for="exampleInputEmail1" class="f_label">Email<span>*</span></label>
-                  <input type="email" class="form-control f-control" id="emailFrom" placeholder="">
+                  <input type="email" class="form-control f-control" name="email" id="emailFrom" placeholder="">
                </div>
                <div class="form-group">
                   <label for="exampleInputPassword1" class="f_label">Password<span>*</span>(Must Be At Least 6 Characters):</label>
-                  <input type="password" class="form-control f-control" id="exampleInputPassword1" placeholder="">
+                  <input type="password" class="form-control f-control" name="password" id="exampleInputPassword1" placeholder="">
                </div>
                <div class="form-group">
                   <label for="exampleInputconfirmPassword" class="f_label">Confirm Password<span>*</span></label>
-                  <input type="password" class="form-control f-control" id="exampleInputconfirmPassword" placeholder="">
+                  <input type="password" class="form-control f-control" name="password_confirmation" id="exampleInputconfirmPassword" placeholder="">
                </div>
                <div class="form-group">
                   <label for="exampleInputaddress" class="f_label">Address</label>
-                  <input type="text" class="form-control f-control" id="exampleInputaddress" placeholder="">
+                  <input type="text" class="form-control f-control" name="address" id="exampleInputaddress" placeholder="">
                </div>
                <div class="form-group">
                   <label for="exampleInputcode" class="f_label">Zip Code</label>
-                  <input type="text" class="form-control f-control" id="exampleInputcode" placeholder="">
+                  <input type="text" class="form-control f-control" name="zipcode" id="exampleInputcode" placeholder="">
                </div>
                <div class="form-group">
                   <label for="exampleInputstate" class="f_label">State</label>
                   <select class="form-control select_f" id="state" name="state">
                      <option>Select</option>
-                     <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio Rodriguez (sergio.rodriguez@tix.com)</option>
-                     <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia Mahoney (sergio.rodriguez@tix.com)</option>
-                     <option value="Steve Moore|steve.moore@tix.com">Steve Moore (sergio.rodriguez@tix.com)</option>
-                     <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger (sergio.rodriguez@tix.com)</option>
-                     <option value="Luke Perria|luke.perria@tix.com">Luke Perea (sergio.rodriguez@tix.com)</option>
+                     <option value="New York">New York</option>
+                     <option value="New south wales">New south wales</option>
+                     <option value="Texas">Texas</option>
+                     <option value="South">South</option>
                   </select>
                </div>
                <div class="form-group">
@@ -317,17 +309,40 @@
                <div class="row">
                   <div class="col-md-6">
                      <div class="form-group">
-                        <input type="text" class="form-control f-control" id="Inputphonenumber" placeholder="United States +1">
+                        <input type="text" class="form-control f-control" id="Inputphonenumber" name="phone1" placeholder="United States +1">
                      </div>
                   </div>
                   <div class="col-md-6">
                      <div class="form-group">
-                        <input type="text" class="form-control f-control" id="Inputphonenumber" placeholder="Phone Number">
+                        <input type="text" class="form-control f-control" id="Inputphonenumber" name="phone2" placeholder="Phone Number">
                      </div>
                   </div>
                </div>
-               <div class="account_form"><a href="#">CREATE AN ACCOUNT</a></div>
-               <p class="f_account">Already have an account? <span><a href="#">Log in</a></span></p>
+
+               <div id="teach_div">
+                  <div class="form-group">
+                     <label for="exampleInputTeacherName" class="f_label">Have you ever been a Teacher?</label>
+                        <select class="form-control" name="hv_teac">
+                           <option value="yes">Yes</option>
+                           <option value="no">No</option>
+                        </select>
+                  </div>
+
+                  <div class="form-group">
+                     <label for="exampleInputTeacherName" class="f_label">How many years of Tutoring experience do you have ?</label>
+                        <select class="form-control" name="teac_exp">
+                           <option value="0">0</option>
+                           <option value="1">1</option>
+                           <option value="2-4">2-4</option>
+                           <option value="5-10">5-10</option>
+                           <option value="10+">10+</option>                           
+                        </select>
+                  </div>
+               </div>
+              <!--  <a href="#">CREATE AN ACCOUNT</a> -->
+              <input type="hidden" name="_token" value="{{Session::token()}}">
+              <input type="submit" class="account_form" name="submit" value="Create An Account">
+               <p class="f_account">Already have an account? <span><a href="{{route('signin')}}">Log in</a></span></p>
             </form>
          </div>
       </div>

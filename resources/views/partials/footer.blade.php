@@ -222,6 +222,10 @@
 <script src="{{ asset('public/assets/js/script.js') }}"></script>
 <!-- Custom-js -->
 <script src="{{ asset('public/assets/js/custom.js') }}"></script>
+
+<!-- Custom app -js -->
+<script src="{{ asset('public/assets/js/custom-app.js') }}"></script>
+
 </div>
 </body>
 </html>

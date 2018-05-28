@@ -19,6 +19,15 @@ Route::get('/signin', 'AuthenticationController@login_index')->name('signin');
 
 Route::get('/signup', 'AuthenticationController@register_index')->name('signup');
 
+//Student and Teacher register
+Route::post('/register', 'AuthenticationController@register_post')->name('register_post');
+
+//Login Post
+Route::post('/login', 'AuthenticationController@login_post')->name('login_post');
+
+//Logout Route
+Route::get('/logout',  'AuthenticationController@logout_user')->name('logout_user');
+
 //Tutor Search
 Route::get('/tutor-search', 'HomeController@search_tutor')->name('search_tutor');
 
@@ -36,3 +45,4 @@ Route::get('/publications', 'HomeController@publications')->name('publications')
 
 //aboutus
 Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
+
