@@ -154,6 +154,10 @@
             <h3 class="f_course f_apply">Apply Now</h3>
             <p class="f_easily">Easily find students looking for help in your subjects.</p>
                  @include('partials.error_section')
+                 
+                 @foreach($errors->all() as $erroring)
+                  <li>{{$erroring}}  </li>
+                  @endforeach
             <form role="form" method="post" action="{{route('register_post')}}">
                <!--<div class="form-group">
                   <label for="exampleInputEmail1" class="f_label">Email</label>
@@ -174,6 +178,11 @@
                   <label for="exampleInputlastname" class="f_label">Last Name<span>*</span></label>
                   <input type="type" class="form-control f-control" name="last_name" id="exampleInputlastname" placeholder="">
                </div>
+               <div class="form-group">
+                  <label for="exampleInputlastname" class="f_label">User Name<span>*</span></label>
+                  <input type="type" class="form-control f-control" name="user_name" id="exampleInputlastname" placeholder="">
+               </div>
+
                <div class="form-group">
                   <label for="exampleInputEmail1" class="f_label">Email<span>*</span></label>
                   <input type="email" class="form-control f-control" name="email" id="emailFrom" placeholder="">

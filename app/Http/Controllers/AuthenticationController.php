@@ -13,6 +13,8 @@ use Session;
 use Mail;
 use Carbon;
 use App\Mail\ForgetPasswordMail;
+use App\Mail\EmailVerification;
+use Validator;
 class AuthenticationController extends Controller
 {
     public function login_index(){
@@ -51,18 +53,31 @@ class AuthenticationController extends Controller
     }
 
     public function register_post(Request $request){
-         
+         // dd($request->input());
          /* Validation */
 
-        /* $this->validate($request, [
-            'name' => 'required|alpha|max:15|min:5',
-            'email' => 'required|email|unique:users,email',
-            'role_id' => 'required',
-            'password' => 'required|confirmed|min:6|max:18', 
-        ]); */
+         $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'username'=>'required|string|without_spaces|max:255|unique:users|regex:/(^([a-zA-Z]+)(\d+)?$)/u',
+            'password' => 'required|string|min:6|confirmed',
+            'phone_no' => 'required|regex:/(01)[0-9]{9}/',
+        ]); 
 
         //Inserting user
-        try{
+        // $validator = Validator::make(
+        //     ['name' => 'required|string|max:255'],
+        //     ['email' => 'required|string|email|max:255|unique:users'],
+        //     ['username'=>'required|string|without_spaces|max:255|unique:users|regex:/(^([a-zA-Z]+)(\d+)?$)/u'],
+        //     ['password' => 'required|string|min:6|confirmed'],
+        //     ['phone_no' => 'required|regex:/(01)[0-9]{9}/']
+        // );
+        
+      //  dd($validator);
+
+        //if(isset(123))
+      //  {
+            try{
             $user = new User();
 
             //Saving users data on user table
@@ -71,12 +86,19 @@ class AuthenticationController extends Controller
             $user->email = $request->input('email');
             $user->password = bcrypt( $request->input('password') );
             $user->phone_no = $request->input('phone_no'); 
-            $user->role_id = $request->input('role_id'); 
+            $user->role_id = $request->input('role_id');
+            $user->email_token = str_random(10);
+            $user->verified = 0; 
 
             if($user->save()){
-
-                //Saving Profle info of user.
+            $email = new EmailVerification(new User(['email_token' => $user->email_token, 'name' => $user->name, 'email'=> $user->email]));
+            Mail::to($user->email)->send($email);
+            DB::commit();
+            Session::flash('message', 'We have sent you a verification email!');
+            // return $user;
+                // Saving Profle info of user.
                 $profile = new Profile();
+                $profile->username = $request->input('user_name');
                 $profile->address = $request->input('address');
                 $profile->zipcode = $request->input('zipcode');                        
                 $profile->state = $request->input('state');
@@ -92,10 +114,10 @@ class AuthenticationController extends Controller
                 $profile->save();
 
                 /*Attaching User Role to the New User */ 
-                 $user_role = Role::find($request->input('role_id'));
-                 $user->attachRole($user_role);
+                $user_role = Role::find($request->input('role_id'));
+                $user->attachRole($user_role);
 
-                 $this->set_session('User Successfully Registered.', true);
+                $this->set_session('Verify your account by clickng on link.', true);
 
             }else{
                  $this->set_session('User Couldnot be Registered.', false);
@@ -103,11 +125,43 @@ class AuthenticationController extends Controller
             
             return redirect()->route('signup');
 
-        }catch(\Exception $e){
-            $this->set_session('User Couldnot be Registered.'.$e->getMessage(), false);
-            return redirect()->route('signup');                
+        }
+            catch(\Exception $e){
+                $this->set_session('User Couldnot be Registered.'.$e->getMessage(), false);
+                return redirect()->route('signup');                
+            }
+        //}
+
+        
+
+    }
+
+    public function verify($token)
+    {
+        // The verified method has been added to the user model and chained here
+        // for better readability
+        //dd($token)
+        $user = User::where('email_token',$token)->first();
+         // dd($user);
+
+        if(isset($user)){
+            $result = User::where('email_token',$token)->update(['verified'=> 1, 'email_token'=> null]);
+            auth()->login($user);
+            //$this->suspend = 0;
+            //$this->email_token = null;
+            //return $this->save();
+
+            //$verify = User::where('email_token',$token)->verified();
+            //Redirect Login with Message
+
+        }else{
+            //Redirect kisi aur apge with Message\
+
         }
 
+        //dd($result);
+        $this->set_session('you just verified your email', true);
+        return redirect()->route('home');
     }
 
     public function send_forget_email(Request $request){
@@ -144,7 +198,7 @@ class AuthenticationController extends Controller
         // dd($token);
     }    
 
-    
+
     public function new_password(Request $request, $email)
     {
         // dd($request->input('new_pass'));

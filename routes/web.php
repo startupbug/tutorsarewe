@@ -27,6 +27,7 @@ Route::get('/set_new_password/{token}', 'AuthenticationController@set_new_passwo
 
 Route::post('/new_password/{email}', 'AuthenticationController@new_password')->name('new_password');
 
+Route::get('register/verify/{token}', 'AuthenticationController@verify')->name('verified_email');
 //Student and Teacher register
 Route::post('/register', 'AuthenticationController@register_post')->name('register_post');
 
