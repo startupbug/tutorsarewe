@@ -24,7 +24,7 @@
                <!-- <div class="account_form"><a href="#">CREATE AN ACCOUNT</a></div> -->
                <input type="hidden" name="_token" value="{{Session::token()}}">
                <input type="submit" class="account_form" name="submit" value="Log in">
-               <a href="#" class="f_forgot">Forgot name or password?</a>
+               <a href="{{route('forget_password_form')}}" class="f_forgot">Forgot name or password?</a>
             </form>
          </div>
          <div class="col-md-4 col-md-offset-2">

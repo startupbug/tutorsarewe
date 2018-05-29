@@ -7,7 +7,12 @@ use Auth;
 use App\User;
 use App\Profile;
 use App\Role;
-
+use App\Password_reset;
+use DB;
+use Session;
+use Mail;
+use Carbon;
+use App\Mail\ForgetPasswordMail;
 class AuthenticationController extends Controller
 {
     public function login_index(){
@@ -103,6 +108,52 @@ class AuthenticationController extends Controller
             return redirect()->route('signup');                
         }
 
+    }
+
+    public function send_forget_email(Request $request){
+        // dd($request->input());
+        $insert = new Password_reset();
+        $insert->email = $request->input('email');
+        $insert->token = str_random(60);
+        $mytime = Carbon\Carbon::now();
+        // dd($mytime->toDateTimeString()); 
+        $insert->created_at = $mytime->toDateTimeString();
+        $insert->save();
+        $user = DB::table('users')->where('email','=',$request->input('email'))->first();
+        if(isset($user))
+        {
+            $email = new ForgetPasswordMail(new Password_reset([ 'email' => $insert->email, 'token'=> $insert->token]));
+        
+            Mail::to($user->email)->send($email);
+            
+            DB::commit();
+            Session::flash('query','your query has been emailed');
+            return redirect()->back();   
+        }
+        else{
+                dd('error');
+        }
+         
+    }
+
+    public function set_new_password($token)
+    {
+        $user = DB::table('password_resets')->where('token','=',$token)->first();
+        // dd($user->email);
+        return view('authentication.new_password',['user' => $user]);
+        // dd($token);
     }    
+
+    
+    public function new_password(Request $request, $email)
+    {
+        // dd($request->input('new_pass'));
+                    // bcrypt($data['password'])
+        $new_pass = bcrypt($request->input('new_pass'));
+        DB::table('users')
+            ->where('email', $email)
+            ->update(['password' => $new_pass]);
+            return redirect()->back();
+    }
 
 }
