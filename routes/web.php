@@ -72,3 +72,5 @@ Route::get('/settings/change-password', 'DashboardController@edit_pass_view')->n
 
 //Change existing password post
 Route::post('/settings/change-password', 'DashboardController@edit_pass_post')->name('change_pass_post');
+
+Route::post('imageUpload',['as'=>'imageUpload','uses'=>'ProfileController@imageUpload']);

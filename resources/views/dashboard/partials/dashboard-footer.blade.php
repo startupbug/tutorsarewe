@@ -231,6 +231,38 @@
       $(this).siblings('.s_sub_menu').toggleClass('hidden');
     });
   });
+
+  //on form submit change Admin Profile picture
+  $('#change_profile_pic_file').change(function(e){
+      e.preventDefault();
+      console.log("herezz");
+      var form = new FormData(this);
+      $.ajax({
+          type: $('#change_profile_pic_form').attr('method'),
+          url: $('#change_profile_pic_form').attr('action'),
+          data: form,
+          processData: false,
+          contentType: false,
+          success: function(response){
+              if(response.code === 200){
+                  $('.profile-pic > img').attr('src', response.img);
+                  alertify.success(response.success);
+
+              }
+              if(response.code === 202){
+                   alertify.warning(response.error);
+                  // alert(response.error);
+
+              }
+              if(response.code === 202){
+
+              }
+          },
+          error: function(){
+              alert('Image uploaading failed');
+          }
+      });
+  });
 </script>
 </div>
 </body>
