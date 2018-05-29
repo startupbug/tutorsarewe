@@ -18,14 +18,14 @@ class AuthenticationController extends Controller
 
           try{
 
-            if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
-               
-               return redirect()->route('home');
+                if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
+                   
+                   return redirect()->route('home');
 
-            }else{
-               $this->set_session('invalid username or password', false);
-               return redirect()->route('signin');
-            }
+                }else{
+                   $this->set_session('invalid username or password', false);
+                   return redirect()->route('signin');
+                }
 
           }catch(\Exception $e){
 
