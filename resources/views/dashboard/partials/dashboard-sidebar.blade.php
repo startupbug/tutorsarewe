@@ -39,7 +39,7 @@
             </div>
           </div>
           <div class="s_nav_menu">
-            <a href="#"><i class="fa fa-sign-out f_icon_menu" aria-hidden="true"></i>Logout</a>
+            <a href="{{route('logout_user')}}"><i class="fa fa-sign-out f_icon_menu" aria-hidden="true"></i>Logout</a>
           </div>
         </div>
 

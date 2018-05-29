@@ -143,4 +143,10 @@
                </div>
             </div>
          </div>
+         @if(Auth::user()->verified == 0)
+           <div class="alert alert-danger">
+              Please verify your Email address to avail all features
+           </div>                 
+         @endif
+      
       </header>

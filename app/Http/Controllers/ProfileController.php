@@ -35,8 +35,6 @@ class ProfileController extends Controller
 	    		'address' => $request->input('address'),
 	    		'zipcode' => $request->input('zipcode'),
 	    		'state' => $request->input('state'),
-	    		'countryCode' => $request->input('country'),
-	    		'tution_per_hour' => $request->input('tution_per_hour'),
 	    	];
 
            if(Input::hasFile('profile_pic')){
