@@ -36,18 +36,18 @@
   		 <div class="form-group profile_form">
     <label>First Name <span>*</span></label>
     <br>
-    <input type="text" name="first_name" value="{{ isset($user->first_name) ? $user->first_name : '' }}" class="span3">
+    <input type="text" name="first_name" value="{{ isset($user->first_name) ? $user->first_name : '' }}" class="span3" required>
 </div>
  <div class="form-group profile_form">
     <label>Last Name <span>*</span></label>
     <br>
-    <input type="text" name="last_name" value="{{ isset($user->last_name) ? $user->last_name : '' }}" class="span3">
+    <input type="text" name="last_name" value="{{ isset($user->last_name) ? $user->last_name : '' }}" class="span3" required>
 </div>
 
  <div class="form-group profile_form">
     <label>Rates / Hour <span>*</span></label>
     <br>
-    <input type="text" name="tution_per_hour" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}" class="span3">
+    <input type="text" name="tution_per_hour" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}" class="span3" required>
 </div>
 
  <div class="form-group profile_form">

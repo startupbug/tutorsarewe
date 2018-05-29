@@ -22,8 +22,14 @@ class AuthenticationController extends Controller
     }
 
     public function login_post(Request $request){
-
+        // dd($request->input());
+          $this->validate($request, [
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:6|',
+        ]); 
           try{
+
+
 
                 if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
                    
@@ -187,12 +193,13 @@ class AuthenticationController extends Controller
             Mail::to($user->email)->send($email);
             
             DB::commit();
-            Session::flash('query','your query has been emailed');
+            $this->set_session('your request has been emailed', true);
             return redirect()->back();   
         }
         else{
-                dd('error');
-        }
+                $this->set_session('this email does not exist', false);
+                return redirect()->back();
+        }   
          
     }
 
@@ -209,11 +216,30 @@ class AuthenticationController extends Controller
     {
         // dd($request->input('new_pass'));
                     // bcrypt($data['password'])
-        $new_pass = bcrypt($request->input('new_pass'));
-        DB::table('users')
-            ->where('email', $email)
-            ->update(['password' => $new_pass]);
-            return redirect()->back();
-    }
+     $this->validate($request, [
+            'password' => 'required|string|min:6|confirmed'
+        ]); 
+   
+      
+           
+            $new_pass = bcrypt($request->input('password'));
+         $update_pass =  DB::table('users')
+                ->where('email', $email)
+                ->update(['password' => $new_pass]);
+                if($update_pass)
+                {
+                    //deleting token row
+                    $del_token = DB::table('password_resets')
+                ->where('email', $email)
+                ->delete();
 
+                    $this->set_session('Your password is updated', true);
+                }
+                else{
+                    $this->set_session('Your password is not updated', false);   
+                }
+
+                return redirect()->route('signin');
+
+    }
 }
