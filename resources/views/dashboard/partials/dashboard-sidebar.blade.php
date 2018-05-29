@@ -3,13 +3,13 @@
 
         <div class="profile-pic">
           @if(!empty(Auth::user()->profile->profile_pic) && isset(Auth::user()->profile->profile_pic))
-             <img class="img-circle" src="{{asset('public/storage/profile-pictures/' . Auth::user()->profile->profile_pic)}}">
+            <img class="img-circle" src="{{asset('public/dashboard/assets/images/profile/' . Auth::user()->profile->profile_pic)}}">
              @else
              <img alt="" class="img-circle" src="{{asset('public/dashboard/assets/images/dashboard_img.png')}}">
           @endif
           <div class="edit-profile-pic">
-             <form action="{{route('imageUpload')}}" method="post" enctype="multipart/form-data" id="change_profile_pic_form">
-                <input name="_token" value="{{csrf_token()}}" type="hidden">
+             <form id="change_profile_pic_file" action="{{route('imageUpload')}}" method="post" enctype="multipart/form-data">
+               {{csrf_field()}}
                      <input name="user_id" value="{{Auth::user()->id}}" type="hidden">
                 <div class="camera_image">
                   <i class="fa fa-camera fa-2x" aria-hidden="true"></i>
@@ -58,7 +58,7 @@
             </div>
           </div>
           <div class="s_nav_menu">
-            <a href="#"><i class="fa fa-sign-out f_icon_menu" aria-hidden="true"></i>Logout</a>
+            <a href="{{route('logout_user')}}"><i class="fa fa-sign-out f_icon_menu" aria-hidden="true"></i>Logout</a>
           </div>
         </div>
 

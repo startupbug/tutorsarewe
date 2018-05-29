@@ -134,7 +134,7 @@
                                     </ul>
                                  </li>
                               @endif
-                              
+
 
                            </ul>
                         </div>
@@ -143,4 +143,10 @@
                </div>
             </div>
          </div>
+         @if(Auth::user()->verified == 0)
+           <div class="alert alert-danger s_alert">
+              Please verify your Email address to avail all features
+           </div>
+         @endif
+
       </header>

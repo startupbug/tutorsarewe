@@ -238,8 +238,8 @@
       console.log("herezz");
       var form = new FormData(this);
       $.ajax({
-          type: $('#change_profile_pic_form').attr('method'),
-          url: $('#change_profile_pic_form').attr('action'),
+          type: $(this).attr('method'),
+          url: $(this).attr('action'),
           data: form,
           processData: false,
           contentType: false,
