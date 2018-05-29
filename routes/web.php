@@ -58,7 +58,8 @@ Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
 /* Dashboard Controller Routes */
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard_index');
 
-Route::get('/edit-dashboard', 'DashboardController@edit_dashboard')->name('edit_dashboard');
+Route::get('/edit-profile', 'ProfileController@edit_dashboard')->name('edit_dashboard');
 
-
+//Edit profile post
+Route::post('/edit_profile', 'ProfileController@edit_profile')->name('edit_profile');
 
