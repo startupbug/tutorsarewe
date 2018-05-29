@@ -10,7 +10,7 @@ $(document).ready(function () {
    //signin form validation
 
   $("#signin_form").validate();
-    
+
      //signin form validation
 
   $("#registration_form").validate();
@@ -19,11 +19,14 @@ $(document).ready(function () {
 
 
   $("#monthlycost_form").validate();
+
+
+
 });
 
 
 $(function() {
-        
+
   $("#my-menu").mmenu({
     extensions  : [ "shadow-panels", "fx-panels-slide-100", "border-none", "theme-black", "fullscreen" ],
     navbars   : {
@@ -33,7 +36,7 @@ $(function() {
     setSelected: true,
     searchfield: {
       resultsPanel: true
-    }}, { 
+    }}, {
   });
 
   $(".mh-head.mm-sticky").mhead({
@@ -56,5 +59,3 @@ $(function() {
 });
 
 //for custom javascript functions function
-
-

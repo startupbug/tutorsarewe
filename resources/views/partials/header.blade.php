@@ -34,7 +34,7 @@
          <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/component.css') }}" /> -->
       <!-- AOS Animation -->
       <link rel="stylesheet" href="{{ asset('public/assets/css/w3.css') }}">
-      
+
       <link href="{{ asset('public/assets/css/aos.css') }}" rel="stylesheet">
       <!-- style.css') }} -->
       <link href="{{ asset('public/assets/css/style.css') }}" rel="stylesheet">
@@ -69,7 +69,7 @@
                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                            <span class="icon-bar"></span>
                            <span class="icon-bar"></span>
-                           <span class="icon-bar"></span>                        
+                           <span class="icon-bar"></span>
                            </button>
                            <a href="index.php"><img src="{{ asset('public/assets/images/logo.png') }}" alt="tutorareus Logo" class="img-responsive"></a>
                         </div>
@@ -118,7 +118,7 @@
                                  </ul>-->
                               </li>
 
-                           @endif   
+                           @endif
 
                               <li class="">
                                  <a class="f_dropdown" href="{{route('publications')}}">PUBLICATIONS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
@@ -138,16 +138,13 @@
                               </li>
 
                               @if(Auth::check())
-                                    
-
-                                       <li class="">
-                                          <a class="f_name" href="{{route('dashboard_index')}}">{{Auth::user()->first_name}}</a>
-                                          <!--<ul class="dropdown-menu">
-                                             <li><a href="#">Page 1-1</a></li>
-                                             <li><a href="#">Page 1-2</a></li>
-                                             <li><a href="#">Page 1-3</a></li>
-                                          </ul>-->
-                                       </li>
+                                 <li class="dropdown user_page">
+                                    <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" >{{Auth::user()->first_name}}  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
+                                    <ul class="dropdown-menu">
+                                       <li><a href="{{route('dashboard_index')}}">Dashboard</a></li>
+                                       <li><a href="{{route('logout_user')}}">Logout</a></li>
+                                    </ul>
+                                 </li>
                               @endif
 
                            </ul>
@@ -158,4 +155,3 @@
             </div>
          </div>
       </header>
-      

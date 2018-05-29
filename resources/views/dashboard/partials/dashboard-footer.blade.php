@@ -224,6 +224,14 @@
 <script src="{{ asset('public/dashboard/assets/js/script.js') }}"></script>
 <!-- Custom-js -->
 <script src="{{ asset('public/dashboard/assets/js/custom.js') }}"></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('.s_nav_menu').on('click' , 'a' , function() {
+      $(this).siblings('.s_sub_menu').toggleClass('hidden');
+    });
+  });
+</script>
 </div>
 </body>
 </html>
