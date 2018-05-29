@@ -18,7 +18,9 @@
         <a href="{{route('edit_dashboard')}}" class="btn btn-default f_view_edit">EDIT</a>
       </div>
       <div class="col-md-12">
-      	<p class="f_text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, elium totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+      	<p class="f_text">
+          {{ isset($user->bio) ? $user->bio : '-' }}
+        </p>
       </div>
        
   <div class="col-md-6">
@@ -41,6 +43,11 @@
 </div>
 
 
+ <div class="form-group profile_form account_view">
+    <label>Rates per hour <span>*</span></label>
+    <br>
+    <p class="text_aaccountview">{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '-' }}</p>
+</div>
 <!--  <div class="form-group profile_form account_view">
     <label>Password <span>*</span> (Must Be Atleast 6 Characters):</label>
     <br>

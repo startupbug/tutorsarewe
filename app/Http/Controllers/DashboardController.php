@@ -9,16 +9,14 @@ use Auth;
 
 class DashboardController extends Controller
 {
+
+
     public function index(){
     	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
     	//dd($user);
     	return view('dashboard.index')->with($data);
     }
 
-    public function edit_dashboard(){
-    	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
-    	return view('dashboard.editprofile')->with($data);
-    }
 
     //Change existing password view
     public function edit_pass_view(){
