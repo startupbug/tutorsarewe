@@ -14,14 +14,13 @@ class DashboardController extends Controller
 
    	public function __construct()
     {
-    	
+
     }
 
     public function index(){
     	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
     	return view('dashboard.index')->with($data);
     }
-
 
     //Change existing password view
     public function edit_pass_view($id){
@@ -34,12 +33,11 @@ class DashboardController extends Controller
       dd($request->input());
     }
 
-
     public function change_newpassword(Request $request, $id)
     {
        //    dd($request->input());
        // /* Validation */
-      
+
 
          try{
 
@@ -52,29 +50,29 @@ class DashboardController extends Controller
 
         //Updating Password
         $newpassword1 = bcrypt($request->input('password'));
-        
+
         $user = User::find(Auth::user()->id);
         // dd($user);
         $user->password = $newpassword1;
         $password_updated = $user->save();
 
-        
+
         if($password_updated){
                   $this->set_session('Password Updated', true);
         }else{
-                  $this->set_session('Password couldnot be Updated. Please try again.', false); 
+                  $this->set_session('Password couldnot be Updated. Please try again.', false);
         }
 
         }else{
         //old password doesn't match
-               $this->set_session('Please enter Correct Previous Password to change your Password.', false);    
+               $this->set_session('Please enter Correct Previous Password to change your Password.', false);
         }
 
            return redirect()->route('dashboard_index');
 
          }catch(\Exception $e){
                    $this->set_session('Password couldnot be Updated. '.$e->getMessage(), false);
-                   return redirect()->route('dashboard_index');                
+                   return redirect()->route('dashboard_index');
              }
 
     }
@@ -90,7 +88,7 @@ class DashboardController extends Controller
     public function tutor_subject(Request $request)
     {
         // dd($request->input());
-        try{ 
+        try{
             $subjects_name = DB::table('subjects')->get();
             $insert_subject = new Tutor_subject();
             $insert_subject->subject_id = $request->input('subject_name');
@@ -98,12 +96,12 @@ class DashboardController extends Controller
             $insert_subject->save();
             if($insert_subject->save())
             {
-               
+
                     $all_subjects = Tutor_subject::join('subjects','subjects.id','=','tutor_subjects.subject_id')->select('subjects.*','tutor_subjects.id as tutor_subject_id')->where('tutor_id',$insert_subject->tutor_id)->orderby('tutor_subjects.id','asc')->get();
                 // dd($all_subjects);
-                return view('dashboard.subjects',['all_subjects' => $all_subjects, 'user_id'=>$request->input('user_id'),'subjects' => $subjects_name]);    
-            
-                
+                return view('dashboard.subjects',['all_subjects' => $all_subjects, 'user_id'=>$request->input('user_id'),'subjects' => $subjects_name]);
+
+
             }
 
         }catch(\Exception $e){
@@ -113,10 +111,32 @@ class DashboardController extends Controller
                 $this->set_session('You have already added this subject', false);
            }
            //die();
-           return redirect()->route('subjects');   
+           return redirect()->route('subjects');
         }
 
     }
 
-}
+    //Remove subject
+    public function subjDel($subjectid=null){
 
+      try{
+        if(!is_null($subjectid)){
+
+             $delSub = DB::table('tutor_subjects')->where('tutor_id', Auth::user()->id)
+              ->where('subject_id', $subjectid)->delete();
+
+             if($delSub){
+               $this->set_session('Subject Succesfully Deleted', true);
+             }else{
+               $this->set_session('Subject couldnot be deleted', false);
+             }
+
+             return redirect()->route('subjects');
+         }
+      }catch(\Exception $e){
+           $this->set_session('Subject couldnot be deleted'.$e->getMessage(), false);
+           return redirect()->route('subjects');
+      }
+    }
+
+}

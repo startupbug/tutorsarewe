@@ -215,6 +215,8 @@
 <!-- Bootstrap -->
 <script src="{{ asset('public/dashboard/assets/js/bootstrap.min.js') }}"></script>
 <!-- Carousel-min -->
+<script src="{{ asset('public/dashboard/assets/js/jquery.dataTables.min.js') }}"></script>
+
 <script src="{{ asset('public/dashboard/assets/js/owl.carousel.min.js') }}"></script>
 <!-- alertify-js -->
 <script src="{{ asset('public/dashboard/assets/js/alertify.min.js') }}"></script>
@@ -227,42 +229,47 @@
 
 <script type="text/javascript">
   $(document).ready(function () {
+
+    $('#example').DataTable();
+
     $('.s_nav_menu').on('click' , 'a' , function() {
       $(this).siblings('.s_sub_menu').toggleClass('hidden');
     });
-  });
 
-  //on form submit change Admin Profile picture
-  $('#change_profile_pic_file').change(function(e){
+    //on form submit change Admin Profile picture
+    $('#change_profile_pic_file').change(function(e){
       e.preventDefault();
       console.log("herezz");
       var form = new FormData(this);
       $.ajax({
-          type: $(this).attr('method'),
-          url: $(this).attr('action'),
-          data: form,
-          processData: false,
-          contentType: false,
-          success: function(response){
-              if(response.code === 200){
-                  $('.profile-pic > img').attr('src', response.img);
-                  alertify.success(response.success);
+        type: $(this).attr('method'),
+        url: $(this).attr('action'),
+        data: form,
+        processData: false,
+        contentType: false,
+        success: function(response){
+          if(response.code === 200){
+            $('.profile-pic > img').attr('src', response.img);
+            alertify.success(response.success);
 
-              }
-              if(response.code === 202){
-                   alertify.warning(response.error);
-                  // alert(response.error);
-
-              }
-              if(response.code === 202){
-
-              }
-          },
-          error: function(){
-              alert('Image uploaading failed');
           }
+          if(response.code === 202){
+            alertify.warning(response.error);
+            // alert(response.error);
+
+          }
+          if(response.code === 202){
+
+          }
+        },
+        error: function(){
+          alert('Image uploaading failed');
+        }
       });
+    });
   });
+
+
 </script>
 </div>
 </body>
