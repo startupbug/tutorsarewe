@@ -36,6 +36,10 @@ class HomeController extends Controller
     	return view('home.publication');
     }
 
+    public function forget_password()
+    {   
+        return view('authentication.forget_password');
+    }
     //aboutus page
     public function aboutus(){
     	return view('home.aboutus');

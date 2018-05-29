@@ -19,6 +19,14 @@ Route::get('/signin', 'AuthenticationController@login_index')->name('signin');
 
 Route::get('/signup', 'AuthenticationController@register_index')->name('signup');
 
+Route::get('/forget_password', 'HomeController@forget_password')->name('forget_password_form');
+
+Route::post('/send_forget_email', 'AuthenticationController@send_forget_email')->name('send_forget_email');
+
+Route::get('/set_new_password/{token}', 'AuthenticationController@set_new_password')->name('set_new_password');
+
+Route::post('/new_password/{email}', 'AuthenticationController@new_password')->name('new_password');
+
 //Student and Teacher register
 Route::post('/register', 'AuthenticationController@register_post')->name('register_post');
 
@@ -45,4 +53,5 @@ Route::get('/publications', 'HomeController@publications')->name('publications')
 
 //aboutus
 Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
+
 
