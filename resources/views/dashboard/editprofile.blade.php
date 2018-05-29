@@ -26,12 +26,13 @@
       <div class="col-md-9 f_padding bg_color">
       	<div class="edit_profile">
       	<h3 class="f_profile_content">Edit Profile</h3>
+        @include('partials.error_section')
       <!-- 	<p class="f_text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, elium totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p> -->
        
       </div>
  
   <div class="col-md-6">
-  	<form action="{{ route('edit_profile') }}" method="post">
+  	<form action="{{ route('edit_profile') }}" method="post" enctype="multipart/form-data">
   		 <div class="form-group profile_form">
     <label>First Name <span>*</span></label>
     <br>

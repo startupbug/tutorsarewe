@@ -70,7 +70,7 @@ class AuthenticationController extends Controller
             $user->last_name = $request->input('last_name');
             $user->email = $request->input('email');
             $user->password = bcrypt( $request->input('password') );
-            $user->phone_no = $request->input('phone_no'); 
+            $user->phone_no = $request->input('countryCode').$request->input('phonenum1');
             $user->role_id = $request->input('role_id'); 
 
             if($user->save()){

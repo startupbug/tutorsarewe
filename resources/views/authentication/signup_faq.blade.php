@@ -309,12 +309,12 @@
                <div class="row">
                   <div class="col-md-6">
                      <div class="form-group">
-                        <input type="text" class="form-control f-control" id="Inputphonenumber" name="phone1" placeholder="United States +1">
+                        <input type="text" class="form-control f-control" id="Inputphonenumber" name="countryCode" placeholder="United States +1">
                      </div>
                   </div>
                   <div class="col-md-6">
                      <div class="form-group">
-                        <input type="text" class="form-control f-control" id="Inputphonenumber" name="phone2" placeholder="Phone Number">
+                        <input type="text" class="form-control f-control" id="Inputphonenumber" name="phonenum1" placeholder="Phone Number">
                      </div>
                   </div>
                </div>

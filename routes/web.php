@@ -55,7 +55,9 @@ Route::get('/publications', 'HomeController@publications')->name('publications')
 Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
 
 
+
 /* Dashboard Controller Routes */
+
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard_index');
 
 Route::get('/edit-profile', 'ProfileController@edit_dashboard')->name('edit_dashboard');
