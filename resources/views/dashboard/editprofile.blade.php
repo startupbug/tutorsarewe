@@ -23,8 +23,6 @@
          
       </div>-->
  
-  
-  	
       <div class="col-md-9 f_padding bg_color">
       	<div class="edit_profile">
       	<h3 class="f_profile_content">Profile</h3>
@@ -37,24 +35,24 @@
   		 <div class="form-group profile_form">
     <label>First Name <span>*</span></label>
     <br>
-    <input type="text" name="firstname" class="span3">
+    <input type="text" name="firstname" value="{{ isset($user->first_name) ? $user->first_name : '' }}" class="span3">
 </div>
  <div class="form-group profile_form">
     <label>Last Name <span>*</span></label>
     <br>
-    <input type="text" name="lastname" class="span3">
+    <input type="text" name="lastname" value="{{ isset($user->last_name) ? $user->last_name : '' }}" class="span3">
 </div>
- <div class="form-group profile_form">
+<!--  <div class="form-group profile_form">
     <label>Email <span>*</span></label>
     <br>
-    <input type="email" name="email" class="span3">
-</div>
- <div class="form-group profile_form">
+    <input type="email" name="email"  class="span3">
+</div> -->
+<!--  <div class="form-group profile_form">
     <label>Username</label>
     <br>
     <input type="text" name="username" class="span3">
-</div>
- <div class="form-group profile_form">
+</div> -->
+<!--  <div class="form-group profile_form">
     <label>Password <span>*</span> (Must Be Atleast 6 Characters):</label>
     <br>
     <input type="password" name="password" class="span3">
@@ -63,7 +61,7 @@
     <label>Confirm Password <span>*</span></label>
     <br>
     <input type="password" name="password" class="span3">
-</div>
+</div> -->
     
     <input type="submit" value="SAVE CHANGES" class="btn btn-primary f_save">
     <div class="clearfix"></div>
@@ -76,15 +74,16 @@
   		 <div class="form-group account_f_form">
     <label>Address</label>
     <br>
-    <input type="text" name="address" class="span3">
+    <input type="text" name="address" value="{{ isset($user->address) ? $user->address : '' }}" class="span3">
 </div>
  <div class="form-group account_f_form">
     <label>Zip Code</label>
     <br>
-    <input type="text" name="zipcode" class="span3">
+    <input type="text" name="zipcode" value="{{ isset($user->zipcode) ? $user->zipcode : '' }}" class="span3">
 </div>
  <div class="form-group account_f_form">
  	<label>State</label>
+        
     					<select name="country" id="country" class="span3" placeholder="Select">
     						<option value=""></option>
     						<option value="AR">Argentina</option>

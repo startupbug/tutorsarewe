@@ -59,7 +59,7 @@
                   <ul class="top-header-nav">
                      <li><i class="fa fa-phone f_phone" aria-hidden="true"></i>:  1-877-3- TUTORS 1877-388-8677</li>
                      <li class="f_right"><i class="fa fa-search f_phone"></i>: Search For Tutors</li>
-                     <li class="f_right"><i class="fa fa-user f_phone"></i><a href="login.php">: Login</a>/<a href="signup_faq.php">Register</a></li>
+                   <!--   <li class="f_right"><i class="fa fa-user f_phone"></i><a href="login.php">: Login</a>/<a href="signup_faq.php">Register</a></li> -->
                   </ul>
                </div>
                <div class="col-md-12 col-sm-12 col-xs-12">
@@ -124,14 +124,17 @@
                                     <li><a href="#">Page 1-3</a></li>
                                  </ul>-->
                               </li>
-                              <li class="">
-                                 <a class="f_name" href="#">JOHN DOE</a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
+                              @if(Auth::check())
+                                 <li class="">
+                                    <a class="f_name" href="#">{{Auth::user()->first_name}}</a>
+                                    <!--<ul class="dropdown-menu">
+                                       <li><a href="#">Page 1-1</a></li>
+                                       <li><a href="#">Page 1-2</a></li>
+                                       <li><a href="#">Page 1-3</a></li>
+                                    </ul>-->
+                                 </li>                              
+                              @endif
+
                            </ul>
                         </div>
                      </div>

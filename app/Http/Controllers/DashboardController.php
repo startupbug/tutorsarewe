@@ -10,12 +10,13 @@ use Auth;
 class DashboardController extends Controller
 {
     public function index(){
-    	$user = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
+    	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
     	//dd($user);
-    	return view('dashboard.index');
+    	return view('dashboard.index')->with($data);
     }
 
     public function edit_dashboard(){
-    	return view('dashboard.editprofile');
+    	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
+    	return view('dashboard.editprofile')->with($data);
     }
 }
