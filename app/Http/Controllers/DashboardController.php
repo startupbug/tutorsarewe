@@ -12,10 +12,13 @@ use App\Tutor_subject;
 class DashboardController extends Controller
 {
 
+   	public function __construct()
+    {
+    	
+    }
 
     public function index(){
     	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
-    	//dd($user);
     	return view('dashboard.index')->with($data);
     }
 
@@ -30,6 +33,7 @@ class DashboardController extends Controller
     public function edit_pass_post(Request $request){
       dd($request->input());
     }
+
 
     public function change_newpassword(Request $request, $id)
     {

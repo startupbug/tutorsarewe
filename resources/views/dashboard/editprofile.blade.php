@@ -235,7 +235,7 @@
 </div>
 
 <div class="col-md-6">
-    <input type="phonenum1" name="phonenum1" class="span3" placeholder="Phone Number">
+    <input type="phonenum1" name="phonenum1" value="{{ isset($user->phone_no) ? $user->phone_no: '' }}" class="span3" placeholder="Phone Number">
 </div>
 </div>
 </div>
