@@ -25,14 +25,14 @@ class AuthenticationController extends Controller
 
           try{
 
-            if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
-               
-               return redirect()->route('home');
+                if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
+                   
+                   return redirect()->route('home');
 
-            }else{
-               $this->set_session('invalid username or password', false);
-               return redirect()->route('signin');
-            }
+                }else{
+                   $this->set_session('invalid username or password', false);
+                   return redirect()->route('signin');
+                }
 
           }catch(\Exception $e){
 
@@ -85,12 +85,18 @@ class AuthenticationController extends Controller
             $user->last_name = $request->input('last_name');
             $user->email = $request->input('email');
             $user->password = bcrypt( $request->input('password') );
-            $user->phone_no = $request->input('phone_no'); 
+
+
             $user->role_id = $request->input('role_id');
             $user->email_token = str_random(10);
             $user->verified = 0; 
 
+            $user->phone_no = $request->input('countryCode').$request->input('phonenum1');
+  
+
+
             if($user->save()){
+                
             $email = new EmailVerification(new User(['email_token' => $user->email_token, 'name' => $user->name, 'email'=> $user->email]));
             Mail::to($user->email)->send($email);
             DB::commit();

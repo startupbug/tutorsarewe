@@ -34,7 +34,7 @@
          <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/css/component.css') }}" /> -->
       <!-- AOS Animation -->
       <link rel="stylesheet" href="{{ asset('public/assets/css/w3.css') }}">
-      
+
       <link href="{{ asset('public/assets/css/aos.css') }}" rel="stylesheet">
       <!-- style.css') }} -->
       <link href="{{ asset('public/assets/css/style.css') }}" rel="stylesheet">
@@ -57,15 +57,9 @@
                   <ul class="top-header-nav">
                      <li><i class="fa fa-phone f_phone" aria-hidden="true"></i>:  1-877-3- TUTORS 1877-388-8677</li>
                      <li class="f_right"><i class="fa fa-search f_phone"></i>: Search For Tutors</li>
-                     @if(Auth::check())
-                           {{Auth::user()->first_name}}
-                     @else
-                     <li class="f_right"><i class="fa fa-user f_phone"></i><a href="{{route('signin')}}">: Login</a>/<a href="{{route('signup')}}">Register</a></li>
-
+                     @if(!Auth::check())
+                            <li class="f_right"><i class="fa fa-user f_phone"></i><a href="{{route('signin')}}">: Login</a>/<a href="{{route('signup')}}">Register</a></li>
                      @endif
-
-
-
                   </ul>
                </div>
                <div class="col-md-12 col-sm-12 col-xs-12">
@@ -75,7 +69,7 @@
                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                            <span class="icon-bar"></span>
                            <span class="icon-bar"></span>
-                           <span class="icon-bar"></span>                        
+                           <span class="icon-bar"></span>
                            </button>
                            <a href="index.php"><img src="{{ asset('public/assets/images/logo.png') }}" alt="tutorareus Logo" class="img-responsive"></a>
                         </div>
@@ -113,6 +107,8 @@
                                     <li><a href="#">Page 1-3</a></li>
                                  </ul>-->
                               </li>
+                           @if(!Auth::check())
+
                               <li class="">
                                  <a class="f_dropdown" href="{{route('fulltime_tutor')}}">BECOME A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <!--<ul class="dropdown-menu">
@@ -121,6 +117,9 @@
                                     <li><a href="#">Page 1-3</a></li>
                                  </ul>-->
                               </li>
+
+                           @endif
+
                               <li class="">
                                  <a class="f_dropdown" href="{{route('publications')}}">PUBLICATIONS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <!--<ul class="dropdown-menu">
@@ -137,6 +136,17 @@
                                     <li><a href="#">Page 1-3</a></li>
                                  </ul>-->
                               </li>
+
+                              @if(Auth::check())
+                                 <li class="dropdown user_page">
+                                    <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" >{{Auth::user()->first_name}}  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
+                                    <ul class="dropdown-menu">
+                                       <li><a href="{{route('dashboard_index')}}">Dashboard</a></li>
+                                       <li><a href="{{route('logout_user')}}">Logout</a></li>
+                                    </ul>
+                                 </li>
+                              @endif
+
                            </ul>
                         </div>
                      </div>
@@ -145,4 +155,3 @@
             </div>
          </div>
       </header>
-      

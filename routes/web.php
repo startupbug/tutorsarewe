@@ -56,3 +56,24 @@ Route::get('/publications', 'HomeController@publications')->name('publications')
 Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
 
 
+
+/* Dashboard Controller Routes */
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard_index');
+
+Route::get('/subjects','DashboardController@subjects')->name('subjects');
+Route::post('/tutor_subject','DashboardController@tutor_subject')->name('tutor_subject');
+
+Route::get('/edit-profile', 'ProfileController@edit_dashboard')->name('edit_dashboard');
+
+//Edit profile post
+Route::post('/edit_profile', 'ProfileController@edit_profile')->name('edit_profile');
+
+/* Change existing Password */
+
+//Change existing password view
+Route::get('/settings/change-password/{id}', 'DashboardController@edit_pass_view')->name('change_pass_index');
+// change_newpassword
+Route::post('/settings/change-password/{id}', 'DashboardController@change_newpassword')->name('change_newpassword');
+//Change existing password post
+Route::post('/settings/change-password', 'DashboardController@edit_pass_post')->name('change_pass_post');
