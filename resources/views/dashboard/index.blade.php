@@ -22,6 +22,7 @@
       </div>
        
   <div class="col-md-6">
+
   	<form>
   		 <div class="form-group profile_form account_view">
     <label>First Name <span>*</span></label>
@@ -38,7 +39,8 @@
     <br>
     <p class="text_aaccountview">{{Auth::user()->email}}</p>
 </div>
- 
+
+
 <!--  <div class="form-group profile_form account_view">
     <label>Password <span>*</span> (Must Be Atleast 6 Characters):</label>
     <br>

@@ -1897,3 +1897,10 @@ span.nav__item-text.active {
 #teach_div {
     display: none;
 }
+
+.user_page a {
+    color: #ed7275 !important;
+    FONT-SIZE: 14PX;
+    text-transform: uppercase;
+    font-family: 'ProximaNova-Semibold';
+}

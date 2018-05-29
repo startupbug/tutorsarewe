@@ -60,5 +60,10 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard_index');
 
 Route::get('/edit-dashboard', 'DashboardController@edit_dashboard')->name('edit_dashboard');
 
+/* Change existing Password */
 
+//Change existing password view
+Route::get('/settings/change-password', 'DashboardController@edit_pass_view')->name('change_pass_index');
 
+//Change existing password post
+Route::post('/settings/change-password', 'DashboardController@edit_pass_post')->name('change_pass_post');
