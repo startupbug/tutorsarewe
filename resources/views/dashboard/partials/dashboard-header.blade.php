@@ -35,6 +35,7 @@
       <!-- <link rel="stylesheet" type="text/css" href="assets/css/default.css') }}" />
          <link rel="stylesheet" type="text/css" href="assets/css/component.css') }}" /> -->
       <!-- AOS Animation -->
+      <link rel="stylesheet" href="{{ asset('public/dashboard/assets/css/jquery.dataTables.min.css') }}">
       <link rel="stylesheet" href="{{ asset('public/dashboard/assets/css/w3.css') }}">
 
       <link href="{{ asset('public/dashboard/assets/css/aos.css') }}" rel="stylesheet">

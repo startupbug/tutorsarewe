@@ -1,4 +1,4 @@
- <div class="col-md-3 border_left f_padding">
+ <div class="col-md-3 border_left f_padding bg_color_white">
 
 
         <div class="profile-pic">

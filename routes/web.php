@@ -64,6 +64,9 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard_index');
 Route::get('/subjects','DashboardController@subjects')->name('subjects');
 Route::post('/tutor_subject','DashboardController@tutor_subject')->name('tutor_subject');
 
+//Delete subject
+Route::get('/delete-subject/{id}','DashboardController@subjDel')->name('subjDel');
+
 Route::get('/edit-profile', 'ProfileController@edit_dashboard')->name('edit_dashboard');
 
 //Edit profile post
