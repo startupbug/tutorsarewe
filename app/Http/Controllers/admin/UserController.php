@@ -158,8 +158,6 @@ class UserController extends Controller
             if(!is_null($request->input('password')) ){
                 $user->password = bcrypt($request->input('password'));
             }
-
-            
             
             $user->status_id = $request->input('status_id');
             $user->verified = $request->input('verified');
