@@ -26,8 +26,23 @@
             <form role="form" action="{{route('users.store')}}" method="post">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Name</label>
-                  <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter email">
+                  <label for="">First Name</label>
+                  <input type="text" class="form-control" name="first_name" id="" placeholder="Enter First name">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Last Name</label>
+                  <input type="text" class="form-control" name="last_name" id="" placeholder="Enter last name">
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputUsername">Username</label>
+                  <input type="text" class="form-control" name="username" id="exampleInputUsername" placeholder="Enter email">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Phone no</label>
+                  <input type="text" class="form-control" name="phone_no" id="" placeholder="Enter phone no">
                 </div>
 
                 <div class="form-group">
@@ -35,11 +50,32 @@
                   <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="Enter email">
                 </div>
 
+
                 <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>
                   <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
                 </div>
-
+                <div class="form-group profile_form">
+                  <label for="exampleInputRate">Rates / Hour <span>*</span></label>
+                  <br>
+                  <input type="text" name="tution_per_hour" id="exampleInputRate" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}" class="span3" required>
+                </div>
+                <div class="form-group profile_form">
+                  <label for="Bio">Bio <span>*</span></label>
+                  <br>
+                  <textarea name="bio" class="span3 form-control" ></textarea>
+                  <!-- <input type="text" name="bio" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}" class="span3"> -->
+                </div>
+                <div class="form-group profile_form">
+                  <label for="exampleInputGender">Gender<span>*</span></label>
+                  <br>
+                  <input type="text" name="gender" id="exampleInputGender" value="" class="span3" required>
+                </div>
+                <div class="form-group profile_form">
+                  <label for="exampleInputage">Age<span>*</span></label>
+                  <br>
+                  <input type="text" name="age" id="exampleInputage" value="" class="span3" required>
+                </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">User role</label>
                   <select name="user_role">

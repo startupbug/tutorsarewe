@@ -29,21 +29,19 @@ class AuthenticationController extends Controller
         ]); 
           try{
 
+            if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
+               $this->logActivity(Auth::user()->first_name.' Logged in on Tutor');
+               return redirect()->route('home');
 
-
-                if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
-                   
-                   return redirect()->route('home');
-
-                }else{
-                   $this->set_session('invalid username or password', false);
-                   return redirect()->route('signin');
-                }
+            }else{
+               $this->set_session('invalid username or password', false);
+               return redirect()->route('signin');
+            }
 
           }catch(\Exception $e){
 
-               $this->set_session('Something went wrong. Please Try again', false);
-               return redirect()->route('signin');
+           $this->set_session('Something went wrong. Please Try again', false);
+           return redirect()->route('signin');
           }   
     }
 
@@ -63,11 +61,12 @@ class AuthenticationController extends Controller
          /* Validation */
 
          $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'username'=>'required|string|without_spaces|max:255|unique:users|regex:/(^([a-zA-Z]+)(\d+)?$)/u',
+            'first_name' => 'required|string|max:15',
+            'last_name' => 'required|string|max:15',
+            'email' => 'required|string|email|unique:users',
+            'username'=>'required|string|max:15|unique:profiles',
             'password' => 'required|string|min:6|confirmed',
-            'phone_no' => 'required|regex:/(01)[0-9]{9}/',
+            'phonenum1' => 'required|numeric',
         ]); 
 
         //Inserting user
@@ -112,7 +111,7 @@ class AuthenticationController extends Controller
             // return $user;
                 // Saving Profle info of user.
                 $profile = new Profile();
-                $profile->username = $request->input('user_name');
+                $profile->username = $request->input('username');
                 $profile->address = $request->input('address');
                 $profile->zipcode = $request->input('zipcode');                        
                 $profile->state = $request->input('state');

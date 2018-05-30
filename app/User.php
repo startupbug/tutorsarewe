@@ -50,7 +50,7 @@ class User extends Authenticatable
         return $this->leftjoin('role_user', 'role_user.user_id', '=', 'users.id')
                      ->leftjoin('roles', 'roles.id', '=', 'role_user.role_id')
                      ->leftjoin('statuses', 'statuses.id', '=', 'users.status_id')
-                     ->select('users.id', 'users.first_name', 'users.email', 'roles.display_name', 'statuses.status')
+                     ->select('users.id', 'users.first_name', 'users.email', 'users.verified', 'roles.display_name', 'statuses.status')
                      ->get();
     }
 
@@ -58,7 +58,7 @@ class User extends Authenticatable
         return $this->join('role_user', 'role_user.user_id', '=', 'users.id')
                      ->join('roles', 'roles.id', '=', 'role_user.role_id')
                      ->leftjoin('statuses', 'statuses.id', '=', 'users.status_id')
-                     ->select('users.id', 'users.status_id', 'roles.id as role_id', 'users.first_name', 'users.email', 'roles.display_name', 'users.password', 'statuses.status')
+                     ->select('users.id', 'users.status_id', 'roles.id as role_id', 'users.first_name', 'users.last_name', 'users.phone_no', 'users.email', 'users.verified', 'roles.display_name', 'users.password', 'statuses.status')
                      ->where('users.id', $id)
                      ->first();
     }
@@ -67,7 +67,7 @@ class User extends Authenticatable
         return $this->join('role_user', 'role_user.user_id', '=', 'users.id')
                      ->join('roles', 'roles.id', '=', 'role_user.role_id')
                      ->leftjoin('statuses', 'statuses.id', '=', 'users.status_id')
-                     ->select('users.id', 'roles.id as role_id', 'users.first_name', 'users.email', 'roles.display_name', 'users.password', 'statuses.status')
+                     ->select('users.id', 'roles.id as role_id', 'users.first_name', 'users.email', 'roles.display_name', 'users.password', 'statuses.status', 'users.verified')
                      ->where('users.id', $id)
                      ->first();        
     }    

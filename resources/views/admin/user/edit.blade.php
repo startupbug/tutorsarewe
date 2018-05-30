@@ -27,9 +27,19 @@
               {{ method_field('PUT') }}
               <div class="box-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Name</label>
-                  <input type="text" class="form-control" name="name" id="exampleInputEmail12" placeholder="Enter email" value="{{$user->first_name}}">
+                  <label for="exampleInputEmail1">First Name</label>
+                  <input type="text" class="form-control" name="first_name" id=""  value="{{$user->first_name}}">
                 </div>
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Last Name</label>
+                  <input type="text" class="form-control" name="last_name" id=""  value="{{$user->last_name}}">
+                </div>
+
+               <div class="form-group">
+                  <label for="">Phone no</label>
+                  <input type="text" class="form-control" name="phone_no" id="" value="{{$user->phone_no}}" placeholder="Enter phone no">
+                </div>                
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email</label>
@@ -43,7 +53,7 @@
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">User role</label>
-                  <select name="user_role">
+                  <select name="user_role"  class="form-control">
                     @foreach($roles as $role)
                      <option value="{{$role->id}}" @if($role->id==$user->role_id) selected @endif>{{$role->name}}</option>
                     @endforeach
@@ -52,12 +62,20 @@
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">Statuses</label>
-                  <select name="status_id">
+                  <select name="status_id"  class="form-control">
                     @foreach($statuses as $status)
                      <option value="{{$status->id}}" @if($status->id == $user->status_id) selected @endif>{{$status->status}}</option>
                     @endforeach
                   </select>
                 </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Email Verification</label>
+
+                  <input type="radio"  name="verified" value="1" @if($user->verified == 1) checked @endif> Verify 
+                  <input type="radio" name="verified" value="0" @if($user->verified == 0) checked @endif> unverify<br>
+                </div>
+
 
               </div>
               <!-- /.box-body -->
