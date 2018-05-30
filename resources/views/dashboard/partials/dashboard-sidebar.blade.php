@@ -25,9 +25,9 @@
          @elseif( Auth::user()->role_id == 3) Teacher @endif )
 
          </h3>
-      	<p class="user_f">
+      <!-- 	<p class="user_f">
           User Login: 25/04/2018 05:53:40
-        </p>
+        </p> -->
         <p class="user_f">
           <a href="{{ route('my_balance') }}">Balance $: 0</a>
         </p>
@@ -42,9 +42,11 @@
           <div class="s_nav_menu">
             <a href="#"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>My Tutor</a>
           </div>
+          @if(Auth::user()->role_id==2)
           <div class="s_nav_menu">
             <a href="{{route('subjects')}}"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>Subjects</a>
           </div>
+          @endif
           <div class="s_nav_menu">
             <a href="#"><i class="fa fa-user-plus f_icon_menu"></i>Invite Friends</a>
           </div>

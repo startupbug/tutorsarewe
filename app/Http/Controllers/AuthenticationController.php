@@ -63,10 +63,10 @@ class AuthenticationController extends Controller
          /* Validation */
 
          $this->validate($request, [
-            'first_name' => 'required|string|max:15',
-            'last_name' => 'required|string|max:15',
+            'first_name' => 'required|string|max:25',
+            'last_name' => 'required|string|max:25',
             'email' => 'required|string|email|unique:users',
-            'username'=>'required|string|max:15|unique:profiles',
+            'username'=>'required|string|max:25|unique:profiles',
             'password' => 'required|string|min:6|confirmed',
             'phonenum1' => 'required|numeric',
         ]); 
@@ -146,7 +146,7 @@ class AuthenticationController extends Controller
                  $this->set_session('User Couldnot be Registered.', false);
             }
             
-         //   return redirect()->route('signup');
+               return redirect()->route('signup');
 
        }
             catch(\Exception $e){
