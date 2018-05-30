@@ -58,32 +58,34 @@ Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
 
 
 /* Dashboard Controller Routes */
+Route::group(['middleware' => 'auth'], function () {
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard_index');
+	Route::get('/dashboard', 'DashboardController@index')->name('dashboard_index');
 
-Route::get('/subjects','DashboardController@subjects')->name('subjects');
-Route::post('/tutor_subject','DashboardController@tutor_subject')->name('tutor_subject');
+	Route::get('/subjects','DashboardController@subjects')->name('subjects');
+	Route::post('/tutor_subject','DashboardController@tutor_subject')->name('tutor_subject');
 
-//Delete subject
-Route::get('/delete-subject/{id}','DashboardController@subjDel')->name('subjDel');
+	//Delete subject
+	Route::get('/delete-subject/{id}','DashboardController@subjDel')->name('subjDel');
 
-Route::get('/edit-profile', 'ProfileController@edit_dashboard')->name('edit_dashboard');
+	Route::get('/edit-profile', 'ProfileController@edit_dashboard')->name('edit_dashboard');
 
-//Edit profile post
-Route::post('/edit_profile', 'ProfileController@edit_profile')->name('edit_profile');
+	//Edit profile post
+	Route::post('/edit_profile', 'ProfileController@edit_profile')->name('edit_profile');
 
-/* Change existing Password */
+	/* Change existing Password */
 
-//Change existing password view
-Route::get('/settings/change-password/{id}', 'DashboardController@edit_pass_view')->name('change_pass_index');
-// change_newpassword
-Route::post('/settings/change-password/{id}', 'DashboardController@change_newpassword')->name('change_newpassword');
-//Change existing password post
-Route::post('/settings/change-password', 'DashboardController@edit_pass_post')->name('change_pass_post');
+	//Change existing password view
+	Route::get('/settings/change-password/{id}', 'DashboardController@edit_pass_view')->name('change_pass_index');
+	// change_newpassword
+	Route::post('/settings/change-password/{id}', 'DashboardController@change_newpassword')->name('change_newpassword');
+	//Change existing password post
+	Route::post('/settings/change-password', 'DashboardController@edit_pass_post')->name('change_pass_post');
 
-//Ajax profile upload
-Route::post('imageUpload',['as'=>'imageUpload','uses'=>'ProfileController@imageUpload']);
+	//Ajax profile upload
+	Route::post('imageUpload',['as'=>'imageUpload','uses'=>'ProfileController@imageUpload']);
 
+});
 
 
 
@@ -151,6 +153,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 /* Unauthorized Access Routes */
 Route::get('/401', 'HomeController@unauthorized')->name('unauthorized');
 
+/* Error Route */
+Route::get('/error/{message}', 'HomeController@error')->name('error');
 
 Route::get('/my_transactions', 'ProfileController@my_transactions')->name('my_transactions');
+
 Route::get('/transaction_detail/{id}', 'ProfileController@transaction_detail')->name('transaction_detail');
+
+Route::get('/my_balance', 'ProfileController@my_balance')->name('my_balance');
+

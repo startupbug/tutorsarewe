@@ -16,6 +16,7 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
     public function edit_dashboard(){
+        
     	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
 
     	return view('dashboard.editprofile')->with($data);
@@ -25,6 +26,16 @@ class ProfileController extends Controller
     public function edit_profile(Request $request){
 
     	/* Validation */
+        $this->validate($request, [
+            'first_name' => 'required|string|max:255',
+            'last_name'=> 'required|string|max:255',
+            'bio'=> 'string|max:150|min:50',
+            'address'=> 'string|max:255',
+            'zipcode'=> 'alpha_num|max:10',
+            'countryCode'=> 'required|numeric|max:255',
+            'phonenum1'=> 'required|numeric',
+            'tution_per_hour' => 'numeric',
+        ]); 
 
     	try{
 	    	//Update User
@@ -126,5 +137,9 @@ class ProfileController extends Controller
             print_r($e);
         }
 
+    }
+    public function my_balance()
+    {
+      return view('dashboard.balance');
     }
 }

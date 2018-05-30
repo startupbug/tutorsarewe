@@ -178,10 +178,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
 
-       Spatie\GoogleCalendar\GoogleCalendarServiceProvider::class,
+        Spatie\GoogleCalendar\GoogleCalendarServiceProvider::class,
 
-        Spatie\Analytics\AnalyticsServiceProvider::class,
-        Spatie\GoogleCalendar\GoogleCalendarServiceProvider::class,        
+        Spatie\Analytics\AnalyticsServiceProvider::class,        
     ],
 
     /*

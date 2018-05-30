@@ -7,12 +7,11 @@
          <div class="col-md-6 login-tutor">
             <h3 class="login_content">Log In</h3>
             <p class="f_account">Don’t have an account? <span><a href="{{route('signup')}}">Sign up for free</a></span></p>
+            @foreach($errors->all() as $erroring)
+                  <li>{{$erroring}}  </li>
+                  @endforeach
             @include('partials.error_section')
             <form role="form" method="post" action="{{route('login_post')}}">
-               <!--<div class="form-group">
-                  <label for="exampleInputEmail1" class="f_label">Email</label>
-                  <input type="email" class="form-control f_control" id="exampleInputEmail1" placeholder="email">
-                  </div>-->
                <div class="form-group">
                   <label for="exampleInputEmail1" class="f_label">Email</label>
                   <input type="email" name="email" class="form-control select_f f-control">

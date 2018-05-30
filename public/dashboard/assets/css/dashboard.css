@@ -128,7 +128,7 @@ p.f_text {
 
 .profile_form {
     padding-left: 23px;
-    padding-top: 40px;
+    padding-top: 15px;
 }
 
 input.span3 {
@@ -426,4 +426,17 @@ select.span3 {
 .description_detail{
 
     font-size: 14px !important;
+}
+
+.sub_heading{
+  font-size: 22px;
+  padding-top: 40px;
+  color: #ed7275;
+  font-family: 'ProximaNova-Semibold';
+}
+.padding_down_s{
+  padding-bottom: 45px;
+}
+table.dataTable tbody td{
+      padding: 10px 18px !important;
 }

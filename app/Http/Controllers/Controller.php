@@ -23,7 +23,14 @@ class Controller extends BaseController
     protected function logActivity($activity){
 
     	$activity_log = new Activity_log();
-    	$activity_log->user_id = Auth::user()->id;
+        
+        if(Auth::check()){
+            $activity_log->user_id = Auth::user()->id;
+        }else{
+            $activity_log->user_id = NULL;
+        }
+
+
     	$activity_log->text = $activity;
     	$activity_log->ip_address = $_SERVER['REMOTE_ADDR'];
     	$activity_log->save();

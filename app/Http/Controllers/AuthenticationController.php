@@ -9,12 +9,14 @@ use App\Profile;
 use App\Role;
 use App\Password_reset;
 use DB;
+use App\Events\RegisterEvent;
 use Session;
 use Mail;
 use Carbon;
 use App\Mail\ForgetPasswordMail;
 use App\Mail\EmailVerification;
 use Validator;
+
 class AuthenticationController extends Controller
 {
     public function login_index(){
@@ -22,13 +24,15 @@ class AuthenticationController extends Controller
     }
 
     public function login_post(Request $request){
-
+     
+          $this->validate($request, [
+            'email' => 'required|string|email',
+            'password' => 'required',
+        ]); 
           try{
 
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
-               
                $this->logActivity(Auth::user()->first_name.' Logged in on Tutor');
-
                return redirect()->route('home');
 
             }else{
@@ -59,11 +63,12 @@ class AuthenticationController extends Controller
          /* Validation */
 
          $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'username'=>'required|string|without_spaces|max:255|unique:users|regex:/(^([a-zA-Z]+)(\d+)?$)/u',
+            'first_name' => 'required|string|max:15',
+            'last_name' => 'required|string|max:15',
+            'email' => 'required|string|email|unique:users',
+            'username'=>'required|string|max:15|unique:profiles',
             'password' => 'required|string|min:6|confirmed',
-            'phone_no' => 'required|regex:/(01)[0-9]{9}/',
+            'phonenum1' => 'required|numeric',
         ]); 
 
         //Inserting user
@@ -79,7 +84,7 @@ class AuthenticationController extends Controller
 
         //if(isset(123))
       //  {
-            try{
+           // try{
             $user = new User();
 
             //Saving users data on user table
@@ -105,10 +110,10 @@ class AuthenticationController extends Controller
             Mail::to($user->email)->send($email);
             DB::commit();
             Session::flash('message', 'We have sent you a verification email!');
-            // return $user;
+
                 // Saving Profle info of user.
                 $profile = new Profile();
-                $profile->username = $request->input('user_name');
+                $profile->username = $request->input('username');
                 $profile->address = $request->input('address');
                 $profile->zipcode = $request->input('zipcode');                        
                 $profile->state = $request->input('state');
@@ -117,11 +122,19 @@ class AuthenticationController extends Controller
 
                 if($request->input('role_id') == 3){
                     //He is a Teacher
+                    $this->logActivity('New Teacher '.$request->input('first_name').' Signedup on Tutorareus');
+
                     $profile->hv_teac = $request->input('hv_teac');
-                    $profile->teac_exp = $request->input('teac_exp');                
+                    $profile->teac_exp = $request->input('teac_exp');
+
+                }else{
+                    $this->logActivity('New Student '.$request->input('first_name').' Signedup on Tutorareus');
                 }
 
                 $profile->save();
+
+                /*Calling Register user Event */
+                event(new RegisterEvent());
 
                 /*Attaching User Role to the New User */ 
                 $user_role = Role::find($request->input('role_id'));
@@ -133,13 +146,13 @@ class AuthenticationController extends Controller
                  $this->set_session('User Couldnot be Registered.', false);
             }
             
-            return redirect()->route('signup');
+         //   return redirect()->route('signup');
 
-        }
-            catch(\Exception $e){
-                $this->set_session('User Couldnot be Registered.'.$e->getMessage(), false);
-                return redirect()->route('signup');                
-            }
+       // }
+            // catch(\Exception $e){
+            //     $this->set_session('User Couldnot be Registered.'.$e->getMessage(), false);
+            //     return redirect()->route('signup');                
+            // }
         //}
 
         
@@ -191,12 +204,13 @@ class AuthenticationController extends Controller
             Mail::to($user->email)->send($email);
             
             DB::commit();
-            Session::flash('query','your query has been emailed');
+            $this->set_session('your request has been emailed', true);
             return redirect()->back();   
         }
         else{
-                dd('error');
-        }
+                $this->set_session('this email does not exist', false);
+                return redirect()->back();
+        }   
          
     }
 
@@ -213,11 +227,30 @@ class AuthenticationController extends Controller
     {
         // dd($request->input('new_pass'));
                     // bcrypt($data['password'])
-        $new_pass = bcrypt($request->input('new_pass'));
-        DB::table('users')
-            ->where('email', $email)
-            ->update(['password' => $new_pass]);
-            return redirect()->back();
-    }
+     $this->validate($request, [
+            'password' => 'required|string|min:6|confirmed'
+        ]); 
+   
+      
+           
+            $new_pass = bcrypt($request->input('password'));
+         $update_pass =  DB::table('users')
+                ->where('email', $email)
+                ->update(['password' => $new_pass]);
+                if($update_pass)
+                {
+                    //deleting token row
+                    $del_token = DB::table('password_resets')
+                ->where('email', $email)
+                ->delete();
 
+                    $this->set_session('Your password is updated', true);
+                }
+                else{
+                    $this->set_session('Your password is not updated', false);   
+                }
+
+                return redirect()->route('signin');
+
+    }
 }

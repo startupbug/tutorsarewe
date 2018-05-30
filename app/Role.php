@@ -7,6 +7,9 @@ use Zizaco\Entrust\EntrustRole;
 class Role extends EntrustRole
 {
 
+	protected $table = 'roles';
+
+
 	public function getAllRoles(){
 		return $this->all();
 	}
@@ -15,4 +18,5 @@ class Role extends EntrustRole
                     ->first();
     }
     	
+
 }
