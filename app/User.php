@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','email_token','verified'
     ];
 
     /**
@@ -33,7 +33,36 @@ class User extends Authenticatable
       return $this->hasOne('App\Profile');
     }
 
+
     public function transactions(){
         return $this->hasMany(Transaction::class);
     }
+
+    public function getAllUsers(){
+        
+        return $this->leftjoin('role_user', 'role_user.user_id', '=', 'users.id')
+                     ->leftjoin('roles', 'roles.id', '=', 'role_user.role_id')
+                     ->leftjoin('statuses', 'statuses.id', '=', 'users.status_id')
+                     ->select('users.id', 'users.first_name', 'users.email', 'roles.display_name', 'statuses.status')
+                     ->get();
+    }
+
+    public function getSingleUsers($id){
+        return $this->join('role_user', 'role_user.user_id', '=', 'users.id')
+                     ->join('roles', 'roles.id', '=', 'role_user.role_id')
+                     ->leftjoin('statuses', 'statuses.id', '=', 'users.status_id')
+                     ->select('users.id', 'users.status_id', 'roles.id as role_id', 'users.first_name', 'users.email', 'roles.display_name', 'users.password', 'statuses.status')
+                     ->where('users.id', $id)
+                     ->first();
+    }
+
+    public function getSingleUserDetail($id){
+        return $this->join('role_user', 'role_user.user_id', '=', 'users.id')
+                     ->join('roles', 'roles.id', '=', 'role_user.role_id')
+                     ->leftjoin('statuses', 'statuses.id', '=', 'users.status_id')
+                     ->select('users.id', 'roles.id as role_id', 'users.first_name', 'users.email', 'roles.display_name', 'users.password', 'statuses.status')
+                     ->where('users.id', $id)
+                     ->first();        
+    }    
+
 }

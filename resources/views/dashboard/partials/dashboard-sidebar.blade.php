@@ -1,4 +1,4 @@
- <div class="col-md-3 border_left f_padding">
+ <div class="col-md-3 border_left f_padding bg_color_white">
 
 
         <div class="profile-pic">
@@ -38,6 +38,9 @@
             <a href="#"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>My Tutor</a>
           </div>
           <div class="s_nav_menu">
+            <a href="{{route('subjects')}}"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>Subjects</a>
+          </div>
+          <div class="s_nav_menu">
             <a href="#"><i class="fa fa-user-plus f_icon_menu"></i>Invite Friends</a>
           </div>
           <div class="s_nav_menu">
@@ -52,7 +55,7 @@
           <div class="s_nav_menu">
             <a><i class="fa fa-cog f_icon_menu"></i>Settings <span class="glyphicon glyphicon-chevron-down"></span></a>
             <div class="s_sub_menu hidden">
-              <a href="{{route('change_pass_index')}}"><i class="fa fa-cog f_icon_menu"></i>Change Password</a>
+              <a href="{{route('change_pass_index',Auth::user()->id)}}"><i class="fa fa-cog f_icon_menu"></i>Change Password</a>
               <!-- <a href="#"><i class="fa fa-cog f_icon_menu"></i>Settings</a>
               <a href="#"><i class="fa fa-cog f_icon_menu"></i>Settings</a> -->
             </div>
