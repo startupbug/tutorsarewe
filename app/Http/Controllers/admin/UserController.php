@@ -143,7 +143,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
        try{
-                   dd($request->input());
 
             $this->logActivity('User Edited');        
             
