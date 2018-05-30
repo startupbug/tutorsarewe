@@ -50,7 +50,7 @@
  <div class="form-group profile_form">
     <label>Rates / Hour <span>*</span></label>
     <br>
-    <input type="text" name="tution_per_hour" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}" class="span3" required>
+    <input type="text" name="tution_per_hour" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}" class="span3" >
 </div>
 
  <div class="form-group profile_form">
@@ -59,6 +59,21 @@
     <textarea name="bio" class="span3 form-control" >{{ isset($user->bio) ? $user->bio : '' }}</textarea>
     <!-- <input type="text" name="bio" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}" class="span3"> -->
 </div>
+
+  <div class="form-group profile_form">
+    <label>Age <span>*</span></label>
+    <br>
+    <input type="number" name="age" id="exampleInputage" value="{{$user->age}}" class="span3">
+  </div>
+
+ <div class="form-group profile_form">
+  <label>Gender</label>
+
+       <select class="form-control select_f span3" id="gender" name="gender">
+                   <option value="male" @if($user->gender=="male") selected @endif>Male</option>
+                   <option value="female" @if($user->gender=="female") selected @endif>female</option>
+       </select>
+  </div>
 
 
  <div class="form-group profile_form">
@@ -107,13 +122,13 @@
  <div class="form-group account_f_form">
  	<label>State</label>
 
-                  <select class="form-control select_f" id="state" name="state">
-                     <option>Select</option>
-                     <option value="NewYork" {{ ($user->state == 'NewYork') ? 'selected' : '' }}>New York</option>
-                     <option value="Newsouthwales" {{ ($user->country == 'Newsouthwales') ? 'selected' : '' }}>New south wales</option>
-                     <option value="Texas" {{ ($user->state == 'Texas') ? 'selected' : '' }}>Texas</option>
-                     <option value="South" {{ ($user->state == 'South') ? 'selected' : '' }}>South</option>
-                  </select>
+      <select class="form-control select_f" id="state" name="state">
+         <option>Select</option>
+         <option value="NewYork" {{ ($user->state == 'NewYork') ? 'selected' : '' }}>New York</option>
+         <option value="Newsouthwales" {{ ($user->country == 'Newsouthwales') ? 'selected' : '' }}>New south wales</option>
+         <option value="Texas" {{ ($user->state == 'Texas') ? 'selected' : '' }}>Texas</option>
+         <option value="South" {{ ($user->state == 'South') ? 'selected' : '' }}>South</option>
+      </select>
 
 
     				</div>

@@ -25,7 +25,7 @@ class ProfileController extends Controller
     // edit profile post
     public function edit_profile(Request $request){
 
-    	/* Validation */
+    	/* Validation 
         $this->validate($request, [
             'first_name' => 'required|string|max:255',
             'last_name'=> 'required|string|max:255',
@@ -35,7 +35,9 @@ class ProfileController extends Controller
             'countryCode'=> 'required|numeric|max:255',
             'phonenum1'=> 'required|numeric',
             'tution_per_hour' => 'numeric',
-        ]); 
+            'age' => 'numeric',
+
+        ]); */
 
     	try{
 	    	//Update User
@@ -44,12 +46,15 @@ class ProfileController extends Controller
 	    	$user->first_name = $request->input('first_name');
 	    	$user->last_name = $request->input('last_name');
 	    	$user->phone_no = $request->input('countryCode').$request->input('phonenum1');
-	    	//Update Profile
+	    	
+            //Update Profile
 	    	$profile_array = [ 'tution_per_hour' => $request->input('tution_per_hour'),
 	    		'bio' => $request->input('bio'),
 	    		'address' => $request->input('address'),
 	    		'zipcode' => $request->input('zipcode'),
 	    		'state' => $request->input('state'),
+                'age' => $request->input('age'), 
+                'gender' => $request->input('gender'),
 	    	];
 
            if(Input::hasFile('profile_pic')){

@@ -56,14 +56,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'first_name' => 'required|string|max:15',
             'last_name' => 'required|string|max:15',
             'email' => 'required|string|email|unique:users',
             'username'=>'required|string|max:15|unique:profiles',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
             'gender' => 'required|string',
             'age' => 'required|numeric',
+            'phonenum1' => 'required|numeric',
         ]);
 
        try{ 
@@ -75,6 +77,7 @@ class UserController extends Controller
             $user->last_name = $request->input('last_name');
             $user->phone_no = $request->input('phone_no');
             $user->email = $request->input('email');
+
             $user->password = bcrypt($request->input('password'));
 
             $user->status_id = $request->input('status_id');
@@ -124,10 +127,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-              
+            
         $data['roles'] = Role::all();
         $data['statuses'] = Status::all();
         $data['user'] = $this->user->getSingleUsers($id);
+        
         return view('admin.user.edit')->with($data);
     }
 
@@ -151,7 +155,11 @@ class UserController extends Controller
             $user->phone_no = $request->input('phone_no');
 
             $user->email = $request->input('email');
-            $user->password = bcrypt($request->input('password'));
+
+            if(!is_null($request->input('password')) ){
+                $user->password = bcrypt($request->input('password'));
+            }
+            
             $user->status_id = $request->input('status_id');
             $user->verified = $request->input('verified');
 
