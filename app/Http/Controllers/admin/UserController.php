@@ -11,6 +11,7 @@ use App\Status;
 use App\Notifications\userNotify;
 use App\Events\UserRegistration;
 use App\Profile;
+use Auth;
 
 class UserController extends Controller
 {
@@ -55,7 +56,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->input());
+
         $this->validate($request, [
             'first_name' => 'required|string|max:15',
             'last_name' => 'required|string|max:15',
@@ -68,14 +69,15 @@ class UserController extends Controller
         ]);
 
        try{ 
-            $this->logActivity('User Added');
-            // dd($request->input());
+            $this->logActivity('User Added by '. Auth::user()->first_name);
+
             //Creating new User
             $user = $this->user;
             $user->first_name = $request->input('first_name');
             $user->last_name = $request->input('last_name');
             $user->phone_no = $request->input('phone_no');
             $user->email = $request->input('email');
+
             $user->password = bcrypt($request->input('password'));
 
             $user->status_id = $request->input('status_id');
@@ -143,6 +145,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
        try{
+                   dd($request->input());
 
             $this->logActivity('User Edited');        
             
@@ -153,7 +156,11 @@ class UserController extends Controller
             $user->phone_no = $request->input('phone_no');
 
             $user->email = $request->input('email');
-            $user->password = bcrypt($request->input('password'));
+
+            if(!is_null($request->input('password')) ){
+                $user->password = bcrypt($request->input('password'));
+            }
+            
             $user->status_id = $request->input('status_id');
             $user->verified = $request->input('verified');
 

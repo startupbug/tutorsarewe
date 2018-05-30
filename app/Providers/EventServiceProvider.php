@@ -17,6 +17,10 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\CreateProfile',
             'App\Listeners\CreateWallet',
         ],
+
+        'App\Events\RegisterEvent' => [
+            'App\Listeners\RegisterEventListener',
+        ]
     ];
 
     /**

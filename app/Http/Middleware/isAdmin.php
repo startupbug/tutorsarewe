@@ -15,13 +15,18 @@ class isAdmin
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {   //dd();
-        //abort(404);
-        if(!Auth::user()->role_id == 1){
-            return redirect()->route('unauthorized');
+    {   
+        if(Auth::check()){
+            if(!Auth::user()->role_id == 1){
+                return redirect()->route('unauthorized');
+            }else{
+                return $next($request);
+            }
         }else{
-            return $next($request);
+            return redirect()->route('adminlogin_index');
         }
+
+
 
 
     }

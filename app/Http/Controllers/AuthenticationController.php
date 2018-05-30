@@ -9,12 +9,14 @@ use App\Profile;
 use App\Role;
 use App\Password_reset;
 use DB;
+use App\Events\RegisterEvent;
 use Session;
 use Mail;
 use Carbon;
 use App\Mail\ForgetPasswordMail;
 use App\Mail\EmailVerification;
 use Validator;
+
 class AuthenticationController extends Controller
 {
     public function login_index(){
@@ -22,10 +24,10 @@ class AuthenticationController extends Controller
     }
 
     public function login_post(Request $request){
-        // dd($request->input());
+     
           $this->validate($request, [
-            'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:6|',
+            'email' => 'required|string|email',
+            'password' => 'required',
         ]); 
           try{
 
@@ -82,7 +84,7 @@ class AuthenticationController extends Controller
 
         //if(isset(123))
       //  {
-            try{
+           // try{
             $user = new User();
 
             //Saving users data on user table
@@ -108,7 +110,7 @@ class AuthenticationController extends Controller
             Mail::to($user->email)->send($email);
             DB::commit();
             Session::flash('message', 'We have sent you a verification email!');
-            // return $user;
+
                 // Saving Profle info of user.
                 $profile = new Profile();
                 $profile->username = $request->input('username');
@@ -120,11 +122,19 @@ class AuthenticationController extends Controller
 
                 if($request->input('role_id') == 3){
                     //He is a Teacher
+                    $this->logActivity('New Teacher '.$request->input('first_name').' Signedup on Tutorareus');
+
                     $profile->hv_teac = $request->input('hv_teac');
-                    $profile->teac_exp = $request->input('teac_exp');                
+                    $profile->teac_exp = $request->input('teac_exp');
+
+                }else{
+                    $this->logActivity('New Student '.$request->input('first_name').' Signedup on Tutorareus');
                 }
 
                 $profile->save();
+
+                /*Calling Register user Event */
+                event(new RegisterEvent());
 
                 /*Attaching User Role to the New User */ 
                 $user_role = Role::find($request->input('role_id'));
@@ -136,13 +146,13 @@ class AuthenticationController extends Controller
                  $this->set_session('User Couldnot be Registered.', false);
             }
             
-            return redirect()->route('signup');
+         //   return redirect()->route('signup');
 
-        }
-            catch(\Exception $e){
-                $this->set_session('User Couldnot be Registered.'.$e->getMessage(), false);
-                return redirect()->route('signup');                
-            }
+       // }
+            // catch(\Exception $e){
+            //     $this->set_session('User Couldnot be Registered.'.$e->getMessage(), false);
+            //     return redirect()->route('signup');                
+            // }
         //}
 
         
