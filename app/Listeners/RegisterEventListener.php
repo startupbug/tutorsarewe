@@ -26,6 +26,6 @@ class RegisterEventListener
      */
     public function handle(RegisterEvent $event)
     {
-        dd('register event');
+        //check
     }
 }
