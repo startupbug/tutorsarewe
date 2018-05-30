@@ -25,7 +25,13 @@
          @elseif( Auth::user()->role_id == 3) Teacher @endif )
 
          </h3>
-      	<p class="user_f">User Login: 25/04/2018 05:53:40 <br>Balance $: 0</p>
+      	<p class="user_f">
+          User Login: 25/04/2018 05:53:40
+        </p>
+        <p class="user_f">
+          Balance $:
+          <a href="{{ route('my_balance') }}">0</a>
+        </p>
 
       	<div class="vertical-menu">
           <div class="s_nav_menu">
