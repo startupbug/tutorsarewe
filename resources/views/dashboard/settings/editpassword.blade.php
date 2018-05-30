@@ -3,7 +3,9 @@
 <section class="profile">
    <div class="container-fluid f_padding">
       @include('dashboard.partials.dashboard-sidebar')
+
       <div class="col-md-9 f_padding bg_color">
+        @include('partials.error_section')
          <div class="edit_profile">
             <h3 class="f_profile_content text-center">Change Password</h3>
          </div>

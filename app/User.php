@@ -56,9 +56,10 @@ class User extends Authenticatable
 
     public function getSingleUsers($id){
         return $this->join('role_user', 'role_user.user_id', '=', 'users.id')
+                    ->join('profiles','users.id','=','profiles.user_id')
                      ->join('roles', 'roles.id', '=', 'role_user.role_id')
                      ->leftjoin('statuses', 'statuses.id', '=', 'users.status_id')
-                     ->select('users.id', 'users.status_id', 'roles.id as role_id', 'users.first_name', 'users.last_name', 'users.phone_no', 'users.email', 'users.verified', 'roles.display_name', 'users.password', 'statuses.status')
+                     ->select('users.id', 'users.status_id', 'roles.id as role_id', 'users.first_name', 'users.last_name', 'users.phone_no', 'users.email', 'users.verified', 'roles.display_name', 'users.password', 'statuses.status','profiles.username','profiles.bio','profiles.tution_per_hour','profiles.gender','profiles.age')
                      ->where('users.id', $id)
                      ->first();
     }

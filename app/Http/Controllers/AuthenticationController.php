@@ -234,7 +234,7 @@ class AuthenticationController extends Controller
       
            
             $new_pass = bcrypt($request->input('password'));
-         $update_pass =  DB::table('users')
+            $update_pass =  DB::table('users')
                 ->where('email', $email)
                 ->update(['password' => $new_pass]);
                 if($update_pass)

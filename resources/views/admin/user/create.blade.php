@@ -10,7 +10,10 @@
         <small>- Add User</small>
       </h1>
     </section>
-
+    @include('partials.error_section')
+    @foreach($errors->all() as $erroring)
+                  <li>{{$erroring}}  </li>
+                  @endforeach
     <!-- Main content -->
         <section class="content">
      <div class="row">
@@ -42,7 +45,7 @@
 
                 <div class="form-group">
                   <label for="">Phone no</label>
-                  <input type="text" class="form-control" name="phone_no" id="" placeholder="Enter phone no">
+                  <input type="text" class="form-control" name="phonenum1" id="" placeholder="Enter phone no">
                 </div>
 
                 <div class="form-group">
@@ -64,7 +67,6 @@
                   <label for="Bio">Bio <span>*</span></label>
                   <br>
                   <textarea name="bio" class="span3 form-control" ></textarea>
-                  <!-- <input type="text" name="bio" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}" class="span3"> -->
                 </div>
                 <div class="form-group profile_form">
                   <label for="exampleInputGender">Gender<span>*</span></label>
