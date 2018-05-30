@@ -25,19 +25,21 @@ class AuthenticationController extends Controller
 
           try{
 
-                if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
-                   
-                   return redirect()->route('home');
+            if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
+               
+               $this->logActivity(Auth::user()->first_name.' Logged in on Tutor');
 
-                }else{
-                   $this->set_session('invalid username or password', false);
-                   return redirect()->route('signin');
-                }
+               return redirect()->route('home');
+
+            }else{
+               $this->set_session('invalid username or password', false);
+               return redirect()->route('signin');
+            }
 
           }catch(\Exception $e){
 
-               $this->set_session('Something went wrong. Please Try again', false);
-               return redirect()->route('signin');
+           $this->set_session('Something went wrong. Please Try again', false);
+           return redirect()->route('signin');
           }   
     }
 

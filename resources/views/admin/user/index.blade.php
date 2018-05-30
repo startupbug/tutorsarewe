@@ -31,6 +31,7 @@
                       <th>Email</th>
                       <th>Role</th>
                       <th>Status</th>
+                      <th>Account</th>
                       <th>Action</th>                    
                     </tr>
                   </thead>
@@ -41,6 +42,7 @@
                         <td>{{$user->email}}</td>
                         <td>{{$user->display_name}}</td>
                         <td>{{$user->status}}</td>
+                        <td>@if($user->verified == 1) Verified @elseif ($user->verified == 0) unVerified @endif</td>
                         <td><a href="{{route('users.edit', ['id' => $user->id])}}"><button type="button" class="btn btn-info">Edit</button></a>
                         <a href="{{route('users.show', ['id' => $user->id])}}"><button type="button" class="btn btn-info f_view">View</button></a>
                         <form id="deleteUser" action="{{route('users.destroy', ['id' => $user->id])}}" method="post" class="f_form">
