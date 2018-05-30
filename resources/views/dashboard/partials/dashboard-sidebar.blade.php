@@ -39,7 +39,7 @@
           <div class="s_nav_menu">
             <a href="#"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>My Tutor</a>
           </div>
-          @if(Auth::user()->role_id==2)
+          @if(Auth::user()->role_id==3)
           <div class="s_nav_menu">
             <a href="{{route('subjects')}}"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>Subjects</a>
           </div>
