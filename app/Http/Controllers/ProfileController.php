@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Profile;
 use App\User;
+use App\Transaction;
 use Auth;
 use Illuminate\Support\Facades\Input;
 
@@ -91,5 +92,20 @@ class ProfileController extends Controller
         $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
         $file->move( $path , $filename);
         return $filename;
+    }
+
+
+    public function my_transactions(){
+        try{
+
+            $data['transactions'] = Transaction::where('user_id', Auth::user()->id)->get();
+
+            dd($data);
+            return view('dashboard.transactions.my_transactions')->compact($data);
+        }
+        catch(Exception $e){
+            $this->set_session('Oops! something went wrong', false);
+            return redirect()->route('dashboard_index');
+        }
     }
 }

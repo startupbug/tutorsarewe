@@ -87,9 +87,10 @@ Route::post('imageUpload',['as'=>'imageUpload','uses'=>'ProfileController@imageU
 
 
 
-Route::get('makePayment', 'Paypal\StudentPayment@DepositWallet');
+Route::get('deposit', 'Paypal\StudentPayment@DepositWallet');
 Route::get('getDone', 'Paypal\StudentPayment@getDone');
 Route::get('getCancel', 'Paypal\StudentPayment@getCancel');
+Route::get('my_transactions', 'ProfileController@my_transactions')->name('my_transactions');
 
 /* Admin Panel Routes */
 Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {

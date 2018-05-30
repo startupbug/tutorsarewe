@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Paypal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Transaction as TransactionModel;
+use Auth;
+
+
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Item;
@@ -19,6 +23,7 @@ use PayPal\Auth\ResultPrinter;
 use PayPal\Common\PayPalModel;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
+
 
 
 class StudentPayment extends Controller
@@ -56,7 +61,7 @@ class StudentPayment extends Controller
 
 		$amount = new Amount();
 		$amount->setCurrency("USD")
-		    ->setTotal(12118.55);
+		    ->setTotal(20);
 
 		$transaction = new Transaction();
 		$transaction->setAmount($amount)
@@ -99,14 +104,14 @@ class StudentPayment extends Controller
 
 	    $payment = Payment::get($paymentId, $this->apiContext);
 
-	    Transaction::create([
+	    TransactionModel::create([
 	    	'user_id' => Auth::user()->id,
-	    	'description' => json_encode($result),
+	    	'description' => $result,
 	    	'type' => 'deposit',
 	    ]);
     	
 
-        return $payment;
+        return $result;
 
     }
 
