@@ -52,12 +52,12 @@ class PermissionController extends Controller
             $this->logActivity('Permission added');
 
             //Checking for Permission
-            if( !(Auth::user()->can('can-add-permission') || Auth::user()->can('can-all-permission') 
-                || Auth::user()->can('access-all') ) ){
+            // if( !(Auth::user()->can('can-add-permission') || Auth::user()->can('can-all-permission') 
+            //     || Auth::user()->can('access-all') ) ){
 
-                $this->set_session('You dont have Permission to perform this Action', false);
-                return redirect()->route('permissions.create'); 
-            }
+            //     $this->set_session('You dont have Permission to perform this Action', false);
+            //     return redirect()->route('permissions.create'); 
+            // }
 
             //Creating new Permission
             $permission = $this->permission;
@@ -125,11 +125,11 @@ class PermissionController extends Controller
             $this->logActivity('Permission updated');
 
             //Checking for Permission
-            if( !(Auth::user()->can('can-edit-permission') || Auth::user()->can('can-all-permission') || Auth::user()->can('access-all') )){
+            // if( !(Auth::user()->can('can-edit-permission') || Auth::user()->can('can-all-permission') || Auth::user()->can('access-all') )){
 
-                $this->set_session('You dont have Permission to perform this Action', false);
-                return redirect()->route('permissions.edit', ['id' => $id]); 
-            }
+            //     $this->set_session('You dont have Permission to perform this Action', false);
+            //     return redirect()->route('permissions.edit', ['id' => $id]); 
+            // }
 
             //Creating new User
             $permission = $this->permission::find($id);
@@ -165,11 +165,11 @@ class PermissionController extends Controller
             $this->logActivity('Permission deleted');
 
             //Checking for Permission
-            if( !(Auth::user()->can('can-del-permission') || Auth::user()->can('can-all-permission') || Auth::user()->can('access-all') )){
+            // if( !(Auth::user()->can('can-del-permission') || Auth::user()->can('can-all-permission') || Auth::user()->can('access-all') )){
                 
-                $this->set_session('You dont have Permission to perform this Action', false);
-                return redirect()->route('admin-index'); 
-            }
+            //     $this->set_session('You dont have Permission to perform this Action', false);
+            //     return redirect()->route('admin-index'); 
+            // }
 
             //deleting permission role assignment 
             $permission_role_delete = DB::table('permission_role')->where('permission_id', $id);
@@ -198,11 +198,11 @@ class PermissionController extends Controller
     public function assign_permission(){
 
         //Checking for Permission
-        if( !(Auth::user()->can('can-assign-permission') || Auth::user()->can('can-all-permission') || Auth::user()->can('access-all') )){
+        // if( !(Auth::user()->can('can-assign-permission') || Auth::user()->can('can-all-permission') || Auth::user()->can('access-all') )){
             
-            $this->set_session('You dont have Permission to perform this Action', false);
-            return redirect()->route('admin-index'); 
-        }
+        //     $this->set_session('You dont have Permission to perform this Action', false);
+        //     return redirect()->route('admin-index'); 
+        // }
 
         return view('admin.permission.assignment');
     }
@@ -213,10 +213,10 @@ class PermissionController extends Controller
         $this->logActivity('Permission assigned');
 
         //Checking for Permission
-        if( !(Auth::user()->can('can-assign-permission') || Auth::user()->can('can-all-permission') || Auth::user()->can('access-all') )){
+        // if( !(Auth::user()->can('can-assign-permission') || Auth::user()->can('can-all-permission') || Auth::user()->can('access-all') )){
             
-             return \Response::json(array('status' => 204, 'msg' => 'You dont have Permission to Perform this Action'));
-        }
+        //      return \Response::json(array('status' => 204, 'msg' => 'You dont have Permission to Perform this Action'));
+        // }
 
         //Check if Permission role already exists
         $exists = DB::table('permission_role')->where('permission_id', $request->input('permission_id'))
@@ -245,10 +245,10 @@ class PermissionController extends Controller
         $this->logActivity('Permission deleted');
 
         //Checking for Permission
-        if( !(Auth::user()->can('can-delassign-permission') || Auth::user()->can('can-all-permission') || Auth::user()->can('access-all') )){
+        // if( !(Auth::user()->can('can-delassign-permission') || Auth::user()->can('can-all-permission') || Auth::user()->can('access-all') )){
             
-             return \Response::json(array('status' => 204, 'msg' => 'You dont have Permission to Perform this Action'));
-        }
+        //      return \Response::json(array('status' => 204, 'msg' => 'You dont have Permission to Perform this Action'));
+        // }
 
         $delete_permission_role = DB::table('permission_role')->where('permission_id', $request->input('permission_id'))
                     ->where('role_id', $request->input('role_id'))

@@ -19,9 +19,9 @@ class ProfileController extends Controller
 
     // edit profile post
     public function edit_profile(Request $request){
-    	
+
     	/* Validation */
-    	
+
     	try{
 	    	//Update User
 	    	$user_id = $request->input('user_id');
@@ -51,19 +51,45 @@ class ProfileController extends Controller
 
     		if($user->save() && $profile){
 	            $this->set_session('Profile Successfully Edited.', true);
-	           
+
     		}else{
-	            $this->set_session('Profile couldnot be Edited.', false); 
+	            $this->set_session('Profile couldnot be Edited.', false);
     		}
 
-    		 return redirect()->route('edit_dashboard'); 
+    		 return redirect()->route('edit_dashboard');
 
         }catch(\Exception $e){
             $this->set_session('Profile couldnot be Edited.'.$e->getMessage(), false);
-            return redirect()->route('edit_dashboard');                
+            return redirect()->route('edit_dashboard');
         }
 
     	//$user->first_name = $request->input('first_name');
 
+    }
+
+
+    public function ImageUpload(Request $request){
+        $img_name = '';
+        if(Input::file('profile_pic')){
+          $img_name = $this->UploadImage('profile_pic', Input::file('profile_pic'));
+          Profile::where('user_id' ,'=', $request->user_id)->update([
+          'profile_pic' => $img_name
+          ]);
+          $path = asset('public/dashboard/assets/images/profile/').'/'.$img_name;
+          return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]);
+          $this->set_session('Image Uploaded successfully', true);
+        }else{
+            $this->set_session('Image is Not Uploaded. Please Try Again', false);
+        return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
+        }
+     }
+
+     public function UploadImage($type, $file){
+        if( $type == 'profile_pic'){
+        $path = 'public/dashboard/assets/images/profile/';
+        }
+        $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
+        $file->move( $path , $filename);
+        return $filename;
     }
 }

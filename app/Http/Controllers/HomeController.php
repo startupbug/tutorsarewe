@@ -40,8 +40,14 @@ class HomeController extends Controller
     {   
         return view('authentication.forget_password');
     }
+
     //aboutus page
     public function aboutus(){
     	return view('home.aboutus');
+    }
+
+    //401
+    public function unauthorized(){
+        return view('401');
     }                    
 }

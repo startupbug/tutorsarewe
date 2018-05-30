@@ -34,7 +34,7 @@
                   <tbody>
                     @foreach($activity_logs as $activity_log)
                       <tr>
-                        <td>{{$activity_log->name}}</td>
+                        <td>{{$activity_log->first_name}}</td>
                         <td>{{$activity_log->text}}</td>
                         <td>{{$activity_log->ip_address}}</td>
                         <td>{{ date("D, d M-y H:i:s",strtotime($activity_log->created_at)) }}</td>

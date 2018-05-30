@@ -62,11 +62,11 @@
                           </select>
                          </td>
                         @endif
-                        <td><a href="{{route('roles.edit', ['id' => $role->id])}}"><button type="button" class="btn btn-info">Edit</button></a>
+                        <td class="action-list"> <a href="{{route('roles.edit', ['id' => $role->id])}}"><button type="button" class="btn btn-info">Edit</button></a>
                           <form id="deleteUser" action="{{route('roles.destroy', ['id' => $role->id])}}" method="post">
                             {{ method_field('DELETE') }}
                             <input type="hidden" name="_token" value="{{Session::token()}}">
-                            <button type="submit" class="btn btn-danger f_role">Delete</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
                           </form>
                         </td>
                       </tr>                

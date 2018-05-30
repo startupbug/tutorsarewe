@@ -72,6 +72,7 @@ class AuthenticationController extends Controller
             $user->password = bcrypt( $request->input('password') );
             $user->phone_no = $request->input('countryCode').$request->input('phonenum1');
             $user->role_id = $request->input('role_id'); 
+            $user->status_id = 1; 
 
             if($user->save()){
 

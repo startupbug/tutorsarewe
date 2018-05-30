@@ -42,10 +42,10 @@
 
                           <a href="{{route('pages.show', ['id' => $page->id])}}"><button type="button" class="btn btn-info">Show</button></a>  
                                                   
-                          <form id="deleteUser" action="{{route('pages.destroy', ['id' => $page->id])}}" method="post">
+                          <form id="deleteUser" action="{{route('pages.destroy', ['id' => $page->id])}}" method="post" class="f_form">
                             {{ method_field('DELETE') }}
                             <input type="hidden" name="_token" value="{{Session::token()}}">
-                            <button type="submit" class="btn btn-danger f_role">Delete</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
                           </form>
 
                         </td>

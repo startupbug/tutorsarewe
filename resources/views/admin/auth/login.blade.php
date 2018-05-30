@@ -102,21 +102,20 @@
          <div class="card">
             <div class="card-body login-card-body">
                <p class="login-box-msg">Sign in to start your session</p>
-               <form id="signin_form" action="{{route('login_post')}}" method="post">
+               <form id="signin_form" action="" method="post">
                   {{csrf_field()}}
 
                   <div class="imgcontainer">
                      <img src="{{ asset('public/admin/dist/img/download.jpg') }}" alt="Avatar" class="avatar">
                   </div>
                   <div class="container">
-
                     @include('admin.partials.error_section') 
 
                      <label for="uname"><b>Email</b></label>
                      <input type="text" placeholder="Enter Username" name="email" required>
                      <label for="psw"><b>Password</b></label>
                      <input type="password" placeholder="Enter Password" name="password" required>
-                            <input type="hidden" name="_token" value="{{Session::token()}}">                     
+                     <input type="hidden" name="_token" value="{{Session::token()}}">                     
                      <button type="submit">Login</button>
                      <!-- <label>
                         <input type="checkbox" checked="checked" name="remember"> Remember me

@@ -40,31 +40,22 @@
                         <td>{{$permission->display_name}}</td>
                         <td>{{$permission->description}}</td>
                         <td class="action-list">
-                         @if(Auth::user()->can(['can-edit-permission', 'can-all-permission', 'access-all']) )
+                       
                            <a href="{{route('permissions.edit', ['id' => $permission->id])}}"><button type="button" class="btn btn-info">Edit</button></a>                        
-                         @endif 
+                         
 
-                         @if(Auth::user()->can(['can-del-permission', 'can-all-permission', 'access-all']))
+                        
                          
                             <form id="deleteUser" action="{{route('permissions.destroy', ['id' => $permission->id])}}" method="post">
                               {{ method_field('DELETE') }}
                               <input type="hidden" name="_token" value="{{Session::token()}}">
-                              <button type="submit" class="btn btn-danger btn_per">Delete</button>
+                              <button type="submit" class="btn btn-danger f_view">Delete</button>
                             </form>
-                          @endif
+                        
                         </td>
                       </tr>                
                     @endforeach              
                   </tbody>
-
-                  <tfoot>
-                    <tr>
-                      <th>Name</th>
-                      <th>Display name</th>
-                      <th>Description</th>
-                      <th>Action</th>                    
-                    </tr>
-                  </tfoot>
 
               </table>
             </div>

@@ -147,16 +147,16 @@
             </ul>
           </li>
           <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
+       <!-- <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
               <span class="label label-warning">10</span>
             </a>
-            <ul class="dropdown-menu">
-              <!--  <notification :unreads="{{Auth::user()->unreadNotifications}}"></notification> -->
+             <ul class="dropdown-menu">
+              <!--  <notification :unreads="{{Auth::user()->unreadNotifications}}"></notification> 
               <li class="header">You have 10 notifications</li>
               <li>
-                <!-- inner menu: contains the actual data -->
+                <!-- inner menu: contains the actual data 
                 <ul class="menu">
                   <li>
                     <a href="#">
@@ -187,8 +187,9 @@
                 </ul>
               </li>
               <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
+            </ul> 
+
+          </li> -->
           <!-- Tasks: style can be found in dropdown.less -->
           <li class="dropdown tasks-menu">
 <!--             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

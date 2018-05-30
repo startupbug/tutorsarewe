@@ -1908,3 +1908,6 @@ span.nav__item-text.active {
     cursor: pointer;
     padding-left: 10%;
 }
+.s_alert{
+  margin-bottom: 0px;
+}

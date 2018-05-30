@@ -37,16 +37,16 @@
                   <tbody>
                     @foreach($users as $user)
                       <tr>
-                        <td>{{$user->name}}</td>
+                        <td>{{$user->first_name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->display_name}}</td>
                         <td>{{$user->status}}</td>
                         <td><a href="{{route('users.edit', ['id' => $user->id])}}"><button type="button" class="btn btn-info">Edit</button></a>
                         <a href="{{route('users.show', ['id' => $user->id])}}"><button type="button" class="btn btn-info f_view">View</button></a>
-                        <form id="deleteUser" action="{{route('users.destroy', ['id' => $user->id])}}" method="post">
+                        <form id="deleteUser" action="{{route('users.destroy', ['id' => $user->id])}}" method="post" class="f_form">
                           {{ method_field('DELETE') }}
                           <input type="hidden" name="_token" value="{{Session::token()}}">
-                          <button type="submit" class="btn btn-danger f_btndel">Delete</button>
+                          <button type="submit" class="btn btn-danger f_view">Delete</button>
                         </form>
 
                         </td>

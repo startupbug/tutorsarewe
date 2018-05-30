@@ -28,7 +28,7 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Name</label>
-                  <input type="text" class="form-control" name="name" id="exampleInputEmail12" placeholder="Enter email" value="{{$user->name}}">
+                  <input type="text" class="form-control" name="name" id="exampleInputEmail12" placeholder="Enter email" value="{{$user->first_name}}">
                 </div>
 
                 <div class="form-group">

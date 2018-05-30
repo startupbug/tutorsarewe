@@ -28,7 +28,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <!-- Permissions -->
         @if(Auth::check())
-          @if(Auth::user()->can(['can-see-permission', 'can-all-permission', 'access-all', 'can-del-permission', 'can-edit-permission']) )
+        
 
             <li class="treeview">
               <a href="#">
@@ -38,16 +38,17 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                @if(Auth::user()->can(['can-add-permission', 'can-all-permission', 'access-all']) )
+               
                 <li><a href="{{route('permissions.create')}}"><i class="fa fa-circle-o"></i> Add Permission</a></li>
-                @endif
+             
 
-                @if(Auth::user()->can(['can-see-permission', 'can-all-permission', 'access-all', 'can-del-permission', 'can-edit-permission']))
+               
                 <li><a href="{{route('permissions.index')}}"><i class="fa fa-circle-o"></i> Permission Management</a></li>
-                @endif
+             
+
               </ul>
             </li> 
-          @endif
+         
 
           <!-- Roles -->
           <li class="treeview">
@@ -91,14 +92,14 @@
             </ul>
           </li>   
 
-          @if(Auth::user()->can(['analytics']))
+         
           <!-- Analytics -->
           <li class="treeview">
             <a href="{{ route('analytics') }}">
               <i class="fa fa-share"></i> <span>Analytics</span>
             </a>
           </li>  
-          @endif 
+          
 
 
         <!-- Activity Log -->

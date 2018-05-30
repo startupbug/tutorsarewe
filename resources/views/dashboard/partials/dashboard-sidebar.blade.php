@@ -1,5 +1,24 @@
  <div class="col-md-3 border_left f_padding">
-      	<img src="{{ asset('public/dashboard/assets/images/dashboard_img.png') }}" class="img-responsive f_dashimg">
+
+
+        <div class="profile-pic">
+          @if(!empty(Auth::user()->profile->profile_pic) && isset(Auth::user()->profile->profile_pic))
+            <img class="img-circle" src="{{asset('public/dashboard/assets/images/profile/' . Auth::user()->profile->profile_pic)}}">
+             @else
+             <img alt="" class="img-circle" src="{{asset('public/dashboard/assets/images/dashboard_img.png')}}">
+          @endif
+          <div class="edit-profile-pic">
+             <form id="change_profile_pic_file" action="{{route('imageUpload')}}" method="post" enctype="multipart/form-data">
+               {{csrf_field()}}
+                     <input name="user_id" value="{{Auth::user()->id}}" type="hidden">
+                <div class="camera_image">
+                  <i class="fa fa-camera fa-2x" aria-hidden="true"></i>
+                  <input name="profile_pic" id="change_profile_pic_file" type="file">
+                </div>
+             </form>
+          </div>
+        </div>
+        <!-- <img src="{{ asset('public/dashboard/assets/images/dashboard_img.png') }}" class="img-responsive f_dashimg"> -->
       	<h3 class="f_name">
 
         {{ Auth::user()->first_name }} (@if(Auth::user()->role_id == 2) Student

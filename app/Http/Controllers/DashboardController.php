@@ -30,4 +30,6 @@ class DashboardController extends Controller
     public function edit_pass_post(Request $request){
       dd($request->input());
     }
+
+
 }

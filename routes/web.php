@@ -75,9 +75,12 @@ Route::get('/settings/change-password', 'DashboardController@edit_pass_view')->n
 //Change existing password post
 Route::post('/settings/change-password', 'DashboardController@edit_pass_post')->name('change_pass_post');
 
+//Ajax profile upload
+Route::post('imageUpload',['as'=>'imageUpload','uses'=>'ProfileController@imageUpload']);
+
 
 /* Admin Panel Routes */
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 
 	//User Home page.
 	Route::get('/', 'Admin\AdminController@index')->name('admin-index');
@@ -99,7 +102,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 	Route::resource('permissions', 'Admin\PermissionController');
 
 	/* Activity Log Routes */
-	Route::get('/activity-log', 'AdminController@activitylog_index')->name('activitylog_index');
+
+	Route::get('/activity-log', 'admin\AdminController@activitylog_index')->name('activitylog_index');
 
 	/* Todo List Routes */
 	//Todo custom update
@@ -122,12 +126,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 	Route::get('analytics', 'Admin\AnalyticsController@analytics')->name('analytics');
 
+});
+
 	//Admin Login Authentication
-	Route::get('/login', 'Admin\AuthController@login_index')->name('login_index');
-	Route::post('/login', 'Admin\AuthController@login_post')->name('login_post');
+	Route::get('/admin-login', 'Admin\AuthController@login_index')->name('login_index');
+	Route::post('/admin-login', 'Admin\AuthController@login_post')->name('login_post');
 
 	//Logout	
-	Route::get('/logout', 'Admin\AuthController@logout')->name('logout');
+	Route::get('/admin-logout', 'Admin\AuthController@logout')->name('logout');
+
+/* Unauthorized Access Routes */
+Route::get('/401', 'HomeController@unauthorized')->name('unauthorized');
 
 
-});
+
+
