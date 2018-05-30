@@ -58,7 +58,9 @@ class UserController extends Controller
 
             //Creating new User
             $user = $this->user;
-            $user->first_name = $request->input('name');
+            $user->first_name = $request->input('first_name');
+            $user->last_name = $request->input('last_name');
+            $user->phone_no = $request->input('phone_no');
             $user->email = $request->input('email');
             $user->password = bcrypt($request->input('password'));
             $user->status_id = $request->input('status_id');
@@ -69,7 +71,7 @@ class UserController extends Controller
                 $user->roles()->attach($role);
 
                 //Notify Test..
-                $user->notify(new userNotify($user));
+                //$user->notify(new userNotify($user));
 
                 $this->set_session('User Successfully Added.', true);
             }else{
@@ -92,7 +94,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $data['user'] = $this->user->getSingleUserDetail($id);
+        $data['user'] = $this->user->getSingleUsers($id);
         return view('admin.user.show')->with($data);
     }
 
@@ -126,10 +128,14 @@ class UserController extends Controller
             
             //Creating new User
             $user = $this->user::find($id);
-            $user->first_name = $request->input('name');
+            $user->first_name = $request->input('first_name');
+            $user->last_name = $request->input('last_name');
+            $user->phone_no = $request->input('phone_no');
+
             $user->email = $request->input('email');
             $user->password = bcrypt($request->input('password'));
             $user->status_id = $request->input('status_id');
+            $user->verified = $request->input('verified');
 
             if($user->save()){
                 //Assigning Role to User
