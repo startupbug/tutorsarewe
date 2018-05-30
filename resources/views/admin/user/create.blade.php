@@ -26,8 +26,18 @@
             <form role="form" action="{{route('users.store')}}" method="post">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Name</label>
-                  <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Enter email">
+                  <label for="">First Name</label>
+                  <input type="text" class="form-control" name="first_name" id="" placeholder="Enter First name">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Last Name</label>
+                  <input type="text" class="form-control" name="last_name" id="" placeholder="Enter last name">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Phone no</label>
+                  <input type="text" class="form-control" name="phone_no" id="" placeholder="Enter phone no">
                 </div>
 
                 <div class="form-group">

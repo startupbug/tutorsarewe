@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Input;
 class ProfileController extends Controller
 {
 	//view profile on dashboard
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function edit_dashboard(){
     	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
 
@@ -95,17 +98,33 @@ class ProfileController extends Controller
     }
 
 
+
     public function my_transactions(){
         try{
 
             $data['transactions'] = Transaction::where('user_id', Auth::user()->id)->get();
-
-            dd($data);
-            return view('dashboard.transactions.my_transactions')->compact($data);
+            $description = json_decode($data['transactions'][0]->description);
+            //dd($description->transactions[0]->amount->total);
+            return view('dashboard.transactions.transaction')->with($data);
         }
         catch(Exception $e){
             $this->set_session('Oops! something went wrong', false);
             return redirect()->route('dashboard_index');
         }
+    }
+
+    public function transaction_detail($id)
+    {
+        try {
+
+            $data['transaction'] = Transaction::find($id);
+            $data['description'] = json_decode($data['transaction']->description);
+            // dd($data['description']);
+            return view('dashboard.transactions.transaction_detail')->with($data);
+            
+        } catch (Exception $e) {
+            print_r($e);
+        }
+
     }
 }

@@ -102,7 +102,7 @@
          <div class="card">
             <div class="card-body login-card-body">
                <p class="login-box-msg">Sign in to start your session</p>
-               <form id="signin_form" action="" method="post">
+               <form id="signin_form" action="{{route('admin_login_post')}}" method="post">
                   {{csrf_field()}}
 
                   <div class="imgcontainer">

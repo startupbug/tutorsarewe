@@ -3,7 +3,7 @@
 
 <section class="profile">
 
-   <div class="container-fluid f_padding bg_color_gray">
+   <div class="container-fluid remove_padding bg_color_gray">
   		@include('dashboard.partials.dashboard-sidebar')
       <!--<div class="col-md-3 border_left f_padding">
       	<img src="assets/images/dashboard_img.png" class="img-responsive f_dashimg">
