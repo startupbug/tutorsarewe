@@ -23,25 +23,30 @@ class AnalyticsController extends Controller
     }
 
     public function analytics(){
-    	$statistics = [
-            'referrers' => Analytics::fetchTopReferrers($this->period, $this->limit),
-            'browsers' => Analytics::fetchTopBrowsers($this->period, $this->limit),
-            'pages' => Analytics::fetchMostVisitedPages($this->period, $this->limit),
-            'total_visits' => $this->getTotalVisits(),
-            'landings' => $this->getLandings(),
-            'exits' => $this->getExits(),
-            'times' => $this->getTimeOnPages(),
-            'sources' => $this->getSources(),
-            'ops' => $this->getOperatingSystems(),
-            'browsers' => $this->getBrowsers(),
-            'countries' => $this->getCountries(),
-            'visits' => $this->getDailyVisits(),
-            'regions' => $this->getRegions(),
-            'keywords' => $this->getTopKeywords(),
-            'averages' => $this->getAverages()
-        ];
+        
+        if(env('ANALYTICS_CONFIGURED') == true){
+            $statistics = [
+                   'referrers' => Analytics::fetchTopReferrers($this->period, $this->limit),
+                   'browsers' => Analytics::fetchTopBrowsers($this->period, $this->limit),
+                   'pages' => Analytics::fetchMostVisitedPages($this->period, $this->limit),
+                   'total_visits' => $this->getTotalVisits(),
+                   'landings' => $this->getLandings(),
+                   'exits' => $this->getExits(),
+                   'times' => $this->getTimeOnPages(),
+                   'sources' => $this->getSources(),
+                   'ops' => $this->getOperatingSystems(),
+                   'browsers' => $this->getBrowsers(),
+                   'countries' => $this->getCountries(),
+                   'visits' => $this->getDailyVisits(),
+                   'regions' => $this->getRegions(),
+                   'keywords' => $this->getTopKeywords(),
+                   'averages' => $this->getAverages()
+               ];
 
-    	return view('admin.analytics.index', compact('statistics'));
+            return view('admin.analytics.index', compact('statistics'));
+       }else{
+            return redirect()->route('error', ['message' => 'Analytics not Found, Please turn on your Analytics to use']);
+       }
 
     }
 

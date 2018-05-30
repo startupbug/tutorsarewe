@@ -180,7 +180,7 @@
                </div>
                <div class="form-group">
                   <label for="exampleInputlastname" class="f_label">User Name<span>*</span></label>
-                  <input type="type" class="form-control f-control" name="user_name" id="exampleInputlastname" placeholder="">
+                  <input type="type" class="form-control f-control" name="username" id="exampleInputlastname" placeholder="">
                </div>
 
                <div class="form-group">

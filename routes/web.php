@@ -150,6 +150,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 /* Unauthorized Access Routes */
 Route::get('/401', 'HomeController@unauthorized')->name('unauthorized');
 
+/* Error Route */
+Route::get('/error/{message}', 'HomeController@error')->name('error');
 
 Route::get('/my_transactions', 'ProfileController@my_transactions')->name('my_transactions');
 Route::get('/my_transaction_detail', 'ProfileController@my_transaction_detail')->name('my_transaction_detail');

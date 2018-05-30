@@ -49,5 +49,10 @@ class HomeController extends Controller
     //401
     public function unauthorized(){
         return view('401');
-    }                    
+    }
+
+    //error page
+    public function error($message){
+        return view('error')->with('message', $message);
+    }    
 }
