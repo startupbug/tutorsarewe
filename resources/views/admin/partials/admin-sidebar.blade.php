@@ -13,7 +13,7 @@
         </div>
       </div>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
+<!--       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
@@ -21,7 +21,7 @@
             </button>
           </span>
         </div>
-      </form>
+      </form> -->
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
@@ -118,12 +118,15 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{route('todos.index')}}"><i class="fa fa-circle-o"></i> Todolist </a></li>
+<!-- 
             <li><a href="{{route('pages.index')}}"><i class="fa fa-circle-o"></i> Calendar </a></li>
-            <li>
+            <li> -->
             <a href="{{ route('analytics') }}">
               <i class="fa fa-share"></i> <span>Analytics</span>
             </a>
-          </li> 
+
+            <!-- <li><a href="{{route('pages.index')}}"><i class="fa fa-circle-o"></i> Calendar </a></li> -->
+
           </ul>
         </li> 
 

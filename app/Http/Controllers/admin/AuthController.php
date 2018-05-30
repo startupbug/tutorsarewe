@@ -22,7 +22,7 @@ class AuthController extends Controller
             
             }else{
             	$this->set_session('Invalid Email/Password', false);
-            	return redirect()->route('login_index');
+            	return redirect()->route('adminlogin_index');
             }
 
                return redirect()->route('admin-index');            
@@ -30,7 +30,7 @@ class AuthController extends Controller
 
       }catch(\Exception $e){
                $this->set_session('Oops. Something went wrong, Please Try again.'.$e->getMessage(), false);
-               return redirect()->route('login_index');  
+               return redirect()->route('adminlogin_index');  
       }                      
    	
     }

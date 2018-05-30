@@ -71,14 +71,17 @@
                 <div class="form-group profile_form">
                   <label for="exampleInputGender">Gender<span>*</span></label>
                   <br>
-                  <input type="text" name="gender" id="exampleInputGender" value="" class="span3" required>
+                  <select name="gender" class="form-control">
+                    <option value="male">Male</option>
+                    <option value="female">female</option>
+                  </select>
                 </div>
                 <div class="form-group profile_form">
                   <label for="exampleInputage">Age<span>*</span></label>
                   <br>
                   <input type="text" name="age" id="exampleInputage" value="" class="span3" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group"  class="form-control">
                   <label for="exampleInputPassword1">User role</label>
                   <select name="user_role">
                     @foreach($roles as $role)
@@ -87,7 +90,7 @@
                   </select>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group"  class="form-control">
                   <label for="exampleInputPassword1">Statuses</label>
                   <select name="status_id">
                     @foreach($statuses as $status)
