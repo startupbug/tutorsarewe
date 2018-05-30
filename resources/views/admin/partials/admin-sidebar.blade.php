@@ -8,7 +8,7 @@
           <img src="{{ asset('public/admin//dist/img/user2-160x160.png') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>@if(Auth::check()){{Auth::user()->name}}@endif</p>
+          <p>@if(Auth::check()){{Auth::user()->first_name}}@endif</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>

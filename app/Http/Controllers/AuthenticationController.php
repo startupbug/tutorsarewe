@@ -84,7 +84,7 @@ class AuthenticationController extends Controller
 
         //if(isset(123))
       //  {
-           // try{
+           try{
             $user = new User();
 
             //Saving users data on user table
@@ -148,16 +148,16 @@ class AuthenticationController extends Controller
             
          //   return redirect()->route('signup');
 
-       // }
-            // catch(\Exception $e){
-            //     $this->set_session('User Couldnot be Registered.'.$e->getMessage(), false);
-            //     return redirect()->route('signup');                
-            // }
-        //}
+       }
+            catch(\Exception $e){
+                $this->set_session('User Couldnot be Registered.'.$e->getMessage(), false);
+                return redirect()->route('signup');                
+            }
+        }
 
         
 
-    }
+ 
 
     public function verify($token)
     {
