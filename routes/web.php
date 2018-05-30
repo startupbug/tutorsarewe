@@ -76,3 +76,9 @@ Route::get('/settings/change-password', 'DashboardController@edit_pass_view')->n
 Route::post('/settings/change-password', 'DashboardController@edit_pass_post')->name('change_pass_post');
 
 Route::post('imageUpload',['as'=>'imageUpload','uses'=>'ProfileController@imageUpload']);
+
+
+
+Route::get('makePayment', 'Paypal\StudentPayment@DepositWallet');
+Route::get('getDone', 'Paypal\StudentPayment@getDone');
+Route::get('getCancel', 'Paypal\StudentPayment@getCancel');
