@@ -16,6 +16,7 @@ class ModifyUserTable1 extends Migration
         Schema::table('users', function($table) {
 
             $table->integer('status_id')->unsigned()->nullable();
+            $table->string('email_token')->nullable()->after('email'); 
 
             $table->foreign('status_id')->references('id')->on('statuses')
                 ->onUpdate('cascade')->onDelete('cascade');            
