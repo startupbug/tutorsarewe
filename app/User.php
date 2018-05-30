@@ -32,4 +32,10 @@ class User extends Authenticatable
     public function profile(){
       return $this->hasOne('App\Profile');
     }
+    public function tutor_subject(){
+        return $this->hasMany('App\Tutor_subject');
+    }
+    public function todo(){
+        return $this->hasMany('App\Todo');
+    }
 }

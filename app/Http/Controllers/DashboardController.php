@@ -89,6 +89,10 @@ class DashboardController extends Controller
     {
         // dd($request->input());
         try{
+          $count_subjects = Tutor_subject::where('tutor_id',Auth::user()->id)->get();
+          dd(count($count_subjects));
+          if(count($count_subjects) <= 5)
+          {
             $subjects_name = DB::table('subjects')->get();
             $insert_subject = new Tutor_subject();
             $insert_subject->subject_id = $request->input('subject_name');
@@ -103,6 +107,12 @@ class DashboardController extends Controller
 
 
             }
+
+          }
+            
+          else{
+              $this->set_session('Please enter Correct Previous Password to change your Password.', false)
+          }
 
         }catch(\Exception $e){
            $this->set_session($e->getCode(), false);
