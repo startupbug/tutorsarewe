@@ -56,6 +56,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'first_name' => 'required|string|max:15',
             'last_name' => 'required|string|max:15',
@@ -75,6 +76,7 @@ class UserController extends Controller
             $user->last_name = $request->input('last_name');
             $user->phone_no = $request->input('phone_no');
             $user->email = $request->input('email');
+
             $user->password = bcrypt($request->input('password'));
 
             $user->status_id = $request->input('status_id');
@@ -141,6 +143,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
        try{
+                   dd($request->input());
 
             $this->logActivity('User Edited');        
             
@@ -151,7 +154,13 @@ class UserController extends Controller
             $user->phone_no = $request->input('phone_no');
 
             $user->email = $request->input('email');
-            $user->password = bcrypt($request->input('password'));
+
+            if(!is_null($request->input('password')) ){
+                $user->password = bcrypt($request->input('password'));
+            }
+
+            
+            
             $user->status_id = $request->input('status_id');
             $user->verified = $request->input('verified');
 
