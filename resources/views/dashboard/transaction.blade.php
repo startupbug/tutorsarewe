@@ -3,10 +3,10 @@
 <div class="container-fluid remove_padding bg_color_gray">
    @include('dashboard.partials.dashboard-sidebar')
 
-	 <div class="edit_profile">
-		 <h3 class="f_profile_content text-center">Transaction</h3>
-	 </div>
 	 <div class="col-md-9">
+     <div class="edit_profile">
+       <h3 class="f_profile_content text-center">Transaction</h3>
+     </div>
 	 	@include('partials.error_section')
 		 <div class="row padding_top">
 			 <div class="col-md-12">

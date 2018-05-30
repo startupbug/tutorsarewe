@@ -101,4 +101,8 @@ class ProfileController extends Controller
     {
       return view('dashboard.transaction_detail');
     }
+    public function my_balance()
+    {
+      return view('dashboard.balance');
+    }
 }
