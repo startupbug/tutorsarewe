@@ -16,6 +16,8 @@ use Carbon;
 use App\Mail\ForgetPasswordMail;
 use App\Mail\EmailVerification;
 use Validator;
+use App\Events\UserRegistration;
+use App\Wallet;
 
 class AuthenticationController extends Controller
 {
@@ -62,14 +64,14 @@ class AuthenticationController extends Controller
          // dd($request->input());
          /* Validation */
 
-         $this->validate($request, [
-            'first_name' => 'required|string|max:15',
-            'last_name' => 'required|string|max:15',
-            'email' => 'required|string|email|unique:users',
-            'username'=>'required|string|max:15|unique:profiles',
-            'password' => 'required|string|min:6|confirmed',
-            'phonenum1' => 'required|numeric',
-        ]); 
+        //  $this->validate($request, [
+        //     'first_name' => 'required|string|max:15',
+        //     'last_name' => 'required|string|max:15',
+        //     'email' => 'required|string|email|unique:users',
+        //     'username'=>'required|string|max:15|unique:profiles',
+        //     'password' => 'required|string|min:6|confirmed',
+        //     'phonenum1' => 'required|numeric',
+        // ]); 
 
         //Inserting user
         // $validator = Validator::make(
@@ -112,6 +114,10 @@ class AuthenticationController extends Controller
             Session::flash('message', 'We have sent you a verification email!');
 
                 // Saving Profle info of user.
+                $data['user'] = $user;
+                $data['request'] = $request->all();
+                //event(new UserRegistration($data));
+                //dd($data);
                 $profile = new Profile();
                 $profile->username = $request->input('username');
                 $profile->address = $request->input('address');
@@ -133,8 +139,14 @@ class AuthenticationController extends Controller
 
                 $profile->save();
 
+                $w = new Wallet();
+
+                $w->user_id = $user->id;
+
+                $w->save();
+
                 /*Calling Register user Event */
-                event(new RegisterEvent());
+                // event(new RegisterEvent());
 
                 /*Attaching User Role to the New User */ 
                 $user_role = Role::find($request->input('role_id'));

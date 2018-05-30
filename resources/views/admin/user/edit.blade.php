@@ -67,9 +67,14 @@
                 </div>
 
                 <div class="form-group profile_form">
+
                   <label for="exampleInputGender">Gender<span>*</span></label>
                   <br>
-                  <input type="text" name="gender" id="exampleInputGender" value="{{$user->gender}}" class="span3" required>
+                  <select name="gender" class="form-control">
+                    <option value="male" @if($user->gender=="male") selected @endif>Male</option>
+                    <option value="female" @if($user->gender=="female") selected @endif>female</option>
+                  </select>                  
+     
                 </div>
                 
                 <div class="form-group profile_form">

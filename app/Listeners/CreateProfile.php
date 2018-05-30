@@ -29,13 +29,47 @@ class CreateProfile
     {
         //
         $p = new Profile();
-        
+         
+
         $p->user_id = $event->data['user']->id;
-        $p->bio = $event->data['request']['bio'];
-        $p->username = $event->data['user']->email;
-        $p->tution_per_hour = $event->data['request']['tution_per_hour'];
-        $p->gender = $event->data['request']['gender'];
-        $p->age = $event->data['request']['age'];
+
+        if(!empty($event->data['request']['bio']))
+        {
+            $p->bio = $event->data['request']['bio'];    
+        }
+        if(!empty($event->data['user']->email))
+        {
+            $p->username = $event->data['user']->email;    
+        }
+        if(!empty($event->data['request']['tution_per_hour']))
+        {
+            $p->tution_per_hour = $event->data['request']['tution_per_hour'];               
+        }
+        if(!empty($event->data['request']['gender']))
+        {
+            $p->gender = $event->data['request']['gender'];    
+        }
+        if(!empty($event->data['request']['age']))
+        {
+            $p->age = $event->data['request']['age'];    
+        }
+        if(!empty($event->data['request']['address']))
+        {
+            $p->address = $event->data['request']['address'];
+        }
+        if(!empty($event->data['request']['zipcode']))
+        {
+            $p->zipcode = $event->data['request']['zipcode'];    
+        }
+        if(!empty($event->data['request']['state']))
+        {
+            $p->state = $event->data['request']['state'];
+        }
+        if(!empty($event->data['request']['country']))
+        {
+            $p->country = $event->data['request']['country'];
+        }
+        // dd($p);
         $p->save();
     }
 }
