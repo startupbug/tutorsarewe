@@ -15,16 +15,55 @@
            <div class="row">
               <div class="col-md-6">
                 <!-- general form elements -->
-                  <div class="box box-primary">
-                    <ul>
-                      <li><b>Name:</b> {{ $user->name}}</li>
-                      <li><b>Email:</b> {{ $user->email}}</li>
-                      <li><b>Role:</b> {{ $user->display_name}}</li>
-                      <li><b>Username:</b> {{ $user->username}}</li>
-                      <li><b>Bio:</b> {{ $user->bio}}</li>
-                      <li><b>Tution Per Hour:</b> {{ $user->tution_per_hour}}</li>
-                      <li><b>Gender:</b> {{ $user->gender}}</li>
-                    </ul> 
+
+                  <div class="box box-primary user_info">
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                      <p>
+                        <span>
+                          <i class="fa fa-user"></i> Name :
+                        </span>
+                        <span>{{ $user->name }}</span>
+                      </p>
+                      <p>
+                        <span>
+                          <i class="fa fa-envelope"></i> Email :
+                        </span>
+                        <span>{{ $user->email }}</span>
+                      </p>
+                      <p>
+                        <span>
+                          <i class="fa fa-tasks"></i> Role :
+                        </span>
+                        <span>{{ $user->display_name }}</span>
+                      </p>
+                      <p>
+                        <span>
+                          <i class="fa fa-users"></i> User Name :
+                        </span>
+                        <span>{{ $user->username }}</span>
+                      </p>
+                      <p>
+                        <span>
+                          <i class="fa fa-plus-square"></i> Bio :
+                        </span>
+                        <span>{{ $user->bio }}</span>
+                      </p>
+                      <p>
+                        <span>
+                          <i class="fa fa-clock-o"></i> Tution Per Hour :
+                        </span>
+                        <span>{{ $user->tution_per_hour }}</span>
+                      </p>
+                      <p>
+                        <span>
+                          <i class="fa fa-transgender"></i> Gender :
+                        </span>
+                        <span>{{ $user->gender }}</span>
+                      </p>
+
+                    </div>
+                    </div>
                   </div>
                 <!-- /.box -->
 

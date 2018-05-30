@@ -230,8 +230,7 @@
 <script type="text/javascript">
   $(document).ready(function () {
 
-    $('#example').DataTable();
-    $('#example1').DataTable();
+    $('.data_table_apply').DataTable();
 
     $('.s_nav_menu').on('click' , 'a' , function() {
       $(this).siblings('.s_sub_menu').toggleClass('hidden');

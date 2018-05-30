@@ -103,3 +103,25 @@
 .skin-green .wrapper, .skin-green .main-sidebar, .skin-green .left-side {
     background-color: #ecf0f5;
 }
+.user_info .row {
+    margin: 0;
+}
+.user_info p span:first-child i {
+    width: 22px !important;
+}
+.user_info p span:first-child {
+    width: 150px !important;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 16px;
+}
+.user_info p span {
+    font-size: 16px;
+}
+.box.box-primary.user_info {
+    padding: 20px 0px;
+}
+
+.box.box-primary.user_info p{
+    padding: 5px 0px;
+}
