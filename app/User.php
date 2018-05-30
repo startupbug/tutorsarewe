@@ -33,6 +33,11 @@ class User extends Authenticatable
       return $this->hasOne('App\Profile');
     }
 
+
+    public function transactions(){
+        return $this->hasMany(Transaction::class);
+    }
+
     public function getAllUsers(){
         
         return $this->leftjoin('role_user', 'role_user.user_id', '=', 'users.id')
@@ -59,4 +64,5 @@ class User extends Authenticatable
                      ->where('users.id', $id)
                      ->first();        
     }    
+
 }
