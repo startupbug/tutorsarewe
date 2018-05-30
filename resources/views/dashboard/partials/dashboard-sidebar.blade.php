@@ -29,7 +29,7 @@
           User Login: 25/04/2018 05:53:40
         </p> -->
         <p class="user_f">
-          <a href="{{ route('my_balance') }}">Balance $: 0</a>
+          <a href="{{ route('my_balance') }}">Balance $: {{ $wallet->balance}}</a>
         </p>
 
       	<div class="vertical-menu">
@@ -39,7 +39,7 @@
           <div class="s_nav_menu">
             <a href="#"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>My Tutor</a>
           </div>
-          @if(Auth::user()->role_id==2)
+          @if(Auth::user()->role_id==3)
           <div class="s_nav_menu">
             <a href="{{route('subjects')}}"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>Subjects</a>
           </div>
@@ -55,6 +55,9 @@
           </div>
           <div class="s_nav_menu">
             <a href="{{route('my_transactions')}}"><i class="fa fa-credit-card f_icon_menu"></i>Transaction</a>
+          </div>
+          <div class="s_nav_menu">
+            <a href="{{route('my_balance')}}"><i class="fa fa-credit-card f_icon_menu"></i>My Wallet</a>
           </div>
           <div class="s_nav_menu">
             <a><i class="fa fa-cog f_icon_menu"></i>Settings <span class="glyphicon glyphicon-chevron-down"></span></a>
