@@ -37,9 +37,6 @@
             <a href="{{ route('dashboard_index') }}" class="active"><i class="fa fa-tachometer f_icon_menu"></i>Dashboard</a>
           </div>
           <div class="s_nav_menu">
-            <a href="{{route('my_transactions')}}"><i class="fa fa-search f_icon_menu"></i>Transactions</a>
-          </div>
-          <div class="s_nav_menu">
             <a href="#"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>My Tutor</a>
           </div>
           @if(Auth::user()->role_id==2)
@@ -57,7 +54,7 @@
             <a href="#"><i class="fa fa-calendar-check-o f_icon_menu"></i>Booking</a>
           </div>
           <div class="s_nav_menu">
-            <a href="#"><i class="fa fa-credit-card f_icon_menu"></i>Transaction</a>
+            <a href="{{route('my_transactions')}}"><i class="fa fa-credit-card f_icon_menu"></i>Transaction</a>
           </div>
           <div class="s_nav_menu">
             <a><i class="fa fa-cog f_icon_menu"></i>Settings <span class="glyphicon glyphicon-chevron-down"></span></a>
