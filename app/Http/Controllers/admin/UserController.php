@@ -58,7 +58,7 @@ class UserController extends Controller
 
             //Creating new User
             $user = $this->user;
-            $user->name = $request->input('name');
+            $user->first_name = $request->input('name');
             $user->email = $request->input('email');
             $user->password = bcrypt($request->input('password'));
             $user->status_id = $request->input('status_id');
@@ -126,7 +126,7 @@ class UserController extends Controller
             
             //Creating new User
             $user = $this->user::find($id);
-            $user->name = $request->input('name');
+            $user->first_name = $request->input('name');
             $user->email = $request->input('email');
             $user->password = bcrypt($request->input('password'));
             $user->status_id = $request->input('status_id');

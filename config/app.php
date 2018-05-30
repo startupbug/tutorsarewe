@@ -177,6 +177,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+
+        Spatie\GoogleCalendar\GoogleCalendarServiceProvider::class,
+
+        Spatie\Analytics\AnalyticsServiceProvider::class,        
     ],
 
     /*
@@ -226,6 +230,12 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+
+
+        'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
+
+        'GoogleCalendar' => Spatie\GoogleCalendar\GoogleCalendarFacade::class,
+        
     ],
 
 ];

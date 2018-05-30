@@ -98,7 +98,9 @@ class AuthenticationController extends Controller
             $user->verified = 0; 
 
             $user->phone_no = $request->input('countryCode').$request->input('phonenum1');
-  
+
+            $user->status_id = 1; 
+
 
 
             if($user->save()){
