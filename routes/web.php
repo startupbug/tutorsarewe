@@ -85,6 +85,12 @@ Route::post('/settings/change-password', 'DashboardController@edit_pass_post')->
 Route::post('imageUpload',['as'=>'imageUpload','uses'=>'ProfileController@imageUpload']);
 
 
+
+
+Route::get('makePayment', 'Paypal\StudentPayment@DepositWallet');
+Route::get('getDone', 'Paypal\StudentPayment@getDone');
+Route::get('getCancel', 'Paypal\StudentPayment@getCancel');
+
 /* Admin Panel Routes */
 Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 
@@ -143,7 +149,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 
 /* Unauthorized Access Routes */
 Route::get('/401', 'HomeController@unauthorized')->name('unauthorized');
-
 
 
 

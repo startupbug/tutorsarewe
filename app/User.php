@@ -33,6 +33,7 @@ class User extends Authenticatable
       return $this->hasOne('App\Profile');
     }
 
+
     public function tutor_subject(){
         return $this->hasMany('App\Tutor_subject');
     }
@@ -40,6 +41,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Todo');
     }
 
+    public function transactions(){
+        return $this->hasMany(Transaction::class);
+    }
 
     public function getAllUsers(){
         
