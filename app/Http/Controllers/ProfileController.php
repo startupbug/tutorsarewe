@@ -104,4 +104,13 @@ class ProfileController extends Controller
         $file->move( $path , $filename);
         return $filename;
     }
+
+    public function my_transactions()
+    {
+      return view('dashboard.transaction');
+    }
+    public function my_transaction_detail()
+    {
+      return view('dashboard.transaction_detail');
+    }
 }

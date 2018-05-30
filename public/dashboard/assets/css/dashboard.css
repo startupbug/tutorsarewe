@@ -326,7 +326,7 @@ select.span3 {
 .profile-pic img {
     position: absolute;
     bottom: 0;
-    width: 180px;
+    width: 200px;
     height: 200px;
     left: calc(50% - 90px);
 }
@@ -334,7 +334,7 @@ select.span3 {
     position: absolute;
     left: calc(50% - 90px);
     bottom: 0;
-    width: 180px;
+    width: 200px;
     height: 200px;
     border-radius: 50%;
     border: 3px solid #2a2929;
@@ -359,4 +359,71 @@ select.span3 {
     opacity: 0;
     position: absolute;
     bottom: 20px;
+}
+.remove_padding{
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.padding_top{
+      padding-top: 10%;
+}
+.a_href_btn {
+    background-color: #ed7275;
+    border: 1px solid;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: 'ProximaNova-Semibold';
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.border_transaction_page {
+    border: 1px solid #ccc7c7;
+    background: #ffffff7a;
+    padding: 20px 30px;
+    margin-top: 5%;
+}
+.order_heading {
+    font-size: 24px;
+    color: #ed7275;
+    text-align: center;
+    font-family: 'ProximaNova-Semibold';
+}
+.description_heading {
+    background: #b7b7b7;
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.description_heading p {
+    color: #333;
+    font-size: 16px;
+    font-family: 'ProximaNova-Semibold';
+}
+.description_list {
+    padding: 25px 0px;
+    border-bottom: 2px solid #b7b7b7;
+}
+.description_list p , .description_list p span {
+    color: #666;
+    font-size: 18px;
+    font-family: 'ProximaNova-Semibold';
+}
+.description_list h5 {
+    color: #666;
+    font-family: 'ProximaNova-Semibold';
+    font-size: 18px;
+}
+.description_list p i{
+    width: 7%;
+    padding: 7px 0px;
+}
+
+.description_heading_p{
+  font-size: 22px !important;
+  text-decoration: underline;
+}
+.description_detail{
+
+    font-size: 14px !important;
 }
