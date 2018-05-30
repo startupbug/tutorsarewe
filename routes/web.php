@@ -108,7 +108,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 
 	//Permission Resource Controller
 	Route::post('/assign-permission', 'Admin\PermissionController@assign_permission_post')->name('assign-permission-post');
-	
+
 	Route::post('/assign-permission-del', 'Admin\PermissionController@assign_permission_del')->name('assign-permission-del');
 
 	Route::resource('permissions', 'Admin\PermissionController');
@@ -120,8 +120,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 	/* Todo List Routes */
 	//Todo custom update
 	Route::post('/todos_update', 'admin\TodoController@todos_update')->name('todos_update');
-	
-	//Todo custom delete	
+
+	//Todo custom delete
 	Route::post('/todos_delete', 'admin\TodoController@todos_delete')->name('todos_delete');
 
 	//Task done undone, change status
@@ -134,7 +134,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 	Route::resource('todos', 'admin\TodoController');
 
 	/* Pages resource */
-	Route::resource('pages', 'Admin\PageController');	
+	Route::resource('pages', 'Admin\PageController');
 
 	Route::get('analytics', 'Admin\AnalyticsController@analytics')->name('analytics');
 
@@ -144,11 +144,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 	Route::get('/admin-login', 'Admin\AuthController@login_index')->name('adminlogin_index');
 	Route::post('/admin-login', 'Admin\AuthController@login_post')->name('admin_login_post');
 
-	//Logout	
+	//Logout
 	Route::get('/admin-logout', 'Admin\AuthController@logout')->name('logout');
 
 /* Unauthorized Access Routes */
 Route::get('/401', 'HomeController@unauthorized')->name('unauthorized');
 
 
-
+Route::get('/my_transactions', 'ProfileController@my_transactions')->name('my_transactions');
+Route::get('/my_transaction_detail', 'ProfileController@my_transaction_detail')->name('my_transaction_detail');

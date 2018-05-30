@@ -1,6 +1,6 @@
 @extends('dashboard.dashboard-app')
 @section('content')
-<div class="container-fluid bg_color_gray">
+<div class="container-fluid remove_padding bg_color_gray">
    @include('dashboard.partials.dashboard-sidebar')
 
 	 <div class="edit_profile">
@@ -8,7 +8,7 @@
 	 </div>
 	 <div class="col-md-9">
 	 	@include('partials.error_section')
-		 <div class="row">
+		 <div class="row padding_top">
 			 <div class="col-md-12">
 				 <table id="example" class="display" width="100%" data-page-length="10" class="table table-dark">
 					 <thead>
@@ -26,9 +26,10 @@
                <td>1</td>
                <td>004</td>
                <td>4000 USD</td>
+               <td>ABC</td>
                <td>2018-05-16</td>
                <td>
-                 <a href="#" class="btn btn-primary s_save">View Detail</a>
+                 <a href="{{route('my_transaction_detail')}}" class="btn a_href_btn">View Detail</a>
                </td>
              </tr>
 					 </tbody>
