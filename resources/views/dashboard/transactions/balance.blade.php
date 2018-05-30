@@ -26,7 +26,7 @@
 			</div><br>
 			<div class="row">
 				<div class="col-md-12">
-					<table id="example" class="display" width="100%" data-page-length="10" class="table table-dark">
+					<table class="data_table_apply display" width="100%" data-page-length="10" class="table table-dark">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -73,7 +73,7 @@
 				</div><br>
 				<div class="row">
 					<div class="col-md-12">
-						<table id="example" class="display" width="100%" data-page-length="10" class="table table-dark">
+						<table class="data_table_apply display" width="100%" data-page-length="10" class="table table-dark">
 							<thead>
 								<tr>
 									<th>#</th>

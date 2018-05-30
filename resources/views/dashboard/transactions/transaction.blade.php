@@ -10,7 +10,7 @@
 		@include('partials.error_section')
 		<div class="row padding_top">
 			<div class="col-md-12">
-				<table id="example" class="display" width="100%" data-page-length="10" class="table table-dark">
+				<table class="data_table_apply display" width="100%" data-page-length="10" class="table table-dark">
 					<thead>
 						<tr>
 							<th>#</th>

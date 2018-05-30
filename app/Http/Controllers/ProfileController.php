@@ -119,8 +119,7 @@ class ProfileController extends Controller
         try{
 
             $data['transactions'] = Transaction::where('user_id', Auth::user()->id)->get();
-            $description = json_decode($data['transactions'][0]->description);
-            //dd($description->transactions[0]->amount->total);
+            
             return view('dashboard.transactions.transaction')->with($data);
         }
         catch(Exception $e){
@@ -133,7 +132,7 @@ class ProfileController extends Controller
     {
         try {
 
-            $data['transaction'] = Transaction::find($id);
+            $data['transaction'] = Transaction::where('user_id', Auth::user()->id)->find($id);
             $data['description'] = json_decode($data['transaction']->description);
             // dd($data['description']);
             return view('dashboard.transactions.transaction_detail')->with($data);
