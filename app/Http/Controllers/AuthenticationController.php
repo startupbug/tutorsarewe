@@ -157,7 +157,7 @@ class AuthenticationController extends Controller
 
         
 
-    }
+ 
 
     public function verify($token)
     {
