@@ -62,9 +62,10 @@ class UserController extends Controller
             'last_name' => 'required|string|max:15',
             'email' => 'required|string|email|unique:users',
             'username'=>'required|string|max:15|unique:profiles',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
             'gender' => 'required|string',
             'age' => 'required|numeric',
+            'phonenum1' => 'required|numeric',
         ]);
 
        try{ 
@@ -126,10 +127,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-              
+            
         $data['roles'] = Role::all();
         $data['statuses'] = Status::all();
         $data['user'] = $this->user->getSingleUsers($id);
+        
         return view('admin.user.edit')->with($data);
     }
 
