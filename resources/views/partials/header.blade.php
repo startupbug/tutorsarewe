@@ -141,7 +141,11 @@
                                  <li class="dropdown user_page">
                                     <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" >{{Auth::user()->first_name}}  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                     <ul class="dropdown-menu">
-                                       <li><a href="{{route('dashboard_index')}}">Dashboard</a></li>
+                                       @if(Auth::user()->role_id == 1)
+                                           <li><a href="{{route('admin-index')}}">Dashboard</a></li>
+                                       @else
+                                           <li><a href="{{route('dashboard_index')}}">Dashboard</a></li>                                       
+                                       @endif                                    
                                        <li><a href="{{route('logout_user')}}">Logout</a></li>
                                     </ul>
                                  </li>

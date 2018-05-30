@@ -18,6 +18,11 @@ class DashboardController extends Controller
     }
 
     public function index(){
+
+      if(Auth::user()->role_id == 1){
+        return redirect()->route('admin-index');
+      }
+
     	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
     	return view('dashboard.index')->with($data);
     }
