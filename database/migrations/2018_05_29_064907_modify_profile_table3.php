@@ -15,6 +15,7 @@ class ModifyProfileTable3 extends Migration
     {
         Schema::table('profiles', function($table) {
             $table->string('profile_pic')->nullable();
+            $table->string('username')->nullable()->after('user_id');
         });
     }
 
