@@ -11,6 +11,7 @@ use App\Status;
 use App\Notifications\userNotify;
 use App\Events\UserRegistration;
 use App\Profile;
+use Auth;
 
 class UserController extends Controller
 {
@@ -66,8 +67,8 @@ class UserController extends Controller
         ]);
 
        try{ 
-            $this->logActivity('User Added');
-            // dd($request->input());
+            $this->logActivity('User Added by '. Auth::user()->first_name);
+
             //Creating new User
             $user = $this->user;
             $user->first_name = $request->input('first_name');

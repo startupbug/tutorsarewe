@@ -16,6 +16,7 @@ use Carbon;
 use App\Mail\ForgetPasswordMail;
 use App\Mail\EmailVerification;
 use Validator;
+
 class AuthenticationController extends Controller
 {
     public function login_index(){
@@ -23,10 +24,10 @@ class AuthenticationController extends Controller
     }
 
     public function login_post(Request $request){
-        // dd($request->input());
+     
           $this->validate($request, [
-            'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:6|',
+            'email' => 'required|string|email',
+            'password' => 'required',
         ]); 
           try{
 
@@ -83,7 +84,7 @@ class AuthenticationController extends Controller
 
         //if(isset(123))
       //  {
-            try{
+           // try{
             $user = new User();
 
             //Saving users data on user table
@@ -145,13 +146,13 @@ class AuthenticationController extends Controller
                  $this->set_session('User Couldnot be Registered.', false);
             }
             
-            return redirect()->route('signup');
+         //   return redirect()->route('signup');
 
-        }
-            catch(\Exception $e){
-                $this->set_session('User Couldnot be Registered.'.$e->getMessage(), false);
-                return redirect()->route('signup');                
-            }
+       // }
+            // catch(\Exception $e){
+            //     $this->set_session('User Couldnot be Registered.'.$e->getMessage(), false);
+            //     return redirect()->route('signup');                
+            // }
         //}
 
         
