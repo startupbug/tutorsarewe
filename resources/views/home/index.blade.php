@@ -53,6 +53,7 @@
    <div class="container">
       <div class="row">
          <div class="col-md-12 f_main">
+            @include('partials.error_section')
             <h3 class="f_content">What are you looking for?</h3>
             <hr>
             <section id="tabs">

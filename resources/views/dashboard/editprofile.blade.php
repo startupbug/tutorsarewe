@@ -2,8 +2,8 @@
 @section('content')
 
 <section class="profile">
-   
-   <div class="container-fluid f_padding">
+
+   <div class="container-fluid f_padding bg_color_gray">
   		@include('dashboard.partials.dashboard-sidebar')
       <!--<div class="col-md-3 border_left f_padding">
       	<img src="assets/images/dashboard_img.png" class="img-responsive f_dashimg">
@@ -20,17 +20,17 @@
   <a href="#">Settings</a>
   <a href="#">Logout</a>
 </div>
-         
+
       </div>-->
- 
+
       <div class="col-md-9 f_padding bg_color">
       	<div class="edit_profile">
       	<h3 class="f_profile_content">Edit Profile</h3>
         @include('partials.error_section')
       <!-- 	<p class="f_text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, elium totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p> -->
-       
+
       </div>
- 
+
   <div class="col-md-6">
   	<form action="{{ route('edit_profile') }}" method="post" enctype="multipart/form-data">
   		 <div class="form-group profile_form">
@@ -84,13 +84,13 @@
     <br>
     <input type="password" name="password" class="span3">
 </div> -->
-    
-    
+
+
   </div>
 
   <div class="col-md-6">
 
-  	
+
   		 <div class="form-group account_f_form">
     <label>Address</label>
     <br>
@@ -111,13 +111,13 @@
                      <option value="Texas" {{ ($user->state == 'Texas') ? 'selected' : '' }}>Texas</option>
                      <option value="South" {{ ($user->state == 'South') ? 'selected' : '' }}>South</option>
                   </select>
-                   
+
 
     				</div>
  <div class="form-group account_f_form">
  	<label>Country</label>
-    					
-                            
+
+
                         <select name="country" id="country" class="span3" placeholder="Select">
                             <option value="AR" {{ ($user->country == 'AR') ? 'selected' : '' }}>Argentina</option>
                             <option value="AU" {{ ($user->country == 'AU') ? 'selected' : '' }}>Australia</option>
@@ -241,7 +241,7 @@
 </div>
 
 
- 
+
 <input type="hidden" name="user_id" value="{{$user->user_id}}">
 
 <input type="hidden" name="_token" value="{{Session::token()}}">
@@ -249,7 +249,7 @@
     <div class="clearfix"></div>
     </form>
   </div>
-   
+
 </div>
 </div>
 </section>

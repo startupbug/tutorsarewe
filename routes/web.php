@@ -27,6 +27,7 @@ Route::get('/set_new_password/{token}', 'AuthenticationController@set_new_passwo
 
 Route::post('/new_password/{email}', 'AuthenticationController@new_password')->name('new_password');
 
+Route::get('register/verify/{token}', 'AuthenticationController@verify')->name('verified_email');
 //Student and Teacher register
 Route::post('/register', 'AuthenticationController@register_post')->name('register_post');
 
@@ -60,7 +61,11 @@ Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard_index');
 
+Route::get('/subjects','DashboardController@subjects')->name('subjects');
+Route::post('/tutor_subject','DashboardController@tutor_subject')->name('tutor_subject');
 
+//Delete subject
+Route::get('/delete-subject/{id}','DashboardController@subjDel')->name('subjDel');
 
 Route::get('/edit-profile', 'ProfileController@edit_dashboard')->name('edit_dashboard');
 
@@ -70,8 +75,9 @@ Route::post('/edit_profile', 'ProfileController@edit_profile')->name('edit_profi
 /* Change existing Password */
 
 //Change existing password view
-Route::get('/settings/change-password', 'DashboardController@edit_pass_view')->name('change_pass_index');
-
+Route::get('/settings/change-password/{id}', 'DashboardController@edit_pass_view')->name('change_pass_index');
+// change_newpassword
+Route::post('/settings/change-password/{id}', 'DashboardController@change_newpassword')->name('change_newpassword');
 //Change existing password post
 Route::post('/settings/change-password', 'DashboardController@edit_pass_post')->name('change_pass_post');
 
