@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Paypal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Transaction as TransactionModel;
+use Auth;
+use App\Wallet;
+
+
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Item;
@@ -19,6 +24,7 @@ use PayPal\Auth\ResultPrinter;
 use PayPal\Common\PayPalModel;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
+
 
 
 class StudentPayment extends Controller
@@ -48,15 +54,17 @@ class StudentPayment extends Controller
     }
 
 
-    public function DepositWallet(){
+    public function depositWallet(Request $request){
     	
+    	$deposit = (float) $request->get('amount');
 
+    	 // dd(gettype($amount));
     	$payer = new Payer();
 		$payer->setPaymentMethod("paypal");
 
 		$amount = new Amount();
 		$amount->setCurrency("USD")
-		    ->setTotal(12118.55);
+		    ->setTotal($deposit);
 
 		$transaction = new Transaction();
 		$transaction->setAmount($amount)
@@ -99,20 +107,25 @@ class StudentPayment extends Controller
 
 	    $payment = Payment::get($paymentId, $this->apiContext);
 
-	    Transaction::create([
+	    TransactionModel::create([
 	    	'user_id' => Auth::user()->id,
-	    	'description' => json_encode($result),
+	    	'description' => $result,
 	    	'type' => 'deposit',
 	    ]);
+	    $balance = Wallet::where('user_id', Auth::user()->id)->first(['balance']); 
+	    Wallet::where('user_id', Auth::user()->id)->update([
+	    	'balance' => $balance->balance + $result->transactions[0]->amount->total
+	    ]);
     	
-
-        return $payment;
+	    $this->set_session('Deposit successfully completed', true);
+        return redirect()->route('my_balance');
 
     }
 
     public function getCancel()
 	{
 	    // Curse and humiliate the user for cancelling this most sacred payment (yours)
-		dd('cancel');
+		
+		dd($balance->balance);
 	}
 }

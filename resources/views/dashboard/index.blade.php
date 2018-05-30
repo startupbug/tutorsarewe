@@ -39,6 +39,18 @@
                <br>
                <p class="text_aaccountview">{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '-' }}</p>
             </div>
+
+            <div class="form-group profile_form account_view">
+               <label>Gender <span></span></label>
+               <br>
+               <p class="text_aaccountview">{{ isset($user->gender) ? $user->gender : '-' }}</p>
+            </div>
+
+            <div class="form-group profile_form account_view">
+               <label>Age <span>*</span></label>
+               <br>
+               <p class="text_aaccountview">{{ isset($user->age) ? $user->age : '-' }}</p>
+            </div>                        
             <!--  <div class="form-group profile_form account_view">
                <label>Password <span>*</span> (Must Be Atleast 6 Characters):</label>
                <br>

@@ -64,14 +64,16 @@ class AuthenticationController extends Controller
          // dd($request->input());
          /* Validation */
 
-        //  $this->validate($request, [
-        //     'first_name' => 'required|string|max:15',
-        //     'last_name' => 'required|string|max:15',
-        //     'email' => 'required|string|email|unique:users',
-        //     'username'=>'required|string|max:15|unique:profiles',
-        //     'password' => 'required|string|min:6|confirmed',
-        //     'phonenum1' => 'required|numeric',
-        // ]); 
+
+         $this->validate($request, [
+            'first_name' => 'required|string|max:15',
+            'last_name' => 'required|string|max:15',
+            'email' => 'required|string|email|unique:users',
+            'username'=>'required|string|max:15|unique:profiles',
+            'password' => 'required|string|min:6|confirmed',
+            'phonenum1' => 'required|numeric',
+        ]); 
+
 
         //Inserting user
         // $validator = Validator::make(
@@ -86,7 +88,7 @@ class AuthenticationController extends Controller
 
         //if(isset(123))
       //  {
-           // try{
+           try{
             $user = new User();
 
             //Saving users data on user table
@@ -158,18 +160,18 @@ class AuthenticationController extends Controller
                  $this->set_session('User Couldnot be Registered.', false);
             }
             
-         //   return redirect()->route('signup');
+               return redirect()->route('signup');
 
-       // }
-            // catch(\Exception $e){
-            //     $this->set_session('User Couldnot be Registered.'.$e->getMessage(), false);
-            //     return redirect()->route('signup');                
-            // }
-        //}
+       }
+            catch(\Exception $e){
+                $this->set_session('User Couldnot be Registered.'.$e->getMessage(), false);
+                return redirect()->route('signup');                
+            }
+        }
 
         
 
-    }
+ 
 
     public function verify($token)
     {

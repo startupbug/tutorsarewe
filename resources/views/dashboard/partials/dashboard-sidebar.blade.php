@@ -25,12 +25,11 @@
          @elseif( Auth::user()->role_id == 3) Teacher @endif )
 
          </h3>
-      	<p class="user_f">
+      <!-- 	<p class="user_f">
           User Login: 25/04/2018 05:53:40
-        </p>
+        </p> -->
         <p class="user_f">
-          Balance $:
-          <a href="{{ route('my_balance') }}">0</a>
+          <a href="{{ route('my_balance') }}">Balance $: 0</a>
         </p>
 
       	<div class="vertical-menu">
@@ -38,14 +37,13 @@
             <a href="{{ route('dashboard_index') }}" class="active"><i class="fa fa-tachometer f_icon_menu"></i>Dashboard</a>
           </div>
           <div class="s_nav_menu">
-            <a href="{{route('my_transactions')}}"><i class="fa fa-search f_icon_menu"></i>Transactions</a>
-          </div>
-          <div class="s_nav_menu">
             <a href="#"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>My Tutor</a>
           </div>
+          @if(Auth::user()->role_id==2)
           <div class="s_nav_menu">
             <a href="{{route('subjects')}}"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>Subjects</a>
           </div>
+          @endif
           <div class="s_nav_menu">
             <a href="#"><i class="fa fa-user-plus f_icon_menu"></i>Invite Friends</a>
           </div>
@@ -56,7 +54,7 @@
             <a href="#"><i class="fa fa-calendar-check-o f_icon_menu"></i>Booking</a>
           </div>
           <div class="s_nav_menu">
-            <a href="#"><i class="fa fa-credit-card f_icon_menu"></i>Transaction</a>
+            <a href="{{route('my_transactions')}}"><i class="fa fa-credit-card f_icon_menu"></i>Transaction</a>
           </div>
           <div class="s_nav_menu">
             <a><i class="fa fa-cog f_icon_menu"></i>Settings <span class="glyphicon glyphicon-chevron-down"></span></a>

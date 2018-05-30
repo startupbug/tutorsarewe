@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Profile;
 use App\User;
+use App\Transaction;
+use App\WithdrawWallet;
+use App\Wallet;
 use Auth;
 use Illuminate\Support\Facades\Input;
 
 class ProfileController extends Controller
 {
 	//view profile on dashboard
+
     public function edit_dashboard(){
         
     	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
@@ -21,7 +25,7 @@ class ProfileController extends Controller
     // edit profile post
     public function edit_profile(Request $request){
 
-    	/* Validation */
+    	/* Validation 
         $this->validate($request, [
             'first_name' => 'required|string|max:255',
             'last_name'=> 'required|string|max:255',
@@ -31,7 +35,9 @@ class ProfileController extends Controller
             'countryCode'=> 'required|numeric|max:255',
             'phonenum1'=> 'required|numeric',
             'tution_per_hour' => 'numeric',
-        ]); 
+            'age' => 'numeric',
+
+        ]); */
 
     	try{
 	    	//Update User
@@ -40,12 +46,15 @@ class ProfileController extends Controller
 	    	$user->first_name = $request->input('first_name');
 	    	$user->last_name = $request->input('last_name');
 	    	$user->phone_no = $request->input('countryCode').$request->input('phonenum1');
-	    	//Update Profile
+	    	
+            //Update Profile
 	    	$profile_array = [ 'tution_per_hour' => $request->input('tution_per_hour'),
 	    		'bio' => $request->input('bio'),
 	    		'address' => $request->input('address'),
 	    		'zipcode' => $request->input('zipcode'),
 	    		'state' => $request->input('state'),
+                'age' => $request->input('age'), 
+                'gender' => $request->input('gender'),
 	    	];
 
            if(Input::hasFile('profile_pic')){
@@ -104,16 +113,68 @@ class ProfileController extends Controller
         return $filename;
     }
 
-    public function my_transactions()
-    {
-      return view('dashboard.transaction');
+
+
+    public function my_transactions(){
+        try{
+
+            $data['transactions'] = Transaction::where('user_id', Auth::user()->id)->get();
+            $description = json_decode($data['transactions'][0]->description);
+            //dd($description->transactions[0]->amount->total);
+            return view('dashboard.transactions.transaction')->with($data);
+        }
+        catch(Exception $e){
+            $this->set_session('Oops! something went wrong', false);
+            return redirect()->route('dashboard_index');
+        }
     }
-    public function my_transaction_detail()
+
+    public function transaction_detail($id)
     {
-      return view('dashboard.transaction_detail');
+        try {
+
+            $data['transaction'] = Transaction::find($id);
+            $data['description'] = json_decode($data['transaction']->description);
+            // dd($data['description']);
+            return view('dashboard.transactions.transaction_detail')->with($data);
+            
+        } catch (Exception $e) {
+            print_r($e);
+        }
+
     }
+
+
     public function my_balance()
     {
-      return view('dashboard.balance');
+        $data['transactions'] = Transaction::where('user_id', Auth::user()->id)->take(3)->orderBy('created_at', 'desc')->get();
+        $data['withdraw'] = WithdrawWallet::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        
+        return view('dashboard.transactions.balance')->with($data);
+    }
+
+    public function walletWithdraw(Request $request){
+
+        $available = Wallet::where('user_id', Auth::user()->id)->first(['balance']); 
+        $status = WithdrawWallet::where('user_id', Auth::user()->id)->where('status', 'pending')->first(['id']); 
+        if(empty($status)){
+
+            if($request->amount <= $available->balance){
+                WithdrawWallet::create([
+                    'user_id' => Auth::user()->id,
+                    'amount' => $request->amount
+                ]);
+                $this->set_session('You have successfully made a withdraw request, admin will approve it soon.', true);
+                return redirect()->route('my_balance');
+            }
+            else{
+                $this->set_session('Sorry you do not have sufficinet balance to withdraw this amount.', false);
+                return redirect()->route('my_balance');   
+            }
+        }
+        else{
+            $this->set_session('Sorry you already have a withdraw request you can not make another.', false);
+            return redirect()->route('my_balance');   
+        }
     }
 }

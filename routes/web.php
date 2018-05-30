@@ -93,9 +93,14 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-Route::get('makePayment', 'Paypal\StudentPayment@DepositWallet');
+Route::post('depositWallet', 'Paypal\StudentPayment@depositWallet')->name('depositWallet');
 Route::get('getDone', 'Paypal\StudentPayment@getDone');
 Route::get('getCancel', 'Paypal\StudentPayment@getCancel');
+Route::get('my_transactions', 'ProfileController@my_transactions')->name('my_transactions');
+Route::get('transaction_detail/{id}', 'ProfileController@transaction_detail')->name('transaction_detail');
+Route::post('walletWithdraw', 'ProfileController@walletWithdraw')->name('walletWithdraw');
+
+Route::get('my_wallet', 'ProfileController@my_balance')->name('my_balance');
 
 /* Admin Panel Routes */
 Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
@@ -159,7 +164,5 @@ Route::get('/401', 'HomeController@unauthorized')->name('unauthorized');
 /* Error Route */
 Route::get('/error/{message}', 'HomeController@error')->name('error');
 
-Route::get('/my_transactions', 'ProfileController@my_transactions')->name('my_transactions');
-Route::get('/my_transaction_detail', 'ProfileController@my_transaction_detail')->name('my_transaction_detail');
 
-Route::get('/my_balance', 'ProfileController@my_balance')->name('my_balance');
+

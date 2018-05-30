@@ -71,7 +71,7 @@
                </div>
             </div>
             <div class="col-md-4 border_right">
-               <img src="{{ asset('public/dashboard/assets/images/logo.png') }}" class="img-responsive log_f">
+               <img src="{{ asset('public/assets/images/logo.png') }}" class="img-responsive log_f">
             </div>
             <div class="col-md-4 f_borderlast">
                <h3 class="f_get1">FEELING A LITTLE LOST?</h3>
@@ -230,8 +230,7 @@
 <script type="text/javascript">
   $(document).ready(function () {
 
-    $('#example').DataTable();
-    $('#example1').DataTable();
+    $('.data_table_apply').DataTable();
 
     $('.s_nav_menu').on('click' , 'a' , function() {
       $(this).siblings('.s_sub_menu').toggleClass('hidden');

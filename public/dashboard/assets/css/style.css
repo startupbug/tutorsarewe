@@ -1943,3 +1943,19 @@ span.nav__item-text.active {
 table th,tr,td,.dataTables_info,.dataTables_paginate.paging_simple_numbers,.paginate_button,.dataTables_filter label,.dataTables_length label {
     font-family: 'ProximaNova-Semibold' !important;
 }
+.alert{
+  font-family: 'ProximaNovaAlt-Regular' !important;
+}
+.alert strong{
+  font-family: 'ProximaNovaAlt-Regular' !important;
+}
+
+table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1 {
+    background-color: #eaeaea00;
+}
+table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
+    background-color: #f1f1f100;
+}
+table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1 {
+    background-color: #fafafa00;
+}
