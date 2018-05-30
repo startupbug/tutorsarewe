@@ -80,8 +80,8 @@ class DashboardController extends Controller
     public function subjects()
     {
         $subjects_name = DB::table('subjects')->get();
-        $all_subjects = Tutor_subject::join('subjects','subjects.id','=','tutor_subjects.subject_id')->select('subjects.*','tutor_subjects.id as tutor_subject_id')->where('tutor_id', Auth::user()->id)->get();
-        // dd($subjects_name);
+        $all_subjects = Tutor_subject::join('subjects','subjects.id','=','tutor_subjects.subject_id')->select('subjects.*','tutor_subjects.id as tutor_subject_id')->where('tutor_id', Auth::user()->id)->get();              
+
         return view('dashboard.subjects',['subjects' => $subjects_name, 'all_subjects'=>$all_subjects]);
     }
 
@@ -95,8 +95,8 @@ class DashboardController extends Controller
             $insert_subject->tutor_id = Auth::user()->id ;
             $insert_subject->save();
             if($insert_subject->save())
-            {
-
+            { 
+                  $this->logActivity(Auth::user()->first_name.' added subjects to his account');
                     $all_subjects = Tutor_subject::join('subjects','subjects.id','=','tutor_subjects.subject_id')->select('subjects.*','tutor_subjects.id as tutor_subject_id')->where('tutor_id',$insert_subject->tutor_id)->orderby('tutor_subjects.id','asc')->get();
                 // dd($all_subjects);
                 return view('dashboard.subjects',['all_subjects' => $all_subjects, 'user_id'=>$request->input('user_id'),'subjects' => $subjects_name]);

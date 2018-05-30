@@ -150,5 +150,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 /* Unauthorized Access Routes */
 Route::get('/401', 'HomeController@unauthorized')->name('unauthorized');
 
+/* Error Route */
+Route::get('/error/{message}', 'HomeController@error')->name('error');
 
 
