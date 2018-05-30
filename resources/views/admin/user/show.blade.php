@@ -20,7 +20,10 @@
                       <li><b>Name:</b> {{ $user->name}}</li>
                       <li><b>Email:</b> {{ $user->email}}</li>
                       <li><b>Role:</b> {{ $user->display_name}}</li>
-                      <li><b>Status:</b> {{ $user->status}}</li>
+                      <li><b>Username:</b> {{ $user->username}}</li>
+                      <li><b>Bio:</b> {{ $user->bio}}</li>
+                      <li><b>Tution Per Hour:</b> {{ $user->tution_per_hour}}</li>
+                      <li><b>Gender:</b> {{ $user->gender}}</li>
                     </ul> 
                   </div>
                 <!-- /.box -->

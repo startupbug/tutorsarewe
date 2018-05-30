@@ -68,7 +68,7 @@ class DashboardController extends Controller
                $this->set_session('Please enter Correct Previous Password to change your Password.', false);
         }
 
-           return redirect()->route('dashboard_index');
+           return redirect()->back();
 
          }catch(\Exception $e){
                    $this->set_session('Password couldnot be Updated. '.$e->getMessage(), false);
