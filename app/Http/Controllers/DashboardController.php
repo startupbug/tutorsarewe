@@ -89,20 +89,36 @@ class DashboardController extends Controller
     {
         // dd($request->input());
         try{
+          $count_subjects = Tutor_subject::where('tutor_id',Auth::user()->id)->get();
+          // dd(count($count_subjects));
+          if(count($count_subjects) < 5)
+          {
+           
             $subjects_name = DB::table('subjects')->get();
             $insert_subject = new Tutor_subject();
             $insert_subject->subject_id = $request->input('subject_name');
             $insert_subject->tutor_id = Auth::user()->id ;
             $insert_subject->save();
             if($insert_subject->save())
+
             { 
                   $this->logActivity(Auth::user()->first_name.' added subjects to his account');
                     $all_subjects = Tutor_subject::join('subjects','subjects.id','=','tutor_subjects.subject_id')->select('subjects.*','tutor_subjects.id as tutor_subject_id')->where('tutor_id',$insert_subject->tutor_id)->orderby('tutor_subjects.id','asc')->get();
+
                 // dd($all_subjects);
                 return view('dashboard.subjects',['all_subjects' => $all_subjects, 'user_id'=>$request->input('user_id'),'subjects' => $subjects_name]);
-
-
             }
+
+          }
+          else{
+                $subjects_name = DB::table('subjects')->get();
+                $all_subjects = Tutor_subject::join('subjects','subjects.id','=','tutor_subjects.subject_id')->select('subjects.*','tutor_subjects.id as tutor_subject_id')->where('tutor_id',Auth::user()->id)->orderby('tutor_subjects.id','asc')->get();
+                // dd(77);
+                 // dd(2222);
+                $this->set_session('you can only add 5 subjects', false);
+                return view('dashboard.subjects',['all_subjects' => $all_subjects, 'user_id'=>$request->input('user_id'),'subjects' => $subjects_name]);
+              
+          }
 
         }catch(\Exception $e){
            $this->set_session($e->getCode(), false);

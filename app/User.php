@@ -34,6 +34,13 @@ class User extends Authenticatable
     }
 
 
+    public function tutor_subject(){
+        return $this->hasMany('App\Tutor_subject');
+    }
+    public function todo(){
+        return $this->hasMany('App\Todo');
+    }
+
     public function transactions(){
         return $this->hasMany(Transaction::class);
     }

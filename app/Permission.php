@@ -6,6 +6,9 @@ use Zizaco\Entrust\EntrustPermission;
 
 class Permission extends EntrustPermission
 {
+
+	protected $table = 'permissions';
+
 	public function getAllPermissions(){
 		return $this->all();
 	}
@@ -18,5 +21,6 @@ class Permission extends EntrustPermission
 	public function storePermission($request){
 
 	}
+
 
 }

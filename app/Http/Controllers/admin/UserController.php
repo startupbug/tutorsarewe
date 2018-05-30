@@ -9,6 +9,8 @@ use App\User;
 use Spatie\Activitylog\Models\Activity;
 use App\Status;
 use App\Notifications\userNotify;
+use App\Events\UserRegistration;
+use App\Profile;
 
 class UserController extends Controller
 {
@@ -53,9 +55,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'first_name' => 'required|string|max:15',
+            'last_name' => 'required|string|max:15',
+            'email' => 'required|string|email|unique:users',
+            'username'=>'required|string|max:15|unique:profiles',
+            'password' => 'required|string|min:6|confirmed',
+            'gender' => 'required|string',
+            'age' => 'required|numeric',
+        ]);
+
        try{ 
             $this->logActivity('User Added');
-
+            // dd($request->input());
             //Creating new User
             $user = $this->user;
             $user->first_name = $request->input('first_name');
@@ -63,13 +75,18 @@ class UserController extends Controller
             $user->phone_no = $request->input('phone_no');
             $user->email = $request->input('email');
             $user->password = bcrypt($request->input('password'));
+
             $user->status_id = $request->input('status_id');
+            // $insert_profile = new Profile();
 
             if($user->save()){
                 //Assigning Role to User
                 $role = Role::find($request->input('user_role'));
                 $user->roles()->attach($role);
-
+                $data['user'] = $user;
+                $data['request'] = $request->all();
+                //dd($data);
+                event(new UserRegistration($data));
                 //Notify Test..
                 //$user->notify(new userNotify($user));
 

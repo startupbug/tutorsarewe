@@ -8,6 +8,7 @@
             <h3 class="login_content">Forget Password</h3>
             <p class="f_account">Don’t have an account? <span><a href="{{route('signup')}}">Sign up for free</a></span></p>
             @include('partials.error_section')
+            
 						<form action="{{route('send_forget_email')}}" method="post">
 							{{csrf_field()}}
 							<div class="form-group">

@@ -1,6 +1,6 @@
 @extends('dashboard.dashboard-app')
 @section('content')
-<div class="container-fluid bg_color_gray">
+<div class="container-fluid remove_padding bg_color_gray">
    @include('dashboard.partials.dashboard-sidebar')
 
 	 <div class="edit_profile">

@@ -3,7 +3,7 @@
 
 <section class="profile">
 
-   <div class="container-fluid f_padding bg_color_gray">
+   <div class="container-fluid remove_padding bg_color_gray">
   		@include('dashboard.partials.dashboard-sidebar')
       <!--<div class="col-md-3 border_left f_padding">
       	<img src="assets/images/dashboard_img.png" class="img-responsive f_dashimg">
@@ -27,6 +27,9 @@
       	<div class="edit_profile">
       	<h3 class="f_profile_content">Edit Profile</h3>
         @include('partials.error_section')
+        @foreach($errors->all() as $erroring)
+                  <li>{{$erroring}}  </li>
+                  @endforeach
       <!-- 	<p class="f_text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, elium totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p> -->
 
       </div>
@@ -36,18 +39,18 @@
   		 <div class="form-group profile_form">
     <label>First Name <span>*</span></label>
     <br>
-    <input type="text" name="first_name" value="{{ isset($user->first_name) ? $user->first_name : '' }}" class="span3">
+    <input type="text" name="first_name" value="{{ isset($user->first_name) ? $user->first_name : '' }}" class="span3" required>
 </div>
  <div class="form-group profile_form">
     <label>Last Name <span>*</span></label>
     <br>
-    <input type="text" name="last_name" value="{{ isset($user->last_name) ? $user->last_name : '' }}" class="span3">
+    <input type="text" name="last_name" value="{{ isset($user->last_name) ? $user->last_name : '' }}" class="span3" required>
 </div>
 
  <div class="form-group profile_form">
     <label>Rates / Hour <span>*</span></label>
     <br>
-    <input type="text" name="tution_per_hour" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}" class="span3">
+    <input type="text" name="tution_per_hour" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}" class="span3" required>
 </div>
 
  <div class="form-group profile_form">
