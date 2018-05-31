@@ -56,6 +56,11 @@ cd  <footer class="main-footer f_footer admin_footer">
       
 <!-- Custom JS -->
 <script src="{{ asset('public/admin/js/custom.js') }}"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.data_table_apply').DataTable();
+	})
+</script>
 
 <!-- ckeditor JS -->
 <script src="{{ asset('public/admin/js/ckeditor.js') }}"></script>
@@ -69,5 +74,6 @@ cd  <footer class="main-footer f_footer admin_footer">
 <script src="{{ asset('public/admin/dist/js/demo.js') }}"></script>
 
 @yield('custom-script')
+
 </body>
 </html>
