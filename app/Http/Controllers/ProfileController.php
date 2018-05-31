@@ -70,6 +70,7 @@ class ProfileController extends Controller
     		$profile = Profile::where('user_id', $user_id)->update($profile_array);
 
     		if($user->save() && $profile){
+                $this->logActivity(Auth::user()->first_name.' edited his profile ');
 	            $this->set_session('Profile Successfully Edited.', true);
 
     		}else{
@@ -96,8 +97,13 @@ class ProfileController extends Controller
           'profile_pic' => $img_name
           ]);
           $path = asset('public/dashboard/assets/images/profile/').'/'.$img_name;
+
+          $this->logActivity(Auth::user()->first_name.' updated profile image ');
+          
           return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]);
+          
           $this->set_session('Image Uploaded successfully', true);
+
         }else{
             $this->set_session('Image is Not Uploaded. Please Try Again', false);
         return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);

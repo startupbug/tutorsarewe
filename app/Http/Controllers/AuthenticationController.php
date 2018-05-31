@@ -35,6 +35,7 @@ class AuthenticationController extends Controller
 
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
                $this->logActivity(Auth::user()->first_name.' Logged in on Tutor');
+
                return redirect()->route('home');
 
             }else{
@@ -51,7 +52,9 @@ class AuthenticationController extends Controller
 
     //Logging out user
     public function logout_user(){
+        $this->logActivity(Auth::user()->first_name.' logged out');
         Auth::logout();
+
         return redirect()->route('home');          
     }
 
