@@ -153,6 +153,8 @@ class UserController extends Controller
             $user->first_name = $request->input('first_name');
             $user->last_name = $request->input('last_name');
             $user->phone_no = $request->input('phone_no');
+            
+            //$user->username = $request->input('username');
 
             $user->email = $request->input('email');
 
@@ -192,7 +194,7 @@ class UserController extends Controller
        //Deleting User
        try{
 
-            $this->logActivity('User deleted');
+            $this->logActivity('User deleted by'. Auth::user()->first_name);
 
             $user = $this->user::find($id);
             $user = $user->delete();

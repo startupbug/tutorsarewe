@@ -92,7 +92,6 @@
             </ul>
           </li>   
 
-         
           <!-- Analytics -->
           <li class="treeview">
             <a href="{{ route('analytics') }}">
@@ -100,8 +99,6 @@
             </a>
           </li>  
           
-
-
         <!-- Activity Log -->
         <li class="treeview">
           <a href="{{route('activitylog_index')}}">
@@ -122,6 +119,13 @@
             <!-- <li><a href="{{route('pages.index')}}"><i class="fa fa-circle-o"></i> Calendar </a></li> -->
           </ul>
         </li> 
+
+        <!-- Subjects -->
+        <li class="treeview">
+          <a href="{{route('subject_admin')}}">
+            <i class="fa fa-share"></i> <span>Subjects</span>
+          </a>
+        </li>
 
     @endif
 

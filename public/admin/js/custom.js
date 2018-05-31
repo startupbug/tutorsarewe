@@ -3,7 +3,9 @@
     $('#userTable').DataTable();
      $('#activityTable').DataTable({
         "order": [[ 3, "desc" ]]
-});
+	});
+    $("#subjectTable").DataTable();
+
 
 
 	//Permission Addition to Role Ajax request
@@ -244,7 +246,85 @@
 
 	});
 
+/* Subject handling Jquery */
+
+$(".editAddSubjectModal").on("click", function(e){
+	 e.preventDefault();
+
+	 //for edit
+	 if($(this).data('flag') == 'edit'){
+	 	//Send Ajax request to get data and insert in model.
+	 	var subjId = $(this).data('id');
+
+	  	$.ajaxSetup({
+	      headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+	  	});
+
+		$.ajax({
+		  type: "POST",
+		  url: $(this).data('url'),
+		  data: {'subjId': $(this).data('id') },
+		  success: function(data){
+				$("#subject").val(data.subject);
+		  		$("#subject_code").val(data.subject_code);
+		  		$("#edit_subj_id").val(subjId);
+		  		$(".subjModalHeading").text('Edit');
+		  },
+		  error: function(data){
+		  	toastr.error("Subject couldnot be Loaded.");
+		  }
+		});
+
+	 //for add
+	 }else if($(this).data('flag') == 'add'){
+				$("#subject").val('');
+		  		$("#subject_code").val('');
+		  		$("#edit_subj_id").val('');
+		  		$(".subjModalHeading").text('Add');
+	 }
+
+});
+
+//editAddSubject
+$("#editAddSubject").on('submit', function(e){
+	e.preventDefault();
+
+		var formData = new FormData(this);
+		console.log(formData);
+	  	$.ajaxSetup({
+	      headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+	  	});
+
+		$.ajax({
+		  type: "POST",
+		  url: $(this).attr('action'),
+		  data: formData,
+          processData: false,
+          contentType: false,		  
+		  success: function(data){
+
+		  	if(data.success == true){
+		  		toastr.success(data.msg);
+	 			
+	 			$("#editAddSubjectModal").modal('toggle');
+
+		  		setTimeout(function(){ 
+		  			location.reload();
+		  		}, 600);
+
+		  	}else if(data.success == false){
+		  		toastr.success(data.msg);
+		  	}
+		  },
+		  error: function(data){
+		  	toastr.error(data.msg);
+		  }
+		});
+
+});
+
 $( document ).ready(function() {
 	CKEDITOR.replace( 'editor1' );
-	CKEDITOR.replace( 'editor2' );	
+	CKEDITOR.replace( 'editor2' );
+	$("#passwordadmin").val('');
 });
