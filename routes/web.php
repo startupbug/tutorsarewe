@@ -99,7 +99,6 @@ Route::get('getCancel', 'Paypal\StudentPayment@getCancel');
 Route::get('my_transactions', 'ProfileController@my_transactions')->name('my_transactions');
 Route::get('transaction_detail/{id}', 'ProfileController@transaction_detail')->name('transaction_detail');
 Route::post('walletWithdraw', 'ProfileController@walletWithdraw')->name('walletWithdraw');
-
 Route::get('my_wallet', 'ProfileController@my_balance')->name('my_balance');
 
 /* Admin Panel Routes */

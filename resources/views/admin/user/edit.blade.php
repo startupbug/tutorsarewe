@@ -51,13 +51,13 @@
 
                 <div class="form-group">
                   <label for="">Password</label>
-                  <input type="password" class="form-control" name="password" value="" id="">
+                  <input type="text" class="form-control" name="admin-password" value="">
                 </div>
 
                 <div class="form-group profile_form">
                   <label for="exampleInputRate">Rates / Hour <span>*</span></label>
                   <br>
-                  <input type="text" name="tution_per_hour" id="exampleInputRate" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}" class="span3" required>
+                  <input type="text" name="tution_per_hour" id="exampleInputRate" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}" class="span3 form-control " required>
                 </div>
 
                 <div class="form-group profile_form">
@@ -80,7 +80,7 @@
                 <div class="form-group profile_form">
                   <label for="exampleInputage">Age<span>*</span></label>
                   <br>
-                  <input type="text" name="age" id="exampleInputage" value="{{$user->age}}" class="span3" required>
+                  <input type="text" name="age" id="exampleInputage" value="{{$user->age}}" class="form-control span3" required>
                 </div>
 
                 <div class="form-group">

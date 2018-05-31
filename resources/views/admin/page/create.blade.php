@@ -81,3 +81,15 @@
   <!-- /.content-wrapper -->
 
 @endsection
+
+
+@section('custom-script')
+<script type="text/javascript">
+    $(document).ready(function(){
+        CKEDITOR.replace( 'editor1' );
+    })
+
+</script>
+
+
+@endsection

@@ -121,9 +121,12 @@
 <!-- 
             <li><a href="{{route('pages.index')}}"><i class="fa fa-circle-o"></i> Calendar </a></li>
             <li> -->
-            <a href="{{ route('analytics') }}">
-              <i class="fa fa-share"></i> <span>Analytics</span>
-            </a>
+            <li>
+              
+              <a href="{{ route('analytics') }}">
+                <i class="fa fa-share"></i> <span>Analytics</span>
+              </a>
+            </li>
 
             <!-- <li><a href="{{route('pages.index')}}"><i class="fa fa-circle-o"></i> Calendar </a></li> -->
 

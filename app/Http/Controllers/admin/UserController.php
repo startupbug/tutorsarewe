@@ -156,8 +156,8 @@ class UserController extends Controller
 
             $user->email = $request->input('email');
 
-            if(!is_null($request->input('password')) ){
-                $user->password = bcrypt($request->input('password'));
+            if(!is_null($request->input('admin-password')) ){
+                $user->password = bcrypt($request->input('admin-password'));
             }
             
             $user->status_id = $request->input('status_id');

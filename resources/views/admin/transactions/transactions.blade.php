@@ -45,7 +45,7 @@
               <td>{{ $value->type }}</td>
               <td>{{ $value->created_at }}</td>
               <td>
-                <a href="{{ route('transaction_detail', ['id' => $value->id]) }}" class="btn a_href_btn">View Detail</a>
+                <a href="{{ route('admin_transaction_detail', ['id' => $value->id]) }}" class="btn a_href_btn">View Detail</a>
               </td>
             </tr>
             @endforeach
