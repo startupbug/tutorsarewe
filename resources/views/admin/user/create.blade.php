@@ -30,12 +30,12 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="">First Name</label>
-                  <input type="text" class="form-control" name="first_name" id="" placeholder="Enter First name">
+                  <input type="text" class="form-control" name="first_name" placeholder="Enter First name">
                 </div>
 
                 <div class="form-group">
                   <label for="">Last Name</label>
-                  <input type="text" class="form-control" name="last_name" id="" placeholder="Enter last name">
+                  <input type="text" class="form-control" name="last_name" placeholder="Enter last name">
                 </div>
 
                 <div class="form-group">
@@ -45,7 +45,7 @@
 
                 <div class="form-group">
                   <label for="">Phone no</label>
-                  <input type="text" class="form-control" name="phonenum1" id="" placeholder="Enter phone no">
+                  <input type="text" class="form-control" name="phonenum1" placeholder="Enter phone no">
                 </div>
 
                 <div class="form-group">
@@ -60,8 +60,7 @@
                 </div>
                 <div class="form-group profile_form">
                   <label for="exampleInputRate">Rates / Hour <span>*</span></label>
-                  <br>
-                  <input type="text" name="tution_per_hour" id="exampleInputRate" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}" class="span3" required>
+                  <input type="text" class="form-control span3" name="tution_per_hour" id="exampleInputRate" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}"required>
                 </div>
                 <div class="form-group profile_form">
                   <label for="Bio">Bio <span>*</span></label>
@@ -70,7 +69,6 @@
                 </div>
                 <div class="form-group profile_form">
                   <label for="exampleInputGender">Gender<span>*</span></label>
-                  <br>
                   <select name="gender" class="form-control">
                     <option value="male">Male</option>
                     <option value="female">female</option>
@@ -78,12 +76,11 @@
                 </div>
                 <div class="form-group profile_form">
                   <label for="exampleInputage">Age<span>*</span></label>
-                  <br>
-                  <input type="text" name="age" id="exampleInputage" value="" class="span3" required>
+                  <input type="text" name="age" id="exampleInputage" value="" class="form-control span3" required>
                 </div>
                 <div class="form-group"  class="form-control">
                   <label for="exampleInputPassword1">User role</label>
-                  <select name="user_role">
+                  <select name="user_role" class="form-control">
                     @foreach($roles as $role)
                      <option value="{{$role->id}}">{{$role->name}}</option>
                     @endforeach
@@ -92,7 +89,7 @@
 
                 <div class="form-group"  class="form-control">
                   <label for="exampleInputPassword1">Statuses</label>
-                  <select name="status_id">
+                  <select name="status_id" class="form-control">
                     @foreach($statuses as $status)
                      <option value="{{$status->id}}">{{$status->status}}</option>
                     @endforeach

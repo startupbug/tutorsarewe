@@ -153,11 +153,13 @@ class UserController extends Controller
             $user->first_name = $request->input('first_name');
             $user->last_name = $request->input('last_name');
             $user->phone_no = $request->input('phone_no');
+            
+            //$user->username = $request->input('username');
 
             $user->email = $request->input('email');
 
-            if(!is_null($request->input('password')) ){
-                $user->password = bcrypt($request->input('password'));
+            if(!is_null($request->input('admin-password')) ){
+                $user->password = bcrypt($request->input('admin-password'));
             }
             
             $user->status_id = $request->input('status_id');
@@ -202,7 +204,7 @@ class UserController extends Controller
        //Deleting User
        try{
 
-            $this->logActivity('User deleted');
+            $this->logActivity('User deleted by'. Auth::user()->first_name);
 
             $user = $this->user::find($id);
             $user = $user->delete();

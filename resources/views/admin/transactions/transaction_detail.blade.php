@@ -1,10 +1,30 @@
-@extends('dashboard.dashboard-app')
+@extends('admin.admin-app')
 @section('content')
-<div class="container-fluid remove_padding bg_color_gray">
-    @include('dashboard.partials.dashboard-sidebar')
-    <div class="col-md-9">
-        @include('partials.error_section')
-        <div class="row">
+
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Page Panel
+        <small>- Pages </small>
+      </h1>
+    </section>
+
+    <!-- Main content -->
+        <section class="content">    
+     <div class="row">
+
+
+      <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Page list</h3>
+                @include('admin.partials.error_section')              
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
             <div class="col-md-10 col-md-offset-1 border_transaction_page">
                 <h3 class="order_heading">Transaction Detail</h3>
                 <div class="row description_heading">
@@ -52,6 +72,11 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
 @endsection

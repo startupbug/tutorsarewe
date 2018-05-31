@@ -45,7 +45,7 @@
                         <td>@if($user->verified == 1) Verified @elseif ($user->verified == 0) unVerified @endif</td>
                         <td><a href="{{route('users.edit', ['id' => $user->id])}}"><button type="button" class="btn btn-info">Edit</button></a>
                         <a href="{{route('users.show', ['id' => $user->id])}}"><button type="button" class="btn btn-info f_view">View</button></a>
-                        <form id="deleteUser" action="{{route('users.destroy', ['id' => $user->id])}}" method="post" class="f_form">
+                        <form id="deleteUser" onsubmit="return confirm('Do you really want to delete?')" action="{{route('users.destroy', ['id' => $user->id])}}" method="post" class="f_form">
                           {{ method_field('DELETE') }}
                           <input type="hidden" name="_token" value="{{Session::token()}}">
                           <button type="submit" class="btn btn-danger f_view">Delete</button>

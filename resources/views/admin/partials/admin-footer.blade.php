@@ -22,7 +22,7 @@ cd  <footer class="main-footer f_footer admin_footer">
 <script src="{{ asset('public/admin/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- Morris.js') }} charts -->
 <script src="{{ asset('public/admin/js/raphael-min.js') }}"></script>
-<script src="{{ asset('public/admin/plugins/morris/morris.min.js') }}"></script>
+<!-- <script src="{{ asset('public/admin/plugins/morris/morris.min.js') }}"></script> -->
 <!-- Sparkline -->
 <script src="{{ asset('public/admin/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
 <!-- jvectormap -->
@@ -44,34 +44,25 @@ cd  <footer class="main-footer f_footer admin_footer">
 <!-- AdminLTE App -->
 <script src="{{ asset('public/admin/dist/js/app.min.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('public/admin/dist/js/pages/dashboard.js') }}"></script>
+<!-- <script src="{{ asset('public/admin/dist/js/pages/dashboard.js') }}"></script> -->
 
 <!-- DataTables -->
 <script src="{{ asset('public/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('public/admin/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
 
+<!-- ckeditor JS -->
+<script src="{{ asset('public/admin/js/ckeditor.js') }}"></script>
 
 <!-- Toaster Alert Files -->
 <script src="{{ asset('public/admin/js/toastr.min.js') }}"></script>
       
 <!-- Custom JS -->
 <script src="{{ asset('public/admin/js/custom.js') }}"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.data_table_apply').DataTable();
-	})
-</script>
 
-<!-- ckeditor JS -->
-<script src="{{ asset('public/admin/js/ckeditor.js') }}"></script>
 
-<script>
-  
-   CKEDITOR.replace( 'editor1' );
-   
-</script>
+
 <!-- AdminLTE for demo purposes -->
-<script src="{{ asset('public/admin/dist/js/demo.js') }}"></script>
+<!-- <script src="{{ asset('public/admin/dist/js/demo.js') }}"></script> -->
 
 @yield('custom-script')
 

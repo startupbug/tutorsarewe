@@ -28,18 +28,32 @@
             <thead>
               <tr>
                 <th>#</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Available Balance</th>
                 <th>Amount</th>
+                <th>Role</th>
                 <th>Date</th>
                 <th>Status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
               @foreach ($withdraws as $key => $value)
               <tr>
                 <td>{{ ++$key }}</td>
+                <td>{{ $value->first_name }} {{ $value->last_name }}</td>
+                <td>{{ $value->email }}</td>
+                <td>{{ $value->phone_no }}</td>
+                <td>{{ $value->balance }}</td>
                 <td>{{ $value->amount }}</td>
-                <td>{{ $value->created_at }}</td>
+                <td>{{ $value->display_name }}</td>
+                <td>{{date('Y-m-d', strtotime($value->date))  }}</td>
                 <td>{{ $value->status }}</td>
+                <td>
+                  <a href="#">asd</a>
+                </td>
               </tr>
               @endforeach
             </tbody>

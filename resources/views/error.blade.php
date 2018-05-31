@@ -72,7 +72,11 @@
             @else
                 <h1>Oops Something went wrong</h1>
             @endif
-            <button onclick="goBack()">Go Back</button>            
+            <br>
+            <p class="text-justify">
+                <a href="#" onclick="goBack()">Go Back</a>            
+                
+            </p>
         </div>
 
 <script>

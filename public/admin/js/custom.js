@@ -1,41 +1,46 @@
 
 
-    $('#userTable').DataTable();
-     $('#activityTable').DataTable({
-        "order": [[ 3, "desc" ]]
-});
+$(document).ready(function(){
+
+	//jQuery Data tables
+	$('.data_table_apply').DataTable();
+	$('#userTable').DataTable();
+	$('#activityTable').DataTable({
+		"order": [[ 3, "desc" ]]
+	});
+	$("#subjectTable").DataTable();
 
 
 	//Permission Addition to Role Ajax request
 	$(".permission").on("change", function(e){
 		e.preventDefault();
 
-	  	$.ajaxSetup({
-	      headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
-	  	});
+		$.ajaxSetup({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+		});
 
 		$.ajax({
-		  type: "POST",
-		  url: $(this).find(':selected').data('url'),
-		  data: {'role_id':$(this).find(':selected').data('role'), 'permission_id':$(this).val()},
-		  success: function(data){
-		  	console.log(data);
-		  	if(data.status==200){
-		  		toastr.success(data.msg);
-		  		
-		  		setTimeout(function(){ 
-		  			location.reload();
-		  		}, 1200);
+			type: "POST",
+			url: $(this).find(':selected').data('url'),
+			data: {'role_id':$(this).find(':selected').data('role'), 'permission_id':$(this).val()},
+			success: function(data){
+				console.log(data);
+				if(data.status==200){
+					toastr.success(data.msg);
 
-		  	}else if(data.status=202){
-		  		toastr.warning(data.msg);
-		  	}else if(data.status=204){
-		  		toastr.error(data.msg);
-		  	}
-		  },
-		  error: function(data){
-		  	toastr.error("Something went wrong, Please Try again.");
-		  }
+					setTimeout(function(){ 
+						location.reload();
+					}, 1200);
+
+				}else if(data.status=202){
+					toastr.warning(data.msg);
+				}else if(data.status=204){
+					toastr.error(data.msg);
+				}
+			},
+			error: function(data){
+				toastr.error("Something went wrong, Please Try again.");
+			}
 		});
 
 	});
@@ -44,30 +49,30 @@
 	$(".permissionDel").on("click", function(e){
 		e.preventDefault();
 
-	  	$.ajaxSetup({
-	      headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
-	  	});
+		$.ajaxSetup({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+		});
 
 		$.ajax({
-		  type: "POST",
-		  url: $(this).data('url'),
-		  data: {'role_id':$(this).data('role'), 'permission_id':$(this).val()},
-		  success: function(data){
-		  	console.log(data);
-		  	if(data.status==200){
-		  		toastr.success(data.msg);
-		  		
-		  		setTimeout(function(){ 
-		  			location.reload();
-		  		}, 1200);
+			type: "POST",
+			url: $(this).data('url'),
+			data: {'role_id':$(this).data('role'), 'permission_id':$(this).val()},
+			success: function(data){
+				console.log(data);
+				if(data.status==200){
+					toastr.success(data.msg);
 
-		  	}else if(data.status=204){
-		  		toastr.error(data.msg)
-		  	}
-		  },
-		  error: function(data){
-		  	toastr.error("Something went wrong, Please Try again.");
-		  }
+					setTimeout(function(){ 
+						location.reload();
+					}, 1200);
+
+				}else if(data.status=204){
+					toastr.error(data.msg)
+				}
+			},
+			error: function(data){
+				toastr.error("Something went wrong, Please Try again.");
+			}
 		});
 
 	});
@@ -80,7 +85,7 @@
 		console.log();
 
 		//return false;
-	     
+
 
 		if(e.target.id == 'addTask'){
 			//add Task
@@ -95,37 +100,37 @@
 		}
 
 
-	  	$.ajaxSetup({
-	      headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
-	  	});
+		$.ajaxSetup({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+		});
 
 		$.ajax({
-		  type: "POST",
-		  url: $(this).attr('action'),
-		  data: data,
-		  success: function(data){
-		  	console.log(data); 
+			type: "POST",
+			url: $(this).attr('action'),
+			data: data,
+			success: function(data){
+				console.log(data); 
 		  	//$('#addTask').modal('toggle');
 
 		  	if(data.status==200){
 
 		  		toastr.success(data.msg);
 
-		 		if(e.target.id == 'addTask'){
-		 			$("#myModalNorm").modal('toggle');
+		  		if(e.target.id == 'addTask'){
+		  			$("#myModalNorm").modal('toggle');
 
-			  		setTimeout(function(){ 
-			  			location.reload();
-			  		}, 600);
+		  			setTimeout(function(){ 
+		  				location.reload();
+		  			}, 600);
 
-		 		}else if(e.target.id == 'editTask'){
-		 			$("#myModalNormEdit").modal('toggle');
-		 			
-			  		setTimeout(function(){ 
-			  			location.reload();
-			  		}, 600);
+		  		}else if(e.target.id == 'editTask'){
+		  			$("#myModalNormEdit").modal('toggle');
 
-		 		}
+		  			setTimeout(function(){ 
+		  				location.reload();
+		  			}, 600);
+
+		  		}
 
 
 		  	}else if(data.status=202){
@@ -142,16 +147,16 @@
 		e.preventDefault();
 		var taskId = $(this).data('id');
 
-	  	$.ajaxSetup({
-	      headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
-	  	});
+		$.ajaxSetup({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+		});
 
 		$.ajax({
-		  type: "GET",
-		  url: $(this).data('url'),
-		  data: {'taskId': taskId },
-		  success: function(data){
-		  	console.log(data);
+			type: "GET",
+			url: $(this).data('url'),
+			data: {'taskId': taskId },
+			success: function(data){
+				console.log(data);
 		  	// $('#addTask').modal('toggle');
 		  	$("#taskNameEdit").val(data.task);
 		  	$("#taskEditId").val(data.id);
@@ -168,16 +173,16 @@
 		e.preventDefault();
 		var taskId = $(this).data('id');
 
-	  	$.ajaxSetup({
-	      headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
-	  	});
+		$.ajaxSetup({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+		});
 
 		$.ajax({
-		  type: "POST",
-		  url: $(this).data('url'),
-		  data: {'taskId': taskId },
-		  success: function(data){
-		  	console.log(data);
+			type: "POST",
+			url: $(this).data('url'),
+			data: {'taskId': taskId },
+			success: function(data){
+				console.log(data);
 		  	// $('#addTask').modal('toggle');
 
 		  	if(data.status==200){
@@ -201,32 +206,32 @@
 
 
 	$(".toDoCheck").change(function() {
-	    
-	    var status;
-	    if(this.checked) {
-	    	status = 1;
-	    	$(this).siblings('span.text').css('text-decoration', 'line-through');
-	    	$(this).siblings('span.text').css('color', '#c9cbcf');
-	    	$(this).closest('li').find('.label-success').css('background-color', 'rgb(201, 203, 207)');
-	    }
-	    else{
-	    	status = 0;
-	    	$(this).siblings('span.text').css('text-decoration', 'none');
-	    	$(this).siblings('span.text').css('color', '#000');
-	    	$(this).closest('li').find('.label-success').css('background-color', '#00a65a');
-	    }
 
-	  	$.ajaxSetup({
-	      headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
-	  	});
+		var status;
+		if(this.checked) {
+			status = 1;
+			$(this).siblings('span.text').css('text-decoration', 'line-through');
+			$(this).siblings('span.text').css('color', '#c9cbcf');
+			$(this).closest('li').find('.label-success').css('background-color', 'rgb(201, 203, 207)');
+		}
+		else{
+			status = 0;
+			$(this).siblings('span.text').css('text-decoration', 'none');
+			$(this).siblings('span.text').css('color', '#000');
+			$(this).closest('li').find('.label-success').css('background-color', '#00a65a');
+		}
+
+		$.ajaxSetup({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+		});
 
 		$.ajax({
-		  type: "POST",
-		  url: $(this).data('url'),
-		  data: {'taskId': $(this).data('id'), 'checked' : status},
-		  success: function(data){
-		  	console.log(123);
-		  	console.log(data);
+			type: "POST",
+			url: $(this).data('url'),
+			data: {'taskId': $(this).data('id'), 'checked' : status},
+			success: function(data){
+				console.log(123);
+				console.log(data);
 		  	// $('#addTask').modal('toggle');
 
 		  	if(data.status==200){
@@ -244,7 +249,83 @@
 
 	});
 
-$( document ).ready(function() {
-	CKEDITOR.replace( 'editor1' );
-	CKEDITOR.replace( 'editor2' );	
+
+
+	
+
+	/* Subject handling Jquery */
+
+	$(".editAddSubjectModal").on("click", function(e){
+		e.preventDefault();
+
+	 //for edit
+	 if($(this).data('flag') == 'edit'){
+	 	//Send Ajax request to get data and insert in model.
+	 	var subjId = $(this).data('id');
+
+	 	$.ajaxSetup({
+	 		headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+	 	});
+
+	 	$.ajax({
+	 		type: "POST",
+	 		url: $(this).data('url'),
+	 		data: {'subjId': $(this).data('id') },
+	 		success: function(data){
+	 			$("#subject").val(data.subject);
+	 			$("#subject_code").val(data.subject_code);
+	 			$("#edit_subj_id").val(subjId);
+	 			$(".subjModalHeading").text('Edit');
+	 		},
+	 		error: function(data){
+	 			toastr.error("Subject couldnot be Loaded.");
+	 		}
+	 	});
+
+	 //for add
+	}else if($(this).data('flag') == 'add'){
+		$("#subject").val('');
+		$("#subject_code").val('');
+		$("#edit_subj_id").val('');
+		$(".subjModalHeading").text('Add');
+	}
+
+
+	//editAddSubject
+	$("#editAddSubject").on('submit', function(e){
+		e.preventDefault();
+
+		var formData = new FormData(this);
+		console.log(formData);
+		$.ajaxSetup({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+		});
+
+		$.ajax({
+			type: "POST",
+			url: $(this).attr('action'),
+			data: formData,
+			processData: false,
+			contentType: false,		  
+			success: function(data){
+
+				if(data.success == true){
+					toastr.success(data.msg);
+					
+					$("#editAddSubjectModal").modal('toggle');
+
+					setTimeout(function(){ 
+						location.reload();
+					}, 600);
+
+				}else if(data.success == false){
+					toastr.success(data.msg);
+				}
+			},
+			error: function(data){
+				toastr.error(data.msg);
+			}
+		});
+
+	});
 });
