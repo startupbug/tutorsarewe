@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputUsername">Username</label>
-                  <input type="text" class="form-control" name="username" id="exampleInputUsername" value="{{$user->username}}" placeholder="Enter email">
+                  <input type="text" class="form-control" name="username" id="exampleInputUsername" value="{{$user->username}}" placeholder="Enter username">
                 </div>
                <div class="form-group">
                   <label for="">Phone no</label>
@@ -51,7 +51,9 @@
 
                 <div class="form-group">
                   <label for="">Password</label>
+
                   <input type="text" class="form-control" name="admin-password" value="">
+
                 </div>
 
                 <div class="form-group profile_form">

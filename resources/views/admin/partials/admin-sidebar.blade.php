@@ -92,9 +92,13 @@
             </ul>
           </li>   
 
-         
-
-
+          <!-- Analytics -->
+          <li class="treeview">
+            <a href="{{ route('analytics') }}">
+              <i class="fa fa-share"></i> <span>Analytics</span>
+            </a>
+          </li>  
+          
         <!-- Activity Log -->
         <li class="treeview">
           <a href="{{route('admin_transactions')}}">
@@ -132,6 +136,13 @@
 
           </ul>
         </li> 
+
+        <!-- Subjects -->
+        <li class="treeview">
+          <a href="{{route('subject_admin')}}">
+            <i class="fa fa-share"></i> <span>Subjects</span>
+          </a>
+        </li>
 
     @endif
 

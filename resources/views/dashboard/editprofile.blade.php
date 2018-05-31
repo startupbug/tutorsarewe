@@ -68,11 +68,10 @@
 
  <div class="form-group profile_form">
   <label>Gender</label>
-
-       <select class="form-control select_f span3" id="gender" name="gender">
-                   <option value="male" @if($user->gender=="male") selected @endif>Male</option>
-                   <option value="female" @if($user->gender=="female") selected @endif>female</option>
-       </select>
+   <select class="form-control select_f span3" id="gender" name="gender">
+               <option value="male" @if($user->gender=="male") selected @endif>Male</option>
+               <option value="female" @if($user->gender=="female") selected @endif>female</option>
+   </select>
   </div>
 
 
