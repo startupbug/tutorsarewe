@@ -101,8 +101,14 @@
           
         <!-- Activity Log -->
         <li class="treeview">
-          <a href="{{route('activitylog_index')}}">
-            <i class="fa fa-share"></i> <span>Activity Log</span>
+          <a href="{{route('admin_transactions')}}">
+            <i class="fa fa-share"></i> <span>Transcations</span>
+          </a>
+        </li> 
+
+        <li class="treeview">
+          <a href="{{route('admin_withdraws')}}">
+            <i class="fa fa-share"></i> <span>Withdraw Requests</span>
           </a>
         </li> 
 
@@ -116,7 +122,15 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{route('todos.index')}}"><i class="fa fa-circle-o"></i> Todolist </a></li>
+<!-- 
+            <li><a href="{{route('pages.index')}}"><i class="fa fa-circle-o"></i> Calendar </a></li>
+            <li> -->
+            <a href="{{ route('analytics') }}">
+              <i class="fa fa-share"></i> <span>Analytics</span>
+            </a>
+
             <!-- <li><a href="{{route('pages.index')}}"><i class="fa fa-circle-o"></i> Calendar </a></li> -->
+
           </ul>
         </li> 
 

@@ -70,6 +70,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 	//Subject delete
 	Route::get('/subject-delete/{id}', 'Admin\SubjectController@delete_subject')->name('delete_subject');
 
+	// transactions
+	Route::get('transactions', 'Admin\AdminController@transactions')->name('admin_transactions');
+	Route::get('withdraws', 'Admin\AdminController@withdraws')->name('admin_withdraws');
+	Route::get('transaction_details/{id}', 'Admin\AdminController@transaction_detail')->name('admin_transaction_detail');	
+
 });
 
 	//Admin Login Authentication

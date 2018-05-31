@@ -5,8 +5,10 @@ use App\Http\Controllers\Admin\AnalyticsController;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Transaction;
 use DB;
 use App\Activity_log;
+use App\WithdrawWallet;
 use App\Todo;
 use App\Page;
 
@@ -41,5 +43,17 @@ class AdminController extends Controller
         $data['activity_logs'] = Activity_log::select('users.first_name', 'activity_log.*')
                                     ->leftjoin('users', 'users.id', '=', 'activity_log.user_id')->get();        
         return view('admin.activitylog.index')->with($data);
-    }    
+    }   
+
+
+    public function transactions(){
+      $data['transactions'] = Transaction::all();
+      return view('admin.transactions.transactions')->with($data);
+    }  
+
+
+    public function withdraws(){
+      $data['withdraws'] = WithdrawWallet::all();
+      return view('admin.transactions.withdraw')->with($data);
+    } 
 }
