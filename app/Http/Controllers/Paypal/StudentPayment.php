@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Transaction as TransactionModel;
 use Auth;
 use App\Wallet;
-
+use App\WithdrawWallet;
 
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
@@ -139,7 +139,7 @@ class StudentPayment extends Controller
         
        $amount = $data['withdraws']->amount;
        $avl_balance = $data['withdraws']->balance;
-       //dd($avl_balance);
+       dd($data['withdraws']);
        
        //Deduct the Amount from Admin Paypal Account
 
