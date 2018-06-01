@@ -58,35 +58,39 @@ class StudentPayment extends Controller
     	
     	$deposit = (float) $request->get('amount');
 
+      //8% charge on amount
+      $service_fee = $deposit*(8/100);
+      $deposit = $deposit + $service_fee;
+
     	 // dd(gettype($amount));
     	$payer = new Payer();
-		$payer->setPaymentMethod("paypal");
+		  $payer->setPaymentMethod("paypal");
 
-		$amount = new Amount();
-		$amount->setCurrency("USD")
+		  $amount = new Amount();
+		  $amount->setCurrency("USD")
 		    ->setTotal($deposit);
 
-		$transaction = new Transaction();
-		$transaction->setAmount($amount)
-		    ->setDescription("this is paypal payment deposit")
-		    ->setInvoiceNumber(md5(mt_rand()));
+  		$transaction = new Transaction();
+  		$transaction->setAmount($amount)
+  		    ->setDescription("this is paypal payment deposit")
+  		    ->setInvoiceNumber(md5(mt_rand()));
 
-		//$baseUrl = getBaseUrl();
-		$redirectUrls = new RedirectUrls();
-		$redirectUrls->setReturnUrl(action('Paypal\StudentPayment@getDone'))
-		    ->setCancelUrl(action('Paypal\StudentPayment@getCancel'));
+  		//$baseUrl = getBaseUrl();
+  		$redirectUrls = new RedirectUrls();
+  		$redirectUrls->setReturnUrl(action('Paypal\StudentPayment@getDone'))
+  		    ->setCancelUrl(action('Paypal\StudentPayment@getCancel'));
 
-		$payment = new Payment();
-		$payment->setIntent("sale")
-		    ->setPayer($payer)
-		    ->setRedirectUrls($redirectUrls)
-		    ->setTransactions(array($transaction));
+  		$payment = new Payment();
+  		$payment->setIntent("sale")
+  		    ->setPayer($payer)
+  		    ->setRedirectUrls($redirectUrls)
+  		    ->setTransactions(array($transaction));
 
 
-		$response = $payment->create($this->apiContext);
-		$redirectUrl = $response->links[1]->href;
-		
-		return \Redirect::to( $redirectUrl );
+  		$response = $payment->create($this->apiContext);
+  		$redirectUrl = $response->links[1]->href;
+  		
+  		return \Redirect::to( $redirectUrl );
     }
 
 
@@ -139,8 +143,39 @@ class StudentPayment extends Controller
         
        $amount = $data['withdraws']->amount;
        $avl_balance = $data['withdraws']->balance;
-       dd($data['withdraws']);
        
+       $payouts = new \PayPal\Api\Payout();
+       $senderBatchHeader = new \PayPal\Api\PayoutSenderBatchHeader();
+       
+       $senderBatchHeader->setSenderBatchId(uniqid())
+    ->setEmailSubject("You have a Payout!");
+
+        $senderItem = new \PayPal\Api\PayoutItem();
+        $senderItem->setRecipientType('Email')
+      ->setNote('Thanks for your patronage!')
+      ->setReceiver('shirt-supplier-one@gmail.com')
+      ->setSenderItemId("2014031400023")
+      ->setAmount(new \PayPal\Api\Currency('{
+                          "value":"1.0",
+                          "currency":"USD"
+                      }'));
+
+      $payouts->setSenderBatchHeader($senderBatchHeader)
+    ->addItem($senderItem);
+
+
+$request = clone $payouts;
+
+
+
+    try {
+      $output = $payouts->createSynchronous($this->apiContext);
+      dd($output);
+    } catch (Exception $ex) {
+      dd($ex);
+      //ResultPrinter::printError("Created Single Synchronous Payout", "Payout", null, $request, $ex);
+        //exit(1);
+    } 
        //Deduct the Amount from Admin Paypal Account
 
        //Add amount to student paypal
