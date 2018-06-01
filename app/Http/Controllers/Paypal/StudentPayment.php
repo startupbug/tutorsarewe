@@ -128,4 +128,24 @@ class StudentPayment extends Controller
 		
 		dd($balance->balance);
 	}
+
+
+    public function accept_withdraw($id){
+        
+       $data['withdraws'] = WithdrawWallet::select('withdraw_wallets.id as wallet_id','withdraw_wallets.*', 'withdraw_wallets.created_at as date', 'users.*', 'wallets.*', 'roles.*')->leftJoin('users', 'users.id', '=', 'withdraw_wallets.user_id')
+                                  ->leftJoin('wallets', 'wallets.user_id', '=', 'withdraw_wallets.user_id')
+                                  ->leftJoin('roles', 'users.role_id', '=', 'roles.id')->orderBy('withdraw_wallets.created_at', 'desc')
+                                  ->where('withdraw_wallets.id', $id)->first();
+        
+       $amount = $data['withdraws']->amount;
+       $avl_balance = $data['withdraws']->balance;
+       //dd($avl_balance);
+       
+       //Deduct the Amount from Admin Paypal Account
+
+       //Add amount to student paypal
+
+       //Deduct amount from student wallet
+       //
+    }	
 }

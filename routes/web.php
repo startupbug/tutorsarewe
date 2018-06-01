@@ -101,6 +101,8 @@ Route::get('transaction_detail/{id}', 'ProfileController@transaction_detail')->n
 Route::post('walletWithdraw', 'ProfileController@walletWithdraw')->name('walletWithdraw');
 Route::get('my_wallet', 'ProfileController@my_balance')->name('my_balance');
 
+//Accept withdraw by Admin
+Route::get('accept-withdraw/{id}', 'Paypal\StudentPayment@accept_withdraw')->name('accept_withdraw');	
 
 
 
