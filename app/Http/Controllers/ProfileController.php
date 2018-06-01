@@ -99,7 +99,6 @@ class ProfileController extends Controller
           $path = asset('public/dashboard/assets/images/profile/').'/'.$img_name;
 
           $this->logActivity(Auth::user()->first_name.' updated profile image ');
-          
           return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]);
           
           $this->set_session('Image Uploaded successfully', true);
@@ -169,15 +168,19 @@ class ProfileController extends Controller
                     'user_id' => Auth::user()->id,
                     'amount' => $request->amount
                 ]);
+                $this->logActivity(Auth::user()->first_name.' You have successfully made a withdraw request, admin will approve it soon. ');
                 $this->set_session('You have successfully made a withdraw request, admin will approve it soon.', true);
+
                 return redirect()->route('my_balance');
             }
             else{
+                $this->logActivity(Auth::user()->first_name.'Sorry you do not have sufficinet balance to withdraw this amount.');
                 $this->set_session('Sorry you do not have sufficinet balance to withdraw this amount.', false);
                 return redirect()->route('my_balance');   
             }
         }
         else{
+            $this->logActivity(Auth::user()->first_name.'Sorry you already have a withdraw request you can not make another.');
             $this->set_session('Sorry you already have a withdraw request you can not make another.', false);
             return redirect()->route('my_balance');   
         }

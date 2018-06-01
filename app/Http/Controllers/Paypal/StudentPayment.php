@@ -85,7 +85,7 @@ class StudentPayment extends Controller
 
 		$response = $payment->create($this->apiContext);
 		$redirectUrl = $response->links[1]->href;
-		
+		$this->logActivity(Auth::user()->first_name.' Add cash into wallet ');
 		return \Redirect::to( $redirectUrl );
     }
 
