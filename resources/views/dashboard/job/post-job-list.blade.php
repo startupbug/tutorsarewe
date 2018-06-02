@@ -12,55 +12,8 @@
        <div class="col-md-9">
          <h3 class="f_course">Accusamus et iusto odio dignissimos ducimus qui blanditiis</h3>
          <p class="f_findcontent">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga</p>
-         <p class="f_posted s_posted">- Posted by Tony, 10 hours ago</p>
-       </div>
-       <div class="col-md-3">
-         <div class="s_buttonview">
-           <a class="btn btn-theme btn-sm btn-min-block f_viewjob" href="#">VIEW Detail</a>
-         </div>
-       </div>
-     </div>
-     <div class="row f_mainborder s_mainborder">
-       <div class="col-md-9">
-         <h3 class="f_course">Accusamus et iusto odio dignissimos ducimus qui blanditiis</h3>
-         <p class="f_findcontent">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga</p>
-         <p class="f_posted s_posted">- Posted by Tony, 10 hours ago</p>
-       </div>
-       <div class="col-md-3">
-         <div class="s_buttonview">
-           <a class="btn btn-theme btn-sm btn-min-block f_viewjob" href="#">VIEW Detail</a>
-         </div>
-       </div>
-     </div>
-     <div class="row f_mainborder s_mainborder">
-       <div class="col-md-9">
-         <h3 class="f_course">Accusamus et iusto odio dignissimos ducimus qui blanditiis</h3>
-         <p class="f_findcontent">At vero eos et accusamus et iusto odio dignissimos ducimus qui At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga</p>
-         <p class="f_posted s_posted">- Posted by Tony, 10 hours ago</p>
-       </div>
-       <div class="col-md-3">
-         <div class="s_buttonview">
-           <a class="btn btn-theme btn-sm btn-min-block f_viewjob" href="#">VIEW Detail</a>
-         </div>
-       </div>
-     </div>
-     <div class="row f_mainborder s_mainborder">
-       <div class="col-md-9">
-         <h3 class="f_course">Accusamus et iusto odio dignissimos ducimus qui blanditiis</h3>
-         <p class="f_findcontent">At vero eos et accusamus et iusto odio dignissimos ducimus qui At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga</p>
-         <p class="f_posted s_posted">- Posted by Tony, 10 hours ago</p>
-       </div>
-       <div class="col-md-3">
-         <div class="s_buttonview">
-           <a class="btn btn-theme btn-sm btn-min-block f_viewjob" href="#">VIEW Detail</a>
-         </div>
-       </div>
-     </div>
-     <div class="row f_mainborder s_mainborder">
-       <div class="col-md-9">
-         <h3 class="f_course">Accusamus et iusto odio dignissimos ducimus qui blanditiis</h3>
-         <p class="f_findcontent">At vero eos et accusamus et iusto odio dignissimos ducimus qui At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga</p>
-         <p class="f_posted s_posted">- Posted by Tony, 10 hours ago</p>
+         <h3 class="f_course">Subject : English</h3>
+         <p class="f_posted s_posted"><b>Posted</b>, 10 hours ago</p>
        </div>
        <div class="col-md-3">
          <div class="s_buttonview">
