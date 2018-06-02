@@ -102,7 +102,7 @@ Route::post('walletWithdraw', 'ProfileController@walletWithdraw')->name('walletW
 Route::get('my_wallet', 'ProfileController@my_balance')->name('my_balance');
 
 //Accept withdraw by Admin
-Route::get('accept-withdraw/{id}', 'Paypal\StudentPayment@accept_withdraw')->name('accept_withdraw');	
+Route::get('accept-withdraw/{id}', 'Paypal\StudentPayment@accept_withdraw')->name('accept_withdraw');
 
 
 
@@ -112,5 +112,4 @@ Route::get('/401', 'HomeController@unauthorized')->name('unauthorized');
 /* Error Route */
 Route::get('/error/{message}', 'HomeController@error')->name('error');
 
-
-
+Route::get('/jobpost', 'DashboardController@jobpost')->name('jobpost');
