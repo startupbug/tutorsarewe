@@ -8,7 +8,15 @@ console.log("ASdasd");
 	// Without JQuery
 	// var slider = new Slider('#ex2', {});
 
-
+  $('.offline').on('change', function() {
+      if ($(this).is(":checked")) {
+        $('.form_address').removeClass('hidden');
+        $('.job_address').attr('disabled', false);
+      }else {
+        $('.form_address').addClass('hidden');
+        $('.job_address').attr('disabled', true);
+      }
+  });
 
 });
 
@@ -17,8 +25,7 @@ $(".f_tab").click(function(){
   $(".f_tab").removeClass("active-tab");
   $(this).addClass("active-tab");
 })
-
- var myIndex = 0;
+var myIndex = 0;
 var slideIndex = 1;
 carousel();
 function plusDivs(n) {

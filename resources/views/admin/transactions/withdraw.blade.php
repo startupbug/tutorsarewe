@@ -40,6 +40,7 @@
               </tr>
             </thead>
             <tbody>
+         
               @foreach ($withdraws as $key => $value)
               <tr>
                 <td>{{ ++$key }}</td>
@@ -52,7 +53,10 @@
                 <td>{{date('Y-m-d', strtotime($value->date))  }}</td>
                 <td>{{ $value->status }}</td>
                 <td>
-                  <a href="#">asd</a>
+
+                  <!-- Accept Payment buuton -->
+                  <a href="{{route('accept_withdraw', ['id' => $value->wallet_id])}}"><button type="button" class="btn btn-info" data-id="{{$value->wallet_id}}">Accept</button></a>
+
                 </td>
               </tr>
               @endforeach

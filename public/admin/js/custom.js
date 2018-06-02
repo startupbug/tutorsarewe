@@ -9,7 +9,7 @@ $(document).ready(function(){
 		"order": [[ 3, "desc" ]]
 	});
 	$("#subjectTable").DataTable();
-
+	$(".data_table_apply").DataTable();
 
 	//Permission Addition to Role Ajax request
 	$(".permission").on("change", function(e){
@@ -290,6 +290,7 @@ $(document).ready(function(){
 		$(".subjModalHeading").text('Add');
 	}
 
+});
 
 	//editAddSubject
 	$("#editAddSubject").on('submit', function(e){

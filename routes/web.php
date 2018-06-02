@@ -46,7 +46,7 @@ Route::get('/logout',  'AuthenticationController@logout_user')->name('logout_use
 Route::get('/how-it-works', 'HomeController@how_it_works')->name('how_it_works');
 
 //Tutor find jobs
-Route::get('/find-tutor', 'HomeController@find_tutor')->name('find_tutor');
+Route::get('/find-job', 'HomeController@find_tutor')->name('find_tutor');
 
      //Tutor profile
 Route::get('/tutor_profile', 'HomeController@tutor_profile')->name('tutor_profile');
@@ -82,14 +82,26 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Change existing password view
 	Route::get('/settings/change-password/{id}', 'DashboardController@edit_pass_view')->name('change_pass_index');
+
 	// change_newpassword
 	Route::post('/settings/change-password/{id}', 'DashboardController@change_newpassword')->name('change_newpassword');
+
 	//Change existing password post
 	Route::post('/settings/change-password', 'DashboardController@edit_pass_post')->name('change_pass_post');
 
 	//Ajax profile upload
 	Route::post('imageUpload',['as'=>'imageUpload','uses'=>'ProfileController@imageUpload']);
 
+	/* Job Controllers Routes */
+
+	//Post Job view page
+	Route::get('/post-job', 'JobController@student_postJob')->name('postjob_view');
+	Route::get('/post-job-list', 'JobController@student_postJob_list')->name('post-job-list');
+	Route::get('/post-job-detail', 'JobController@student_postJob_detail')->name('post-job-detail');
+
+	//Post Job request page
+	
+	Route::post('/post-job', 'JobController@student_postJob_req')->name('student_postJob_req');
 });
 
 
@@ -102,7 +114,8 @@ Route::get('transaction_detail/{id}', 'ProfileController@transaction_detail')->n
 Route::post('walletWithdraw', 'ProfileController@walletWithdraw')->name('walletWithdraw');
 Route::get('my_wallet', 'ProfileController@my_balance')->name('my_balance');
 
-
+//Accept withdraw by Admin
+Route::get('accept-withdraw/{id}', 'Paypal\StudentPayment@accept_withdraw')->name('accept_withdraw');
 
 
 /* Unauthorized Access Routes */
@@ -110,7 +123,6 @@ Route::get('/401', 'HomeController@unauthorized')->name('unauthorized');
 
 /* Error Route */
 Route::get('/error/{message}', 'HomeController@error')->name('error');
-
 
 //Tutor Search
 Route::get('/tutor-search/', 'Tutor\TutorController@index')->name('tutors_listing');

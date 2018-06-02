@@ -34,11 +34,14 @@
                <br>
                <p class="text_aaccountview">{{Auth::user()->email}}</p>
             </div>
-            <div class="form-group profile_form account_view">
-               <label>Rates per hour <span>*</span></label>
-               <br>
-               <p class="text_aaccountview">{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '-' }}</p>
-            </div>
+
+           @if(Auth::user()->role_id == 3)
+               <div class="form-group profile_form account_view">
+                  <label>Rates per hour <span>*</span></label>
+                  <br>
+                  <p class="text_aaccountview">{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '-' }}</p>
+               </div>
+           @endif
 
             <div class="form-group profile_form account_view">
                <label>Gender <span></span></label>

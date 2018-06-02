@@ -448,3 +448,153 @@ p.user_f a{
     text-align: center;
     padding-bottom: 25px;
 }
+
+/* The s_container */
+.s_container {
+    padding-right: 25px;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.s_container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.s_checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #ccc;
+}
+
+/* On mouse-over, add a grey background color */
+.s_container:hover input ~ .s_checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.s_container input:checked ~ .s_checkmark {
+    background-color: #ed7275;
+}
+
+/* Create the s_checkmark/indicator (hidden when not checked) */
+.s_checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the s_checkmark when checked */
+.s_container input:checked ~ .s_checkmark:after {
+    display: block;
+}
+
+/* Style the s_checkmark/indicator */
+.s_container .s_checkmark:after {
+    left: 9px;
+    top: 6px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.s_padding_top{
+    padding-top: 12px;
+}
+
+.input[type=date].form-control{
+    line-height: 41px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: 'ProximaNova-Semibold' !important;
+}
+.form-control{
+  font-family: 'ProximaNova-Semibold' !important;
+}
+.s_mainborder {
+    background: #ffffff9e;
+    border-radius: 4px !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+p.s_posted{
+    padding-bottom: 0px !important;
+}
+.s_buttonview{
+    margin-top: 25%;
+}
+.s_course {
+    font-size: 28px;
+    color: #ed7275;
+    font-family: 'Ubuntu-B';
+    padding: 8px 0px;
+}
+h3.s_book {
+    font-size: 28px;
+    color: #646464;
+    font-family: 'Ubuntu-B';
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+p.s_does {
+    color: #747474;
+    font-size: 16px;
+    font-family: 'ProximaNova-Semibold';
+}
+.s_rating .fa {
+    color: #646464;
+    font-size: 22px;
+    padding: 12px 2px;
+}
+.s_rating .fa.checked {
+    color: #ed7275;
+}
+.s_img_search{
+    background: fixed;
+    background-position: center;
+    background-attachment: fixed;
+    width: auto;
+    height: 150px;
+}
+.s_bg_white{
+  background: #ffffff63;
+}
+.tutor_heading {
+    padding-top: 30px;
+}
+p.s_posted_padding {
+    padding: 0px !important;
+}
+h3.job_detail_heading {
+    font-family: 'Ubuntu-B';
+    color: #646464;
+    font-size: 40px;
+    text-align: center;
+    padding-left: 40px;
+    /* margin-bottom: 15px; */
+}
+.s-modal-header{
+    color: #ed7275;
+    font-size: 19px;
+    font-family: 'ProximaNova-Semibold';
+    margin-bottom: 5px;
+}
+.font_change{
+  font-family: 'ProximaNova-Semibold' !important;
+}

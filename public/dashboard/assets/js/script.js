@@ -51,10 +51,8 @@ $(function() {
   $('body').on( 'click',
     'a[href^="#/"]',
     function() {
+  $('body').on( 'click', 'a[href^="#/"]', function() {
       alert( "Thank you for clicking, but that's a demo link." );
       return false;
-    }
-  );
+  });
 });
-
-//for custom javascript functions function

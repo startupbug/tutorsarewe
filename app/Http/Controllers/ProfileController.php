@@ -10,6 +10,7 @@ use App\WithdrawWallet;
 use App\Wallet;
 use Auth;
 use Illuminate\Support\Facades\Input;
+use DB;
 
 class ProfileController extends Controller
 {
@@ -148,7 +149,8 @@ class ProfileController extends Controller
     {
         $data['transactions'] = Transaction::where('user_id', Auth::user()->id)->take(3)->orderBy('created_at', 'desc')->get();
         $data['withdraw'] = WithdrawWallet::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
-        
+        $data['wallet'] = DB::table('wallets')->where('user_id','=',Auth::user()->id)->first(['balance']);
+
         return view('dashboard.transactions.balance')->with($data);
     }
 

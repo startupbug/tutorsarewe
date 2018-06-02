@@ -84,15 +84,19 @@
                                     <li><a href="#">Page 1-2</a></li>
                                     <li><a href="#">Page 1-3</a></li>
                                  </ul>-->
+                                 <a class="f_dropdown"  data-toggle="dropdown" href="{{route('search_tutor')}}">FIND A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
+                                 <ul class="dropdown-menu">
+                                    <li><a href="{{route('postjob_view')}}">POST JOB</a></li>
+                                 </ul>
                               </li>
-                              <!--<li class="dropdown">
+                              <!-- <li class="dropdown">
                                  <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" href="howitworks.php">HOW IT WORKS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <ul class="dropdown-menu">
                                     <li><a href="#">Page 1-1</a></li>
                                     <li><a href="#">Page 1-2</a></li>
                                     <li><a href="#">Page 1-3</a></li>
                                  </ul>
-                              </li>-->
+                              </li> -->
                               <li class="">
                                  <a class="f_dropdown" href="{{route('how_it_works')}}">HOW IT WORKS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <!--<ul class="dropdown-menu">
@@ -110,7 +114,6 @@
                                  </ul>-->
                               </li>
                            @if(!Auth::check())
-
                               <li class="">
                                  <a class="f_dropdown" href="{{route('fulltime_tutor')}}">BECOME A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <!--<ul class="dropdown-menu">
@@ -119,9 +122,7 @@
                                     <li><a href="#">Page 1-3</a></li>
                                  </ul>-->
                               </li>
-
                            @endif
-
                               <li class="">
                                  <a class="f_dropdown" href="{{route('publications')}}">PUBLICATIONS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <!--<ul class="dropdown-menu">
@@ -138,7 +139,6 @@
                                     <li><a href="#">Page 1-3</a></li>
                                  </ul>-->
                               </li>
-
                               @if(Auth::check())
                                  <li class="dropdown user_page">
                                     <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" >{{Auth::user()->first_name}}  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
@@ -152,7 +152,6 @@
                                     </ul>
                                  </li>
                               @endif
-
                            </ul>
                         </div>
                      </div>
