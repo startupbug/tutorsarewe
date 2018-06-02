@@ -53,10 +53,10 @@ class AdminController extends Controller
 
 
     public function withdraws(){
-      $data['withdraws'] = WithdrawWallet::select('withdraw_wallets.*', 'withdraw_wallets.created_at as date', 'users.*', 'wallets.*', 'roles.*')->leftJoin('users', 'users.id', '=', 'withdraw_wallets.user_id')
+      $data['withdraws'] = WithdrawWallet::select('withdraw_wallets.id as wallet_id', 'withdraw_wallets.*', 'withdraw_wallets.created_at as date', 'users.*', 'wallets.*', 'roles.*')->leftJoin('users', 'users.id', '=', 'withdraw_wallets.user_id')
                             ->leftJoin('wallets', 'wallets.user_id', '=', 'withdraw_wallets.user_id')
                             ->leftJoin('roles', 'users.role_id', '=', 'roles.id')->orderBy('withdraw_wallets.created_at', 'desc')->get();
-        // dd($data['withdraws']);
+        //dd($data['withdraws']);
       return view('admin.transactions.withdraw')->with($data);
     } 
 
@@ -72,4 +72,6 @@ class AdminController extends Controller
           print_r($e);
       }
     }
+
+
 }

@@ -34,7 +34,14 @@ class AuthenticationController extends Controller
           try{
 
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
-               $this->logActivity(Auth::user()->first_name.' Logged in on Tutor');
+                if(Auth::user()->role_id == 2)
+                {
+                    $this->logActivity(Auth::user()->first_name.' Logged in on student');
+                }
+                elseif(Auth::user()->role_id == 3)
+                {
+                    $this->logActivity(Auth::user()->first_name.' Logged in on tutor');
+                }    
 
                return redirect()->route('home');
 

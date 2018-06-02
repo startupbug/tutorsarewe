@@ -11,6 +11,9 @@
 		@include('partials.error_section')
 		<div class="row">
 			<div class="col-md-12">
+				<h3>Balance $: {{ $wallet->balance}}</h3>
+			</div>
+			<div class="col-md-12">
 				<h3 class="sub_heading">Deposit</h3>
 				<form action="{{route('depositWallet')}}" method="post">
 					{{csrf_field()}}
