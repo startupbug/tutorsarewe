@@ -58,18 +58,19 @@ class JobController extends Controller
         }
     }
 
-    /** Tutor Job Methods **/
-
-    public function get_student_jobs(){
-      
-    }
-
+    //Student posted jobs
     public function student_postJob_list(){
       return view('dashboard.job.post-job-list');
     }
 
     public function student_postJob_detail(){
       return view('dashboard.job.post-job-detail');
+    }
+
+    /** Tutor Job Methods **/
+
+    public function get_student_jobs(){
+      
     }
 
 }
