@@ -81,13 +81,20 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Change existing password view
 	Route::get('/settings/change-password/{id}', 'DashboardController@edit_pass_view')->name('change_pass_index');
+
 	// change_newpassword
 	Route::post('/settings/change-password/{id}', 'DashboardController@change_newpassword')->name('change_newpassword');
+
 	//Change existing password post
 	Route::post('/settings/change-password', 'DashboardController@edit_pass_post')->name('change_pass_post');
 
 	//Ajax profile upload
 	Route::post('imageUpload',['as'=>'imageUpload','uses'=>'ProfileController@imageUpload']);
+
+	/* Job Controllers Routes */
+	Route::get('/post-job', 'JobController@student_postJob')->name('postjob_view');
+	Route::get('/post-job-list', 'JobController@student_postJob_list')->name('post-job-list');
+	Route::get('/post-job-detail', 'JobController@student_postJob_detail')->name('post-job-detail');
 
 });
 
@@ -102,7 +109,7 @@ Route::post('walletWithdraw', 'ProfileController@walletWithdraw')->name('walletW
 Route::get('my_wallet', 'ProfileController@my_balance')->name('my_balance');
 
 //Accept withdraw by Admin
-Route::get('accept-withdraw/{id}', 'Paypal\StudentPayment@accept_withdraw')->name('accept_withdraw');	
+Route::get('accept-withdraw/{id}', 'Paypal\StudentPayment@accept_withdraw')->name('accept_withdraw');
 
 
 
@@ -111,6 +118,3 @@ Route::get('/401', 'HomeController@unauthorized')->name('unauthorized');
 
 /* Error Route */
 Route::get('/error/{message}', 'HomeController@error')->name('error');
-
-
-

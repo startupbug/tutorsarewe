@@ -87,7 +87,7 @@ class DashboardController extends Controller
     public function subjects()
     {
         $subjects_name = DB::table('subjects')->get();
-        $all_subjects = Tutor_subject::join('subjects','subjects.id','=','tutor_subjects.subject_id')->select('subjects.*','tutor_subjects.id as tutor_subject_id')->where('tutor_id', Auth::user()->id)->get();              
+        $all_subjects = Tutor_subject::join('subjects','subjects.id','=','tutor_subjects.subject_id')->select('subjects.*','tutor_subjects.id as tutor_subject_id')->where('tutor_id', Auth::user()->id)->get();
 
         return view('dashboard.subjects',['subjects' => $subjects_name, 'all_subjects'=>$all_subjects]);
     }
@@ -100,8 +100,8 @@ class DashboardController extends Controller
           // dd(count($count_subjects));
           if(count($count_subjects) < 5)
           {
-           
-            $subjects_name = DB::table('subjects')->get();   
+
+            $subjects_name = DB::table('subjects')->get();
             $insert_subject = new Tutor_subject();
             $insert_subject->subject_id = $request->input('subject_name');
             $insert_subject->tutor_id = Auth::user()->id ;
@@ -124,7 +124,7 @@ class DashboardController extends Controller
                  // dd(2222);
                 $this->set_session('you can only add 5 subjects', false);
                 return view('dashboard.subjects',['all_subjects' => $all_subjects, 'user_id'=>$request->input('user_id'),'subjects' => $subjects_name]);
-              
+
           }
 
         }catch(\Exception $e){
@@ -161,5 +161,4 @@ class DashboardController extends Controller
            return redirect()->route('subjects');
       }
     }
-
 }
