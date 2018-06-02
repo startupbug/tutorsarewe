@@ -527,3 +527,65 @@ p.user_f a{
 .form-control{
   font-family: 'ProximaNova-Semibold' !important;
 }
+.s_mainborder {
+    background: #ffffff9e;
+    border-radius: 4px !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+p.s_posted{
+    padding-bottom: 0px !important;
+}
+.s_buttonview{
+    margin-top: 25%;
+}
+.s_course {
+    font-size: 28px;
+    color: #ed7275;
+    font-family: 'Ubuntu-B';
+    padding: 8px 0px;
+}
+h3.s_book {
+    font-size: 28px;
+    color: #646464;
+    font-family: 'Ubuntu-B';
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+p.s_does {
+    color: #747474;
+    font-size: 16px;
+    font-family: 'ProximaNova-Semibold';
+}
+.s_rating .fa {
+    color: #646464;
+    font-size: 22px;
+    padding: 12px 2px;
+}
+.s_rating .fa.checked {
+    color: #ed7275;
+}
+.s_img_search{
+    background: fixed;
+    background-position: center;
+    background-attachment: fixed;
+    width: auto;
+    height: 150px;
+}
+.s_bg_white{
+  background: #ffffff63;
+}
+.tutor_heading {
+    padding-top: 30px;
+}
+p.s_posted_padding {
+    padding: 0px !important;
+}
+h3.job_detail_heading {
+    font-family: 'Ubuntu-B';
+    color: #646464;
+    font-size: 40px;
+    text-align: center;
+    padding-left: 40px;
+    /* margin-bottom: 15px; */
+}

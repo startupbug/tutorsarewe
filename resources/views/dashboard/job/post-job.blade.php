@@ -1,9 +1,9 @@
 @extends('dashboard.dashboard-app')
 @section('content')
-<div class="container-fluid remove_padding bg_color_gray">
+<div class="container-fluid remove_padding ">
    @include('dashboard.partials.dashboard-sidebar')
 
-	 <div class="col-md-9">
+	 <div class="col-md-9 bg_color_gray">
      <div class="edit_profile padding_down_s">
        <h3 class="f_profile_content text-center">Post Job</h3>
      </div>
@@ -51,7 +51,7 @@
 					 <div class="form-group profile_form s_profile_form">
 						 <label>Description <span>*</span></label>
 						 <br>
-             <textarea name="description" rows="8" cols="80" class="form-control span3" required></textarea>
+             <textarea name="description" rows="6" cols="80" class="form-control span3" required></textarea>
 					 </div>
 					 <div class="form-group">
 					 	<input type="submit" value="ADD" class="btn s_save">
