@@ -10,7 +10,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class RegisterEvent
+class Job_request
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -21,9 +21,9 @@ class RegisterEvent
      */
     public $data;
 
-    public function __construct()
+    public function __construct($data)
     {
-       $this->data = $data;
+        $this->data = $data;
     }
 
     /**
