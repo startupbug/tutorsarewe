@@ -62,7 +62,8 @@
 					 	<input type="submit" value="Postw" class="btn s_save">
 					 </div>
 				 </form>
-			 </div>
+
+       </div>
 		 </div>
 	 </div>
 </div>
