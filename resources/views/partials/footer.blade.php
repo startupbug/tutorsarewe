@@ -227,5 +227,64 @@
 <script src="{{ asset('public/assets/js/custom-app.js') }}"></script>
 
 </div>
+<script type="text/javascript">
+   $('#myDropdown').on('click', 'a', function(){
+         console.log('asdasd');
+        var value = $(this).text();
+        var firstname = $(this).data('fname');
+        var lastname = $(this).data('lname');
+
+        $(this).closest('#myDropdown').siblings('.form-control').val(value);
+        
+        $(this).closest('#myDropdown').siblings('.fname').val(firstname);
+        $(this).closest('#myDropdown').siblings('.lname').val(lastname);
+
+        console.log($(this).closest('#myDropdown').siblings('.lname').val());
+
+        document.getElementById("myDropdown").classList.toggle("show");
+
+  });
+
+$("#ref_butn").on('click', function(e){
+   e.preventDefault(); 
+   var url_string = window.location.href;
+   var url = new URL(url_string);
+   var c = url.searchParams.get("limit");
+   var d = $("#ref_butn").attr('data-result');
+   link = url_string.replace("limit="+c, "limit="+(parseInt(d)+10));
+   link = link.replace("tutor-search", "tutor-search-ajax");
+
+   $.ajaxSetup({
+      headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+   });
+   $.ajax({
+      type: "get",
+      url: link,  
+      beforeSend: function(){
+         $("#ref_butn").attr('disabled','disabled');
+      } ,
+      success: function (data) {
+       if(data.status == 200){
+         $("#ref_butn").attr('data-result', parseInt(c)+10);
+         $("#ref_butn").removeAttr('disabled');
+         $("#results").append(data.data);
+
+       }else if(data.status==202){
+          alertify.warning(data.msg)
+          $("#ref_butn").removeAttr('disabled');
+       }
+       else if(data.status==201){
+         $("#results").append(data.data);
+         $("#ref_butn").attr('disabled','disabled');
+       }
+    },
+    error: function (data) {
+      alertify.warning("Oops. something went wrong. Please try again");
+      $("#ref_butn").removeAttr('disabled');
+    }
+    
+   });
+});
+</script>
 </body>
 </html>

@@ -1,9 +1,10 @@
 $( function() {
+
   $( "#slider" ).slider();
 
 	// With JQuery
 	$("#ex2").slider({});
-
+console.log("ASdasd");
 	// Without JQuery
 	// var slider = new Slider('#ex2', {});
 
@@ -12,9 +13,9 @@ $( function() {
 });
 
 
- $(".f_tab").click(function(){
-$(".f_tab").removeClass("active-tab");
-$(this).addClass("active-tab")
+$(".f_tab").click(function(){
+  $(".f_tab").removeClass("active-tab");
+  $(this).addClass("active-tab");
 })
 
  var myIndex = 0;

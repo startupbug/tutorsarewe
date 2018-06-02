@@ -41,14 +41,15 @@ Route::group(['middleware' => 'guest'], function () {
 //Logout Route
 Route::get('/logout',  'AuthenticationController@logout_user')->name('logout_user');
 
-//Tutor Search
-Route::get('/tutor-search', 'HomeController@search_tutor')->name('search_tutor');
 
 //How it works
 Route::get('/how-it-works', 'HomeController@how_it_works')->name('how_it_works');
 
 //Tutor find jobs
 Route::get('/find-tutor', 'HomeController@find_tutor')->name('find_tutor');
+
+     //Tutor profile
+Route::get('/tutor_profile', 'HomeController@tutor_profile')->name('tutor_profile');
 
 //Fulltime Tutor
 Route::get('/fulltime-tutor', 'HomeController@fulltime_tutor')->name('fulltime_tutor');
@@ -111,4 +112,6 @@ Route::get('/401', 'HomeController@unauthorized')->name('unauthorized');
 Route::get('/error/{message}', 'HomeController@error')->name('error');
 
 
-
+//Tutor Search
+Route::get('/tutor-search/', 'Tutor\TutorController@index')->name('tutors_listing');
+Route::get('/tutor-search-ajax/', 'Tutor\TutorController@tutor_search_ajax');
