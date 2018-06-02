@@ -92,7 +92,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('imageUpload',['as'=>'imageUpload','uses'=>'ProfileController@imageUpload']);
 
 	/* Job Controllers Routes */
-	Route::get('/post-job', 'JobController@student_postJob')->name('job');
+	Route::get('/post-job', 'JobController@student_postJob')->name('postjob_view');
 
 });
 
