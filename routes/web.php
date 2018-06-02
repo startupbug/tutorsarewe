@@ -48,7 +48,7 @@ Route::get('/tutor-search', 'HomeController@search_tutor')->name('search_tutor')
 Route::get('/how-it-works', 'HomeController@how_it_works')->name('how_it_works');
 
 //Tutor find jobs
-Route::get('/find-tutor', 'HomeController@find_tutor')->name('find_tutor');
+Route::get('/find-job', 'HomeController@find_tutor')->name('find_tutor');
 
 //Fulltime Tutor
 Route::get('/fulltime-tutor', 'HomeController@fulltime_tutor')->name('fulltime_tutor');
@@ -92,8 +92,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('imageUpload',['as'=>'imageUpload','uses'=>'ProfileController@imageUpload']);
 
 	/* Job Controllers Routes */
+
+	//Post Job view page
 	Route::get('/post-job', 'JobController@student_postJob')->name('postjob_view');
 
+	//Post Job request page
+	
+	Route::post('/post-job', 'JobController@student_postJob_req')->name('student_postJob_req');
 });
 
 

@@ -20,7 +20,12 @@ class EventServiceProvider extends ServiceProvider
 
         'App\Events\RegisterEvent' => [
             'App\Listeners\RegisterEventListener',
-        ]
+        ],
+
+        'App\Events\Job_request' => [
+            'App\Listeners\Job_request_listener',
+        ],
+
     ];
 
     /**
