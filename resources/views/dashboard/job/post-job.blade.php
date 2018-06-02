@@ -57,7 +57,8 @@
 					 	<input type="submit" value="ADD" class="btn s_save">
 					 </div>
 				 </form>
-			 </div>
+
+       </div>
 		 </div>
 	 </div>
 </div>
