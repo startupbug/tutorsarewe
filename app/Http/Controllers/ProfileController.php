@@ -11,6 +11,7 @@ use App\Wallet;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use DB;
+
 class ProfileController extends Controller
 {
 	//view profile on dashboard

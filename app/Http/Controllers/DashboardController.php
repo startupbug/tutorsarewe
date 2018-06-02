@@ -158,9 +158,4 @@ class DashboardController extends Controller
            return redirect()->route('subjects');
       }
     }
-
-    public function jobpost()
-    {
-      return view('dashboard.job-post');
-    }
 }
