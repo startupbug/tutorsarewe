@@ -43,8 +43,11 @@ class AuthenticationController extends Controller
                     $this->logActivity(Auth::user()->first_name.' Logged in on tutor');
                 }    
 
+               $this->logActivity(Auth::user()->first_name.'Logged in on Tutor');
+               DB::table('profiles')
+                    ->where('user_id', Auth::user()->id)
+                    ->update(['online_status' => 1]);
                return redirect()->route('home');
-
             }else{
                $this->set_session('invalid username or password', false);
                return redirect()->route('signin');
@@ -60,6 +63,9 @@ class AuthenticationController extends Controller
     //Logging out user
     public function logout_user(){
         $this->logActivity(Auth::user()->first_name.' logged out');
+        DB::table('profiles')
+            ->where('user_id', Auth::user()->id)
+            ->update(['online_status' => 0]);
         Auth::logout();
 
         return redirect()->route('home');          

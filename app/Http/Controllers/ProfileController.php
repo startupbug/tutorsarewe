@@ -59,6 +59,7 @@ class ProfileController extends Controller
 	    	];
 
            if(Input::hasFile('profile_pic')){
+                //dd(456);
                 $file = Input::file('profile_pic');
                 $tmpFilePath = '/dashboard/assets/images/profile';
                 $tmpFileName = time() . '-' . $file->getClientOriginalName();
@@ -68,7 +69,7 @@ class ProfileController extends Controller
                 $profile_array['profile_pic'] = $path;
             }
 
-    		$profile = Profile::where('user_id', $user_id)->update($profile_array);
+    		$profile = Profile::where('user_id', Auth::user()->id)->update($profile_array);
 
     		if($user->save() && $profile){
                 $this->logActivity(Auth::user()->first_name.' edited his profile ');

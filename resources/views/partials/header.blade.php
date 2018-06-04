@@ -40,6 +40,8 @@
       <link href="{{ asset('public/assets/css/style.css') }}" rel="stylesheet">
       <!-- custom Css Lins -->
       <link href="{{ asset('public/assets/css/custom.css') }}" rel="stylesheet">
+      <!-- Tutor Profile Css By Fareha -->
+      <link href="{{ asset('public/dashboard/assets/css/f_custom.css') }}" rel="stylesheet">
       <!-- Responsive -->
       <link href="{{ asset('public/assets/css/responsive.css') }}" rel="stylesheet">
    </head>
@@ -76,6 +78,12 @@
                         <div class="collapse navbar-collapse" id="myNavbar">
                            <ul class="nav navbar-nav header-nav">
                               <li class="">
+                                 <a class="f_dropdown" href="{{route('tutors_listing')}}">FIND A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
+                                 <!--<ul class="dropdown-menu">
+                                    <li><a href="#">Page 1-1</a></li>
+                                    <li><a href="#">Page 1-2</a></li>
+                                    <li><a href="#">Page 1-3</a></li>
+                                 </ul>-->
                                  <a class="f_dropdown"  data-toggle="dropdown" href="{{route('search_tutor')}}">FIND A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <ul class="dropdown-menu">
                                     <li><a href="{{route('postjob_view')}}">POST JOB</a></li>
@@ -105,7 +113,6 @@
                                     <li><a href="#">Page 1-3</a></li>
                                  </ul>-->
                               </li>
-
                            @if(!Auth::check())
                               <li class="">
                                  <a class="f_dropdown" href="{{route('fulltime_tutor')}}">BECOME A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
@@ -115,9 +122,7 @@
                                     <li><a href="#">Page 1-3</a></li>
                                  </ul>-->
                               </li>
-
                            @endif
-
                               <li class="">
                                  <a class="f_dropdown" href="{{route('publications')}}">PUBLICATIONS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <!--<ul class="dropdown-menu">
@@ -134,7 +139,6 @@
                                     <li><a href="#">Page 1-3</a></li>
                                  </ul>-->
                               </li>
-
                               @if(Auth::check())
                                  <li class="dropdown user_page">
                                     <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" >{{Auth::user()->first_name}}  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
@@ -148,7 +152,6 @@
                                     </ul>
                                  </li>
                               @endif
-
                            </ul>
                         </div>
                      </div>

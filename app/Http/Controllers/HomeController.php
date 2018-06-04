@@ -16,17 +16,13 @@ class HomeController extends Controller
       return view('home.index');
     }
 
-    //Search tutor page
-    public function search_tutor(){
-    	return view('home.search');
-    }
-
     //How it works page
     public function how_it_works(){
     	return view('home.howitworks');
     }
 
     //Tutor find jobs page
+
     public function find_tutor(Request $request){
 
         $data['countries'] = Country::all();
@@ -104,6 +100,9 @@ class HomeController extends Controller
         //  }
 
 
+     //Tutor profile
+    public function tutor_profile(){
+    	return view('home.tutor_profile');
     }
 
     //Fulltime Tutor page
