@@ -50,11 +50,11 @@ Route::get('/find-job', 'HomeController@find_tutor')->name('find_tutor');
 
 
 //Tutor filter jobs
-Route::post('/find-job-filter', 'HomeController@filter_jobs')->name('filter_jobs');
+Route::get('/find-job-filter', 'HomeController@filter_jobs')->name('filter_jobs');
 
      //Tutor profile
 Route::get('/tutor_profile', 'HomeController@tutor_profile')->name('tutor_profile');
->>>>>>> 47b046b2ade1d2beedba9a25be9351375f93440c
+
 
 //Fulltime Tutor
 Route::get('/fulltime-tutor', 'HomeController@fulltime_tutor')->name('fulltime_tutor');

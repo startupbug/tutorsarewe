@@ -5,18 +5,30 @@
    <div class="container">
    <div class="row">
       <div class="col-md-3">
+
          <h3 class="f_tutor">Filters</h3>
-         <form method="post" action="{{route('filter_jobs')}}">
+
+         <form method="get" action="{{route('filter_jobs')}}">
             {{csrf_field()}}
             <div class="form-group">
                <label for="course" class="f_course">Course</label>
-               <select class="form-control select_f" id="course" name="courseform">
-                  <option>Select</option>
-                  <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
-                  <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
-                  <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
-                  <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
-                  <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
+               <select class="form-control select_f" id="course" name="courseform" onchange="form.submit();" >
+
+                  <option disabled="" selected="">Select</option>
+                  @foreach($subjects as $subject)
+                     <option value="{{$subject->id}}">{{$subject->subject}}</option>
+                  @endforeach
+
+               </select>
+            </div>
+            <div class="form-group">
+               <label for="exampleInputstate" class="f_label">State</label>
+               <select class="form-control select_f" id="state" onchange="form.submit();" name="state">
+                  <option disabled="" selected="">Select</option>
+                  <option value="NewYork">NewYork</option>
+                  <option value="New south wales">New south wales</option>
+                  <option value="Texas">Texas</option>
+                  <option value="South">South</option>
                </select>
             </div>
             <div class="form-group">
@@ -118,34 +130,19 @@
                </select>
             </div>
             <div class="form-group">
-               <label for="city" class="f_course">City</label>
-               <select class="form-control select_f" id="city"  onchange="form.submit();" name="city_id">
-                  @if(isset($cities))
-                  {{dd($cities)}}
-                     @foreach($cities as $city)
-                           {{dd($city)}}
-                        <option value="{{$city->id}}">{{$city->name}}</option>
-                     @endforeach
-                  @else
-                     <option selected="" disabled="">Select</option>
-                  @endif
-               </select>
-            </div>
-            <div class="form-group">
                <label for="type" class="f_course">Type</label>
-               <select class="form-control select_f" id="type" name="typeform">
-                  <option>Select</option>
-                  <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
-                  <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
-                  <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
-                  <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
-                  <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
+               <select class="form-control select_f" id="type"  onchange="form.submit();" name="typeform">
+                  <option disabled="" selected="">Select</option>
+                  @foreach($lesson_types as $type)
+                        <option value="{{$type->id}}">{{$type->type}}</option>
+                  @endforeach
                </select>
             </div>
             
          </form>
       </div>
       <div class="col-md-8 col-md-offset-1">
+         @include('partials.error_section')
          <h3 class="f_lefttutor">717 Tutoring jobs in New York, NY</h3>
          @foreach($all_jobs as $jobs)
          <div class="row f_mainborder">
@@ -156,12 +153,18 @@
                <p class="f_posted">- Posted by {{$jobs->first_name}}, {{$jobs->created_at->diffForHumans(\Carbon\Carbon::now())}}</p>
             </div>
             <div class="col-md-3">
-               <div class="f_buttonview"><a class="btn btn-theme btn-sm btn-min-block f_viewjob" href="#">VIEW JOB</a>
+               <div class="f_buttonview">
+                  @if($jobs->job_id == null)
+                     <a class="btn btn-theme btn-sm btn-min-block f_viewjob" href="#">REQUEST JOB</a>
+                  @endif
+                  @if($jobs->job_id == 2)
+                     <a class="btn btn-theme btn-sm btn-min-block f_viewjob" href="#">APPLIED</a>
+                  @endif
                </div>
             </div>
          </div>
          @endforeach
-        {{$all_jobs->links()}}
+            {{$all_jobs->links()}}
       </div>
    </div>
 </section>
