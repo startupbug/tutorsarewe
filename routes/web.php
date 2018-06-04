@@ -50,6 +50,10 @@ Route::get('/how-it-works', 'HomeController@how_it_works')->name('how_it_works')
 //Tutor find jobs
 Route::get('/find-job', 'HomeController@find_tutor')->name('find_tutor');
 
+//Tutor filter jobs
+Route::post('/find-job-filter', 'HomeController@filter_jobs')->name('filter_jobs');
+
+
 //Fulltime Tutor
 Route::get('/fulltime-tutor', 'HomeController@fulltime_tutor')->name('fulltime_tutor');
 
