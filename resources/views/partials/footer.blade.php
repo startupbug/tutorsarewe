@@ -226,6 +226,9 @@
 <!-- Custom app -js -->
 <script src="{{ asset('public/assets/js/custom-app.js') }}"></script>
 
+<!-- Toaster Alert Files -->
+<script src="{{ asset('public/admin/js/toastr.min.js') }}"></script>
+
 </div>
 <script type="text/javascript">
    $('#myDropdown').on('click', 'a', function(){

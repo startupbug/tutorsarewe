@@ -157,7 +157,7 @@
             </div>
             <div class="col-md-3">
 
-            <button type="button" class="btn btn-default pull-right f_buttonview" data-toggle="modal" data-target="#editAddSubjectModal" ><i class="fa fa-plus"></i> View Job </button>
+            <button type="button" class="btn btn-default pull-right f_buttonview f_viewjob sendJobReqButton" data-toggle="modal" data-target="#jobRequestModal" data-id="{{$jobs->id}}"> View Job </button>
 
                <!-- <div class="f_buttonview"><a class="btn btn-theme btn-sm btn-min-block f_viewjob" href="#">VIEW JOB</a>
                </div> -->
@@ -170,7 +170,7 @@
 </section>
 
 <!-- Subject Edit Modal -->
-<div class="modal fade" id="editAddSubjectModal" tabindex="-1" role="dialog" 
+<div class="modal fade" id="jobRequestModal" tabindex="-1" role="dialog" 
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -182,26 +182,18 @@
                            <span class="sr-only">Close</span>
                     </button>
                     <h4 class="modal-title" id="myModalLabel">
-                        <span class="subjModalHeading"></span> Subject
+                        <span class="subjModalHeading"></span> Job Request
                     </h4>
                 </div>
             
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    
-                    <form role="form" id="editAddSubject" action="{{route('subject_submit')}}">
+                    <form role="form" id="sendRequest" action="{{route('request_job')}}">
                       <div class="form-group">
-                        <label for="task">Subject</label>
-                          <input type="text" class="form-control"
-                          id="subject" name="subject"/>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="task">Subject Code</label>
-                          <input type="text" class="form-control"
-                          id="subject_code" name="subject_code"/>
-                          <input type="hidden" name="edit_subj_id" id="edit_subj_id" value="">
-                      </div>                
+                        <label for="task">Offer Description</label>
+                          <textarea class="form-control" name="description"></textarea>
+                          <input type="hidden" name="job_id" id="job_id" value="">
+                      </div>           
                 </div>
             
                 <!-- Modal Footer -->
@@ -211,7 +203,8 @@
                                 Close
                     </button>
                     <button type="submit" name="submit" class="btn btn-primary">
-                        <span class="subjModalHeading"></span> Subject
+                        
+                        <span class="subjModalHeading"></span> Send Request
                     </button>
                 </div>
              </form>

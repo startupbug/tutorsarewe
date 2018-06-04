@@ -4,6 +4,7 @@ $(this).parent().find(".fa fa-chevron-right").removeClass("fa fa-chevron-right")
 $(this).parent().find(".fa fa-angle-down").removeClass("fa fa-angle-down").addClass("fa fa-chevron-right");
 });*/
 $( function() {
+
    $( "#slider" ).slider();
 
 // With JQuery
@@ -63,5 +64,3 @@ function filterFunction() {
         }
     }
 }
-
- 

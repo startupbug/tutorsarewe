@@ -99,7 +99,8 @@ class HomeController extends Controller
         //      $args['all_jobs'] = $args['all_jobs']->where('job_boards.subject_id' , $request->type);
         //  }
 
-
+    }
+    
      //Tutor profile
     public function tutor_profile(){
     	return view('home.tutor_profile');

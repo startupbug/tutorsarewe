@@ -9,6 +9,10 @@
       <title>TutorAreUs</title>
       <!-- Bootstrap -->
       <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+
+      <!-- Session Token -->
+      <meta name="_token" content="{{ Session::token() }}"/>
+
       <!-- FontAwesome -->
       <link href="{{ asset('public/assets/css/font-awesome.min.css') }}" rel="stylesheet">
       <!-- UI Jquery -->
@@ -44,6 +48,10 @@
       <link href="{{ asset('public/dashboard/assets/css/f_custom.css') }}" rel="stylesheet">
       <!-- Responsive -->
       <link href="{{ asset('public/assets/css/responsive.css') }}" rel="stylesheet">
+
+        <!-- Toastr CSS -->
+        <link href="{{ asset('public/admin/css/toastr.css') }}" rel="stylesheet">
+
    </head>
 
    <?php
@@ -84,7 +92,6 @@
                                     <li><a href="#">Page 1-2</a></li>
                                     <li><a href="#">Page 1-3</a></li>
                                  </ul>-->
-                                 <a class="f_dropdown"  data-toggle="dropdown" href="">FIND A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <ul class="dropdown-menu">
                                     <li><a href="{{route('postjob_view')}}">POST JOB</a></li>
                                  </ul>
