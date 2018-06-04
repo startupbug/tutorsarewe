@@ -43,7 +43,7 @@ class JobController extends Controller
 
 	        if($job_board->save()){
 	        	$data['request'] = $request->input();
-	        	event(new Job_request( $data ));
+	        	//event(new Job_request( $data ));
 
             	$this->set_session('Job Successfully Posted.', true);
 	        }else{
@@ -60,11 +60,24 @@ class JobController extends Controller
 
     //Student posted jobs
     public function student_postJob_list(){
-      return view('dashboard.job.post-job-list');
+      
+      $data['jobs'] = Job_board::leftjoin('subjects', 'job_boards.subject_id', '=', 'subjects.id')
+      							->where('student_id', Auth::user()->id)
+      							->select('subjects.subject','job_boards.*')
+      							->get();
+
+      return view('dashboard.job.post-job-list')->with($data);
     }
 
-    public function student_postJob_detail(){
-      return view('dashboard.job.post-job-detail');
+    public function student_postJob_detail($id){
+
+      $data['single_job'] = Job_board::leftjoin('subjects', 'job_boards.subject_id', '=', 'subjects.id')
+                              ->leftjoin('lesson_types', 'lesson_types.id', '=', 'job_boards.lesson_type')
+                              ->where('job_boards.id', $id)
+                              ->select('subjects.subject','job_boards.*', 'lesson_types.type')
+                              ->first();
+
+      return view('dashboard.job.post-job-detail')->with($data);
     }
 
     /** Tutor Job Methods **/

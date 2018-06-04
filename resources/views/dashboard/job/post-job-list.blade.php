@@ -17,21 +17,20 @@
                <th>#</th>
                <th>Subject</th>
                <th>Title</th>
-               <th>Descripation</th>
-               <th>Posted</th>
                <th>Action</th>
              </tr>
            </thead>
            <tbody>
-             @foreach()
-             @endforach
+             
+             @foreach($jobs as $key => $value)
              <tr>
-               <td>1</td>
-               <td>English</td>
-               <td></td>
-               <td></td>
-               <td></td>
-             </tr>
+               <td>{{++$key}}</td>
+               <td>{{$value->subject}}</td>
+               <td>{{$value->title}}</td>
+               <td><a class="btn btn-theme btn-sm btn-min-block f_viewjob" href="{{route('post-job-detail', ['id' => $value->id])}}">DETAIL</a></td>
+             </tr>             
+             @endforeach
+
            </tbody>
          </table>
        </div>
