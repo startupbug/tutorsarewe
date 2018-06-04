@@ -3,39 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Subject;
-use App\Job_board;
-use Auth;
-use App\Events\Job_request;
 
 class JobController extends Controller
 {
-	protected $subjects;
-	protected $lessons;
-
-    public function __construct(){
-        $this->subjects = Subject::all();
-    }
-
-    /** Student Job Methods **/
-
     public function student_postJob(){
-    	$data['subjects'] = $this->subjects;
-
-    	return view('dashboard.job.post-job')->with($data);
+    	return view('dashboard.job.post-job');
     }
 
-    public function student_postJob_req(Request $request){
 
-    	/* Validation */
 
-    	try{
-
-	    	$job_board = new Job_board();
-	    	$job_board->student_id = Auth::user()->id;
-	        
-	        foreach($request->input() as $key => $value) {
-
+    public function student_postJob_req(){
 	            if($key != '_token' && $key != 'student_id'){
 	                $job_board->$key = $value;
 	            }
@@ -58,7 +35,9 @@ class JobController extends Controller
         }
     }
 
+
     //Student posted jobs
+
     public function student_postJob_list(){
       
       $data['jobs'] = Job_board::leftjoin('subjects', 'job_boards.subject_id', '=', 'subjects.id')
@@ -79,6 +58,7 @@ class JobController extends Controller
 
       return view('dashboard.job.post-job-detail')->with($data);
     }
+
 
     /** Tutor Job Methods **/
 
