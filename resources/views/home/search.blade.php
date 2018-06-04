@@ -1,16 +1,16 @@
 @extends('app')
 @section('content')
-
 <section class="search">
    <div class="container">
       <div class="row">
          <div class="col-md-3">
             <h3 class="f_tutor">Filters</h3>
-            <h3 class="f_class">Hourly rate: 410 -$200+</h3>
-            <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> 
-            <!--<div id="slider"></div>-->
-            <h3 class="f_class">Availability</h3>
-            <form>
+            <form action="{{route('tutors_listing')}}" method="get">
+               <h3 class="f_class">Hourly rate: 410 -$200+</h3>
+               <input id="ex2" type="text" class="span2" value="" name="tution_per_hour" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> 
+               <input type="hidden" name="limit" value="10">               
+               <!--<div id="slider"></div>-->
+               <h3 class="f_class">Availability</h3>
                <input type="checkbox" name="vehicle" value="Bike" class="checkbox_search"><span class="days">Sunday</span><br>
                <input type="checkbox" name="vehicle" value="Car" class="checkbox_search"><span class="days">Monday</span><br>
                <input type="checkbox" name="vehicle" value="Bike" class="checkbox_search"><span class="days">Tuesday</span><br>
@@ -19,65 +19,70 @@
                <input type="checkbox" name="vehicle" value="Car" class="checkbox_search"><span class="days">Friday</span><br>
                <input type="checkbox" name="vehicle" value="Bike" class="checkbox_search"><span class="days">Saturday</span><br>
                <div class="form-group">
-                  <label for="exampleInputcourse" class="f_label f_course">Course</label>
-                  <select class="form-control select_f" id="courseFrom" name="courseFrom">
-                     <option>Select</option>
-                     <option value="Sergio Rodriguez">Sergio</option>
-                     <option value="Silvia Mahoney">Silvia</option>
-                     <option value="Steve Moore">Steve</option>
-                     <option value="Luke Perria">Adam</option>
-                     <option value="Luke Perria">Luke</option>
+                  <label for="exampleInputcourse" class="f_label f_course">Subject</label>
+                  <select class="form-control select_f" id="courseFrom" name="subject">
+                     <option value="0" disabled="">Select</option>
+                     @foreach($subjects as $value)
+                     <option value="{{$value->id}}">{{$value->subject}}</option>
+                     @endforeach()
                   </select>
                </div>
                <div class="form-group">
                   <label for="exampleInputlocation" class="f_label f_course">Location</label>
-                  <select class="form-control select_f" id="locationFrom" name="locationFrom">
+                  <input type="text" name="location" class="form-control select_f" id="locationFrom">
+                  <!-- <select class="form-control select_f" id="locationFrom" name="locationFrom">
                      <option>Select</option>
                      <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
                      <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
                      <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
                      <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
                      <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
-                  </select>
+                  </select> -->
                </div>
                <div class="form-group">
-                  <label for="exampleInputstate" class="f_label f_course">States</label>
-                  <select class="form-control select_f" id="stateFrom" name="stateFrom">
-                     <option>Select</option>
-                     <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
-                     <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
-                     <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
-                     <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
-                     <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
+                  <label for="exampleInputstate" class="f_label f_course">Rating</label>
+                  <select class="form-control select_f" id="stateFrom" name="rating">
+                     <option value="0" disabled="">Select</option>
+                     <option value="1">1 Star</option>
+                     <option value="2">2 Star</option>
+                     <option value="3">3 Star</option>
+                     <option value="4">4 Star</option>
+                     <option value="5">5 Star</option>
                   </select>
                </div>
                <div class="form-group">
                   <label for="exampleInputtype" class="f_label f_course">Type</label>
-                  <select class="form-control select_f" id="typeFrom" name="typeFrom">
-                     <option>Select</option>
-                     <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
-                     <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia </option>
-                     <option value="Steve Moore|steve.moore@tix.com">Steve</option>
-                     <option value="Luke Perria|luke.perria@tix.com">Adam</option>
-                     <option value="Luke Perria|luke.perria@tix.com">Luke</option>
+                  <select class="form-control select_f" id="typeFrom" name="online_status">
+                     <option value="0" disabled="">Select</option>
+                     <option value="1">Online</option>
+                     <option value="0">Offline</option>
                   </select>
+               </div>
+               <div class="form-group">
+                  <button type="submit" class="btn btn_search" data-toggle="#jobInfo" name="q" value="search">SEARCH</button>
                </div>
             </form>
          </div>
          <div class="col-md-9">
-            <form id="togglingForm" method="post" class="form-horizontal">
+            <form id="togglingForm" action="{{route('tutors_listing')}}" method="get" class="form-horizontal">
+               <input type="hidden" name="limit" value="10">
                <div class="form-group">
                   <div class="col-md-9">
                      <div class="icon-addon addon-lg">
-                        <input type="text" placeholder="Email" class="form-control select_f f_paddingright" id="email">
+                        <input type="text" placeholder="Name" class="form-control select_f f_paddingright" id="Name" name="name" value="" onkeyup="filterFunction()">
+                        <div id="myDropdown" class="dropdown-content" style="width: 100%;">
+                         @foreach($listing as $value)
+                         <a href="#tools">{{$value->first_name}} {{$value->last_name}}</a>
+                         @endforeach()
+                        </div>
                         <label for="email" class="glyphicon glyphicon-search" rel="tooltip" title="email"></label>
                      </div>
                      <!--<input type="text" class="searchField">
                         <label for="search" class="glyphicon glyphicon-search"></label>-->
-                     <p class="f_fit">415 Java tutors fit your choices</p>
+                     <p class="f_fit">{{$count}} tutors fit your choices</p>
                   </div>
                   <div class="col-md-3">
-                     <button type="button" class="btn btn_search" data-toggle="#jobInfo">SEARCH</button>
+                     <button type="submit" class="btn btn_search" data-toggle="#jobInfo" name="q" value="search">SEARCH</button>
                   </div>
                </div>
             </form>
@@ -112,20 +117,29 @@
                   </ul>
                </div>
                </div>-->
+            <!-- Foreach Starting -->
+            @foreach($listing as $key => $value) 
             <div class="row f_mainborder">
                <div class="col-md-2">
-                  <img src="{{ asset('public/assets/images/search_img.png') }}" class="img-responsive img_searchresp">
+                  @if(isset($value->profile->profile_pic))
+                  <img src="{{ asset('public/dashboard/assets/images/profile/'.$value->profile->profile_pic) }}" class="img-responsive img_searchresp">
+                  @else
+                  <img src="{{ asset('public/dashboard/assets/images/profile/1527579609-1.PNG') }}" class="img-responsive img_searchresp">
+                  @endif
                </div>
                <div class="col-md-7 border_search">
-                  <h3 class="search_name">Alex. S.</h3>
-                  <h3 class="f_course">Computer Programming, Karate,<br> Music, and General Ed Tutor</h3>
-                  <p class="f_findcontent">As a professional Karate instructor for five years <br>with a second degree black belt in Wado <br>Karate, I have experience tutoring students of <br>all ages, both in large groups and individually.
-                     <br>As a high...
+                  <h3 class="search_name">{{$value->first_name}} {{$value->last_name}}</h3>
+                  <h3 class="f_course">
+                     @foreach($tutor_subjects[$value->id] as $subject)
+                        {{$subject->subject->subject}}, 
+                     @endforeach                    
+                  </h3>
+                  <p class="f_findcontent">  @if(isset($value->profile->bio)){{$value->profile->bio}}@endif
                   </p>
-                  <a href="#" class="f_detail">Read More</a>
+                  <a href="{{route('tutor_profile')}}" class="f_detail">Read More</a>
                </div>
                <div class="col-md-3">
-                  <h3 class="search_name">$70/hour</h3>
+                  <h3 class="search_name"> @if(isset($value->profile->tution_per_hour))${{$value->profile->tution_per_hour}}/hour @endif</h3>
                   <ul class="search_list">
                      <li><i class="fa fa-star f_star"></i></li>
                      <li><i class="fa fa-star f_star"></i></li>
@@ -144,104 +158,13 @@
                   </ul>
                </div>
             </div>
-            <div class="row f_mainborder">
-               <div class="col-md-2">
-                  <img src="{{ asset('public/assets/images/search_img.png') }}" class="img-responsive img_searchresp">
-               </div>
-               <div class="col-md-7 border_search">
-                  <h3 class="search_name">Alex. S.</h3>
-                  <h3 class="f_course">Computer Programming, Karate,<br> Music, and General Ed Tutor</h3>
-                  <p class="f_findcontent">As a professional Karate instructor for five years <br>with a second degree black belt in Wado <br>Karate, I have experience tutoring students of <br>all ages, both in large groups and individually.
-                     <br>As a high...
-                  </p>
-                  <a href="#" class="f_detail">Read More</a>
-               </div>
-               <div class="col-md-3">
-                  <h3 class="search_name">$70/hour</h3>
-                  <ul class="search_list">
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li>
-                        <h3 class="search_name f_iphone">5.0(367)</h3>
-                     </li>
-                  </ul>
-                  <ul class="search_list">
-                     <li><i class="fa fa-clock-o f_clock"></i></li>
-                     <li>
-                        <h3 class="search_name ">1,722 <span>hours tutoring</span></h3>
-                     </li>
-                  </ul>
-               </div>
+            @endforeach()
+            <div id="results"></div>
+            <!-- Foreach Ending -->            
+            <div class="f_resultbtn">
+               <button type="button" id="ref_butn" class="btn btn_result" data-toggle="#jobInfo" data-result="20">SHOW MORE RESULTS</button>
             </div>
-            <div class="row f_mainborder">
-               <div class="col-md-2">
-                  <img src="{{ asset('public/assets/images/search_img.png') }}" class="img-responsive img_searchresp">
-               </div>
-               <div class="col-md-7 border_search">
-                  <h3 class="search_name">Alex. S.</h3>
-                  <h3 class="f_course">Computer Programming, Karate,<br> Music, and General Ed Tutor</h3>
-                  <p class="f_findcontent">As a professional Karate instructor for five years <br>with a second degree black belt in Wado <br>Karate, I have experience tutoring students of <br>all ages, both in large groups and individually.
-                     <br>As a high...
-                  </p>
-                  <a href="#" class="f_detail">Read More</a>
-               </div>
-               <div class="col-md-3">
-                  <h3 class="search_name">$70/hour</h3>
-                  <ul class="search_list">
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li>
-                        <h3 class="search_name">5.0(367)</h3>
-                     </li>
-                  </ul>
-                  <ul class="search_list">
-                     <li><i class="fa fa-clock-o f_clock"></i></li>
-                     <li>
-                        <h3 class="search_name ">1,722 <span>hours tutoring</span></h3>
-                     </li>
-                  </ul>
-               </div>
-            </div>
-            <div class="row f_mainborder">
-               <div class="col-md-2">
-                  <img src="{{ asset('public/assets/images/search_img.png') }}" class="img-responsive img_searchresp">
-               </div>
-               <div class="col-md-7 border_search">
-                  <h3 class="search_name">Alex. S.</h3>
-                  <h3 class="f_course">Computer Programming, Karate,<br> Music, and General Ed Tutor</h3>
-                  <p class="f_findcontent">As a professional Karate instructor for five years <br>with a second degree black belt in Wado <br>Karate, I have experience tutoring students of <br>all ages, both in large groups and individually.
-                     <br>As a high...
-                  </p>
-                  <a href="#" class="f_detail">Read More</a>
-               </div>
-               <div class="col-md-3">
-                  <h3 class="search_name">$70/hour</h3>
-                  <ul class="search_list">
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li><i class="fa fa-star f_star"></i></li>
-                     <li>
-                        <h3 class="search_name">5.0(367)</h3>
-                     </li>
-                  </ul>
-                  <ul class="search_list">
-                     <li><i class="fa fa-clock-o f_clock"></i></li>
-                     <li>
-                        <h3 class="search_name ">1,722 <span>hours tutoring</span></h3>
-                     </li>
-                  </ul>
-               </div>
-            </div>
-            <div class="f_resultbtn"><button type="button" class="btn btn_result" data-toggle="#jobInfo">SHOW MORE RESULTS</button></div>
-         </div>
+        </div>
       </div>
    </div>
 </section>
