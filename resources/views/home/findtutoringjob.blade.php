@@ -191,7 +191,7 @@
                     <form role="form" id="sendRequest" action="{{route('request_job')}}">
                       <div class="form-group">
                         <label for="task">Offer Description</label>
-                          <textarea class="form-control" name="description"></textarea>
+                          <textarea class="form-control" name="description" required></textarea>
                           <input type="hidden" name="job_id" id="job_id" value="">
                       </div>           
                 </div>

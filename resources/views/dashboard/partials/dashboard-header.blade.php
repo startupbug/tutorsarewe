@@ -45,6 +45,10 @@
       <link href="{{ asset('public/dashboard/assets/css/custom.css') }}" rel="stylesheet">
       <!-- Responsive -->
       <link href="{{ asset('public/dashboard/assets/css/responsive.css') }}" rel="stylesheet">
+      
+      <!-- Toastr CSS -->
+      <link href="{{ asset('public/admin/css/toastr.css') }}" rel="stylesheet">
+
    </head>
 
    <?php
