@@ -49,7 +49,7 @@ Route::get('/how-it-works', 'HomeController@how_it_works')->name('how_it_works')
 Route::get('/find-job', 'HomeController@find_tutor')->name('find_tutor');
 
      //Tutor profile
-Route::get('/tutor_profile', 'HomeController@tutor_profile')->name('tutor_profile');
+Route::get('/tutor_profile/{id}', 'Tutor\TutorController@tutor_profile')->name('tutor_profile');
 
 //Fulltime Tutor
 Route::get('/fulltime-tutor', 'HomeController@fulltime_tutor')->name('fulltime_tutor');
