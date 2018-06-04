@@ -59,6 +59,7 @@ class ProfileController extends Controller
 	    	];
 
            if(Input::hasFile('profile_pic')){
+                //dd(456);
                 $file = Input::file('profile_pic');
                 $tmpFilePath = '/dashboard/assets/images/profile';
                 $tmpFileName = time() . '-' . $file->getClientOriginalName();
@@ -68,9 +69,10 @@ class ProfileController extends Controller
                 $profile_array['profile_pic'] = $path;
             }
 
-    		$profile = Profile::where('user_id', $user_id)->update($profile_array);
+    		$profile = Profile::where('user_id', Auth::user()->id)->update($profile_array);
 
     		if($user->save() && $profile){
+                $this->logActivity(Auth::user()->first_name.' edited his profile ');
 	            $this->set_session('Profile Successfully Edited.', true);
 
     		}else{
@@ -97,8 +99,12 @@ class ProfileController extends Controller
           'profile_pic' => $img_name
           ]);
           $path = asset('public/dashboard/assets/images/profile/').'/'.$img_name;
+
+          $this->logActivity(Auth::user()->first_name.' updated profile image ');
           return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]);
+          
           $this->set_session('Image Uploaded successfully', true);
+
         }else{
             $this->set_session('Image is Not Uploaded. Please Try Again', false);
         return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
@@ -165,15 +171,19 @@ class ProfileController extends Controller
                     'user_id' => Auth::user()->id,
                     'amount' => $request->amount
                 ]);
+                $this->logActivity(Auth::user()->first_name.' You have successfully made a withdraw request, admin will approve it soon. ');
                 $this->set_session('You have successfully made a withdraw request, admin will approve it soon.', true);
+
                 return redirect()->route('my_balance');
             }
             else{
+                $this->logActivity(Auth::user()->first_name.'Sorry you do not have sufficinet balance to withdraw this amount.');
                 $this->set_session('Sorry you do not have sufficinet balance to withdraw this amount.', false);
                 return redirect()->route('my_balance');   
             }
         }
         else{
+            $this->logActivity(Auth::user()->first_name.'Sorry you already have a withdraw request you can not make another.');
             $this->set_session('Sorry you already have a withdraw request you can not make another.', false);
             return redirect()->route('my_balance');   
         }

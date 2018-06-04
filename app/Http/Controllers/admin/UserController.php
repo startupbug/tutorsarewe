@@ -166,8 +166,18 @@ class UserController extends Controller
             $user->verified = $request->input('verified');
 
             if($user->save()){
+                // dd($request->input());
                 //Assigning Role to User
                 $role = \DB::table('role_user')->where('user_id',$id)->update(['role_id'=>$request->input('user_role')]);
+                 $profile =  Profile::where('user_id',$id)->update(['username'=>$request->input('username'), 'tution_per_hour'=>$request->input('tution_per_hour'),'bio'=>$request->input('bio'),'gender'=>$request->input('gender'),'age'=>$request->input('age')]);
+                 // $profile->save();
+
+                // $profile->username = $request->input('username');
+                // $profile->address = $request->input('address');
+                // $profile->zipcode = $request->input('zipcode');                        
+                // $profile->state = $request->input('state');
+                // $profile->country = $request->input('country');
+                // $profile->user_id = $user->id;
                 //$user->roles()->attach($role);
 
                 $this->set_session('User Successfully Edited.', true);

@@ -21,7 +21,6 @@ class Controller extends BaseController
     }
 
     protected function logActivity($activity){
-
     	$activity_log = new Activity_log();
         
         if(Auth::check()){

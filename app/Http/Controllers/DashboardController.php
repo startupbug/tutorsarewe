@@ -46,12 +46,13 @@ class DashboardController extends Controller
 
          try{
 
-        if (Hash::check($request->input('current_password'), Auth::user()->password)) {
-           // The passwords match...
+        if (Hash::check($request->input('current_password'), Auth::user()->password))
+        {
+         // The passwords match...
 
-               $this->validate($request, [
-                   'password' => 'required|confirmed|min:6|max:18',
-               ]);
+             $this->validate($request, [
+                 'password' => 'required|confirmed|min:6|max:18',
+             ]);
 
         //Updating Password
         $newpassword1 = bcrypt($request->input('password'));
@@ -61,7 +62,9 @@ class DashboardController extends Controller
         $user->password = $newpassword1;
         $password_updated = $user->save();
 
-        if($password_updated){
+        if($password_updated)
+        {   
+            $this->logActivity(Auth::user()->first_name.' update password ');
             $this->set_session('Password Updated', true);
         }else{
             $this->set_session('Password couldnot be Updated. Please try again.', false);

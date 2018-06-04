@@ -2,11 +2,13 @@
 
 
         <div class="profile-pic">
+        
           @if(!empty(Auth::user()->profile->profile_pic) && isset(Auth::user()->profile->profile_pic))
             <img class="img-circle" src="{{asset('public/dashboard/assets/images/profile/' . Auth::user()->profile->profile_pic)}}">
              @else
              <img alt="" class="img-circle" src="{{asset('public/dashboard/assets/images/dashboard_img.png')}}">
           @endif
+
           <div class="edit-profile-pic">
              <form id="change_profile_pic_file" action="{{route('imageUpload')}}" method="post" enctype="multipart/form-data">
                {{csrf_field()}}
@@ -39,6 +41,11 @@
           <div class="s_nav_menu">
             <a href="#"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>My Tutor</a>
           </div>
+          @role('student')
+          <div class="s_nav_menu">
+            <a href="{{route('post-job-list')}}"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>My Jobs</a>
+          </div>
+          @endrole
           @if(Auth::user()->role_id==3)
           <div class="s_nav_menu">
             <a href="{{route('subjects')}}"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>Subjects</a>

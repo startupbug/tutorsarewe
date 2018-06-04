@@ -34,6 +34,15 @@ class AuthenticationController extends Controller
           try{
 
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
+                if(Auth::user()->role_id == 2)
+                {
+                    $this->logActivity(Auth::user()->first_name.' Logged in on student');
+                }
+                elseif(Auth::user()->role_id == 3)
+                {
+                    $this->logActivity(Auth::user()->first_name.' Logged in on tutor');
+                }    
+
                $this->logActivity(Auth::user()->first_name.'Logged in on Tutor');
                DB::table('profiles')
                     ->where('user_id', Auth::user()->id)
@@ -53,10 +62,12 @@ class AuthenticationController extends Controller
 
     //Logging out user
     public function logout_user(){
+        $this->logActivity(Auth::user()->first_name.' logged out');
         DB::table('profiles')
             ->where('user_id', Auth::user()->id)
             ->update(['online_status' => 0]);
         Auth::logout();
+
         return redirect()->route('home');          
     }
 

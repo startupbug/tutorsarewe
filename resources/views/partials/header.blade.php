@@ -9,6 +9,10 @@
       <title>TutorAreUs</title>
       <!-- Bootstrap -->
       <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+
+      <!-- Session Token -->
+      <meta name="_token" content="{{ Session::token() }}"/>
+
       <!-- FontAwesome -->
       <link href="{{ asset('public/assets/css/font-awesome.min.css') }}" rel="stylesheet">
       <!-- UI Jquery -->
@@ -44,6 +48,10 @@
       <link href="{{ asset('public/dashboard/assets/css/f_custom.css') }}" rel="stylesheet">
       <!-- Responsive -->
       <link href="{{ asset('public/assets/css/responsive.css') }}" rel="stylesheet">
+
+        <!-- Toastr CSS -->
+        <link href="{{ asset('public/admin/css/toastr.css') }}" rel="stylesheet">
+
    </head>
 
    <?php

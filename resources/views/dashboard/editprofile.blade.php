@@ -80,7 +80,7 @@
  <div class="form-group profile_form">
     <label>Profile picture <span>*</span></label>
     <br>
-    <input type="file" name="profile_pic" id="profile_pic" value="" class="span3">
+    <input type="file" name="profile_pic" id="profile_pic" class="span3">
 </div>
 
 <!--  <div class="form-group profile_form">

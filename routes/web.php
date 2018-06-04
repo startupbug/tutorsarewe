@@ -48,6 +48,10 @@ Route::get('/how-it-works', 'HomeController@how_it_works')->name('how_it_works')
 //Tutor find jobs
 Route::get('/find-job', 'HomeController@find_tutor')->name('find_tutor');
 
+
+//Tutor filter jobs
+Route::post('/find-job-filter', 'HomeController@filter_jobs')->name('filter_jobs');
+
      //Tutor profile
 Route::get('/tutor_profile/{id}', 'Tutor\TutorController@tutor_profile')->name('tutor_profile');
 
@@ -97,10 +101,11 @@ Route::group(['middleware' => 'auth'], function () {
 	//Post Job view page
 	Route::get('/post-job', 'JobController@student_postJob')->name('postjob_view');
 	Route::get('/post-job-list', 'JobController@student_postJob_list')->name('post-job-list');
-	Route::get('/post-job-detail', 'JobController@student_postJob_detail')->name('post-job-detail');
+	Route::get('/post-job-detail/{id}', 'JobController@student_postJob_detail')->name('post-job-detail');
 
 	//Post Job request page
-	
+	Route::post('/request-job', 'JobController@request_job')->name('request_job');
+
 	Route::post('/post-job', 'JobController@student_postJob_req')->name('student_postJob_req');
 });
 
