@@ -12,6 +12,7 @@ use App\WithdrawWallet;
 use App\Subject;
 use App\Wallet;
 use Auth;
+use Mail;
 use DB;
 class TutorController extends Controller
 {
@@ -194,5 +195,18 @@ class TutorController extends Controller
         }
         $args['recommended_users']  = User::leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')->select('users.first_name','users.last_name')->whereIn('tutor_subjects.subject_id',$subjects)->where('users.id','!=',$id)->groupBy('users.id')->get();
         return view('home.tutor_profile')->with($args);
+    }
+    public function contact_tutor_email(Request $request){
+        $email_data['name'] = $request->tutor_name;        
+        $email_data['email'] = $request->tutor_email;
+        $email_data['description'] = $request->description;
+        if (isset($email_data)) {            
+             Mail::send('emails.contact_tutor',['email_data'=>$email_data] , function ($message) use($email_data){
+              $message->from($email_data['email'], 'Contact Email - TutorAreUs');
+              $message->to(env('MAIL_USERNAME'))->subject('TutorAreUs - Contact Email');
+            });
+        }
+        $this->set_session('You Have Successfully Send An Email', true);
+        return redirect()->back();
     }
 }

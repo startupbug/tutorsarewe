@@ -2,6 +2,7 @@
 @section('content')
 <section class="profile_main">
    <div class="container">
+       @include('partials.error_section')
       <div class="row">
          <div class="col-md-8">
             <div class="col-md-3">
@@ -238,9 +239,15 @@
                   </ul>
                </div>
             </div>
+            @if(Auth::check())
             <div class="btn_bottom">            
-               <a href="#" class="f_contact_priti">CONTACT PRITI</a>
+               <a href="#" class="f_contact_priti"  data-toggle="modal" data-target="#jobRequestModal">Contact {{$tutor_info->first_name}}</a>
             </div>
+            @else
+            <div class="btn_bottom">            
+               <a href="{{route('signin')}}" class="f_contact_priti">Login To Contact</a>
+            </div>
+            @endif
             <p class="f_res">Response time: 46 minutes</p>
          </div>
          <div class="container">
@@ -258,4 +265,44 @@
       </div>
    </div>
 </section>
+<div class="modal fade" id="jobRequestModal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+             <div class="modal-header">
+                 <button type="button" class="close" 
+                    data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                 </button>
+                 <h4 class="modal-title" id="myModalLabel">
+                     <span class="subjModalHeading"></span> Contact Message
+                 </h4>
+             </div>            
+            <form role="form" id="" action="{{route('contact_tutor_email')}}" method="post">
+               {{csrf_field()}}
+               <input type="hidden" name="tutor_name" value="{{$tutor_info->first_name}} {{$tutor_info->last_name}}">
+               <input type="hidden" name="tutor_email" value="{{$tutor_info->email}}">
+                <!-- Modal Body -->
+                <div class="modal-body">
+                      <div class="form-group">
+                        <label for="task">Message Description</label>
+                          <textarea class="form-control" name="description"></textarea>
+                      </div>           
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">
+                                Close
+                    </button>
+                    <button type="submit" name="submit" class="btn btn-primary">
+                        <span class="subjModalHeading"></span> Send Email
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
