@@ -54,7 +54,7 @@ Route::get('/find-job', 'HomeController@find_tutor')->name('find_tutor');
 Route::post('/find-job-filter', 'HomeController@filter_jobs')->name('filter_jobs');
 
      //Tutor profile
-Route::get('/tutor_profile', 'HomeController@tutor_profile')->name('tutor_profile');
+Route::get('/tutor_profile/{id}', 'Tutor\TutorController@tutor_profile')->name('tutor_profile');
 
 //Fulltime Tutor
 Route::get('/fulltime-tutor', 'HomeController@fulltime_tutor')->name('fulltime_tutor');
@@ -136,3 +136,4 @@ Route::get('/error/{message}', 'HomeController@error')->name('error');
 //Tutor Search
 Route::get('/tutor-search/', 'Tutor\TutorController@index')->name('tutors_listing');
 Route::get('/tutor-search-ajax/', 'Tutor\TutorController@tutor_search_ajax');
+Route::Post('/contact_tutor_email/', 'Tutor\TutorController@contact_tutor_email')->name('contact_tutor_email');

@@ -252,11 +252,14 @@ $("#ref_butn").on('click', function(e){
    e.preventDefault(); 
    var url_string = window.location.href;
    var url = new URL(url_string);
-   var c = url.searchParams.get("limit");
+   var c = url.searchParams.get("limit") ? url.searchParams.get("limit") : 10;
+   if(!url.searchParams.get("limit")){
+      url_string = url_string + "?limit=10";
+   }
    var d = $("#ref_butn").attr('data-result');
    link = url_string.replace("limit="+c, "limit="+(parseInt(d)+10));
    link = link.replace("tutor-search", "tutor-search-ajax");
-
+console.log(link);
    $.ajaxSetup({
       headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
    });
@@ -268,7 +271,7 @@ $("#ref_butn").on('click', function(e){
       } ,
       success: function (data) {
        if(data.status == 200){
-         $("#ref_butn").attr('data-result', parseInt(c)+10);
+         $("#ref_butn").attr('data-result', parseInt(d)+10);
          $("#ref_butn").removeAttr('disabled');
          $("#results").append(data.data);
 

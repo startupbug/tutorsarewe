@@ -20,7 +20,7 @@
                      <li class="nav__item">
                         <a href="#" class="nav__item-link">
                         <span class="nav__item-text">About Us</span>
-                        </a>   
+                        </a>
                      </li>
                      <li class="nav__item">
                         <a href="#" class="nav__item-link">

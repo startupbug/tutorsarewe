@@ -101,11 +101,7 @@ class HomeController extends Controller
 
     }
     
-     //Tutor profile
-    public function tutor_profile(){
-    	return view('home.tutor_profile');
-    }
-
+  
     //Fulltime Tutor page
     public function fulltime_tutor(){
     	return view('home.fulltimetutor');

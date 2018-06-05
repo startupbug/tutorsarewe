@@ -136,7 +136,7 @@
                   </h3>
                   <p class="f_findcontent">  @if(isset($value->profile->bio)){{$value->profile->bio}}@endif
                   </p>
-                  <a href="{{route('tutor_profile')}}" class="f_detail">Read More</a>
+                  <a href="{{route('tutor_profile',['id' => $value->id])}}" class="f_detail">Read More</a>
                </div>
                <div class="col-md-3">
                   <h3 class="search_name"> @if(isset($value->profile->tution_per_hour))${{$value->profile->tution_per_hour}}/hour @endif</h3>
@@ -162,7 +162,7 @@
             <div id="results"></div>
             <!-- Foreach Ending -->            
             <div class="f_resultbtn">
-               <button type="button" id="ref_butn" class="btn btn_result" data-toggle="#jobInfo" data-result="20">SHOW MORE RESULTS</button>
+               <button type="button" id="ref_butn" class="btn btn_result" data-toggle="#jobInfo" data-result="10">SHOW MORE RESULTS</button>
             </div>
         </div>
       </div>
