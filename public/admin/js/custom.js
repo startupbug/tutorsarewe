@@ -292,6 +292,49 @@ $(document).ready(function(){
 
 });
 
+	/* Job Request handling Jquery */
+
+	$(".editAddJobRequestModal").on("click", function(e){
+		e.preventDefault();
+
+	 //for edit
+	 if($(this).data('flag') == 'edit'){
+	 	//Send Ajax request to get data and insert in model.
+	 	var subjId = $(this).data('id');
+
+	 	$.ajaxSetup({
+	 		headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+	 	});
+
+	 	$.ajax({
+	 		type: "POST",
+	 		url: $(this).data('url'),
+	 		data: {'jobRequestId': $(this).data('id') },
+	 		success: function(data){
+	 			$("#title").val(data.subject);
+	 			$("#details").val(data.subject_code);
+	 			$("#description").val(data.subject_code);
+	 			$("#first_name").val(data.subject_code);
+	 			$("#last_name").val(data.subject_code);
+	 			$("#jobRequest_Id").val(jobRequestId);
+	 			$(".subjModalHeading").text('Edit');
+	 		},
+	 		error: function(data){
+	 			toastr.error("Subject couldnot be Loaded.");
+	 		}
+	 	});
+
+	 //for add
+	}
+	// else if($(this).data('flag') == 'add'){
+	// 	$("#subject").val('');
+	// 	$("#subject_code").val('');
+	// 	$("#edit_subj_id").val('');
+	// 	$(".subjModalHeading").text('Add');
+	// }
+
+});
+
 	//editAddSubject
 	$("#editAddSubject").on('submit', function(e){
 		e.preventDefault();
@@ -327,6 +370,5 @@ $(document).ready(function(){
 				toastr.error(data.msg);
 			}
 		});
-
 	});
 });
