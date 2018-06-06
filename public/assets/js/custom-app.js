@@ -14,7 +14,9 @@ $(document).ready(function(){
 
   	$(".sendJobReqButton").on('click', function(e){
   			e.preventDefault();
+
   			$("#job_id").val($(this).data('id'));
+
   	});
 
     $("#sendRequest").on('submit', function(e){

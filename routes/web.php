@@ -30,6 +30,7 @@ Route::group(['middleware' => 'guest'], function () {
 	Route::post('/new_password/{email}', 'AuthenticationController@new_password')->name('new_password');
 
 	Route::get('register/verify/{token}', 'AuthenticationController@verify')->name('verified_email');
+
 	//Student and Teacher register
 	Route::post('/register', 'AuthenticationController@register_post')->name('register_post');
 
@@ -105,6 +106,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Post Job request page
 	Route::post('/request-job', 'JobController@request_job')->name('request_job');
+
+	//Student Reply to tutor on Student Job	
+	Route::post('/request-reply_tutor', 'JobController@reply_tutor')->name('reply_tutor');
 
 	Route::post('/post-job', 'JobController@student_postJob_req')->name('student_postJob_req');
 });
