@@ -63,7 +63,8 @@ class ProfileController extends Controller
             'phonenum1'=> 'numeric',
             'tution_per_hour' => 'numeric',
             'age' => 'numeric',
-
+            'qualifications' => 'required|string|max:15',
+            'qualification_from' => 'required|string|max:15',
         ]); 
 
     	try{
@@ -86,6 +87,8 @@ class ProfileController extends Controller
                 'age' => $request->input('age'), 
                 'lesson_type' => $request->input('lesson_type'),
                 'gender' => $request->input('gender'),
+                'qualifications' => $request->input('qualifications'),
+                'qualification_from' => $request->input('qualification_from'),
 	    	];
 
            if(Input::hasFile('profile_pic')){

@@ -53,8 +53,8 @@ class HomeController extends Controller
             );
         $data['all_jobs'] = $data['all_jobs']->paginate(5);
         $data['request'] = $request; 
-                'job_requests.job_id'
-            );
+                
+            
         return view('home.findtutoringjob')->with($data);
 
     }
@@ -71,6 +71,7 @@ class HomeController extends Controller
             ->get();
         return $cities;
     }
+
     public function filter_jobs(Request $request)
     {
         $data['countries'] = Country::all();

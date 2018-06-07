@@ -68,6 +68,18 @@
     <input type="number" name="age" id="exampleInputage" value="{{$user->age}}" class="span3">
   </div>
 
+  <div class="form-group profile_form">
+    <label>Qualifications <span>*</span></label>
+    <br>
+    <input type="number" name="qualifications" id="exampleInputage" value="{{$user->qualifications}}" class="span3">
+  </div>
+
+  <div class="form-group profile_form">
+    <label>Qualifications From <span>*</span></label>
+    <br>
+    <input type="number" name="qualification_from" id="exampleInputage" value="{{$user->qualification_from}}" class="span3">
+  </div>
+
  <div class="form-group profile_form">
   <label>Gender</label>
    <select class="form-control select_f span3" id="gender" name="gender">
