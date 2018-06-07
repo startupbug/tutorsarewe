@@ -28,8 +28,6 @@
         <li class="header">MAIN NAVIGATION</li>
         <!-- Permissions -->
         @if(Auth::check())
-        
-
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-share"></i> <span>Permissions</span>
@@ -40,15 +38,11 @@
               <ul class="treeview-menu">
                
                 <li><a href="{{route('permissions.create')}}"><i class="fa fa-circle-o"></i> Add Permission</a></li>
-             
-
                
                 <li><a href="{{route('permissions.index')}}"><i class="fa fa-circle-o"></i> Permission Management</a></li>
              
-
               </ul>
-            </li> 
-         
+            </li>          
 
           <!-- Roles -->
           <li class="treeview">
@@ -141,6 +135,13 @@
         <li class="treeview">
           <a href="{{route('subject_admin')}}">
             <i class="fa fa-share"></i> <span>Subjects</span>
+          </a>
+        </li>
+
+        <!-- Subjects -->
+        <li class="treeview">
+          <a href="{{route('job_requests')}}">
+            <i class="fa fa-share"></i> <span>Job Requests</span>
           </a>
         </li>
 

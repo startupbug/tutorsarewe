@@ -305,6 +305,10 @@
 
 
 </script>
+
+<!-- Toaster Alert Files -->
+<script src="{{ asset('public/admin/js/toastr.min.js') }}"></script>
+
 </div>
 </body>
 </html>

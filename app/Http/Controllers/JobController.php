@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Job_request;
 use Auth;
+use App\Job_board;
+use App\Chat;
+use App\Chat_message;
 
 class JobController extends Controller
 {
@@ -59,6 +62,15 @@ class JobController extends Controller
                               ->where('job_boards.id', $id)
                               ->select('subjects.subject','job_boards.*', 'lesson_types.type')
                               ->first();
+      
+      //Getting Tutors responses on this Job
+      $data['tutor_responses'] = Job_request::select('job_boards.id as jobboard_id', 'users.first_name' , 'profiles.bio', 'profiles.tution_per_hour', 'job_requests.tutor_id', 
+                                        'job_requests.description', 'profiles.profile_pic')
+                                        ->leftjoin('job_boards', 'job_boards.id', '=', 'job_requests.job_id')
+                                        ->leftjoin('users', 'users.id', '=', 'job_requests.tutor_id')
+                                        ->leftjoin('profiles', 'profiles.user_id', '=', 'users.id')
+                                        ->where('job_requests.job_id', $id)
+                                        ->get();
 
       return view('dashboard.job.post-job-detail')->with($data);
     }
@@ -74,11 +86,16 @@ class JobController extends Controller
     public function request_job(Request $request){
         
         /* Validation */
-        
-        try{
 
+        try{        
             if(Auth::user()->role_id == 2){
                 return \Response::json(array('success' => false, 'msg' => 'Students cannot send Job request')); 
+            }
+
+            //Check if Tutor has completed required info for Requesting Job || 
+            if( is_null(Auth::user()->profile->bio) || is_null(Auth::user()->profile->tution_per_hour) ){
+                $text = 'You need to Fill in your BIO and Rates/hour to Send request to Job.';
+                return \Response::json(array('success' => false, 'msg' => $text)); 
             }
 
             $job_request = new Job_request();
@@ -95,6 +112,45 @@ class JobController extends Controller
         }catch(\Exception $e){
             return \Response::json(array('success' => false, 'msg' => 'Error. Operation failed'.$e->getMessage()));  
         } 
+    }
+
+    //Student reply to tutor on job response
+    public function reply_tutor(Request $request){
+        //return $request->input();
+      
+        //Creating new Chat for this Job Message
+        $chat = new Chat();
+        $chat->job_id = $request->input('job_id');
+
+        if($chat->save()){
+          // new chat creted for this tutor and student
+
+          //Inserting the message into this chat
+          $chat_message = new Chat_message(); 
+          $chat_message->from_id = Auth::user()->id;
+          $chat_message->chat_id = $chat->id;
+
+          //Get tutor id 
+          //$job_board = Job_board::where('id', $request->input('job_id'))->first();
+          $tutor_id = $request->input('tutor_id');
+
+          $chat_message->to_id = $tutor_id;
+                  
+          $chat_message->chat_message = $request->input('chat_message');
+
+          if( $chat_message->save() ){
+              return \Response::json(array('success' => true, 'msg' => 'Responded to Tutor Successfully')); 
+          }else{
+              return \Response::json(array('success' => false, 'msg' => 'Couldnot respond to this Tutor')); 
+          }
+
+        }else{
+             return \Response::json(array('success' => false, 'msg' => 'Couldnot respond to this Tutor')); 
+        }
+
+        //Get tutor id to save
+
+       //$chat-> = ;
     }
 
 }
