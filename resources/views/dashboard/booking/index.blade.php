@@ -5,34 +5,51 @@
 
 	 <div class="col-md-9 bg_color_gray">
      <div class="edit_profile padding_down_s">
-       <h3 class="f_profile_content text-center">Request a Job</h3>
+       <h3 class="f_profile_content text-center">Book Lesson</h3>
      </div>
 		 	@include('partials.error_section')
 		 <div class="row">
 			 <div class="col-md-6 col-md-offset-3">
-				 <form action="{{route('student_postJob_req')}}" method="post">
+				 <form action="{{route('student_booklesson')}}" method="post">
 					 {{csrf_field()}}
 					 <div class="form-group profile_form s_profile_form">
-						 <label>Title <span>*</span></label>
+						 <label>Date <span>*</span></label>
 						 <br>
-             <input type="text" name="title" class="form-control span3" required>
+            		     <input type="date" name="date" class="form-control span3" required>
 					 </div>
-					 <div class="form-group profile_form s_profile_form">
+
+				 	 <div class="form-group profile_form s_profile_form">
+						 <label>Location <span>*</span></label>
+						 <br>
+            		     <input type="text" name="location" class="form-control span3" required>
+					 </div>
+
+
+				 	 <div class="form-group profile_form s_profile_form">
+						 <label>Lesson hours <span>*</span></label>
+						 <br>
+            		     <input type="number" name="lesson_hours" class="form-control span3" required>
+					 </div>
+
+				 	 <div class="form-group profile_form s_profile_form">
+						 <label>Amount <span>*</span></label>
+						 <br>
+            		     <input type="number" name="amount" class="form-control span3" required>
+					 </div>
+
+<!-- 					 <div class="form-group profile_form s_profile_form">
 						 <label>Subjects <span>*</span></label>
 						 <br>
 
              			<select class="form-control span3 " name="subject_id" required>
-             			@if(isset($subjects))
-			               @foreach($subjects as $subject)
-			                   <option value="{{$subject->id}}">{{$subject->subject}}</option>
-			               @endforeach
-			            @endif
+			          
 						 </select>
 					 </div>
+
 					 <div class="form-group profile_form s_profile_form">
 						 <label>Date <span>*</span></label>
 						 <br>
-             <input type="date" name="date" class="form-control span3" required>
+             				<input type="date" name="date" class="form-control span3" required>
 					 </div>
 		           <div class="form-group profile_form s_profile_form">
 								 <label>Type </label>
@@ -48,7 +65,7 @@
 		               </label>
 		             </div>
 					 </div>
-           <div class="form-group profile_form s_profile_form form_address hidden">
+          			 <div class="form-group profile_form s_profile_form form_address hidden">
 						 <label>Address <span>*</span></label>
 						 <br>
              			<textarea name="address" rows="4" cols="80" class="form-control span3 job_address" disabled required></textarea>
@@ -59,9 +76,11 @@
 
              			<textarea name="details" rows="8" cols="80" class="form-control span3" required></textarea>
 
-					 </div>
+					 </div> -->
+
 					 <div class="form-group">
-					 	<input type="submit" value="Post" class="btn s_save">
+					  	<input type="hidden" name="job_id" value="{{$job_board->id}}">
+					 	<input type="submit" value="Book" class="btn s_save">
 					 </div>
 				 </form>
 

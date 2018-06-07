@@ -58,7 +58,7 @@
             <a href="#"><i class="fa fa-envelope f_icon_menu" aria-hidden="true"></i>Messages</a>
           </div>
           <div class="s_nav_menu">
-            <a href="#"><i class="fa fa-calendar-check-o f_icon_menu"></i>Booking</a>
+            <a href="{{route('bookings_list')}}"><i class="fa fa-calendar-check-o f_icon_menu"></i>Booking</a>
           </div>
           <div class="s_nav_menu">
             <a href="{{route('my_transactions')}}"><i class="fa fa-credit-card f_icon_menu"></i>Transaction</a>

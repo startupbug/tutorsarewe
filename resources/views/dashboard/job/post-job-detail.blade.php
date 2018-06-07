@@ -48,6 +48,9 @@
                <li>
                   <h3 class="search_name ">1,722 <span>hours tutoring</span></h3>
                </li>
+               <li>
+                 <a href=""><button class="btn btn-success">Book Lesson</button></a>
+               </li>            
             </ul>
          </div>
        </div>
@@ -84,6 +87,14 @@
                <li><i class="fa fa-clock-o f_clock"></i></li>
                <li>
                   <h3 class="search_name ">1,722 <span>hours tutoring</span></h3>
+               </li>
+               <li>
+                  @if(!is_null($tutor_response->booking_id))
+                      <button class="btn btn-info">Booked</button>                 
+                  @else
+                      <a href="{{route('booking_index', ['jobid' => $tutor_response->jobboard_id] )}}"><button class="btn btn-success">Book Lesson</button></a>
+                  @endif
+
                </li>
             </ul>
          </div>

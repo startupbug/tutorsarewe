@@ -66,9 +66,9 @@
                <div class="top-header">
                   <ul class="top-header-nav">
                      <li><i class="fa fa-phone f_phone" aria-hidden="true"></i>:  1-877-3- TUTORS 1877-388-8677</li>
-                     <li class="f_right"><i class="fa fa-search f_phone"></i>: Search For Tutors</li>
+                     <li class="f_right"><i class="fa fa-search f_phone"></i><a href="{{route('tutors_listing')}}">: Search For Tutors</a></li>
                      @if(!Auth::check())
-                            <li class="f_right"><i class="fa fa-user f_phone"></i><a href="{{route('signin')}}">: Login</a>/<a href="{{route('signup')}}">Register</a></li>
+                           <li class="f_right"><i class="fa fa-user f_phone"></i><a href="{{route('signin')}}">: Login</a>/<a href="{{route('signup')}}">Register</a></li>
                      @endif
                   </ul>
                </div>
@@ -81,88 +81,9 @@
                            <span class="icon-bar"></span>
                            <span class="icon-bar"></span>
                            </button>
-                           <a href="index.php"><img src="{{ asset('public/assets/images/logo.png') }}" alt="tutorareus Logo" class="img-responsive"></a>
-                        </div>
-                        <div class="collapse navbar-collapse" id="myNavbar">
-                           <ul class="nav navbar-nav header-nav">
-                              <li class="">
-                               <!--     -->
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                                 <a class="f_dropdown"  data-toggle="dropdown" href="">FIND A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <ul class="dropdown-menu">
-                                    <li><a href="{{route('tutors_listing')}}">See All Tutors</a></li>
-                                    <li><a href="{{route('postjob_view')}}">POST JOB</a></li>
-                                 </ul>
-                              </li>
-                              <!-- <li class="dropdown">
-                                 <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" href="howitworks.php">HOW IT WORKS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>
-                              </li> -->
-                              <li class="">
-                                 <a class="f_dropdown" href="{{route('how_it_works')}}">HOW IT WORKS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-                              <li class="">
-                                 <a class="f_dropdown" href="{{route('find_tutor')}}">START TUTORING  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-                           @if(!Auth::check())
-                              <li class="">
-                                 <a class="f_dropdown" href="{{route('fulltime_tutor')}}">BECOME A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-                           @endif
-                              <li class="">
-                                 <a class="f_dropdown" href="{{route('publications')}}">PUBLICATIONS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-                              <li class="">
-                                 <a class="f_dropdown" href="{{route('aboutus')}}">ABOUT US  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-                              @if(Auth::check())
-                                 <li class="dropdown user_page">
-                                    <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" >{{Auth::user()->first_name}}  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                    <ul class="dropdown-menu">
-                                       @if(Auth::user()->role_id == 1)
-                                           <li><a href="{{route('admin-index')}}">Dashboard</a></li>
-                                       @else
-                                           <li><a href="{{route('dashboard_index')}}">Dashboard</a></li>                                       
-                                       @endif                                    
-                                       <li><a href="{{route('logout_user')}}">Logout</a></li>
-                                    </ul>
-                                 </li>
-                              @endif
-                           </ul>
-                        </div>
+                           <a href="{{route('home')}}"><img src="{{ asset('public/assets/images/logo.png') }}" alt="tutorareus Logo" class="img-responsive"></a>
+                        </div>                        
+                        @include('partials.nav_partial')
                      </div>
                   </nav>
                </div>

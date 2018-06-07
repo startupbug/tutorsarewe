@@ -18,6 +18,9 @@ use App\Mail\EmailVerification;
 use Validator;
 use App\Events\UserRegistration;
 use App\Wallet;
+use App\State;
+use App\Country;
+use App\City;
 
 class AuthenticationController extends Controller
 {
@@ -72,8 +75,31 @@ class AuthenticationController extends Controller
     }
 
     //Register and signup page view
-    public function register_index(){
-        return view('authentication.signup_faq');
+    public function register_index()
+    {
+        $states = State::all();
+        $countries = Country::all();
+        // $cities = City::all();
+        return view('authentication.signup_faq',['countries'=>$countries, 'states'=>$states]);
+    }
+
+    public function stateForCountryAjax(Request $request)
+    {
+        $country_name = $request->input('countryID');
+        $country_id = urldecode($country_name);
+        //return $country_name;
+        $cities = DB::table('countries')
+            ->select('cities.id', 'cities.name')
+            ->join('states', 'states.country_id', '=', 'countries.id')
+            ->join('cities', 'cities.state_id', '=', 'states.id')
+            ->where("countries.id", '=',$country_id)
+            ->get();
+        return $cities;
+    }
+
+    private function _stateCountryIDForCountryName($country_name)
+    {
+        return DB::table('countries')->where("name","$country_name")->first()->country_id;
     }
 
     public function register_post(Request $request){
@@ -140,8 +166,8 @@ class AuthenticationController extends Controller
                 $profile->username = $request->input('username');
                 $profile->address = $request->input('address');
                 $profile->zipcode = $request->input('zipcode');                        
-                $profile->state = $request->input('state');
-                $profile->country = $request->input('country');
+                $profile->city_id = $request->input('city');
+                $profile->country_id = $request->input('country');
                 $profile->user_id = $user->id;
 
                 if($request->input('role_id') == 3){

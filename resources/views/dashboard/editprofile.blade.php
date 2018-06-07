@@ -120,7 +120,7 @@
     <br>
     <input type="text" name="zipcode" value="{{ isset($user->zipcode) ? $user->zipcode : '' }}" class="span3">
 </div>
- <div class="form-group account_f_form">
+ <!-- <div class="form-group account_f_form">
  	<label>State</label>
 
       <select class="form-control select_f" id="state" name="state">
@@ -229,8 +229,30 @@
                             <option value="US" {{ ($user->country == 'US') ? 'selected' : '' }}>USA</option>
                             <option value="UZ" {{ ($user->country == 'UZ') ? 'selected' : '' }}>Uzbekistan</option>
                             <option value="VN" {{ ($user->country == 'VN') ? 'selected' : '' }}>Vietnam</option>
-                        </select>
-    				</div>
+                        </select> -->
+    				<!-- </div> -->
+            <div class="form-group">
+                  <label for="exampleInputcountry" class="f_label">Country</label>
+                  <select class="form-control select_f" id="country" name="profile_country" data-url="{{route('profile_register.ajax')}}">
+                     <option>Select</option>
+                     @foreach($countries as $country)
+                        <option value="{{$country->id}}" @if($country->id == $user->country_id)  selected @endif>{{$country->name}}</option>
+                     @endforeach
+                  </select>
+               </div>
+
+               <div class="form-group">
+                  <label for="exampleInputstate" class="f_label">City</label>
+                  <select class="form-control select_f" id="city" name="city" >
+                     <option>Select</option>
+                     <div id="cityDropdown">
+                           
+                     </div>
+                  <!--    @foreach($states as $state)
+                        <option value="{{$state->id}}">{{$state->name}}</option>
+                     @endforeach -->
+                  </select>
+               </div>
  <div class="form-group account_f_form">
     <label>Phone Number <span>*</span></label>
     <br>

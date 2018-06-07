@@ -8,11 +8,13 @@ use Auth;
 use App\Job_board;
 use App\Chat;
 use App\Chat_message;
+use App\Subject;
 
 class JobController extends Controller
 {
     public function student_postJob(){
-    	return view('dashboard.job.post-job');
+      $data['subjects'] = Subject::all();
+    	return view('dashboard.job.post-job')->with($data);
     }
 
     public function student_postJob_req(){
@@ -58,20 +60,20 @@ class JobController extends Controller
     public function student_postJob_detail($id){
 
       $data['single_job'] = Job_board::leftjoin('subjects', 'job_boards.subject_id', '=', 'subjects.id')
-                              ->leftjoin('lesson_types', 'lesson_types.id', '=', 'job_boards.lesson_type')
-                              ->where('job_boards.id', $id)
-                              ->select('subjects.subject','job_boards.*', 'lesson_types.type')
-                              ->first();
+                                ->leftjoin('lesson_types', 'lesson_types.id', '=', 'job_boards.lesson_type')
+                                ->where('job_boards.id', $id)
+                                ->select('subjects.subject','job_boards.*', 'lesson_types.type')
+                                ->first();
       
       //Getting Tutors responses on this Job
-      $data['tutor_responses'] = Job_request::select('job_boards.id as jobboard_id', 'users.first_name' , 'profiles.bio', 'profiles.tution_per_hour', 'job_requests.tutor_id', 
-                                        'job_requests.description', 'profiles.profile_pic')
+      $data['tutor_responses'] = Job_request::select('job_boards.id as jobboard_id', 'users.first_name' , 'profiles.bio', 'profiles.tution_per_hour', 'job_requests.tutor_id', 'job_requests.description', 'profiles.profile_pic', 'bookings.id as booking_id')
                                         ->leftjoin('job_boards', 'job_boards.id', '=', 'job_requests.job_id')
                                         ->leftjoin('users', 'users.id', '=', 'job_requests.tutor_id')
                                         ->leftjoin('profiles', 'profiles.user_id', '=', 'users.id')
+                                        ->leftjoin('bookings', 'bookings.job_id', '=', 'job_boards.id')                                
                                         ->where('job_requests.job_id', $id)
                                         ->get();
-
+      
       return view('dashboard.job.post-job-detail')->with($data);
     }
 
@@ -87,7 +89,7 @@ class JobController extends Controller
         
         /* Validation */
 
-        try{        
+        try{
             if(Auth::user()->role_id == 2){
                 return \Response::json(array('success' => false, 'msg' => 'Students cannot send Job request')); 
             }
@@ -148,9 +150,6 @@ class JobController extends Controller
              return \Response::json(array('success' => false, 'msg' => 'Couldnot respond to this Tutor')); 
         }
 
-        //Get tutor id to save
-
-       //$chat-> = ;
     }
 
 }

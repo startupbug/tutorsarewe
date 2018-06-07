@@ -63,7 +63,7 @@
                   <input type="text" class="form-control span3" name="tution_per_hour" id="exampleInputRate" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}"required>
                 </div>
                 <div class="form-group profile_form">
-                  <label for="Bio">Bio <span>*</span></label>
+                  <label for="Bio">Bio </label>
                   <br>
                   <textarea name="bio" class="span3 form-control" ></textarea>
                 </div>

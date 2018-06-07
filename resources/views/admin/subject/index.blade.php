@@ -22,9 +22,9 @@
               <h3 class="box-title">Subject list</h3>
               <button type="button" class="btn btn-default pull-right editAddSubjectModal" data-flag="add" data-toggle="modal" data-target="#editAddSubjectModal" ><i class="fa fa-plus"></i> Add Subject</button>
                 <br>
-                @include('admin.partials.error_section')              
+                             
             </div>          
-
+            @include('admin.partials.error_section') 
             <!-- /.box-header -->
             <div class="box-body">
               <table id="subjectTable" class="table table-bordered table-hover">
