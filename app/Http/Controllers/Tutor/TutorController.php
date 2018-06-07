@@ -190,6 +190,7 @@ class TutorController extends Controller
     public function tutor_profile($id){
         $args['tutor_info'] = User::find($id); 
         $args['tutor_subjects'] = Tutor_subject::where('tutor_id',$id)->get();
+        $subjects =array();
         foreach($args['tutor_subjects'] as $value){
             $subjects[] = $value->subject_id;
         }

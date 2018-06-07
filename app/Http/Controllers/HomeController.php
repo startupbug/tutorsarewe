@@ -23,11 +23,8 @@ class HomeController extends Controller
 
     //Tutor find jobs page
 
-    public function find_tutor(Request $request){
-
+    public function find_tutor(Request $request){        
         $data['countries'] = Country::all();
-
-
         $data['all_jobs'] =  Job_board::leftjoin('users','users.id','=','job_boards.student_id')
             ->leftjoin('lesson_types','job_boards.lesson_type','=','lesson_types.id')
             ->leftjoin('subjects','job_boards.subject_id','=','subjects.id')
@@ -36,13 +33,12 @@ class HomeController extends Controller
                 'subjects.subject as sub_name',
                 'subjects.subject_code',
                 'lesson_types.type',
-                'users.first_name'
+                'users.first_name',
+                'users.id as user_id',
+                'users.last_name'
             );
-
         $data['all_jobs'] = $data['all_jobs']->paginate(5);
-
-        $data['request'] = $request;
-        
+        $data['request'] = $request;        
         return view('home.findtutoringjob')->with($data);
 
     }
