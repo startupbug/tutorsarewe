@@ -209,4 +209,8 @@ class TutorController extends Controller
         $this->set_session('You Have Successfully Send An Email', true);
         return redirect()->back();
     }
+
+    public function tutor_earnings(){
+        return view('dashboard.tutor.tutor-earning');
+    }
 }

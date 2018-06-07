@@ -80,7 +80,7 @@
                            <span class="icon-bar"></span>
                            <span class="icon-bar"></span>
                            </button>
-                           <a href="index.php"><img src="{{ asset('public/assets/images/logo.png') }}" alt="tutorareus Logo" class="img-responsive"></a>
+                           <a href="{{route('home')}}"><img src="{{ asset('public/assets/images/logo.png') }}" alt="tutorareus Logo" class="img-responsive"></a>
                         </div>
  
                         @include('partials.nav_partial')

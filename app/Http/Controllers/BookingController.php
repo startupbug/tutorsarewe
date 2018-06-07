@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Job_board;
 use App\Booking;
 use Auth;
+use App\Wallet;
+use App\Tutor_earning;
 
 class BookingController extends Controller
 {
@@ -82,21 +84,38 @@ class BookingController extends Controller
     public function booking_status($bookingid){
 
 	    /* Validation */
-
+	   
 	    try{
 	    	//Check if this Booking belongs to this User (for student)
 	    	$booking = Booking::leftjoin('job_boards', 'job_boards.id', '=', 'bookings.job_id')
                                       ->leftjoin('job_requests', 'job_requests.job_id', '=', 'job_boards.id')
                                       ->where('job_requests.tutor_id', Auth::user()->id)
-                                      ->exists();
-
-	        if($booking){
+                                      ->first();
+            //dd($booking->amount);
+	        if(count($booking) > 0){
 	        	//This booking exist for this user
 
 	        	if(\Route::currentRouteName() == 'booking_accept'){	
 	        		//Accept
 	        		$status = 7;
 	        		$msg = 'Accepted';
+
+	        		//Transfer amount from Student wallet to Tutor	        		
+	        		$amount_to_transfer = $booking->amount;
+	        		$student_id = $booking->student_id;
+	        		$tutor_id = $booking->tutor_id;
+
+	        		//deducting Amount from student
+	        		$student_deducted = Wallet::where('user_id', $student_id)->decrement('balance', $amount_to_transfer);
+	        		$teacher_increment = Wallet::where('user_id', $tutor_id)->increment('balance', $amount_to_transfer);
+
+	        		//Amount transferred
+
+	        		//Record booking Transaction
+	        		$tutor_earning = new Tutor_earning();
+	        		$tutor_earning->booking_id = $booking->id;
+	        		$tutor_earning->save();
+
 	        	}else if(\Route::currentRouteName() == 'booking_reject'){
 	        		//Reject
 	        		$status = 8;
@@ -105,7 +124,7 @@ class BookingController extends Controller
 
 	        	$booking_cancel = Booking::where('id', $bookingid)->update(['status_id'=> $status]);
 	        
-		        if($booking_cancel){ 
+		        if($booking_cancel){
 		        	$this->set_session('Booking Successfully '.$msg, true);
 		        }else{
 		        	$this->set_session('Booking couldnot be '.$msg, false);

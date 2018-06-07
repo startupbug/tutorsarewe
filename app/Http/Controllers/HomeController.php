@@ -10,6 +10,9 @@ use App\Country;
 use App\State;
 use App\City;
 use DB;
+use App\Subscriber;
+use Illuminate\Support\Facades\Input;
+use Session;
 class HomeController extends Controller
 {
 	/* Home Page */
@@ -43,9 +46,9 @@ class HomeController extends Controller
                 'subjects.subject_code',
                 'lesson_types.type',
                 'users.first_name',
-                'job_requests.job_id'
+                'job_requests.job_id', 'job_requests.request_status'
             );
-        $data['all_jobs'] = $data['all_jobs']->paginate(5);
+        $data['all_jobs'] = $data['all_jobs']->where('job_requests.request_status', 1)->paginate(5);
         // dd($data['all_jobs']);
         $data['request'] = $request;
         
@@ -197,6 +200,20 @@ class HomeController extends Controller
     //aboutus page
     public function aboutus(){
     	return view('home.aboutus');
+    }
+
+    public function subscribe(Request $request)
+    {
+
+        $this->validate($request,[
+           'email' => 'required|string|unique:users',
+        ]);
+        // dd($request->input());
+        $subscriber = new Subscriber;
+        $subscriber->email = Input::get('email');
+        $subscriber->save();
+        $this->set_session('Email has been subscribed.', true);
+        return redirect('/');
     }
 
     //401

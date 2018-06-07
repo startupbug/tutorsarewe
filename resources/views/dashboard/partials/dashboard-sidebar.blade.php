@@ -50,6 +50,10 @@
           <div class="s_nav_menu">
             <a href="{{route('subjects')}}"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>Subjects</a>
           </div>
+          <div class="s_nav_menu">
+            <a href="{{route('tutor_earnings')}}"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>Earnings </a>
+          </div>
+
           @endif
           <div class="s_nav_menu">
             <a href="#"><i class="fa fa-user-plus f_icon_menu"></i>Invite Friends</a>

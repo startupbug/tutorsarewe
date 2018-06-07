@@ -44,7 +44,8 @@ Route::group(['middleware' => 'guest'], function () {
 //Logout Route
 Route::get('/logout',  'AuthenticationController@logout_user')->name('logout_user');
 
-
+// email subscribe
+Route::post('/subscribe','HomeController@subscribe')->name('subscribe');
 //How it works
 Route::get('/how-it-works', 'HomeController@how_it_works')->name('how_it_works');
 
@@ -138,7 +139,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/booking-reject/{id}', 'BookingController@booking_status')->name('booking_reject');
 
 	//Booking details 
-	Route::get('/booking_detail/{id}', 'BookingController@booking_detail')->name('booking_detail');	
+	Route::get('/booking_detail/{id}', 'BookingController@booking_detail')->name('booking_detail');
+
+	//Tutor earnings 
+	Route::get('/tutor-earnings', 'Tutor\TutorController@tutor_earnings')->name('tutor_earnings');
+
 });
 
 Route::post('depositWallet', 'Paypal\StudentPayment@depositWallet')->name('depositWallet');

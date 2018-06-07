@@ -25,6 +25,7 @@ class ProfileController extends Controller
         
     	return view('dashboard.editprofile')->with($data);
     }
+    
     public function editcityForCountryAjax(Request $request)
     {
         $country_name = $request->input('countryID');
@@ -42,9 +43,10 @@ class ProfileController extends Controller
     // edit profile post
     public function edit_profile(Request $request){
 
-        //dd($request->input());
-    	/* Validation */
+         // dd($request->input());
+    	 // Validation 
 
+    	/* Validation */
         $this->validate($request, [
             'first_name' => 'required|string|max:255',
             'last_name'=> 'required|string|max:255',
@@ -56,7 +58,7 @@ class ProfileController extends Controller
             'tution_per_hour' => 'numeric',
             'age' => 'numeric',
 
-        ]); 
+        ]);
 
     	try{
 	    	//Update User
@@ -181,8 +183,17 @@ class ProfileController extends Controller
 
     public function walletWithdraw(Request $request){
 
-        $available = Wallet::where('user_id', Auth::user()->id)->first(['balance']); 
+        //100$ withdraw amount condition
+        
+        if($request->input('amount') < 100){
+            $this->set_session('You cannot withdraw amount less then $100', false);
+            return redirect()->route('my_balance'); 
+        }
+
+        $available = Wallet::where('user_id', Auth::user()->id)->first(['balance']);
+
         $status = WithdrawWallet::where('user_id', Auth::user()->id)->where('status', 'pending')->first(['id']); 
+        
         if(empty($status)){
 
             if($request->amount <= $available->balance){
