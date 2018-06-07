@@ -56,15 +56,6 @@
                     @endforeach              
                   </tbody>
 
-                  <tfoot>
-                      <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Action</th>                        
-                      </tr>
-                  </tfoot>
-
               </table>
             </div>
         </div>

@@ -127,10 +127,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-            
         $data['roles'] = Role::all();
         $data['statuses'] = Status::all();
-        $data['user'] = $this->user->getSingleUsers($id);
+        $data['user'] = User::find($id);
+        $data['profile'] = Profile::where('user_id','=',$id)->first();
         
         return view('admin.user.edit')->with($data);
     }
