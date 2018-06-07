@@ -21,6 +21,8 @@ Route::group(['middleware' => 'guest'], function () {
 
 	Route::get('/signup', 'AuthenticationController@register_index')->name('signup');
 
+	Route::post('/user_register/ajax',array('as'=>'user_register.ajax','uses'=>'AuthenticationController@stateForCountryAjax'));
+
 	Route::get('/forget_password', 'HomeController@forget_password')->name('forget_password_form');
 
 	Route::post('/send_forget_email', 'AuthenticationController@send_forget_email')->name('send_forget_email');
@@ -49,12 +51,15 @@ Route::get('/how-it-works', 'HomeController@how_it_works')->name('how_it_works')
 //Tutor find jobs
 Route::get('/find-job', 'HomeController@find_tutor')->name('find_tutor');
 
+Route::post('/filter_register/ajax',array('as'=>'filter_register.ajax','uses'=>'HomeController@filterForCountryAjax'));
 
 //Tutor filter jobs
-Route::post('/find-job-filter', 'HomeController@filter_jobs')->name('filter_jobs');
+Route::get('/find-job-filter', 'HomeController@filter_jobs')->name('filter_jobs');
 
      //Tutor profile
+
 Route::get('/tutor_profile/{id}', 'Tutor\TutorController@tutor_profile')->name('tutor_profile');
+
 
 //Fulltime Tutor
 Route::get('/fulltime-tutor', 'HomeController@fulltime_tutor')->name('fulltime_tutor');
@@ -80,6 +85,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/edit-profile', 'ProfileController@edit_dashboard')->name('edit_dashboard');
 
+	Route::post('/profile_register/ajax',array('as'=>'profile_register.ajax','uses'=>'ProfileController@editcityForCountryAjax'));
 	//Edit profile post
 	Route::post('/edit_profile', 'ProfileController@edit_profile')->name('edit_profile');
 

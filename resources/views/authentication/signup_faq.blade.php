@@ -204,16 +204,28 @@
                   <input type="text" class="form-control f-control" name="zipcode" value="{{ old('zipcode') }}" id="exampleInputcode" placeholder="">
                </div>
                <div class="form-group">
-                  <label for="exampleInputstate" class="f_label">State</label>
-                  <select class="form-control select_f" id="state" name="state">
+                  <label for="exampleInputcountry" class="f_label">Country</label>
+                  <select class="form-control select_f" id="country" name="country" data-url="{{route('user_register.ajax')}}">
                      <option>Select</option>
-                     <option value="New York">New York</option>
-                     <option value="New south wales">New south wales</option>
-                     <option value="Texas">Texas</option>
-                     <option value="South">South</option>
+                     @foreach($countries as $country)
+                        <option value="{{$country->id}}">{{$country->name}}</option>
+                     @endforeach
                   </select>
                </div>
+
                <div class="form-group">
+                  <label for="exampleInputstate" class="f_label">City</label>
+                  <select class="form-control select_f" id="city" name="city">
+                     <option>Select</option>
+                     <div id="cityDropdown">
+                           
+                     </div>
+                  <!--    @foreach($states as $state)
+                        <option value="{{$state->id}}">{{$state->name}}</option>
+                     @endforeach -->
+                  </select>
+               </div>
+               <!-- <div class="form-group">
                   <label for="country" class="control-label f_label">Country</label>
                   <div class="controls">
                      <select class="form-control" name="country"  id="country">
@@ -311,7 +323,7 @@
                         <option value="VN">Vietnam</option>
                      </select>
                   </div>
-               </div>
+               </div> -->
                <div class="form-group">
                   <label for="exampleInputstate" class="f_label">Phone Number<span>*</span></label>
                </div>
@@ -357,5 +369,6 @@
       </div>
    </div>
 </section>
+
 
 @endsection

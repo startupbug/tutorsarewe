@@ -22,9 +22,11 @@
 						 <br>
 
              			<select class="form-control span3 " name="subject_id" required>
+             			@if(isset($subjects))
 			               @foreach($subjects as $subject)
 			                   <option value="{{$subject->id}}">{{$subject->subject}}</option>
 			               @endforeach
+			            @endif
 						 </select>
 					 </div>
 					 <div class="form-group profile_form s_profile_form">

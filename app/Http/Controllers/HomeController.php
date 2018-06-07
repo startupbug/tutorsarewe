@@ -9,6 +9,7 @@ use App\Subject;
 use App\Country;
 use App\State;
 use App\City;
+use DB;
 class HomeController extends Controller
 {
 	/* Home Page */
@@ -25,59 +26,129 @@ class HomeController extends Controller
 
     public function find_tutor(Request $request){
 
+        // dd($request->input());      
         $data['countries'] = Country::all();
 
+        $data['subjects'] = Subject::all();
 
+        $data['lesson_types'] = Lesson_type::all();
+        // dd($data['subjects']);
         $data['all_jobs'] =  Job_board::leftjoin('users','users.id','=','job_boards.student_id')
             ->leftjoin('lesson_types','job_boards.lesson_type','=','lesson_types.id')
             ->leftjoin('subjects','job_boards.subject_id','=','subjects.id')
+            ->leftjoin('job_requests','job_boards.id','=','job_requests.job_id')
             ->select(
                 'job_boards.*',
                 'subjects.subject as sub_name',
                 'subjects.subject_code',
                 'lesson_types.type',
-                'users.first_name'
+                'users.first_name',
+                'job_requests.job_id'
             );
-
         $data['all_jobs'] = $data['all_jobs']->paginate(5);
-
+        // dd($data['all_jobs']);
         $data['request'] = $request;
         
         return view('home.findtutoringjob')->with($data);
 
     }
+    public function filterForCountryAjax(Request $request)
+    {
+        $country_name = $request->input('countryID');
+        $country_id = urldecode($country_name);
+        //return $country_name;
+        $cities = DB::table('countries')
+            ->select('cities.id', 'cities.name')
+            ->join('states', 'states.country_id', '=', 'countries.id')
+            ->join('cities', 'cities.state_id', '=', 'states.id')
+            ->where("countries.id", '=',$country_id)
+            ->get();
+        return $cities;
+    }
+    public function filter_jobs(Request $request)
+    {
+        $data['countries'] = Country::all();
 
-    public function filter_jobs(Request $request){
-        dd($request->input());
+        $data['subjects'] = Subject::all();
+        $data['lesson_types'] = Lesson_type::all();
+        
+        // / dd($request->input());
 
-        if ($request->conutry_id) {
-            // dd($request->conutry_id);
-            //Get cities of that Country
-            $data['cities'] = State::join('countries','countries.id','=','states.country_id')
-            ->leftjoin('cities','states.id','=','cities.state_id')
-            ->select('states.*','countries.name as country_name','cities.name as city_name','cities.id as city_id')
-            ->where('states.country_id',$request->conutry_id)->take(5)->get();
-            
-            //Filter data on basis of that country
-            $data['all_jobs'] =  Job_board::leftjoin('users','users.id','=','job_boards.student_id')
+        $data['all_jobs'] =  Job_board::leftjoin('users','users.id','=','job_boards.student_id')
+                ->leftjoin('profiles','users.id','=','profiles.user_id')
                 ->leftjoin('lesson_types','job_boards.lesson_type','=','lesson_types.id')
                 ->leftjoin('subjects','job_boards.subject_id','=','subjects.id')
+                ->leftjoin('job_requests','job_boards.id','=','job_requests.job_id')
                 ->select(
                     'job_boards.*',
                     'subjects.subject as sub_name',
                     'subjects.subject_code',
                     'lesson_types.type',
-                    'users.first_name'
-                )->where('');
+                    'users.first_name',
+                    'profiles.country_id',
+                    'job_requests.job_id'
+                );
 
-            $data['all_jobs'] = $data['all_jobs']->paginate(5);
-
-
-            dd($data['cities']);
-        
+          //If course is set
+        if(!is_null($request->input('courseform') ) ){
+            $data['all_jobs']->where('job_boards.subject_id','=',$request->input('courseform'));
         }
-    
 
+        if(!is_null($request->input('country')))
+        {
+            $data['all_jobs']->where('profiles.country_id','=',$request->input('country'));
+        }
+
+        if(!is_null($request->input('city')))
+        {
+            $data['all_jobs']->where('profiles.city_id','=',$request->input('city'));
+                           
+        }
+
+        if(!is_null($request->input('typeform')))
+        {
+            $data['all_jobs']->where('job_boards.lesson_type','=',$request->input('typeform'));
+                           
+        }        
+        
+        $data['all_jobs'] = $data['all_jobs']->paginate(6);
+
+          //If course is set
+        if(!is_null($request->input('courseform') ) ){
+
+            $data['all_jobs']->appends(['courseform' => $request->input('courseform') ]);
+        }
+
+        if(!is_null($request->input('country')))
+        {
+
+            $data['all_jobs']->appends(['country' => $request->input('country') ]);
+        }
+
+        if(!is_null($request->input('city')))
+        {
+
+            $data['all_jobs']->appends(['city' => $request->input('city') ]);
+                           
+        }
+
+        if(!is_null($request->input('typeform')))
+        {
+
+            $data['all_jobs']->appends(['typeform' => $request->input('typeform') ]);
+                           
+        }      
+
+        //$data['all_jobs']->appends(['courseform' => $request->input('country') ]);
+
+        // if(empty($data['all_jobs'] ))
+        // {
+            //$this->set_session('no user with this filter exist', false);
+        return view('home.findtutoringjob')->with($data);
+        //}
+
+        //return view('home.findtutoringjob')->with($data);
+    }
         //         if ($request->country_id) {
         //     $states = $states->where('country_id', $request->country_id);
         // }
@@ -98,6 +169,12 @@ class HomeController extends Controller
         //  if ($request->course) {
         //      $args['all_jobs'] = $args['all_jobs']->where('job_boards.subject_id' , $request->type);
         //  }
+
+
+    
+     //Tutor profile
+    public function tutor_profile(){
+    	return view('home.tutor_profile');
 
     }
     
