@@ -231,15 +231,26 @@
                             <option value="VN" {{ ($user->country == 'VN') ? 'selected' : '' }}>Vietnam</option>
                         </select> -->
     				<!-- </div> -->
+
             <div class="form-group">
-                  <label for="exampleInputcountry" class="f_label">Country</label>
-                  <select class="form-control select_f" id="country" name="profile_country" data-url="{{route('profile_register.ajax')}}">
-                     <option>Select</option>
-                     @foreach($countries as $country)
-                        <option value="{{$country->id}}" @if($country->id == $user->country_id)  selected @endif>{{$country->name}}</option>
-                     @endforeach
-                  </select>
-               </div>
+              <label for="exampleInputlesson" class="f_label">Lesson Type</label>
+              <select class="form-control select_f" id="lesson" name="lesson_type" data-url="{{route('profile_register.ajax')}}">
+                 <option>Select</option>
+                 @foreach($lessons as $lesson)
+                    <option value="{{$lesson->id}}">{{$lesson->type}}</option>
+                 @endforeach
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputcountry" class="f_label">Country</label>
+              <select class="form-control select_f" id="country" name="profile_country" data-url="{{route('profile_register.ajax')}}">
+                 <option>Select</option>
+                 @foreach($countries as $country)
+                    <option value="{{$country->id}}" @if($country->id == $user->country_id)  selected @endif>{{$country->name}}</option>
+                 @endforeach
+              </select>
+            </div>
 
                <div class="form-group">
                   <label for="exampleInputstate" class="f_label">City</label>

@@ -80,7 +80,7 @@ class DashboardController extends Controller
 
          }catch(\Exception $e){
                    $this->set_session('Password couldnot be Updated. '.$e->getMessage(), false);
-                   return redirect()->route('dashboard_index');
+                   return redirect()->back();
              }
 
     }

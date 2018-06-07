@@ -17,7 +17,9 @@ class HomeController extends Controller
 {
 	/* Home Page */
     public function index(){
-      return view('home.index');
+        $data['countries'] = Country::all();
+        $data['subjects'] = Subject::all();
+        return view('home.index')->with($data);
     }
 
     //How it works page
@@ -172,6 +174,12 @@ class HomeController extends Controller
         //  if ($request->course) {
         //      $args['all_jobs'] = $args['all_jobs']->where('job_boards.subject_id' , $request->type);
         //  }
+
+
+    public function home_tutor_filter(Request $request)
+    {
+        dd($request->input());
+    }
 
 
     
