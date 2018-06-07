@@ -26,19 +26,19 @@ class ProfileController extends Controller
     // edit profile post
     public function edit_profile(Request $request){
 
-    	/* Validation 
+    	/* Validation */
         $this->validate($request, [
             'first_name' => 'required|string|max:255',
             'last_name'=> 'required|string|max:255',
             'bio'=> 'string|max:150|min:50',
             'address'=> 'string|max:255',
             'zipcode'=> 'alpha_num|max:10',
-            'countryCode'=> 'required|numeric|max:255',
-            'phonenum1'=> 'required|numeric',
+            'countryCode'=> 'numeric|max:255',
+            'phonenum1'=> 'numeric',
             'tution_per_hour' => 'numeric',
             'age' => 'numeric',
 
-        ]); */
+        ]); 
 
     	try{
 	    	//Update User

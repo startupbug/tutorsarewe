@@ -6,12 +6,12 @@
       @include('partials.error_section')
       <div class="col-md-9">
          <div class="edit_profile">
-            <h3 class="f_profile_content">Profile</h3>
+            <h3 class="f_profile_content">Booking Information</h3>
          </div>
       </div>
-      <div class="col-md-3">
+      <!-- <div class="col-md-3">
          <a href="{{route('edit_dashboard')}}" class="btn btn-default f_view_edit">EDIT</a>
-      </div>
+      </div> -->
       <div class="col-md-12">
          <p class="f_text">
            <!--  {{ isset($user->bio) ? $user->bio : '' }} -->
@@ -32,24 +32,13 @@
             </div>
 
             <div class="form-group profile_form account_view">
-               <label>Job detail </label>
-               <br>
-               <p class="text_aaccountview">{{ isset($booking_detail->details) ? $booking_detail->details : '-' }}</p>
-            </div>
-                                    
-            <div class="form-group profile_form account_view">
-               <label>Subject</label>
-               <br>
-               <p class="text_aaccountview">{{ isset($booking_detail->subject) ? $booking_detail->subject : '-' }}</p>
-            </div>
-            <div class="form-group profile_form account_view">
                <label>Tutor Email </label>
                <br>
                <p class="text_aaccountview">{{ isset($booking_detail->email) ? $booking_detail->email : '-' }}</p>
             </div>
 
                <div class="form-group profile_form account_view">
-                  <label>Hours </label>
+                  <label>Lesson Hours </label>
                   <br>
                   <p class="text_aaccountview">{{ isset($booking_detail->lesson_hours) ? $booking_detail->lesson_hours : '-' }}</p>
                </div>
@@ -81,7 +70,11 @@
          </form>
       </div>
       <div class="col-md-6">
-         <form>
+            <div class="form-group account_f_form view_f">
+               <label>Lesson Date</label>
+               <br>
+               <p class="text_aaccountview">{{ isset($booking_detail->date) ? date("M jS, Y", strtotime($booking_detail->date)) : '-' }}</p>
+            </div>      
             <div class="form-group account_f_form view_f">
                <label>Title</label>
                <br>
@@ -93,7 +86,19 @@
                <p class="text_aaccountview">{{ isset($booking_detail->status) ? $booking_detail->status : '-' }}</p>
             </div>
             <div class="clearfix"></div>
-         </form>
+
+            <div class="form-group  account_f_form view_f">
+               <label>Job detail </label>
+               <br>
+               <p class="text_aaccountview">{{ isset($booking_detail->details) ? $booking_detail->details : '-' }}</p>
+            </div>
+                                    
+            <div class="form-group  account_f_form view_f">
+               <label>Subject</label>
+               <br>
+               <p class="text_aaccountview">{{ isset($booking_detail->subject) ? $booking_detail->subject : '-' }}</p>
+            </div>
+
       </div>
    </div>
 </div>

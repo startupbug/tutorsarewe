@@ -41,7 +41,7 @@
 								@endif
 							</td>
 							  <td>
-							  	<a href="{{ route('booking_detail', ['id' => $value->id]) }}" class="btn btn-warning btn-sm">View</a>
+							  	<a target="_blank" href="{{ route('booking_detail', ['id' => $value->id]) }}" class="btn btn-warning btn-sm">View</a>
 							  </td>							
 							 <td>
 							 	@if($value->status_id != 3)
