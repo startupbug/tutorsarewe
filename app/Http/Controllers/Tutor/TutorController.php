@@ -18,6 +18,9 @@ class TutorController extends Controller
 {
 	//Search tutor page & Tutor listing in Front Navbar Find A Tutor    
     public function index(Request $request){
+          // "course" => "6"
+          // "location" => "10"
+        // dd($request->input());
         $take = 10;
         if ($request->name) {
             $words = explode(' ', $request->name);
@@ -36,6 +39,77 @@ class TutorController extends Controller
                             })
                             ->take($take)
                             ->get();
+            
+        }elseif ($request->course || $request->location) {           
+            if ($request->home == 1) {
+                $args['listing'] = User::leftJoin('profiles','profiles.user_id','=','users.id')
+                                ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')
+                                ->where('users.role_id',3)
+                                ->where('users.verified',1)                                    
+                                ->where('profiles.country_id','=',$request->location)
+                                ->where('tutor_subjects.subject_id','=',$request->course)
+                                ->whereExists(function($query)
+                                {
+                                    $query->select(DB::raw(1))
+                                        ->from('tutor_subjects')
+                                        ->whereRaw('tutor_subjects.tutor_id = users.id');
+                                })
+                                        ->whereExists(function($query)
+                                {
+                                    $query->select(DB::raw(1))
+                                        ->from('job_boards')
+                                        ->where('job_boards.lesson_type','=', 1);
+                                })
+                        ->take($take)
+                        ->get();
+            
+            } 
+            if ($request->home == 2) {
+                $args['listing'] = User::leftJoin('profiles','profiles.user_id','=','users.id')
+                                ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')
+                                ->where('users.role_id',3)
+                                ->where('users.verified',1)                                    
+                                ->where('profiles.country_id','=',$request->location)
+                                ->where('tutor_subjects.subject_id','=',$request->course)
+                                ->whereExists(function($query)
+                                {
+                                    $query->select(DB::raw(1))
+                                        ->from('tutor_subjects')
+                                        ->whereRaw('tutor_subjects.tutor_id = users.id');
+                                })
+                                        ->whereExists(function($query)
+                                {
+                                    $query->select(DB::raw(1))
+                                        ->from('job_boards')
+                                        ->where('job_boards.lesson_type','=', 2);
+                                })
+                        ->take($take)
+                        ->get();
+            
+            }
+             if ($request->home == 3) {
+                $args['listing'] = User::leftJoin('profiles','profiles.user_id','=','users.id')
+                                ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')
+                                ->where('users.role_id',3)
+                                ->where('users.verified',1)                                    
+                                ->where('profiles.country_id','=',$request->location)
+                                ->where('tutor_subjects.subject_id','=',$request->course)
+                                ->whereExists(function($query)
+                                {
+                                    $query->select(DB::raw(1))
+                                        ->from('tutor_subjects')
+                                        ->whereRaw('tutor_subjects.tutor_id = users.id');
+                                })
+                                        ->whereExists(function($query)
+                                {
+                                    $query->select(DB::raw(1))
+                                        ->from('job_boards')
+                                        ->where('job_boards.lesson_type','=', 3);
+                                })
+                        ->take($take)
+                        ->get();
+            
+            }              
             
         }elseif (isset($request->online_status) || isset($request->location) || isset($request->rating) || isset($request->tution_per_hour) ){
             $myString = $request->tution_per_hour;
