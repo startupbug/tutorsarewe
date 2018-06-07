@@ -20,7 +20,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Job Request list</h3>
-              <button type="button" class="btn btn-default pull-right editAddJobRequestModal" data-flag="add" data-toggle="modal" data-target="#editAddJobRequestModal" ><i class="fa fa-plus"></i> Add Subject</button>
+            <!--   <button type="button" class="btn btn-default pull-right editAddJobRequestModal" data-flag="add" data-toggle="modal" data-target="#editAddJobRequestModal" ><i class="fa fa-plus"></i> Add Subject</button> -->
                 <br>
                 @include('admin.partials.error_section')              
             </div>          

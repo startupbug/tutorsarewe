@@ -48,12 +48,13 @@ class HomeController extends Controller
                 'subjects.subject_code',
                 'lesson_types.type',
                 'users.first_name',
-                'job_requests.job_id'
+                'users.id as user_id',
+                'users.last_name'
             );
         $data['all_jobs'] = $data['all_jobs']->paginate(5);
-        // dd($data['all_jobs']);
-        $data['request'] = $request;
-        
+        $data['request'] = $request; 
+                'job_requests.job_id'
+            );
         return view('home.findtutoringjob')->with($data);
 
     }

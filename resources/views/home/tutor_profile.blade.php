@@ -11,13 +11,15 @@
             <div class="col-md-9">
                <div class="profile_content">
                   <h3>{{ $tutor_info->first_name }} {{ $tutor_info->last_name }}</h3>
-                  <h1 class="f_hello">$ Hourly rate: ${{ $tutor_info->profile->tution_per_hour }}</h1>
+                  @if($tutor_info->role_id == 3)
+                  <h1 class="f_hello">$ Hourly rate:${{$tutor_info->profile->tution_per_hour}}</h1>
                   <i class="fa fa-star f_icon_color"></i>
                   <i class="fa fa-star f_icon_color"></i>
                   <i class="fa fa-star f_icon_color"></i>
                   <i class="fa fa-star f_icon_color"></i>
                   <i class="fa fa-star f_icon_color"></i><span>{{ $tutor_info->profile->rating }}(449 Ratings)</span>
                   <h2>2469 hours tutoring</h2>
+                  @endif
                </div>
             </div>
             <div class="col-md-12">
@@ -30,7 +32,7 @@
                </div>
                <div class="col-md-9">
                   <h3 class="f_hello">{{ $tutor_info->profile->bio }} </h3>
-                  <a href="#" class="f_read">Read more</a>
+                  <!-- <a href="#" class="f_read">Read more</a> -->
                </div>
                <div class="clearfix"></div>
                <hr>
@@ -47,20 +49,7 @@
                <div class="clearfix"></div>
                <hr>
             </div>
-            <!-- <div class="">
-               <div class="col-md-3">
-                  <h3 class="f_bio">Policies</h3>
-               </div>
-               <div class="col-md-9">
-                  <h3 class="f_hello">$ Hourly rate: $65</h3>
-                  <h3 class="f_hello">Lesson cancellation: 24 hours notice required</h3>
-                  <h3 class="f_hello"><span>Background check</span> passed on 9/28/2014</h3>
-                  <h3 class="f_hello">Your first lesson is backed by our <span>Good Fit Guarantee</span></h3>
-                  
-               </div>
-               <div class="clearfix"></div>
-               <hr>
-            </div> -->
+            @if($tutor_info->role_id == 3)
             <div class="">
                <div class="col-md-3">
                   <h3 class="f_bio">Schedule</h3>
@@ -75,7 +64,7 @@
                </div>
                <div class="clearfix"></div>
                <hr>
-            </div>
+            </div>            
             <div class="">
                <div class="col-md-3">
                   <h3 class="f_bio">Subjects</h3>
@@ -103,17 +92,7 @@
                </div> -->
                <div class="clearfix"></div>
                <hr>
-            </div>
-          <!--   <div class="">
-               <div class="col-md-3">
-                  <h3 class="f_bio">Resources</h3>
-               </div>
-               <div class="col-md-9">
-                  <h3 class="f_hello">Priti has shared 38 answers and 1 article on Wyzant Resources.</h3>
-                  <a href="#" class="f_subject">Go to Priti’s resources</a>
-               </div>
-               <div class="clearfix"></div>
-            </div> -->
+            </div>         
             <h3 class="about_main_head">Ratings and Reviews</h3>
             <hr>
             <div class="">
@@ -210,6 +189,7 @@
                </div>
                <div class="clearfix"></div>
             </div>
+            @endif
          </div>
          <div class="col-md-4">
             <div class="menu">
@@ -250,6 +230,7 @@
             @endif
             <p class="f_res">Response time: 46 minutes</p>
          </div>
+         @if($tutor_info->role_id == 3)
          <div class="container">
             <div class="row">
                <div class="col-md-12">
@@ -262,6 +243,7 @@
                </div>
             </div>
          </div>
+         @endif
       </div>
    </div>
 </section>

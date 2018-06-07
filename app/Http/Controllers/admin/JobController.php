@@ -18,9 +18,10 @@ class JobController extends Controller
      */
     public function index()
     {
-    	$args['job_requests'] = Job_request::leftJoin('job_boards','job_boards.id','=','job_requests.job_id')->leftJoin('users','users.id','=','job_requests.tutor_id')->select('job_requests.id','users.first_name','users.last_name','job_requests.description','job_requests.request_status','job_boards.title','job_boards.details')->get();
-        // dd($args);
-    	return view('admin.job_request.index')->with($args); 
+    	$args['job_requests'] = Job_request::leftJoin('job_boards','job_boards.id','=','job_requests.job_id')->leftJoin('users','users.id','=','job_requests.tutor_id')
+                                ->select('job_requests.id','users.first_name','users.last_name','job_requests.description','job_requests.request_status','job_boards.title','job_boards.details')
+                                ->get();
+    	return view('admin.job_request.index')->with($args);
     }
 
     /**
@@ -46,24 +47,20 @@ class JobController extends Controller
 
     public function delete_job_request($id)
     {
-       //simple subject delete
+       //simple job_request delete
         try{
-            $subject = Job_request::find($id);
-            $subject = $subject->delete();
-
-            if($subject){
+            $job_request = Job_request::find($id);
+            $job_request = $job_request->delete();
+            if($job_request){
                $this->set_session('Job Request Successfully Deleted.', true);
-
             }else{
-               $this->set_session('Job Request couldnot be deleted', false);                            
+               $this->set_session('Job Request couldnot be deleted', false);
             }
-
             return redirect()->route('job_requests');
-
         }catch(\Exception $e){
-            $this->set_session('Subject couldnot be deleted', false);   
+            $this->set_session('Subject couldnot be deleted', false);
             return redirect()->route('job_requests');
-        }    
+        }
     }
 
     /**
@@ -75,27 +72,20 @@ class JobController extends Controller
     public function store(Request $request)
     {
         try{
-
             $this->logActivity('Page added');
-
             //Creating new User
             $page = $this->page;
             $page->heading = $request->input('heading');
             $page->content = $request->input('content');
-
             $page->title = $request->input('title');
             $page->meta = $request->input('meta');
             $page->tags = $request->input('tags');
-
             if($page->save()){
-
                 $this->set_session('Page Successfully Added.', true);
             }else{
                 $this->set_session('Page couldnot be added.', false);
             }
-
             return redirect()->route('pages.create');
-
         }catch(\Exception $e){
             $this->set_session('Page Couldnot be Added.'.$e->getMessage(), false);
             return redirect()->route('pages.create'); 
