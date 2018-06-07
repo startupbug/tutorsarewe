@@ -21,6 +21,8 @@ Route::group(['middleware' => 'guest'], function () {
 
 	Route::get('/signup', 'AuthenticationController@register_index')->name('signup');
 
+	Route::post('/user_register/ajax',array('as'=>'user_register.ajax','uses'=>'AuthenticationController@stateForCountryAjax'));
+
 	Route::get('/forget_password', 'HomeController@forget_password')->name('forget_password_form');
 
 	Route::post('/send_forget_email', 'AuthenticationController@send_forget_email')->name('send_forget_email');
@@ -48,12 +50,14 @@ Route::get('/how-it-works', 'HomeController@how_it_works')->name('how_it_works')
 //Tutor find jobs
 Route::get('/find-job', 'HomeController@find_tutor')->name('find_tutor');
 
+Route::post('/filter_register/ajax',array('as'=>'filter_register.ajax','uses'=>'HomeController@filterForCountryAjax'));
 
 //Tutor filter jobs
 Route::get('/find-job-filter', 'HomeController@filter_jobs')->name('filter_jobs');
 
      //Tutor profile
-Route::get('/tutor_profile', 'HomeController@tutor_profile')->name('tutor_profile');
+
+Route::get('/tutor_profile/{id}', 'Tutor\TutorController@tutor_profile')->name('tutor_profile');
 
 
 //Fulltime Tutor
@@ -80,6 +84,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/edit-profile', 'ProfileController@edit_dashboard')->name('edit_dashboard');
 
+	Route::post('/profile_register/ajax',array('as'=>'profile_register.ajax','uses'=>'ProfileController@editcityForCountryAjax'));
 	//Edit profile post
 	Route::post('/edit_profile', 'ProfileController@edit_profile')->name('edit_profile');
 
@@ -105,7 +110,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/post-job-detail/{id}', 'JobController@student_postJob_detail')->name('post-job-detail');
 
 	//Post Job request page
-	
+	Route::post('/request-job', 'JobController@request_job')->name('request_job');
+
 	Route::post('/post-job', 'JobController@student_postJob_req')->name('student_postJob_req');
 });
 
@@ -132,3 +138,4 @@ Route::get('/error/{message}', 'HomeController@error')->name('error');
 //Tutor Search
 Route::get('/tutor-search/', 'Tutor\TutorController@index')->name('tutors_listing');
 Route::get('/tutor-search-ajax/', 'Tutor\TutorController@tutor_search_ajax');
+Route::Post('/contact_tutor_email/', 'Tutor\TutorController@contact_tutor_email')->name('contact_tutor_email');

@@ -12,12 +12,13 @@ use App\WithdrawWallet;
 use App\Subject;
 use App\Wallet;
 use Auth;
+use Mail;
 use DB;
 class TutorController extends Controller
 {
 	//Search tutor page & Tutor listing in Front Navbar Find A Tutor    
     public function index(Request $request){
-        $limit = $request->limit ? $request->limit : 10;
+        $take = 10;
         if ($request->name) {
             $words = explode(' ', $request->name);
             $first_name = $words[0];
@@ -33,7 +34,7 @@ class TutorController extends Controller
                                     ->from('tutor_subjects')
                                     ->whereRaw('tutor_subjects.tutor_id = users.id');
                             })
-                            ->limit($limit)
+                            ->take($take)
                             ->get();
             
         }elseif (isset($request->online_status) || isset($request->location) || isset($request->rating) || isset($request->tution_per_hour) ){
@@ -46,7 +47,7 @@ class TutorController extends Controller
             $query = $request->location ? $query." AND `profiles`.`address` LIKE '%{$request->location}%'" : $query;
             $query = $request->tution_per_hour ? $query." AND `profiles`.`tution_per_hour` >=  {$myArray[0]}" : $query;
             $query = $request->tution_per_hour ? $query." AND `profiles`.`tution_per_hour` <=  {$myArray[1]}" : $query;
-            $query .= " GROUP BY `users`.`id` LIMIT {$limit}";
+            $query .= " GROUP BY `users`.`id` LIMIT {$take}";
 
             $args['listing'] = DB::select( DB::raw($query) );
              
@@ -60,7 +61,7 @@ class TutorController extends Controller
                                 ->from('tutor_subjects')
                                 ->whereRaw('tutor_subjects.tutor_id = users.id');
                                 })
-                                ->limit($limit)
+                                ->limit($take)
                                 ->get();
         }
         foreach ($args['listing'] as $key => $tutor_subject) {
@@ -74,8 +75,9 @@ class TutorController extends Controller
     }
     //Search tutor page & Tutor listing in Front Navbar Find A Tutor By Ajax
     public function tutor_search_ajax(Request $request){
-        $limit = $request->limit ? $request->limit : 10;
-        $skip = $limit - 10;
+        $take = 10;
+        $limit = $request->limit ? $request->limit : 20;
+        $skip = $limit - $take;
         if ($request->name) {
             $words = explode(' ', $request->name);
             $first_name = $words[0];
@@ -92,7 +94,7 @@ class TutorController extends Controller
                                     ->whereRaw('tutor_subjects.tutor_id = users.id');
                             })
                             ->skip($skip)
-                            ->take($limit)
+                            ->take($take)
                             ->get();
                             // dd($args['listing']);
             
@@ -106,7 +108,7 @@ class TutorController extends Controller
             $query = $request->location ? $query." AND `profiles`.`address` LIKE '%{$request->location}%'" : $query;
             $query = $request->tution_per_hour ? $query." AND `profiles`.`tution_per_hour` >=  {$myArray[0]}" : $query;
             $query = $request->tution_per_hour ? $query." AND `profiles`.`tution_per_hour` <=  {$myArray[1]}" : $query;
-            $query .= " GROUP BY `users`.`id` LIMIT {$limit} OFFSET {$skip}";
+            $query .= " GROUP BY `users`.`id` LIMIT {$take} OFFSET {$skip}";
 
             $args['listing'] = DB::select( DB::raw($query) );
              
@@ -121,7 +123,7 @@ class TutorController extends Controller
                                 ->whereRaw('tutor_subjects.tutor_id = users.id');
                                 })
                                 ->skip($skip)
-                                ->limit($limit)
+                                ->take($take)
                                 ->get();
         }
         foreach ($args['listing'] as $key => $tutor_subject) {
@@ -183,5 +185,28 @@ class TutorController extends Controller
              $status = 201;
         }
         return \Response()->json(['status' => $status, 'data' => $html, 'msg' => 'check console']);
+    }
+    //Tutor profile
+    public function tutor_profile($id){
+        $args['tutor_info'] = User::find($id); 
+        $args['tutor_subjects'] = Tutor_subject::where('tutor_id',$id)->get();
+        foreach($args['tutor_subjects'] as $value){
+            $subjects[] = $value->subject_id;
+        }
+        $args['recommended_users']  = User::leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')->select('users.first_name','users.last_name')->whereIn('tutor_subjects.subject_id',$subjects)->where('users.id','!=',$id)->groupBy('users.id')->get();
+        return view('home.tutor_profile')->with($args);
+    }
+    public function contact_tutor_email(Request $request){
+        $email_data['name'] = $request->tutor_name;        
+        $email_data['email'] = $request->tutor_email;
+        $email_data['description'] = $request->description;
+        if (isset($email_data)) {            
+             Mail::send('emails.contact_tutor',['email_data'=>$email_data] , function ($message) use($email_data){
+              $message->from($email_data['email'], 'Contact Email - TutorAreUs');
+              $message->to(env('MAIL_USERNAME'))->subject('TutorAreUs - Contact Email');
+            });
+        }
+        $this->set_session('You Have Successfully Send An Email', true);
+        return redirect()->back();
     }
 }

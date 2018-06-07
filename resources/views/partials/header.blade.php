@@ -9,6 +9,10 @@
       <title>TutorAreUs</title>
       <!-- Bootstrap -->
       <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+
+      <!-- Session Token -->
+      <meta name="_token" content="{{ Session::token() }}"/>
+
       <!-- FontAwesome -->
       <link href="{{ asset('public/assets/css/font-awesome.min.css') }}" rel="stylesheet">
       <!-- UI Jquery -->
@@ -44,6 +48,10 @@
       <link href="{{ asset('public/dashboard/assets/css/f_custom.css') }}" rel="stylesheet">
       <!-- Responsive -->
       <link href="{{ asset('public/assets/css/responsive.css') }}" rel="stylesheet">
+
+        <!-- Toastr CSS -->
+        <link href="{{ asset('public/admin/css/toastr.css') }}" rel="stylesheet">
+
    </head>
 
    <?php
@@ -74,85 +82,8 @@
                            <span class="icon-bar"></span>
                            </button>
                            <a href="index.php"><img src="{{ asset('public/assets/images/logo.png') }}" alt="tutorareus Logo" class="img-responsive"></a>
-                        </div>
-                        <div class="collapse navbar-collapse" id="myNavbar">
-                           <ul class="nav navbar-nav header-nav">
-                              <li class="">
-                                 <a class="f_dropdown" href="{{route('tutors_listing')}}">FIND A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                                 <ul class="dropdown-menu">
-                                    <li><a href="{{route('postjob_view')}}">POST JOB</a></li>
-                                 </ul>
-                              </li>
-                              <!-- <li class="dropdown">
-                                 <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" href="howitworks.php">HOW IT WORKS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>
-                              </li> -->
-                              <li class="">
-                                 <a class="f_dropdown" href="{{route('how_it_works')}}">HOW IT WORKS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-                              <li class="">
-                                 <a class="f_dropdown" href="{{route('find_tutor')}}">START TUTORING  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-                           @if(!Auth::check())
-                              <li class="">
-                                 <a class="f_dropdown" href="{{route('fulltime_tutor')}}">BECOME A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-                           @endif
-                              <li class="">
-                                 <a class="f_dropdown" href="{{route('publications')}}">PUBLICATIONS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-                              <li class="">
-                                 <a class="f_dropdown" href="{{route('aboutus')}}">ABOUT US  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-                              @if(Auth::check())
-                                 <li class="dropdown user_page">
-                                    <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" >{{Auth::user()->first_name}}  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                    <ul class="dropdown-menu">
-                                       @if(Auth::user()->role_id == 1)
-                                           <li><a href="{{route('admin-index')}}">Dashboard</a></li>
-                                       @else
-                                           <li><a href="{{route('dashboard_index')}}">Dashboard</a></li>                                       
-                                       @endif                                    
-                                       <li><a href="{{route('logout_user')}}">Logout</a></li>
-                                    </ul>
-                                 </li>
-                              @endif
-                           </ul>
-                        </div>
+                        </div>                        
+                        @include('partials.nav_partial')
                      </div>
                   </nav>
                </div>

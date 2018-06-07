@@ -267,6 +267,40 @@
         }
       });
     });
+
+
+     $('select[name=profile_country]').change(function() {
+            var countryID = $(this).val();
+            console.log(countryID);
+
+            $.ajaxSetup({
+               headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+            });
+
+            if(countryID) {
+            $.ajax({
+                url: $(this).data('url'),
+                type: "POST",
+                data: {'countryID': countryID},
+                success:function(data) {
+                     console.log(data);
+
+                $('#cityDropdown').empty();
+                var myDropdown = '';
+
+                $.each(data, function(key, value) {
+                    myDropdown += '<option value="'+ value.id +'">'+ value.name +'</option>';   
+
+                });
+                
+                $('#city').html(myDropdown);
+                }
+            });
+            }else{
+            $('#cityDropdown').empty();
+              }
+           });
+
   });
 
 

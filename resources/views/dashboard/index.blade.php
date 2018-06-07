@@ -82,12 +82,12 @@
                <p class="text_aaccountview">{{ isset($user->zipcode) ? $user->zipcode : '-' }}</p>
             </div>
             <div class="form-group account_f_form view_f">
-               <label>State</label>
-               <p class="text_aaccountview">{{ isset($user->state) ? $user->state : '-' }}</p>
+               <label>City</label>
+               <p class="text_aaccountview">{{ isset($user->city_id) ? $user->city_id : '-' }}</p>
             </div>
             <div class="form-group account_f_form view_f">
                <label>Country</label>
-               <p class="text_aaccountview">{{ isset($user->country) ? $user->country : '-' }}</p>
+               <p class="text_aaccountview">{{ isset($user->country_id) ? $user->country_id : '-' }}</p>
             </div>
             <div class="form-group account_f_form view_f">
                <label>Phone Number <span>*</span></label>

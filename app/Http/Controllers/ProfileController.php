@@ -11,7 +11,8 @@ use App\Wallet;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use DB;
-
+use App\Country;
+use App\State;
 class ProfileController extends Controller
 {
 	//view profile on dashboard
@@ -19,18 +20,33 @@ class ProfileController extends Controller
     public function edit_dashboard(){
         
     	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
-
+        $data['countries'] = Country::all();
+        $data['states'] = State::all();
+        
     	return view('dashboard.editprofile')->with($data);
+    }
+    public function editcityForCountryAjax(Request $request)
+    {
+        $country_name = $request->input('countryID');
+        $country_id = urldecode($country_name);
+        //return $country_name;
+        $cities = DB::table('countries')
+            ->select('cities.id', 'cities.name')
+            ->join('states', 'states.country_id', '=', 'countries.id')
+            ->join('cities', 'cities.state_id', '=', 'states.id')
+            ->where("countries.id", '=',$country_id)
+            ->get();
+        return $cities;
     }
 
     // edit profile post
     public function edit_profile(Request $request){
-
-    	/* Validation 
+        // dd($request->input());
+    	 // Validation 
         $this->validate($request, [
             'first_name' => 'required|string|max:255',
             'last_name'=> 'required|string|max:255',
-            'bio'=> 'string|max:150|min:50',
+            'bio'=> 'string|max:50|min:10',
             'address'=> 'string|max:255',
             'zipcode'=> 'alpha_num|max:10',
             'countryCode'=> 'required|numeric|max:255',
@@ -38,7 +54,7 @@ class ProfileController extends Controller
             'tution_per_hour' => 'numeric',
             'age' => 'numeric',
 
-        ]); */
+        ]); 
 
     	try{
 	    	//Update User
@@ -53,7 +69,8 @@ class ProfileController extends Controller
 	    		'bio' => $request->input('bio'),
 	    		'address' => $request->input('address'),
 	    		'zipcode' => $request->input('zipcode'),
-	    		'state' => $request->input('state'),
+	    		'city_id' => $request->input('city'),
+                'country_id' => $request->input('profile_country'),
                 'age' => $request->input('age'), 
                 'gender' => $request->input('gender'),
 	    	];
