@@ -45,12 +45,14 @@
             <div class="col-md-8 col-sm-12 col-xs-12">
                <h3 class="f_get">FIND A TUTOR FAST.GET OUR APP.</h3>
                <p class="f_sed">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque<br>            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore </p>
-               <form>
+               <form action="{{route('subscribe')}}" method="post">
+                {{csrf_field()}}
                   <div class="form-group">
-                     <input type="text" class="form-control f_form" id="usr" placeholder="Enter Email Address">
+                     <input type="email"  class="form-control f_form" name="email" id="usr" placeholder="Enter Email Address" required>
                   </div>
+                    <input type="submit" name="submit" class="btn_check" value="SEND A LINK">
                   <div class="btn_check">
-                     <a href="#">SEND A LINK</a>
+                     <a href="">SEND A LINK</a>
                      <i class="fa fa-play f_play"></i><span class="f_icon1">Google Play</span>
                      <i class="fa fa-mobile f_play" aria-hidden="true"></i><span class="f_icon1">App Store</span>
                   </div>

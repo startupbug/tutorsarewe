@@ -10,6 +10,9 @@ use App\Country;
 use App\State;
 use App\City;
 use DB;
+use App\Subscriber;
+use Illuminate\Support\Facades\Input;
+use Session;
 class HomeController extends Controller
 {
 	/* Home Page */
@@ -197,6 +200,20 @@ class HomeController extends Controller
     //aboutus page
     public function aboutus(){
     	return view('home.aboutus');
+    }
+
+    public function subscribe(Request $request)
+    {
+
+        $this->validate($request,[
+           'email' => 'required|string|unique:users',
+        ]);
+        // dd($request->input());
+        $subscriber = new Subscriber;
+        $subscriber->email = Input::get('email');
+        $subscriber->save();
+        $this->set_session('Email has been subscribed.', true);
+        return redirect('/');
     }
 
     //401

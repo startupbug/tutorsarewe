@@ -44,7 +44,8 @@ Route::group(['middleware' => 'guest'], function () {
 //Logout Route
 Route::get('/logout',  'AuthenticationController@logout_user')->name('logout_user');
 
-
+// email subscribe
+Route::post('/subscribe','HomeController@subscribe')->name('subscribe');
 //How it works
 Route::get('/how-it-works', 'HomeController@how_it_works')->name('how_it_works');
 
