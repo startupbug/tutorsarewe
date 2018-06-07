@@ -1,3 +1,4 @@
+
 @extends('app')
 @section('content')
 
@@ -72,8 +73,8 @@
                </nav>
                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                   <div class="tab-pane fade active in" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                     <form action="{{route('home_tutor_filter')}}" method="post">
-                        {{csrf_field()}}
+                     <form action="{{route('tutors_listing')}}" method="get">
+                     
                         <input type="hidden" name="home" value="1">
                         <div class="form-group col-md-6 f_bottom">
                            <select class="form-control f_color" id="course" name="course">
@@ -95,50 +96,46 @@
                      </form>
                   </div>
                   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-contact-tab">
-                     <form>
+                        <form action="{{route('tutors_listing')}}" method="get">
+                     
+                        <input type="hidden" name="home" value="2">
                         <div class="form-group col-md-6 f_bottom">
-                           <select class="form-control f_color" id="emailFrom" name="emailFrom">
+                           <select class="form-control f_color" id="course" name="course">
                               <option>Type of Course</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
+                              @foreach($subjects as $subject)
+                                 <option value="{{$subject->id}}">{{$subject->subject}}</option>
+                              @endforeach
                            </select>
                         </div>
                         <div class="form-group col-md-3 f_bottom">
-                           <select class="form-control f_color" id="emailFrom" name="emailFrom">
+                           <select class="form-control f_color" id="location" name="location">
                               <option>Select Location</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
+                              @foreach($countries as $country)
+                                 <option value="{{$country->id}}">{{$country->name}}</option>
+                              @endforeach
                            </select>
                         </div>
                         <div class="col-md-3 f_bottom"><button type="submit" class="btn btn-default f_color button_tour">SEARCH TOUR</button></div>
                      </form>
                   </div>
                   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-about-tab">
-                     <form>
+                       <form action="{{route('tutors_listing')}}" method="get">
+                     
+                        <input type="hidden" name="home" value="3">
                         <div class="form-group col-md-6 f_bottom">
-                           <select class="form-control f_color" id="emailFrom" name="emailFrom">
+                           <select class="form-control f_color" id="course" name="course">
                               <option>Type of Course</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
+                              @foreach($subjects as $subject)
+                                 <option value="{{$subject->id}}">{{$subject->subject}}</option>
+                              @endforeach
                            </select>
                         </div>
                         <div class="form-group col-md-3 f_bottom">
-                           <select class="form-control f_color" id="emailFrom" name="emailFrom">
+                           <select class="form-control f_color" id="location" name="location">
                               <option>Select Location</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
+                              @foreach($countries as $country)
+                                 <option value="{{$country->id}}">{{$country->name}}</option>
+                              @endforeach
                            </select>
                         </div>
                         <div class="col-md-3 f_bottom"><button type="submit" class="btn btn-default f_color button_tour">SEARCH TOUR</button></div>

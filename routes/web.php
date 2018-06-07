@@ -71,7 +71,7 @@ Route::get('/publications', 'HomeController@publications')->name('publications')
 //aboutus
 Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
  
-Route::post('/home_tutor_filter','HomeController@home_tutor_filter')->name('home_tutor_filter');
+// Route::post('/home_tutor_filter','HomeController@home_tutor_filter')->name('home_tutor_filter');
 
 
 /* Dashboard Controller Routes */
