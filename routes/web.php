@@ -117,9 +117,29 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/request-reply_tutor', 'JobController@reply_tutor')->name('reply_tutor');
 
 	Route::post('/post-job', 'JobController@student_postJob_req')->name('student_postJob_req');
+
+	/* Job Booking Lesson Routes */
+	Route::get('/book-lesson/{jobid}', 'BookingController@booking_view')->name('booking_index');
+
+	//Student Book Lesson
+	//Book Lesson By Student
+	Route::post('/book-lesson', 'BookingController@student_booklesson')->name('student_booklesson');
+
+	//Booked Lessons
+	Route::get('/bookings', 'DashboardController@bookings_list')->name('bookings_list');
+	
+	//Cancel Booking
+	Route::get('/booking-cancel/{id}', 'BookingController@booking_cancel')->name('booking_cancel');
+
+	//Accept Booking - by Tutor 
+	Route::get('/booking-accept/{id}', 'BookingController@booking_status')->name('booking_accept');
+
+	//Accept Booking - by Tutor 
+	Route::get('/booking-reject/{id}', 'BookingController@booking_status')->name('booking_reject');
+
+	//Booking details 
+	Route::get('/booking_detail/{id}', 'BookingController@booking_detail')->name('booking_detail');	
 });
-
-
 
 Route::post('depositWallet', 'Paypal\StudentPayment@depositWallet')->name('depositWallet');
 Route::get('getDone', 'Paypal\StudentPayment@getDone');
