@@ -56,7 +56,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
+        // dd($request->input());
         $this->validate($request, [
             'first_name' => 'required|string|max:15',
             'last_name' => 'required|string|max:15',
@@ -66,6 +66,8 @@ class UserController extends Controller
             'gender' => 'required|string',
             'age' => 'required|numeric',
             'phonenum1' => 'required|numeric',
+            'qualifications' => 'required|string|max:15',
+            'qualification_from' => 'required|string|max:15'
         ]);
 
        try{ 
@@ -169,7 +171,7 @@ class UserController extends Controller
                 // dd($request->input());
                 //Assigning Role to User
                 $role = \DB::table('role_user')->where('user_id',$id)->update(['role_id'=>$request->input('user_role')]);
-                 $profile =  Profile::where('user_id',$id)->update(['username'=>$request->input('username'), 'tution_per_hour'=>$request->input('tution_per_hour'),'bio'=>$request->input('bio'),'gender'=>$request->input('gender'),'age'=>$request->input('age')]);
+                 $profile =  Profile::where('user_id',$id)->update(['username'=>$request->input('username'), 'tution_per_hour'=>$request->input('tution_per_hour'),'bio'=>$request->input('bio'),'gender'=>$request->input('gender'),'age'=>$request->input('age'),'qualifications'=>$request->input('qualifications'),'qualification_from'=>$request->input('qualification_from')]);
                  // $profile->save();
 
                 // $profile->username = $request->input('username');

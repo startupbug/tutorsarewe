@@ -53,6 +53,14 @@ class CreateProfile
         {
             $p->age = $event->data['request']['age'];    
         }
+        if(!empty($event->data['request']['qualifications']))
+        {
+            $p->qualifications = $event->data['request']['qualifications'];    
+        }
+        if(!empty($event->data['request']['qualification_from']))
+        {
+            $p->qualification_from = $event->data['request']['qualification_from'];    
+        }
         if(!empty($event->data['request']['address']))
         {
             $p->address = $event->data['request']['address'];

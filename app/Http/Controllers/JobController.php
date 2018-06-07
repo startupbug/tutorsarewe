@@ -17,11 +17,12 @@ class JobController extends Controller
     	return view('dashboard.job.post-job')->with($data);
     }
 
-    public function student_postJob_req(){
+    public function student_postJob_req(Request $request){
 
           /* Validation */
 
           try{
+
              
              $job_board = new Job_board();
              $job_board->request_status = 0;
@@ -31,7 +32,6 @@ class JobController extends Controller
                    $job_board->$key = $value;
                }
              }
-  	        
 
   	        if($job_board->save()){
   	        	$data['request'] = $request->input();

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Input;
 use DB;
 use App\Country;
 use App\State;
+use App\Lesson_type;
 class ProfileController extends Controller
 {
 	//view profile on dashboard
@@ -22,6 +23,8 @@ class ProfileController extends Controller
     	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
         $data['countries'] = Country::all();
         $data['states'] = State::all();
+        $data['lessons'] = Lesson_type::all();
+        // dd($date['lessons']);
         
     	return view('dashboard.editprofile')->with($data);
     }
@@ -57,8 +60,10 @@ class ProfileController extends Controller
             'phonenum1'=> 'numeric',
             'tution_per_hour' => 'numeric',
             'age' => 'numeric',
+            'qualifications' => 'string|max:15',
+            'qualification_from' => 'string|max:15',
+        ]); 
 
-        ]);
 
     	try{
 	    	//Update User
@@ -67,6 +72,8 @@ class ProfileController extends Controller
 	    	$user->first_name = $request->input('first_name');
 	    	$user->last_name = $request->input('last_name');
 	    	$user->phone_no = $request->input('countryCode').$request->input('phonenum1');
+
+            // dd($request->input());
 	    	
             //Update Profile
 	    	$profile_array = [ 'tution_per_hour' => $request->input('tution_per_hour'),
@@ -76,7 +83,10 @@ class ProfileController extends Controller
 	    		'city_id' => $request->input('city'),
                 'country_id' => $request->input('profile_country'),
                 'age' => $request->input('age'), 
+                'lesson_type' => $request->input('lesson_type'),
                 'gender' => $request->input('gender'),
+                'qualifications' => $request->input('qualifications'),
+                'qualification_from' => $request->input('qualification_from'),
 	    	];
 
            if(Input::hasFile('profile_pic')){

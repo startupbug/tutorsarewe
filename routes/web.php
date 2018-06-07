@@ -59,7 +59,7 @@ Route::get('/find-job-filter', 'HomeController@filter_jobs')->name('filter_jobs'
 
      //Tutor profile
 
-Route::get('/tutor_profile/{id}', 'Tutor\TutorController@tutor_profile')->name('tutor_profile');
+Route::get('/profile/{id}', 'Tutor\TutorController@tutor_profile')->name('tutor_profile');
 
 
 //Fulltime Tutor
@@ -70,7 +70,8 @@ Route::get('/publications', 'HomeController@publications')->name('publications')
 
 //aboutus
 Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
-
+ 
+// Route::post('/home_tutor_filter','HomeController@home_tutor_filter')->name('home_tutor_filter');
 
 
 /* Dashboard Controller Routes */

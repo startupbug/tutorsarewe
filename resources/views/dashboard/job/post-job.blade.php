@@ -46,6 +46,10 @@
 		                 <input type="radio" name="lesson_type" id="lesson_type"  value="2" class="offline">
 		                 <span class="s_checkmark"></span>
 		               </label>
+		               <label class="s_container">Full Time
+		                 <input type="radio" name="lesson_type" id="lesson_type"  value="3" class="offline">
+		                 <span class="s_checkmark"></span>
+		               </label>
 		             </div>
 					 </div>
            <div class="form-group profile_form s_profile_form form_address hidden">
