@@ -94,7 +94,7 @@ class BookingController extends Controller
             //dd($booking->amount);
 	        if(count($booking) > 0){
 	        	//This booking exist for this user
-
+	        	//Accept booking
 	        	if(\Route::currentRouteName() == 'booking_accept'){	
 	        		//Accept
 	        		$status = 7;
@@ -115,6 +115,9 @@ class BookingController extends Controller
 	        		$tutor_earning = new Tutor_earning();
 	        		$tutor_earning->booking_id = $booking->id;
 	        		$tutor_earning->save();
+
+	        		//Update jobboard with tutor_id
+	        		$update_tutor_status = Job_board::where('id', $booking->job_id)->update(['tutor_id'=> $booking->tutor_id]);
 
 	        	}else if(\Route::currentRouteName() == 'booking_reject'){
 	        		//Reject
