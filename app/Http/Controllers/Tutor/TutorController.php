@@ -115,14 +115,14 @@ class TutorController extends Controller
             
             }              
             
-        }elseif (isset($request->online_status) || isset($request->location) || isset($request->rating) || isset($request->tution_per_hour) ){
+        }elseif (isset($request->online_status) || isset($request->address) || isset($request->rating) || isset($request->tution_per_hour) ){
             $myString = $request->tution_per_hour;
             $myArray = explode(',', $myString);
 
             $query = "SELECT * FROM `users` LEFT JOIN `profiles` ON `users`.`id` = `profiles`.`user_id` LEFT JOIN `tutor_subjects` ON `tutor_subjects`.`tutor_id` = `users`.`id` WHERE `users`.`role_id` = 3 AND `users`.`verified` = 1";
             $query = $request->online_status ? $query." AND `profiles`.`online_status` = {$request->online_status}" : $query;
             $query = $request->rating ? $query." AND `profiles`.`rating` >= {$request->rating}" : $query;
-            $query = $request->location ? $query." AND `profiles`.`address` LIKE '%{$request->location}%'" : $query;
+            $query = $request->address ? $query." AND `profiles`.`address` LIKE '%{$request->address}%'" : $query;
             $query = $request->tution_per_hour ? $query." AND `profiles`.`tution_per_hour` >=  {$myArray[0]}" : $query;
             $query = $request->tution_per_hour ? $query." AND `profiles`.`tution_per_hour` <=  {$myArray[1]}" : $query;
             $query .= " GROUP BY `users`.`id` LIMIT {$take}";
@@ -293,12 +293,31 @@ class TutorController extends Controller
 
         $data['tutor_earnings'] = Tutor_earning::join('bookings', 'tutor_earnings.booking_id', '=', 'bookings.id')
                                               ->leftjoin('job_boards', 'job_boards.id', '=', 'bookings.job_id')
-                                              ->select('tutor_earnings.booking_id')
+                                              ->leftjoin('subjects','job_boards.subject_id','=','subjects.id')
+                                              ->leftjoin('lesson_types','job_boards.lesson_type','=','lesson_types.id')
+                                              ->leftjoin('users','job_boards.student_id','=','users.id')
+                                              ->select('tutor_earnings.booking_id','bookings.date','bookings.location','bookings.amount','bookings.lesson_hours','job_boards.title','job_boards.details','job_boards.student_id','users.first_name','job_boards.tutor_id','subjects.subject','lesson_types.type')
                                               ->where('job_boards.tutor_id', Auth::user()->id)
                                               ->get();
 
-        dd($data['tutor_earnings']);
+        // dd($data['tutor_earnings']);
 
         return view('dashboard.tutor.tutor-earning')->with($data);
+    }
+
+    public function tutor_earnings_details($id)
+    {
+        $data['tutor_earnings'] = Tutor_earning::join('bookings', 'tutor_earnings.booking_id', '=', 'bookings.id')
+                                              ->leftjoin('job_boards', 'job_boards.id', '=', 'bookings.job_id')
+                                              ->leftjoin('subjects','job_boards.subject_id','=','subjects.id')
+                                              ->leftjoin('lesson_types','job_boards.lesson_type','=','lesson_types.id')
+                                              ->leftjoin('users','job_boards.student_id','=','users.id')
+                                              ->select('tutor_earnings.booking_id','bookings.date','bookings.location','bookings.amount','bookings.lesson_hours','job_boards.title','job_boards.details','job_boards.student_id','users.first_name','job_boards.tutor_id','subjects.subject','lesson_types.type')
+                                              ->where('bookings.id', $id)
+                                              ->first();
+
+                                              // dd($data['tutor_earnings']);
+                                              return view('dashboard.tutor.tutor-earning-details')->with($data);
+
     }
 }

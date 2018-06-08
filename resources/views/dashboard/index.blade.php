@@ -83,11 +83,11 @@
             </div>
             <div class="form-group account_f_form view_f">
                <label>City</label>
-               <p class="text_aaccountview">{{ isset($user->city_id) ? $user->city_id : '-' }}</p>
+               <p class="text_aaccountview">{{ isset($user->city_id) ? $user->city_name : '-' }}</p>
             </div>
             <div class="form-group account_f_form view_f">
                <label>Country</label>
-               <p class="text_aaccountview">{{ isset($user->country_id) ? $user->country_id : '-' }}</p>
+               <p class="text_aaccountview">{{ isset($user->country_id) ? $user->country_name : '-' }}</p>
             </div>
             <div class="form-group account_f_form view_f">
                <label>Phone Number <span>*</span></label>

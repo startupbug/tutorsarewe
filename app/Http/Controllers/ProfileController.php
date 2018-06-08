@@ -46,7 +46,7 @@ class ProfileController extends Controller
     // edit profile post
     public function edit_profile(Request $request){
 
-         // dd($request->input());
+          // dd($request->input());
     	 // Validation 
 
     	/* Validation */

@@ -61,7 +61,7 @@ Route::get('/find-job-filter', 'HomeController@filter_jobs')->name('filter_jobs'
 
 Route::get('/profile/{id}', 'Tutor\TutorController@tutor_profile')->name('tutor_profile');
 
-
+Route::get('/tutor_earnings_details/{id}','Tutor\TutorController@tutor_earnings_details')->name('tutor_earnings_details');
 //Fulltime Tutor
 Route::get('/fulltime-tutor', 'HomeController@fulltime_tutor')->name('fulltime_tutor');
 

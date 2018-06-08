@@ -35,7 +35,7 @@
                <div class="menu__body">
                   <ul class="nav">
                      <li class="nav__item">
-                        <a href="#" class="nav__item-link">
+                        <a href="{{route('aboutus')}}" class="nav__item-link">
                         <span class="nav__item-text">About Us</span>
                         </a>   
                      </li>
@@ -45,7 +45,7 @@
                         </a>   
                      </li>
                      <li class="nav__item">
-                        <a href="#" class="nav__item-link">
+                        <a href="{{route('tutors_listing')}}" class="nav__item-link">
                         <span class="nav__item-text">Search For A Tutor</span>
                         </a>   
                      </li>
@@ -55,7 +55,7 @@
                         </a>   
                      </li>
                      <li class="nav__item">
-                        <a href="#" class="nav__item-link">
+                        <a href="{{route('fulltime_tutor')}}" class="nav__item-link">
                         <span class="nav__item-text">Become A Tutor</span>
                         </a>   
                      </li>

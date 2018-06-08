@@ -14,7 +14,7 @@
 				<table class="data_table_apply display" width="100%" data-page-length="10" class="table table-dark">
 					<thead>
 						<tr>
-							<th>#</th>
+							
 							<th>booking id</th>
 							<th>title</th>
 							<th>details</th>
@@ -30,25 +30,25 @@
 						</tr>
 					</thead>
 					<tbody>
-						@foreach ($tutor_earnings as $key => $value)	
+							
 						<tr>
-							<td>{{ ++$key }}</td>
-							<td>{{ $value->booking_id }}</td>
-							<td>{{ $value->title }}</td>
-							<td>{{ $value->details }}</td>
-							<td><a href="{{route('tutor_profile',$value->student_id)}}">{{ $value->first_name }}</a></td>
+							
+							<td>{{ $tutor_earnings->booking_id }}</td>
+							<td>{{ $tutor_earnings->title }}</td>
+							<td>{{ $tutor_earnings->details }}</td>
+							<td><a href="{{route('tutor_profile',$tutor_earnings->student_id)}}">{{ $tutor_earnings->first_name }}</a></td>
 		
-							<td>{{ $value->subject }}</td>
-							<td>{{ $value->type }}</td>
+							<td>{{ $tutor_earnings->subject }}</td>
+							<td>{{ $tutor_earnings->type }}</td>
 							
-							<td>{{ $value->amount }}</td>
+							<td>{{ $tutor_earnings->amount }}</td>
 							
-							<td>{{ $value->date }}</td>
+							<td>{{ $tutor_earnings->date }}</td>
 							<td>
-								<a href="{{ route('tutor_earnings_details', ['id' => $value->booking_id]) }}" class="btn a_href_btn">View Detail</a>
+								<a href="{{ route('tutor_earnings_details', ['id' => $tutor_earnings->booking_id]) }}" class="btn a_href_btn">View Detail</a>
 							</td>
 						</tr>
-						@endforeach
+						
 					</tbody>
 				</table>
 			</div>

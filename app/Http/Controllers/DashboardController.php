@@ -24,7 +24,12 @@ class DashboardController extends Controller
         return redirect()->route('admin-index');
       }
 
-    	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
+    	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')
+                      ->leftjoin('countries','profiles.country_id','=','countries.id')
+                      ->leftjoin('cities','profiles.city_id','=','cities.id')
+                      ->select('users.*','profiles.*','countries.name as country_name','cities.name as city_name')
+                      ->where('users.id', Auth::user()->id)->first();
+                      // dd($data['user']);
     	return view('dashboard.index')->with($data);
     }
 

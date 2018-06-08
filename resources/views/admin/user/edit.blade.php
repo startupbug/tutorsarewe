@@ -50,6 +50,11 @@
                 </div>
 
                 <div class="form-group">
+                  <label for="">Password</label>
+                  <input type="text" class="form-control" name="admin-password" value="">
+                </div>
+
+                <div class="form-group">
                   <label for="exampleInputQualification">Qualifications</label>
                   <input type="text" class="form-control" name="qualifications" id="exampleInputqualifications" placeholder="Qualifications">
                 </div>
@@ -57,13 +62,6 @@
                 <div class="form-group">
                   <label for="exampleInputQualifications">Qualifications From</label>
                   <input type="text" class="form-control" name="qualification_from" id="exampleInputqualifications_form" placeholder="Qualifications From">
-                </div>
-
-                <div class="form-group">
-                  <label for="">Password</label>
-
-                  <input type="text" class="form-control" name="admin-password" value="">
-
                 </div>
 
                 <div class="form-group profile_form">
