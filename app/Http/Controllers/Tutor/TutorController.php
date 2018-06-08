@@ -11,6 +11,7 @@ use App\Transaction;
 use App\WithdrawWallet;
 use App\Subject;
 use App\Wallet;
+USE App\Tutor_earning;
 use Auth;
 use Mail;
 use DB;
@@ -286,6 +287,15 @@ class TutorController extends Controller
     }
 
     public function tutor_earnings(){
-        return view('dashboard.tutor.tutor-earning');
+
+        $data['tutor_earnings'] = Tutor_earning::join('bookings', 'tutor_earnings.booking_id', '=', 'bookings.id')
+                                              ->leftjoin('job_boards', 'job_boards.id', '=', 'bookings.job_id')
+                                              ->select('tutor_earnings.booking_id')
+                                              ->where('job_boards.tutor_id', Auth::user()->id)
+                                              ->get();
+
+        dd($data['tutor_earnings']);
+
+        return view('dashboard.tutor.tutor-earning')->with($data);
     }
 }
