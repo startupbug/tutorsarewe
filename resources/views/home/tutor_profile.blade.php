@@ -33,7 +33,7 @@
                      <i class="fa fa-star f_icon_color"></i>
                      <i class="fa fa-star f_icon_color"></i>
                      <i class="fa fa-star f_icon_color"></i><span>
-                        @if(isset($tutor_info->profile->rating)
+                        @if(isset($tutor_info->profile->rating))
                            {{ $tutor_info->profile->rating }}
                         @endif
                      (449 Ratings)</span>
