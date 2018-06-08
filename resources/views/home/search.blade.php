@@ -29,7 +29,7 @@
                </div>
                <div class="form-group">
                   <label for="exampleInputlocation" class="f_label f_course">Location</label>
-                  <input type="text" name="location" class="form-control select_f" id="locationFrom">
+                  <input type="text" name="address" class="form-control select_f" id="locationFrom">
                   <!-- <select class="form-control select_f" id="locationFrom" name="locationFrom">
                      <option>Select</option>
                      <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>

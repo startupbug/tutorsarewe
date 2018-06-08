@@ -6,24 +6,47 @@
       <div class="row">
          <div class="col-md-8">
             <div class="col-md-3">
+               @if(isset($tutor_info->profile->profile_pic))
                <img src="{{ asset('public/dashboard/assets/images/profile/' . $tutor_info->profile->profile_pic ) }}" class="img-responsive">
+               @else
+               <img src="{{ asset('public/dashboard/assets/images/profile/default.jpg') }}" class="img-responsive">
+               @endif
             </div>
             <div class="col-md-9">
                <div class="profile_content">
-                  <h3>{{ $tutor_info->first_name }} {{ $tutor_info->last_name }}</h3>
+                  <h3>
+                     @if(isset($tutor_info->first_name))
+                        {{ $tutor_info->first_name }}
+                     @endif 
+                     @if(isset($tutor_info->first_name))
+                        {{ $tutor_info->last_name }}
+                     @endif
+                  </h3>
                   @if($tutor_info->role_id == 3)
-                  <h1 class="f_hello">$ Hourly rate:${{$tutor_info->profile->tution_per_hour}}</h1>
-                  <i class="fa fa-star f_icon_color"></i>
-                  <i class="fa fa-star f_icon_color"></i>
-                  <i class="fa fa-star f_icon_color"></i>
-                  <i class="fa fa-star f_icon_color"></i>
-                  <i class="fa fa-star f_icon_color"></i><span>{{ $tutor_info->profile->rating }}(449 Ratings)</span>
-                  <h2>2469 hours tutoring</h2>
+                     <h1 class="f_hello">$ Hourly rate:$
+                        @if(isset($tutor_info->profile->tution_per_hour))
+                           {{$tutor_info->profile->tution_per_hour}}
+                        @endif
+                     </h1>
+                     <i class="fa fa-star f_icon_color"></i>
+                     <i class="fa fa-star f_icon_color"></i>
+                     <i class="fa fa-star f_icon_color"></i>
+                     <i class="fa fa-star f_icon_color"></i>
+                     <i class="fa fa-star f_icon_color"></i><span>
+                        @if(isset($tutor_info->profile->rating)
+                           {{ $tutor_info->profile->rating }}
+                        @endif
+                     (449 Ratings)</span>
+                     <h2>2469 hours tutoring</h2>
                   @endif
                </div>
             </div>
             <div class="col-md-12">
-               <h3 class="about_main_head">About {{ $tutor_info->first_name }} </h3>
+               <h3 class="about_main_head">About 
+                  @if(isset($tutor_info->first_name))
+                     {{ $tutor_info->first_name }}
+                  @endif
+               </h3>
                <hr>
             </div>
             <div class="col-md-12 border_bottom_profile">
@@ -31,7 +54,11 @@
                   <h3 class="f_bio">Bio</h3>
                </div>
                <div class="col-md-9">
-                  <h3 class="f_hello">{{ $tutor_info->profile->bio }} </h3>
+                  <h3 class="f_hello">
+                     @if(isset($tutor_info->profile->bio))
+                     {{ $tutor_info->profile->bio }}
+                     @endif
+                  </h3>
                   <!-- <a href="#" class="f_read">Read more</a> -->
                </div>
                <div class="clearfix"></div>
@@ -43,8 +70,16 @@
                </div>
                <div class="col-md-9">
                   
-                  <h3 class="f_hello">{{$tutor_info->profile->qualification_from}}</h3>
-                  <h3 class="f_hello">{{$tutor_info->profile->qualifications}}</h3>
+                  <h3 class="f_hello">
+                     @if(isset($tutor_info->profile->qualification_from))
+                        {{$tutor_info->profile->qualification_from}}
+                     @endif
+                  </h3>
+                  <h3 class="f_hello">
+                     @if(isset($tutor_info->profile->qualifications))
+                        {{$tutor_info->profile->qualifications}}
+                     @endif
+                  </h3>
                </div>
                <div class="clearfix"></div>
                <hr>
@@ -221,7 +256,11 @@
             </div>
             @if(Auth::check())
             <div class="btn_bottom">            
-               <a href="#" class="f_contact_priti"  data-toggle="modal" data-target="#jobRequestModal">Contact {{$tutor_info->first_name}}</a>
+               <a href="#" class="f_contact_priti"  data-toggle="modal" data-target="#jobRequestModal">Contact 
+                  @if(isset($tutor_info->first_name))
+                  {{$tutor_info->first_name}}
+                  @endif
+               </a>
             </div>
             @else
             <div class="btn_bottom">            
