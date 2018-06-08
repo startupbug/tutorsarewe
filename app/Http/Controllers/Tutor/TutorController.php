@@ -14,6 +14,7 @@ use App\Wallet;
 use Auth;
 use Mail;
 use DB;
+use App\Available_day;
 class TutorController extends Controller
 {
 	//Search tutor page & Tutor listing in Front Navbar Find A Tutor    
@@ -21,8 +22,10 @@ class TutorController extends Controller
           // "course" => "6"
           // "location" => "10"
         // dd($request->input());
+        $args['days'] = Available_day::get();
         $take = 10;
         if ($request->name) {
+
             $words = explode(' ', $request->name);
             $first_name = $words[0];
             $last_name = end($words);
