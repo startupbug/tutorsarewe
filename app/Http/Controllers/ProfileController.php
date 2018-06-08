@@ -28,6 +28,7 @@ class ProfileController extends Controller
         
     	return view('dashboard.editprofile')->with($data);
     }
+    
     public function editcityForCountryAjax(Request $request)
     {
         $country_name = $request->input('countryID');
@@ -48,11 +49,7 @@ class ProfileController extends Controller
          // dd($request->input());
     	 // Validation 
 
-
-
     	/* Validation */
-
-
         $this->validate($request, [
             'first_name' => 'required|string|max:255',
             'last_name'=> 'required|string|max:255',
@@ -63,8 +60,10 @@ class ProfileController extends Controller
             'phonenum1'=> 'numeric',
             'tution_per_hour' => 'numeric',
             'age' => 'numeric',
-
+            'qualifications' => 'string|max:15',
+            'qualification_from' => 'string|max:15',
         ]); 
+
 
     	try{
 	    	//Update User
@@ -86,6 +85,8 @@ class ProfileController extends Controller
                 'age' => $request->input('age'), 
                 'lesson_type' => $request->input('lesson_type'),
                 'gender' => $request->input('gender'),
+                'qualifications' => $request->input('qualifications'),
+                'qualification_from' => $request->input('qualification_from'),
 	    	];
 
            if(Input::hasFile('profile_pic')){
@@ -192,8 +193,17 @@ class ProfileController extends Controller
 
     public function walletWithdraw(Request $request){
 
-        $available = Wallet::where('user_id', Auth::user()->id)->first(['balance']); 
+        //100$ withdraw amount condition
+        
+        if($request->input('amount') < 100){
+            $this->set_session('You cannot withdraw amount less then $100', false);
+            return redirect()->route('my_balance'); 
+        }
+
+        $available = Wallet::where('user_id', Auth::user()->id)->first(['balance']);
+
         $status = WithdrawWallet::where('user_id', Auth::user()->id)->where('status', 'pending')->first(['id']); 
+        
         if(empty($status)){
 
             if($request->amount <= $available->balance){

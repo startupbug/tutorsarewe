@@ -140,7 +140,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/booking-reject/{id}', 'BookingController@booking_status')->name('booking_reject');
 
 	//Booking details 
-	Route::get('/booking_detail/{id}', 'BookingController@booking_detail')->name('booking_detail');	
+	Route::get('/booking_detail/{id}', 'BookingController@booking_detail')->name('booking_detail');
+
+	//Tutor earnings 
+	Route::get('/tutor-earnings', 'Tutor\TutorController@tutor_earnings')->name('tutor_earnings');
+
 });
 
 Route::post('depositWallet', 'Paypal\StudentPayment@depositWallet')->name('depositWallet');

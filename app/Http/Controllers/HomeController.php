@@ -30,7 +30,6 @@ class HomeController extends Controller
     //Tutor find jobs page
 
     public function find_tutor(Request $request){
-
     
        $data['countries'] = Country::all();
 
@@ -51,7 +50,9 @@ class HomeController extends Controller
                    'lesson_types.type',
                    'users.first_name',
                    'profiles.country_id',
-                   'job_requests.job_id'
+                   'job_requests.job_id',
+                    'users.id as user_id',
+                    'users.last_name', 'job_requests.request_status'                 
                );
 
          //If course is set
@@ -113,6 +114,7 @@ class HomeController extends Controller
        //}
 
     }
+    
     public function filterForCountryAjax(Request $request)
     {
         $country_name = $request->input('countryID');
@@ -126,6 +128,7 @@ class HomeController extends Controller
             ->get();
         return $cities;
     }
+
     public function filter_jobs(Request $request)
     {
         $data['countries'] = Country::all();

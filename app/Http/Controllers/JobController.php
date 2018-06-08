@@ -22,14 +22,16 @@ class JobController extends Controller
           /* Validation */
 
           try{
-            $job_board = new Job_board();
 
-              foreach($request->input() as $key => $value){
-                if($key != '_token' && $key != 'student_id'){
-                    $job_board->$key = $value;
-                }
-              }
-  	        
+             
+             $job_board = new Job_board();
+             $job_board->request_status = 0;
+             
+             foreach($request->input() as $key => $value){
+               if($key != '_token' && $key != 'student_id'){
+                   $job_board->$key = $value;
+               }
+             }
 
   	        if($job_board->save()){
   	        	$data['request'] = $request->input();
