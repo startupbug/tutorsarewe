@@ -70,7 +70,7 @@ Route::get('/publications', 'HomeController@publications')->name('publications')
 
 //aboutus
 Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
- 
+
 // Route::post('/home_tutor_filter','HomeController@home_tutor_filter')->name('home_tutor_filter');
 
 
@@ -112,10 +112,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/post-job-list', 'JobController@student_postJob_list')->name('post-job-list');
 	Route::get('/post-job-detail/{id}', 'JobController@student_postJob_detail')->name('post-job-detail');
 
+	Route::get('/find-job-detail', 'JobController@find_tutor_detail')->name('find_tutor_detail');
 	//Post Job request page
 	Route::post('/request-job', 'JobController@request_job')->name('request_job');
 
-	//Student Reply to tutor on Student Job	
+	//Student Reply to tutor on Student Job
 	Route::post('/request-reply_tutor', 'JobController@reply_tutor')->name('reply_tutor');
 
 	Route::post('/post-job', 'JobController@student_postJob_req')->name('student_postJob_req');
@@ -129,20 +130,20 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Booked Lessons
 	Route::get('/bookings', 'DashboardController@bookings_list')->name('bookings_list');
-	
+
 	//Cancel Booking
 	Route::get('/booking-cancel/{id}', 'BookingController@booking_cancel')->name('booking_cancel');
 
-	//Accept Booking - by Tutor 
+	//Accept Booking - by Tutor
 	Route::get('/booking-accept/{id}', 'BookingController@booking_status')->name('booking_accept');
 
-	//Accept Booking - by Tutor 
+	//Accept Booking - by Tutor
 	Route::get('/booking-reject/{id}', 'BookingController@booking_status')->name('booking_reject');
 
-	//Booking details 
+	//Booking details
 	Route::get('/booking_detail/{id}', 'BookingController@booking_detail')->name('booking_detail');
 
-	//Tutor earnings 
+	//Tutor earnings
 	Route::get('/tutor-earnings', 'Tutor\TutorController@tutor_earnings')->name('tutor_earnings');
 
 });
@@ -169,3 +170,8 @@ Route::get('/error/{message}', 'HomeController@error')->name('error');
 Route::get('/tutor-search/', 'Tutor\TutorController@index')->name('tutors_listing');
 Route::get('/tutor-search-ajax/', 'Tutor\TutorController@tutor_search_ajax');
 Route::Post('/contact_tutor_email/', 'Tutor\TutorController@contact_tutor_email')->name('contact_tutor_email');
+
+
+Route::get('lecture_list', function () {
+    return view('dashboard.review.lectures');
+});

@@ -60,7 +60,7 @@ $(document).ready(function(){
       $("#job_id").val($(this).data('id'));
 
       console.log($(this).data('tutor'));
-      $("#reply_tutor_id").val( $(this).data('tutor') );      
+      $("#reply_tutor_id").val( $(this).data('tutor') );
   });
 
   $("#replyTutorForm").on('submit', function(e){
@@ -79,15 +79,15 @@ $(document).ready(function(){
           url: $(this).attr('action'),
           data: formData,
           processData: false,
-          contentType: false,     
+          contentType: false,
           success: function(data){
 
             if(data.success == true){
               toastr.success(data.msg);
-              
+
               $("#myModal").modal('toggle');
 
-              // setTimeout(function(){ 
+              // setTimeout(function(){
               //   location.reload();
               // }, 600);
 
