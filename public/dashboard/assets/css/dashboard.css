@@ -598,3 +598,13 @@ h3.job_detail_heading {
 .font_change{
   font-family: 'ProximaNova-Semibold' !important;
 }
+.s_send_message {
+    background-color: #ed7275;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: 'ProximaNova-Semibold';
+    text-align: center;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

@@ -98,8 +98,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/post-job-list', 'JobController@student_postJob_list')->name('post-job-list');
 	Route::get('/post-job-detail', 'JobController@student_postJob_detail')->name('post-job-detail');
 
+	Route::get('/find-job-detail', 'JobController@find_tutor_detail')->name('find_tutor_detail');
 	//Post Job request page
-	
+
 	Route::post('/post-job', 'JobController@student_postJob_req')->name('student_postJob_req');
 });
 

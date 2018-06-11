@@ -33,7 +33,7 @@ class JobController extends Controller
 
 	    	$job_board = new Job_board();
 	    	$job_board->student_id = Auth::user()->id;
-	        
+
 	        foreach($request->input() as $key => $value) {
 
 	            if($key != '_token' && $key != 'student_id'){
@@ -54,18 +54,14 @@ class JobController extends Controller
 
         }catch(\Exception $e){
             $this->set_session('Job Couldnot Posted.'.$e->getMessage(), false);
-            return redirect()->route('postjob_view');                
+            return redirect()->route('postjob_view');
         }
     }
 
     /** Tutor Job Methods **/
 
     public function get_student_jobs(){
-      
-    }
 
-
-    public function student_postJob_req(){
     }
 
     public function student_postJob_list(){
@@ -76,4 +72,8 @@ class JobController extends Controller
       return view('dashboard.job.post-job-detail');
     }
 
+    //Tutor find jobs page
+    public function find_tutor_detail(){
+    	return view('dashboard.job.findtutoringjob_detail');
+    }
 }
