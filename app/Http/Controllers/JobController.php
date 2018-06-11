@@ -91,7 +91,7 @@ class JobController extends Controller
     /** Tutor Job Methods **/
 
     public function get_student_jobs(){
-
+}
     //Request Job By Tutor
     public function request_job(Request $request){
 

@@ -133,6 +133,7 @@ p.f_text {
 
 input.span3 {
     width: 100%;
+    padding-left: 10px;
     height: 50px;
     border: 1px solid #e1e1e1;
 }

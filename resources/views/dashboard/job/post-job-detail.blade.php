@@ -48,9 +48,9 @@
                <li>
                   <h3 class="search_name ">1,722 <span>hours tutoring</span></h3>
                </li>
-               <li>
+               <li class="sl_padding_left"> 
                  <a href=""><button class="btn btn-success">Book Lesson</button></a>
-               </li>            
+               </li>
             </ul>
          </div>
        </div>
@@ -88,9 +88,13 @@
                <li>
                   <h3 class="search_name ">1,722 <span>hours tutoring</span></h3>
                </li>
-               <li>
+               <li class="sl_padding_left">
                   @if(!is_null($tutor_response->booking_id))
-                      <button class="btn btn-info">Booked</button>                 
+                      <button class="btn btn-info">Booked</button>
+                      <button class="btn btn-success s_btn_margin" data-toggle="modal" data-target="#myModal_review">
+                        Review
+                        <!-- <i class="fa fa-thumbs-up"></i> -->
+                      </button>
                   @else
                       <a href="{{route('booking_index', ['jobid' => $tutor_response->jobboard_id] )}}"><button class="btn btn-success">Book Lesson</button></a>
                   @endif
@@ -103,6 +107,60 @@
 	 </div>
 </div>
 
+<div id="myModal_review" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title s-modal-header">Review</h4>
+      </div>
+      <div class="modal-body">
+        <form action="{{route('reply_tutor')}}" method="post" id="replyTutorForm">
+          {{csrf_field()}}
+          <section class='rating-widget'>
+            <div class='review-rating-stars text-center'>
+              <ul id='review-stars'>
+                <li class='review-star' title='Poor' data-value='1'>
+                  <i class='fa fa-star fa-fw'></i>
+                </li>
+                <li class='review-star' title='Fair' data-value='2'>
+                  <i class='fa fa-star fa-fw'></i>
+                </li>
+                <li class='review-star' title='Good' data-value='3'>
+                  <i class='fa fa-star fa-fw'></i>
+                </li>
+                <li class='review-star' title='Excellent' data-value='4'>
+                  <i class='fa fa-star fa-fw'></i>
+                </li>
+                <li class='review-star' title='WOW!!!' data-value='5'>
+                  <i class='fa fa-star fa-fw'></i>
+                </li>
+              </ul>
+            </div>
+            <div class='success-box hidden'>
+              <div class='text-message'></div>
+              <div class='clearfix'></div>
+            </div>
+          </section>
+
+          <input type="hidden" name="" class="review_input">
+          <div class="form-group profile_form s_profile_form">
+            <label>Review <span>*</span></label>
+            <br>
+            <textarea name="chat_message" rows="8" cols="80" class="form-control span3" required></textarea>
+            <input type="hidden" name="job_id" id="job_id">
+            <input type="hidden" name="tutor_id" id="reply_tutor_id">
+          </div>
+          <div class="form-group">
+           <input type="submit" value="Send" class="btn s_save">
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
