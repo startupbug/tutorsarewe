@@ -1,25 +1,19 @@
 @extends('app')
 @section('content')
-
 <section class="findtutoring_job">
    <div class="container">
    <div class="row">
       <div class="col-md-3">
-
          <h3 class="f_tutor">Filters</h3>
-
          <form method="get" action="{{route('filter_jobs')}}">
             {{csrf_field()}}
             <div class="form-group">
                <label for="course" class="f_course">Course</label>
                <select class="form-control select_f" id="course" name="courseform">
-
-    
-                    <option value="" selected>Select Course</option>
+                  <option value="" selected>Select Course</option>
                   @foreach($subjects as $subject)
-                     <option value="{{$subject->id}}">{{$subject->subject}}</option>
+                  <option value="{{$subject->id}}">{{$subject->subject}}</option>
                   @endforeach
-
                </select>
             </div>
             <div class="form-group">
