@@ -147,8 +147,6 @@ class BookingController extends Controller
     }
 
     public function booking_detail($booking_id){
-    	//dd($booking_id);
-    	//Getting Booking details for this id.
 
     	//Check if this booking belongs to this suer
     	$data['booking_detail'] = Booking::join('job_boards', 'job_boards.id', '=', 'bookings.job_id')
@@ -161,8 +159,8 @@ class BookingController extends Controller
 	                                      ->select('bookings.date', 'bookings.location', 'bookings.amount', 'bookings.lesson_hours', 'bookings.status_id', 'job_boards.*', 'subjects.subject', 'statuses.status', 
 												'job_requests.tutor_id as tutor_id', 'users.first_name',
 												 'users.email', 'lesson_types.type')
-                                      	  ->first();
-		//dd($data['booking_detail']);
+											->first();
+		
 		return view('dashboard.booking.booking-detail')->with($data);               	
     }
 
