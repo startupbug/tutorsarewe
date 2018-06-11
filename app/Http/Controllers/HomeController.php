@@ -13,6 +13,8 @@ use DB;
 use App\Subscriber;
 use Illuminate\Support\Facades\Input;
 use Session;
+use Response;
+
 class HomeController extends Controller
 {
 	/* Home Page */
@@ -271,16 +273,26 @@ class HomeController extends Controller
 
     public function subscribe(Request $request)
     {
-
-        $this->validate($request,[
+      try {
+        if (isset($request->email)){        
+          $this->validate($request,[
            'email' => 'required|string|unique:users',
-        ]);
+         ]);
         // dd($request->input());
-        $subscriber = new Subscriber;
-        $subscriber->email = Input::get('email');
-        $subscriber->save();
-        $this->set_session('Email has been subscribed.', true);
-        return redirect('/');
+          $subscriber = new Subscriber;
+          $subscriber->email = Input::get('email');
+          if ($subscriber->save()){        
+            return \Response()->Json([ 'status' => 200,'msg'=>'You Have Successfully Subscribed Email']);
+          }else{
+            return \Response()->Json([ 'status' => 200,'msg'=>'Something Went Wrong Please Try Again!']); 
+          }     
+        }else{
+          $this->set_session('Please Give The Required Data', false);
+          return redirect()->back();
+        }
+      } catch (QueryException $e) {
+        return \Response()->Json([ 'array' => $e]);
+      }
     }
 
     //401

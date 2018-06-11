@@ -103,7 +103,7 @@ class AuthenticationController extends Controller
     }
 
     public function register_post(Request $request){
-         // dd($request->input());
+          dd($request->input());
          /* Validation */
 
 
