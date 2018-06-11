@@ -260,7 +260,7 @@ class HomeController extends Controller
     }
 
     public function forget_password()
-    {   
+    {
         return view('authentication.forget_password');
     }
 
@@ -291,5 +291,5 @@ class HomeController extends Controller
     //error page
     public function error($message){
         return view('error')->with('message', $message);
-    }    
+    }
 }

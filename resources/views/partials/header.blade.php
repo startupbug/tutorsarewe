@@ -20,6 +20,7 @@
       <!-- UI Jquery -->
       <link href="{{ asset('public/assets/css/bootstrap-slider.min.css') }}" rel="stylesheet">
       <!-- Animate -->
+      <link href="{{ asset('public/assets/css/alertify.min.css') }}" rel="stylesheet">
       <link href="{{ asset('public/assets/css/animate.css') }}" rel="stylesheet">
       <!-- Owl Slider -->
       <link href="{{ asset('public/assets/css/owl.carousel.css') }}" rel="stylesheet">

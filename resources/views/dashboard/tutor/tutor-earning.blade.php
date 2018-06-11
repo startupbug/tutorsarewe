@@ -6,6 +6,7 @@
 	<div class="edit_profile">
 		<h3 class="f_profile_content text-center">Tutor Earnings</h3>
 	</div>
+	
 	<div class="col-md-9">
 		@include('partials.error_section')
 		<div class="row padding_top">
@@ -15,8 +16,15 @@
 						<tr>
 							<th>#</th>
 							<th>booking id</th>
-							<th>Student</th>
-							<th></th>
+							<th>title</th>
+							<th>details</th>
+							<th>student</th>
+							
+							<th>subject</th>
+							<th>type</th>
+							
+							<th>amount</th>
+						
 							<th>Date</th>
 							<th>Action</th>
 						</tr>
@@ -25,12 +33,19 @@
 						@foreach ($tutor_earnings as $key => $value)	
 						<tr>
 							<td>{{ ++$key }}</td>
-							<td>{{ $tutor_earnings->booking_id }}</td>
-							<td>{{ $description->transactions[0]->amount->total }} {{ $description->transactions[0]->amount->currency }}</td>
+							<td>{{ $value->booking_id }}</td>
+							<td>{{ $value->title }}</td>
+							<td>{{ $value->details }}</td>
+							<td><a href="{{route('tutor_profile',$value->student_id)}}">{{ $value->first_name }}</a></td>
+		
+							<td>{{ $value->subject }}</td>
 							<td>{{ $value->type }}</td>
-							<td>{{ $value->created_at }}</td>
+							
+							<td>{{ $value->amount }}</td>
+							
+							<td>{{ $value->date }}</td>
 							<td>
-								<a href="{{ route('transaction_detail', ['id' => $value->id]) }}" class="btn a_href_btn">View Detail</a>
+								<a href="{{ route('tutor_earnings_details', ['id' => $value->booking_id]) }}" class="btn a_href_btn">View Detail</a>
 							</td>
 						</tr>
 						@endforeach

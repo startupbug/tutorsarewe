@@ -1,5 +1,6 @@
 @extends('app')
 @section('content')
+
 <section class="search">
    <div class="container">
       <div class="row">
@@ -11,13 +12,10 @@
                <input type="hidden" name="limit" value="10">               
                <!--<div id="slider"></div>-->
                <h3 class="f_class">Availability</h3>
-               <input type="checkbox" name="vehicle" value="Bike" class="checkbox_search"><span class="days">Sunday</span><br>
-               <input type="checkbox" name="vehicle" value="Car" class="checkbox_search"><span class="days">Monday</span><br>
-               <input type="checkbox" name="vehicle" value="Bike" class="checkbox_search"><span class="days">Tuesday</span><br>
-               <input type="checkbox" name="vehicle" value="Car" class="checkbox_search"><span class="days">Wednesday</span><br>
-               <input type="checkbox" name="vehicle" value="Bike" class="checkbox_search"><span class="days">Thursday</span><br>
-               <input type="checkbox" name="vehicle" value="Car" class="checkbox_search"><span class="days">Friday</span><br>
-               <input type="checkbox" name="vehicle" value="Bike" class="checkbox_search"><span class="days">Saturday</span><br>
+               @foreach($days as $key => $day)
+               <input type="checkbox" name="available_day" value="{{$key+1}}" class="checkbox_search"><span class="days">{{$day->days}}</span><br>
+               @endforeach
+               
                <div class="form-group">
                   <label for="exampleInputcourse" class="f_label f_course">Subject</label>
                   <select class="form-control select_f" id="courseFrom" name="subject">

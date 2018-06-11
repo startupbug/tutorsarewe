@@ -268,7 +268,7 @@
             <p class="f_tutor"><i class="fa fa-check"></i>We have qualified tutors to meet your needs</p>
             <br>
             <p class="f_tutor"><i class="fa fa-check"></i> 24/access - Find a tutor anytime, anywhere, using our online tutorial</p>
-            <div class="btn_check"><a href="#">HOW DOES THIS WORK</a></div>
+            <div class="btn_check"><a href="{{route('how_it_works')}}">HOW DOES THIS WORK</a></div>
          </div>
       </div>
    </div>

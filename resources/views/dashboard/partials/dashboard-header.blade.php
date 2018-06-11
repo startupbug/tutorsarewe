@@ -22,6 +22,7 @@
       <link href="{{ asset('public/dashboard/assets/css/bootstrap-slider.min.css') }}" rel="stylesheet">
       <!-- Animate -->
       <link href="{{ asset('public/dashboard/assets/css/animate.css') }}" rel="stylesheet">
+      <link href="{{ asset('public/assets/css/alertify.min.css') }}" rel="stylesheet">
       <!-- Owl Slider -->
       <link href="{{ asset('public/dashboard/assets/css/owl.carousel.css') }}" rel="stylesheet">
       <!-- Owl Slider Theme -->

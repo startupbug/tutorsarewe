@@ -58,11 +58,65 @@ $(document).ready(function(){
   $(".sendReqMsg").on('click', function(e){
       console.log("data id" + $(this).data('id'));
       $("#job_id").val($(this).data('id'));
+      
+     
 
       console.log($(this).data('tutor'));
-      $("#reply_tutor_id").val( $(this).data('tutor') );      
+      $("#reply_tutor_id").val( $(this).data('tutor') );
   });
+  $(".s_btn_margin").on('click', function(e){
+      var current_job_id = $(this).data('current_job_id');
+      var current_tutor_id = $(this).data('tutor');
+      console.log(current_job_id);
+      $("#job_id").val(current_job_id); 
+      $("#current_tutor_id").val(current_tutor_id); 
+  });
+  $(".s_btn_margin22").on('click', function(e){
+      var current_job_id_new = $(this).data('current_job_id_new');
+      var current_tutor_id_new = $(this).data('current_tutor_id_new');
+      var current_comment_new = $(this).data('comment');
+      var current_rating_new = $(this).data('rating');
+      
+      $("#current_job_id_new").val(current_job_id_new); 
+      $("#current_tutor_id_new").val(current_tutor_id_new); 
+      $("#current_comment_new").val(current_comment_new); 
+      $("#current_rating_new").val(current_rating_new); 
 
+      var stars = $('#review-stars_view li').parent().children('li.review-star');
+      for (i = 0; i < current_rating_new; i++) {
+        $(stars[i]).addClass('selected');
+      }
+
+      $('.success-box').removeClass('hidden');
+      $('.success-box div.text-message').html("<span>You rated this " + current_rating_new + " stars.</span>");
+
+  });
+  $("#rating_review").on('submit', function(e){
+    e.preventDefault();
+    var formData = $(this).serialize();
+    $.ajaxSetup({
+      headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+    });
+    $.ajax({
+      type: $(this).attr('method'),
+      url: $(this).attr('action'),
+      data: formData,
+      success: function (data) {
+        console.log(data);
+        if(data.status == 200){
+          alertify.success(data.msg);      
+          $('#myModal_review').modal('hide');
+        }else if(data.status == 202){
+          alertify.warning(data.msg);
+        }else{
+          alertify.warning(data.array.errorInfo[2]);
+        }
+      },
+      error: function (data) {
+       alertify.warning("Oops. something went wrong. Please try again");
+     }
+   });
+  });
   $("#replyTutorForm").on('submit', function(e){
       e.preventDefault();
 
@@ -79,15 +133,15 @@ $(document).ready(function(){
           url: $(this).attr('action'),
           data: formData,
           processData: false,
-          contentType: false,     
+          contentType: false,
           success: function(data){
 
             if(data.success == true){
               toastr.success(data.msg);
-              
+
               $("#myModal").modal('toggle');
 
-              // setTimeout(function(){ 
+              // setTimeout(function(){
               //   location.reload();
               // }, 600);
 

@@ -114,6 +114,7 @@ class AuthenticationController extends Controller
             'username'=>'required|string|max:15|unique:profiles',
             'password' => 'required|string|min:6|confirmed',
             'phonenum1' => 'required|numeric',
+            'countryCode' => 'required|numeric'
         ]); 
 
 
