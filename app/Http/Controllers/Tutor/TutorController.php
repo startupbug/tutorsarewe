@@ -21,11 +21,12 @@ class TutorController extends Controller
 	//Search tutor page & Tutor listing in Front Navbar Find A Tutor    
     public function index(Request $request){
 
-          
+
         $args['days'] = Available_day::get();
 
         $take = 10;
-        if ($request->name) {
+        if ($request->name)
+        {
 
             $words = explode(' ', $request->name);
             $first_name = $words[0];
@@ -45,7 +46,7 @@ class TutorController extends Controller
             ->get();
             
         }elseif(isset($request->course) || isset($request->location)){
-            // dd('12321');
+            
             if ($request->home == 1) {
                 $args['listing'] = User::leftJoin('profiles','profiles.user_id','=','users.id')
                 ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')

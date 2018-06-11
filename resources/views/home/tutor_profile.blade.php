@@ -309,7 +309,7 @@
                 <div class="modal-body">
                       <div class="form-group">
                         <label for="task">Message Description</label>
-                          <textarea class="form-control" name="description"></textarea>
+                          <textarea class="form-control" name="description" required=""></textarea>
                       </div>           
                 </div>
                 <!-- Modal Footer -->
