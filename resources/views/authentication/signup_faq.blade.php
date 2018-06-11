@@ -172,51 +172,63 @@
                </div>
                <div class="form-group">
                   <label for="exampleInputfirstname" class="f_label">First Name<span>*</span></label>
-                  <input type="type" class="form-control f-control" name="first_name" id="exampleInputfirstname" placeholder="">
+                  <input type="type" class="form-control f-control" name="first_name" id="exampleInputfirstname" value="{{ old('first_name') }}" placeholder="">
                </div>
                <div class="form-group">
                   <label for="exampleInputlastname" class="f_label">Last Name<span>*</span></label>
-                  <input type="type" class="form-control f-control" name="last_name" id="exampleInputlastname" placeholder="">
+                  <input type="type" class="form-control f-control" name="last_name"  value="{{ old('last_name') }}" id="exampleInputlastname" placeholder="">
                </div>
                <div class="form-group">
                   <label for="exampleInputlastname" class="f_label">User Name<span>*</span></label>
-                  <input type="type" class="form-control f-control" name="username" id="exampleInputlastname" placeholder="">
+                  <input type="type" class="form-control f-control" name="username" value="{{ old('username') }}" id="exampleInputlastname" placeholder="">
                </div>
 
                <div class="form-group">
                   <label for="exampleInputEmail1" class="f_label">Email<span>*</span></label>
-                  <input type="email" class="form-control f-control" name="email" id="emailFrom" placeholder="">
+                  <input type="email" class="form-control f-control" name="email" value="{{ old('email') }}" id="emailFrom" placeholder="">
                </div>
                <div class="form-group">
                   <label for="exampleInputPassword1" class="f_label">Password<span>*</span>(Must Be At Least 6 Characters):</label>
-                  <input type="password" class="form-control f-control" name="password" id="exampleInputPassword1" placeholder="">
+                  <input type="password" class="form-control f-control" name="password" value="{{ old('password') }}" id="exampleInputPassword1" placeholder="">
                </div>
                <div class="form-group">
                   <label for="exampleInputconfirmPassword" class="f_label">Confirm Password<span>*</span></label>
-                  <input type="password" class="form-control f-control" name="password_confirmation" id="exampleInputconfirmPassword" placeholder="">
+                  <input type="password" class="form-control f-control" name="password_confirmation" id="exampleInputconfirmPassword" value="{{ old('password') }}" placeholder="">
                </div>
                <div class="form-group">
                   <label for="exampleInputaddress" class="f_label">Address</label>
-                  <input type="text" class="form-control f-control" name="address" id="exampleInputaddress" placeholder="">
+                  <input type="text" class="form-control f-control" name="address" id="exampleInputaddress" value="{{ old('address') }}" placeholder="">
                </div>
                <div class="form-group">
                   <label for="exampleInputcode" class="f_label">Zip Code</label>
-                  <input type="text" class="form-control f-control" name="zipcode" id="exampleInputcode" placeholder="">
+                  <input type="text" class="form-control f-control" name="zipcode" value="{{ old('zipcode') }}" id="exampleInputcode" placeholder="">
                </div>
                <div class="form-group">
-                  <label for="exampleInputstate" class="f_label">State</label>
-                  <select class="form-control select_f" id="state" name="state">
+                  <label for="exampleInputcountry" class="f_label">Country</label>
+                  <select class="form-control select_f" id="country" name="country" data-url="{{route('user_register.ajax')}}">
                      <option>Select</option>
-                     <option value="New York">New York</option>
-                     <option value="New south wales">New south wales</option>
-                     <option value="Texas">Texas</option>
-                     <option value="South">South</option>
+                     @foreach($countries as $country)
+                        <option value="{{$country->id}}">{{$country->name}}</option>
+                     @endforeach
                   </select>
                </div>
+
                <div class="form-group">
+                  <label for="exampleInputstate" class="f_label">City</label>
+                  <select class="form-control select_f" id="city" name="city">
+                     <option>Select</option>
+                     <div id="cityDropdown">
+                           
+                     </div>
+                  <!--    @foreach($states as $state)
+                        <option value="{{$state->id}}">{{$state->name}}</option>
+                     @endforeach -->
+                  </select>
+               </div>
+               <!-- <div class="form-group">
                   <label for="country" class="control-label f_label">Country</label>
                   <div class="controls">
-                     <select class="form-control" name="country" id="country">
+                     <select class="form-control" name="country"  id="country">
                         <option value=""></option>
                         <option value="AR">Argentina</option>
                         <option value="AU">Australia</option>
@@ -311,19 +323,19 @@
                         <option value="VN">Vietnam</option>
                      </select>
                   </div>
-               </div>
+               </div> -->
                <div class="form-group">
                   <label for="exampleInputstate" class="f_label">Phone Number<span>*</span></label>
                </div>
                <div class="row">
                   <div class="col-md-6">
                      <div class="form-group">
-                        <input type="text" class="form-control f-control" id="Inputphonenumber" name="countryCode" placeholder="United States +1">
+                        <input type="text" class="form-control f-control" id="Inputphonenumber" name="countryCode" value="{{ old('countryCode') }}" placeholder="United States +1">
                      </div>
                   </div>
                   <div class="col-md-6">
                      <div class="form-group">
-                        <input type="text" class="form-control f-control" id="Inputphonenumber" name="phonenum1" placeholder="Phone Number">
+                        <input type="text" class="form-control f-control" id="Inputphonenumber" name="phonenum1" value="{{ old('phonenum1') }}" placeholder="Phone Number">
                      </div>
                   </div>
                </div>
@@ -357,5 +369,6 @@
       </div>
    </div>
 </section>
+
 
 @endsection

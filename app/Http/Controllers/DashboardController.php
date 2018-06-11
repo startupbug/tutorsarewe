@@ -9,6 +9,7 @@ use Auth;
 use Hash;
 use DB;
 use App\Tutor_subject;
+use App\Booking;
 class DashboardController extends Controller
 {
 
@@ -23,7 +24,12 @@ class DashboardController extends Controller
         return redirect()->route('admin-index');
       }
 
-    	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
+    	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')
+                      ->leftjoin('countries','profiles.country_id','=','countries.id')
+                      ->leftjoin('cities','profiles.city_id','=','cities.id')
+                      ->select('users.*','profiles.*','countries.name as country_name','cities.name as city_name')
+                      ->where('users.id', Auth::user()->id)->first();
+                      // dd($data['user']);
     	return view('dashboard.index')->with($data);
     }
 
@@ -46,12 +52,13 @@ class DashboardController extends Controller
 
          try{
 
-        if (Hash::check($request->input('current_password'), Auth::user()->password)) {
-           // The passwords match...
+        if (Hash::check($request->input('current_password'), Auth::user()->password))
+        {
+         // The passwords match...
 
-               $this->validate($request, [
-                   'password' => 'required|confirmed|min:6|max:18',
-               ]);
+             $this->validate($request, [
+                 'password' => 'required|confirmed|min:6|max:18',
+             ]);
 
         //Updating Password
         $newpassword1 = bcrypt($request->input('password'));
@@ -61,7 +68,9 @@ class DashboardController extends Controller
         $user->password = $newpassword1;
         $password_updated = $user->save();
 
-        if($password_updated){
+        if($password_updated)
+        {   
+            $this->logActivity(Auth::user()->first_name.' update password ');
             $this->set_session('Password Updated', true);
         }else{
             $this->set_session('Password couldnot be Updated. Please try again.', false);
@@ -76,7 +85,7 @@ class DashboardController extends Controller
 
          }catch(\Exception $e){
                    $this->set_session('Password couldnot be Updated. '.$e->getMessage(), false);
-                   return redirect()->route('dashboard_index');
+                   return redirect()->back();
              }
 
     }
@@ -157,5 +166,29 @@ class DashboardController extends Controller
            $this->set_session('Subject couldnot be deleted'.$e->getMessage(), false);
            return redirect()->route('subjects');
       }
+    }
+
+    //All Bookings
+    public function bookings_list(){
+            //dd($data['bookings'][0]->date);
+      if(Auth::user()->role_id == 2){
+          //student bookings
+          $data['bookings'] = Booking::leftjoin('job_boards', 'job_boards.id', '=', 'bookings.job_id')
+                                      ->select('bookings.id as id', 'bookings.date', 'bookings.location', 'bookings.amount', 'bookings.status_id')          
+                                      ->where('job_boards.student_id', Auth::user()->id)
+                                      ->get();
+
+      }else if(Auth::user()->role_id == 3){
+        //Tutors bookings
+          $data['bookings'] = Booking::leftjoin('job_boards', 'job_boards.id', '=', 'bookings.job_id')
+                                      ->leftjoin('job_requests', 'job_requests.job_id', '=', 'job_boards.id')
+                                      ->select('bookings.id as id', 'bookings.date', 'bookings.location', 'bookings.amount', 'bookings.status_id')
+                                      ->where('job_requests.tutor_id', Auth::user()->id)
+                                      ->get();
+          
+      }
+      //dd($data['bookings']);
+
+      return view('dashboard.booking.booking-list')->with($data);
     }
 }

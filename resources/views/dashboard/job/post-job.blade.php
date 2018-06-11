@@ -22,9 +22,11 @@
 						 <br>
 
              			<select class="form-control span3 " name="subject_id" required>
+             			@if(isset($subjects))
 			               @foreach($subjects as $subject)
 			                   <option value="{{$subject->id}}">{{$subject->subject}}</option>
 			               @endforeach
+			            @endif
 						 </select>
 					 </div>
 					 <div class="form-group profile_form s_profile_form">
@@ -44,6 +46,10 @@
 		                 <input type="radio" name="lesson_type" id="lesson_type"  value="2" class="offline">
 		                 <span class="s_checkmark"></span>
 		               </label>
+		               <label class="s_container">Full Time
+		                 <input type="radio" name="lesson_type" id="lesson_type"  value="3" class="offline">
+		                 <span class="s_checkmark"></span>
+		               </label>
 		             </div>
 					 </div>
            <div class="form-group profile_form s_profile_form form_address hidden">
@@ -59,7 +65,7 @@
 
 					 </div>
 					 <div class="form-group">
-					 	<input type="submit" value="Postw" class="btn s_save">
+					 	<input type="submit" value="Post" class="btn s_save">
 					 </div>
 				 </form>
 

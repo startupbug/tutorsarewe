@@ -53,17 +53,27 @@
                   <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="Enter email">
                 </div>
 
-
                 <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>
                   <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
                 </div>
+
+                <div class="form-group">
+                  <label for="exampleInputQualification">Qualifications</label>
+                  <input type="text" class="form-control" name="qualifications" id="exampleInputqualifications" placeholder="Qualifications">
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputQualifications">Qualifications From</label>
+                  <input type="text" class="form-control" name="qualification_from" id="exampleInputqualifications_form" placeholder="Qualifications From">
+                </div>
+                
                 <div class="form-group profile_form">
                   <label for="exampleInputRate">Rates / Hour <span>*</span></label>
                   <input type="text" class="form-control span3" name="tution_per_hour" id="exampleInputRate" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}"required>
                 </div>
                 <div class="form-group profile_form">
-                  <label for="Bio">Bio <span>*</span></label>
+                  <label for="Bio">Bio </label>
                   <br>
                   <textarea name="bio" class="span3 form-control" ></textarea>
                 </div>

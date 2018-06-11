@@ -11,7 +11,9 @@ use App\Wallet;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use DB;
-
+use App\Country;
+use App\State;
+use App\Lesson_type;
 class ProfileController extends Controller
 {
 	//view profile on dashboard
@@ -19,26 +21,49 @@ class ProfileController extends Controller
     public function edit_dashboard(){
         
     	$data['user'] = User::join('profiles', 'profiles.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->first();
-
+        $data['countries'] = Country::all();
+        $data['states'] = State::all();
+        $data['lessons'] = Lesson_type::all();
+        // dd($date['lessons']);
+        
     	return view('dashboard.editprofile')->with($data);
+    }
+    
+    public function editcityForCountryAjax(Request $request)
+    {
+        $country_name = $request->input('countryID');
+        $country_id = urldecode($country_name);
+        //return $country_name;
+        $cities = DB::table('countries')
+            ->select('cities.id', 'cities.name')
+            ->join('states', 'states.country_id', '=', 'countries.id')
+            ->join('cities', 'cities.state_id', '=', 'states.id')
+            ->where("countries.id", '=',$country_id)
+            ->get();
+        return $cities;
     }
 
     // edit profile post
     public function edit_profile(Request $request){
 
-    	/* Validation 
+          // dd($request->input());
+    	 // Validation 
+
+    	/* Validation */
         $this->validate($request, [
             'first_name' => 'required|string|max:255',
             'last_name'=> 'required|string|max:255',
-            'bio'=> 'string|max:150|min:50',
+            'bio'=> 'string|max:50|min:10',
             'address'=> 'string|max:255',
             'zipcode'=> 'alpha_num|max:10',
-            'countryCode'=> 'required|numeric|max:255',
-            'phonenum1'=> 'required|numeric',
+            'countryCode'=> 'numeric|max:255',
+            'phonenum1'=> 'numeric',
             'tution_per_hour' => 'numeric',
             'age' => 'numeric',
+            'qualifications' => 'string|max:15',
+            'qualification_from' => 'string|max:15',
+        ]); 
 
-        ]); */
 
     	try{
 	    	//Update User
@@ -47,18 +72,25 @@ class ProfileController extends Controller
 	    	$user->first_name = $request->input('first_name');
 	    	$user->last_name = $request->input('last_name');
 	    	$user->phone_no = $request->input('countryCode').$request->input('phonenum1');
+
+            // dd($request->input());
 	    	
             //Update Profile
 	    	$profile_array = [ 'tution_per_hour' => $request->input('tution_per_hour'),
 	    		'bio' => $request->input('bio'),
 	    		'address' => $request->input('address'),
 	    		'zipcode' => $request->input('zipcode'),
-	    		'state' => $request->input('state'),
+	    		'city_id' => $request->input('city'),
+                'country_id' => $request->input('profile_country'),
                 'age' => $request->input('age'), 
+                'lesson_type' => $request->input('lesson_type'),
                 'gender' => $request->input('gender'),
+                'qualifications' => $request->input('qualifications'),
+                'qualification_from' => $request->input('qualification_from'),
 	    	];
 
            if(Input::hasFile('profile_pic')){
+                //dd(456);
                 $file = Input::file('profile_pic');
                 $tmpFilePath = '/dashboard/assets/images/profile';
                 $tmpFileName = time() . '-' . $file->getClientOriginalName();
@@ -68,9 +100,10 @@ class ProfileController extends Controller
                 $profile_array['profile_pic'] = $path;
             }
 
-    		$profile = Profile::where('user_id', $user_id)->update($profile_array);
+    		$profile = Profile::where('user_id', Auth::user()->id)->update($profile_array);
 
     		if($user->save() && $profile){
+                $this->logActivity(Auth::user()->first_name.' edited his profile ');
 	            $this->set_session('Profile Successfully Edited.', true);
 
     		}else{
@@ -97,8 +130,12 @@ class ProfileController extends Controller
           'profile_pic' => $img_name
           ]);
           $path = asset('public/dashboard/assets/images/profile/').'/'.$img_name;
+
+          $this->logActivity(Auth::user()->first_name.' updated profile image ');
           return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]);
+          
           $this->set_session('Image Uploaded successfully', true);
+
         }else{
             $this->set_session('Image is Not Uploaded. Please Try Again', false);
         return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
@@ -156,8 +193,17 @@ class ProfileController extends Controller
 
     public function walletWithdraw(Request $request){
 
-        $available = Wallet::where('user_id', Auth::user()->id)->first(['balance']); 
+        //100$ withdraw amount condition
+        
+        if($request->input('amount') < 100){
+            $this->set_session('You cannot withdraw amount less then $100', false);
+            return redirect()->route('my_balance'); 
+        }
+
+        $available = Wallet::where('user_id', Auth::user()->id)->first(['balance']);
+
         $status = WithdrawWallet::where('user_id', Auth::user()->id)->where('status', 'pending')->first(['id']); 
+        
         if(empty($status)){
 
             if($request->amount <= $available->balance){
@@ -165,15 +211,19 @@ class ProfileController extends Controller
                     'user_id' => Auth::user()->id,
                     'amount' => $request->amount
                 ]);
+                $this->logActivity(Auth::user()->first_name.' You have successfully made a withdraw request, admin will approve it soon. ');
                 $this->set_session('You have successfully made a withdraw request, admin will approve it soon.', true);
+
                 return redirect()->route('my_balance');
             }
             else{
+                $this->logActivity(Auth::user()->first_name.'Sorry you do not have sufficinet balance to withdraw this amount.');
                 $this->set_session('Sorry you do not have sufficinet balance to withdraw this amount.', false);
                 return redirect()->route('my_balance');   
             }
         }
         else{
+            $this->logActivity(Auth::user()->first_name.'Sorry you already have a withdraw request you can not make another.');
             $this->set_session('Sorry you already have a withdraw request you can not make another.', false);
             return redirect()->route('my_balance');   
         }

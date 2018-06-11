@@ -18,6 +18,9 @@ use App\Mail\EmailVerification;
 use Validator;
 use App\Events\UserRegistration;
 use App\Wallet;
+use App\State;
+use App\Country;
+use App\City;
 
 class AuthenticationController extends Controller
 {
@@ -34,9 +37,20 @@ class AuthenticationController extends Controller
           try{
 
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
-               $this->logActivity(Auth::user()->first_name.' Logged in on Tutor');
-               return redirect()->route('home');
+                if(Auth::user()->role_id == 2)
+                {
+                    $this->logActivity(Auth::user()->first_name.' Logged in on student');
+                }
+                elseif(Auth::user()->role_id == 3)
+                {
+                    $this->logActivity(Auth::user()->first_name.' Logged in on tutor');
+                }    
 
+               $this->logActivity(Auth::user()->first_name.'Logged in on Tutor');
+               DB::table('profiles')
+                    ->where('user_id', Auth::user()->id)
+                    ->update(['online_status' => 1]);
+               return redirect()->route('home');
             }else{
                $this->set_session('invalid username or password', false);
                return redirect()->route('signin');
@@ -51,13 +65,41 @@ class AuthenticationController extends Controller
 
     //Logging out user
     public function logout_user(){
+        $this->logActivity(Auth::user()->first_name.' logged out');
+        DB::table('profiles')
+            ->where('user_id', Auth::user()->id)
+            ->update(['online_status' => 0]);
         Auth::logout();
+
         return redirect()->route('home');          
     }
 
     //Register and signup page view
-    public function register_index(){
-        return view('authentication.signup_faq');
+    public function register_index()
+    {
+        $states = State::all();
+        $countries = Country::all();
+        // $cities = City::all();
+        return view('authentication.signup_faq',['countries'=>$countries, 'states'=>$states]);
+    }
+
+    public function stateForCountryAjax(Request $request)
+    {
+        $country_name = $request->input('countryID');
+        $country_id = urldecode($country_name);
+        //return $country_name;
+        $cities = DB::table('countries')
+            ->select('cities.id', 'cities.name')
+            ->join('states', 'states.country_id', '=', 'countries.id')
+            ->join('cities', 'cities.state_id', '=', 'states.id')
+            ->where("countries.id", '=',$country_id)
+            ->get();
+        return $cities;
+    }
+
+    private function _stateCountryIDForCountryName($country_name)
+    {
+        return DB::table('countries')->where("name","$country_name")->first()->country_id;
     }
 
     public function register_post(Request $request){
@@ -72,6 +114,7 @@ class AuthenticationController extends Controller
             'username'=>'required|string|max:15|unique:profiles',
             'password' => 'required|string|min:6|confirmed',
             'phonenum1' => 'required|numeric',
+            'countryCode' => 'required|numeric'
         ]); 
 
 
@@ -124,8 +167,8 @@ class AuthenticationController extends Controller
                 $profile->username = $request->input('username');
                 $profile->address = $request->input('address');
                 $profile->zipcode = $request->input('zipcode');                        
-                $profile->state = $request->input('state');
-                $profile->country = $request->input('country');
+                $profile->city_id = $request->input('city');
+                $profile->country_id = $request->input('country');
                 $profile->user_id = $user->id;
 
                 if($request->input('role_id') == 3){

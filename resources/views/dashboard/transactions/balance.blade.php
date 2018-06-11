@@ -19,7 +19,7 @@
 					{{csrf_field()}}
 					<div class="form-group profile_form s_profile_form col-md-4">
 						<label>Amount <span>*</label><br>
-							<input type="text" name="amount" class="form-control span3" value="">
+							<input type="text" name="amount" class="form-control span3" value="" required>
 						</div>
 						<div class="form-group profile_form s_profile_form col-md-2">
 							<input type="submit" value="ADD" class="btn s_save">
@@ -66,7 +66,7 @@
 						{{csrf_field()}}
 						<div class="form-group profile_form s_profile_form col-md-4">
 							<label>Amount <span>*</label><br>
-								<input type="text" name="amount" class="form-control span3" value="">
+								<input type="text" name="amount" class="form-control span3" value="" required >
 							</div>
 							<div class="form-group profile_form s_profile_form col-md-2">
 								<input type="submit" value="ADD" class="btn s_save">

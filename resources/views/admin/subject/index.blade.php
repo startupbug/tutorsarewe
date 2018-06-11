@@ -22,9 +22,9 @@
               <h3 class="box-title">Subject list</h3>
               <button type="button" class="btn btn-default pull-right editAddSubjectModal" data-flag="add" data-toggle="modal" data-target="#editAddSubjectModal" ><i class="fa fa-plus"></i> Add Subject</button>
                 <br>
-                @include('admin.partials.error_section')              
+                             
             </div>          
-
+            @include('admin.partials.error_section') 
             <!-- /.box-header -->
             <div class="box-body">
               <table id="subjectTable" class="table table-bordered table-hover">
@@ -84,13 +84,13 @@
                       <div class="form-group">
                         <label for="task">Subject</label>
                           <input type="text" class="form-control"
-                          id="subject" name="subject"/>
+                          id="subject" name="subject" required />
                       </div>
 
                       <div class="form-group">
                         <label for="task">Subject Code</label>
                           <input type="text" class="form-control"
-                          id="subject_code" name="subject_code"/>
+                          id="subject_code" name="subject_code" required />
                           <input type="hidden" name="edit_subj_id" id="edit_subj_id" value="">
                       </div>                
                 </div>

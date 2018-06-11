@@ -1,9 +1,10 @@
 $( function() {
+
   $( "#slider" ).slider();
 
 	// With JQuery
 	$("#ex2").slider({});
-
+console.log("ASdasd");
 	// Without JQuery
 	// var slider = new Slider('#ex2', {});
 
@@ -22,9 +23,8 @@ $( function() {
 
 $(".f_tab").click(function(){
   $(".f_tab").removeClass("active-tab");
-  $(this).addClass("active-tab")
-});
-
+  $(this).addClass("active-tab");
+})
 var myIndex = 0;
 var slideIndex = 1;
 carousel();
@@ -53,3 +53,52 @@ function carousel() {
     // x[myIndex-1].style.display = "block";
     setTimeout(carousel, 3000); // Change image every 2 seconds
 }
+
+$(document).ready(function(){
+  $(".sendReqMsg").on('click', function(e){
+      console.log("data id" + $(this).data('id'));
+      $("#job_id").val($(this).data('id'));
+
+      console.log($(this).data('tutor'));
+      $("#reply_tutor_id").val( $(this).data('tutor') );      
+  });
+
+  $("#replyTutorForm").on('submit', function(e){
+      e.preventDefault();
+
+        console.log("reply form");
+        var formData = new FormData(this);
+        console.log(formData);
+
+        $.ajaxSetup({
+          headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+        });
+
+        $.ajax({
+          type: "POST",
+          url: $(this).attr('action'),
+          data: formData,
+          processData: false,
+          contentType: false,     
+          success: function(data){
+
+            if(data.success == true){
+              toastr.success(data.msg);
+              
+              $("#myModal").modal('toggle');
+
+              // setTimeout(function(){ 
+              //   location.reload();
+              // }, 600);
+
+            }else if(data.success == false){
+              toastr.success(data.msg);
+            }
+          },
+          error: function(data){
+            toastr.error(data.msg);
+          }
+        });
+  });
+
+});
