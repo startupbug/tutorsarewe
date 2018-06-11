@@ -1,58 +1,103 @@
 @extends('dashboard.dashboard-app')
 @section('content')
 <div class="container-fluid remove_padding bg_color_gray">
-	@include('dashboard.partials.dashboard-sidebar')
+   @include('dashboard.partials.dashboard-sidebar')
+   <div class="col-md-9 f_padding bg_color">
+      @include('partials.error_section')
+      <div class="col-md-9">
+         <div class="edit_profile">
+            <h3 class="f_profile_content">Booking Information</h3>
+         </div>
+      </div>
+      <!-- <div class="col-md-3">
+         <a href="{{route('edit_dashboard')}}" class="btn btn-default f_view_edit">EDIT</a>
+      </div> -->
+      <div class="col-md-12">
+         <p class="f_text">
+           <!--  {{ isset($user->bio) ? $user->bio : '' }} -->
+         </p>
+      </div>
+      <div class="col-md-6">
+         <form>
+            <div class="form-group profile_form account_view">
+               <label>Title</label>
+               <br>
+               <p class="text_aaccountview">{{ isset($tutor_earning_detail->title) ? $tutor_earning_detail->title : '-' }}</p>
+            </div>
 
-	<div class="edit_profile">
-		<h3 class="f_profile_content text-center">Tutor Earnings</h3>
-	</div>
-	
-	<div class="col-md-9">
-		@include('partials.error_section')
-		<div class="row padding_top">
-			<div class="col-md-12">
-				<table class="data_table_apply display" width="100%" data-page-length="10" class="table table-dark">
-					<thead>
-						<tr>
-							
-							<th>booking id</th>
-							<th>title</th>
-							<th>details</th>
-							<th>student</th>
-							
-							<th>subject</th>
-							<th>type</th>
-							
-							<th>amount</th>
-						
-							<th>Date</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-							
-						<tr>
-							
-							<td>{{ $tutor_earnings->booking_id }}</td>
-							<td>{{ $tutor_earnings->title }}</td>
-							<td>{{ $tutor_earnings->details }}</td>
-							<td><a href="{{route('tutor_profile',$tutor_earnings->student_id)}}">{{ $tutor_earnings->first_name }}</a></td>
-		
-							<td>{{ $tutor_earnings->subject }}</td>
-							<td>{{ $tutor_earnings->type }}</td>
-							
-							<td>{{ $tutor_earnings->amount }}</td>
-							
-							<td>{{ $tutor_earnings->date }}</td>
-							<td>
-								<a href="{{ route('tutor_earnings_details', ['id' => $tutor_earnings->booking_id]) }}" class="btn a_href_btn">View Detail</a>
-							</td>
-						</tr>
-						
-					</tbody>
-				</table>
+            <div class="form-group profile_form account_view">
+               <label>Booking date </label>
+               <br>
+               <p class="text_aaccountview">{{ isset($tutor_earning_detail->date) ? $tutor_earning_detail->date : '-' }}</p>
+            </div>
+
+            <div class="form-group profile_form account_view">
+               <label>Lesson hours </label>
+               <br>
+               <p class="text_aaccountview">{{ isset($tutor_earning_detail->lesson_hours) ? $tutor_earning_detail->lesson_hours : '-' }}</p>
+            </div>
+
+			<div class="form-group profile_form account_view">
+				<label>Booking details </label>
+				<br>
+				<p class="text_aaccountview">{{ isset($tutor_earning_detail->details) ? $tutor_earning_detail->details : '-' }}</p>
 			</div>
-		</div>
-	</div>
+
+            <div class="form-group profile_form account_view">
+               <label>Amount <span></span></label>
+               <br>
+               <p class="text_aaccountview">{{ isset($tutor_earning_detail->amount) ? $tutor_earning_detail->amount : '-' }}</p>
+            </div>
+
+            <div class="form-group profile_form account_view">
+               <label>Lesson Type </label>
+               <br>
+               <p class="text_aaccountview">{{ isset($tutor_earning_detail->type) ? $tutor_earning_detail->type : '-' }}</p>
+            </div>                       
+            <!--  <div class="form-group profile_form account_view">
+               <label>Password  (Must Be Atleast 6 Characters):</label>
+               <br>
+               <p class="text_aaccountview">********</p>
+               </div>
+
+               <div class="form-group profile_form account_view">
+               <label>Confirm Password </label>
+               <br>
+               <p class="text_aaccountview">********</p>
+
+               </div> -->
+            <div class="clearfix"></div>
+         </form>
+      </div>
+      <div class="col-md-6">
+            <div class="form-group account_f_form view_f">
+               <label>Student</label>
+               <br>
+               <p class="text_aaccountview">{{ isset($tutor_earning_detail->first_name) ? $tutor_earning_detail->first_name : '-' }}</p>
+            </div>      
+            <div class="form-group account_f_form view_f">
+               <label>Subject</label>
+               <br>
+               <p class="text_aaccountview">{{ isset($tutor_earning_detail->subject) ? $tutor_earning_detail->subject : '-' }}</p>
+            </div>
+            <div class="form-group account_f_form view_f">
+               <label>Booking Status</label>
+               <br>
+               <p class="text_aaccountview">{{ isset($tutor_earning_detail->status) ? $tutor_earning_detail->status : '-' }}</p>
+            </div>
+			<div class="form-group profile_form account_view">
+				<label>Booking Location </label>
+				<br>
+				<p class="text_aaccountview">{{ isset($tutor_earning_detail->location) ? $tutor_earning_detail->location : '-' }}</p>
+			</div>
+
+			<div class="form-group profile_form account_view">
+				<label>Booking Address </label>
+				<br>
+				<p class="text_aaccountview">{{ isset($tutor_earning_detail->address) ? $tutor_earning_detail->address : '-' }}</p>
+			</div>			
+            <div class="clearfix"></div>
+      </div>
+   </div>
 </div>
 @endsection
