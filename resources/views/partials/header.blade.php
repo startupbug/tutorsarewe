@@ -20,6 +20,7 @@
       <!-- UI Jquery -->
       <link href="{{ asset('public/assets/css/bootstrap-slider.min.css') }}" rel="stylesheet">
       <!-- Animate -->
+      <link href="{{ asset('public/assets/css/alertify.min.css') }}" rel="stylesheet">
       <link href="{{ asset('public/assets/css/animate.css') }}" rel="stylesheet">
       <link href="{{ asset('public/assets/css/alertify.min.css') }}" rel="stylesheet">
       <!-- Owl Slider -->
@@ -67,7 +68,7 @@
                <div class="top-header">
                   <ul class="top-header-nav">
                      <li><i class="fa fa-phone f_phone" aria-hidden="true"></i>:  1-877-3- TUTORS 1877-388-8677</li>
-                     <li class="f_right"><i class="fa fa-search f_phone"></i><a href="{{route('tutors_listing')}}">: Search For Tutors</a></li>
+                     <a href="{{route('tutors_listing')}}"><li class="f_right"><i class="fa fa-search f_phone"></i>: Search For Tutors</a></li>
                      @if(!Auth::check())
                            <li class="f_right"><i class="fa fa-user f_phone"></i><a href="{{route('signin')}}">: Login</a>/<a href="{{route('signup')}}">Register</a></li>
                      @endif

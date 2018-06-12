@@ -53,15 +53,14 @@ class ProfileController extends Controller
         $this->validate($request, [
             'first_name' => 'required|string|max:255',
             'last_name'=> 'required|string|max:255',
-            'bio'=> 'string|max:50|min:10',
-            'address'=> 'string|max:255',
-            'zipcode'=> 'alpha_num|max:10',
-            'countryCode'=> 'numeric|max:255',
-            'phonenum1'=> 'numeric',
-            'tution_per_hour' => 'numeric',
-            'age' => 'numeric',
-            'qualifications' => 'string|max:15',
-            'qualification_from' => 'string|max:15',
+            'bio'=> 'required|string|max:50|min:10',
+            'address'=> 'required|string|max:255',
+            'zipcode'=> 'required|alpha_num|max:10',
+            'countryCode'=> 'required|numeric',
+            'phonenum1'=> 'required|numeric',
+            'age' => 'required|numeric',
+            'qualifications' => 'required|string|max:15',
+            'qualification_from' => 'required|string|max:15',
         ]); 
 
 
@@ -73,7 +72,7 @@ class ProfileController extends Controller
 	    	$user->last_name = $request->input('last_name');
 	    	$user->phone_no = $request->input('countryCode').$request->input('phonenum1');
 
-            // dd($request->input());
+             // dd($user->phone_no);
 	    	
             //Update Profile
 	    	$profile_array = [ 'tution_per_hour' => $request->input('tution_per_hour'),

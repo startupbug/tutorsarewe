@@ -115,6 +115,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/find-job-detail', 'JobController@find_tutor_detail')->name('find_tutor_detail');
 	//Post Job request page
 	Route::post('/request-job', 'JobController@request_job')->name('request_job');
+	Route::post('/post_rating', 'JobController@post_rating')->name('post_rating');
 
 	//Student Reply to tutor on Student Job
 	Route::post('/request-reply_tutor', 'JobController@reply_tutor')->name('reply_tutor');

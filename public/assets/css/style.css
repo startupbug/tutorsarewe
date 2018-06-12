@@ -426,7 +426,7 @@ p.f_per {
     line-height: 20px;
 }
 
-.btn_check .btn {
+.btn_check a {
     background-color: #ed7275;
     color: white;
     font-size: 16px;
