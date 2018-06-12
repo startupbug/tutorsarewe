@@ -235,23 +235,43 @@
                   <ul class="nav">
                      <li class="nav__item">
                         <a href="#" class="nav__item-link">
-                        <span class="nav__item-text"><img src="assets/images/profile_img1.jpg">No subscriptions or upfront
+                        <span class="nav__item-text"><img src="{{asset('public/assets/images/profile_img1.jpg')}}">No subscriptions or upfront
                         payments</span>
                         </a>   
                      </li>
                      <li class="nav__item">
                         <a href="#" class="nav__item-link">
-                        <span class="nav__item-text"><img src="assets/images/profile_img2.jpg">Only pay for the time you
+                        <span class="nav__item-text"><img src="{{asset('public/assets/images/profile_img2.jpg')}}">Only pay for the time you
                         need</span>
                         </a>   
                      </li>
                      <li class="nav__item">
                         <a href="#" class="nav__item-link">
-                        <span class="nav__item-text"><img src="assets/images/profile_img3.jpg">Find the right fit, or your first
+                        <span class="nav__item-text"><img src="{{asset('public/assets/images/profile_img3.jpg')}}">Find the right fit, or your first
                         hour is free</span>
                         </a>   
                      </li>
                   </ul>
+                   <ul class="nav">
+                    <li class="nav__item">
+                       <a href="#" class="nav__item-link">
+                       <span class="nav__item-text"><img src="{{asset('public/assets/images/profile_img1.jpg')}}">No subscriptions or upfront
+                       payments</span>
+                       </a>   
+                    </li>
+                    <li class="nav__item">
+                       <a href="#" class="nav__item-link">
+                       <span class="nav__item-text"><img src="{{asset('public/assets/images/profile_img2.jpg')}}">Only pay for the time you
+                       need</span>
+                       </a>   
+                    </li>
+                    <li class="nav__item">
+                       <a href="#" class="nav__item-link">
+                       <span class="nav__item-text"><img src="{{asset('public/assets/images/profile_img3.jpg')}}">Find the right fit, or your first
+                       hour is free</span>
+                       </a>   
+                    </li>
+                 </ul>
                </div>
             </div>
             @if(Auth::check())
@@ -309,7 +329,7 @@
                 <div class="modal-body">
                       <div class="form-group">
                         <label for="task">Message Description</label>
-                          <textarea class="form-control" name="description"></textarea>
+                          <textarea class="form-control" name="description" required=""></textarea>
                       </div>           
                 </div>
                 <!-- Modal Footer -->

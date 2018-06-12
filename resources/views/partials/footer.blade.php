@@ -45,14 +45,13 @@
             <div class="col-md-8 col-sm-12 col-xs-12">
                <h3 class="f_get">FIND A TUTOR FAST.GET OUR APP.</h3>
                <p class="f_sed">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque<br>            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore </p>
-               <form action="{{route('subscribe')}}" method="post">
+               <form action="{{route('subscribe')}}" method="post" id="subscribe_1">
                 {{csrf_field()}}
                   <div class="form-group">
-                     <input type="email"  class="form-control f_form" name="email" id="usr" placeholder="Enter Email Address" required>
+                     <input type="email"  class="form-control f_form" name="email" id="usr_email_1" placeholder="Enter Email Address" required>
                   </div>
-                    <input type="submit" name="submit" class="btn_check" value="SEND A LINK">
                   <div class="btn_check">
-                     <a href="">SEND A LINK</a>
+                     <button type="submit" name="submit" class="btn btn-default f_color button_tour">SEND A LINK</button>
                      <i class="fa fa-play f_play"></i><span class="f_icon1">Google Play</span>
                      <i class="fa fa-mobile f_play" aria-hidden="true"></i><span class="f_icon1">App Store</span>
                   </div>
@@ -227,6 +226,7 @@
 
 <!-- Custom app -js -->
 <script src="{{ asset('public/assets/js/custom-app.js') }}"></script>
+
 
 <!-- Toaster Alert Files -->
 <script src="{{ asset('public/admin/js/toastr.min.js') }}"></script>

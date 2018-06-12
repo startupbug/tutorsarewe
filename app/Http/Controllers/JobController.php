@@ -9,6 +9,7 @@ use App\Job_board;
 use App\Chat;
 use App\Chat_message;
 use App\Subject;
+use App\Review;
 
 class JobController extends Controller
 {
@@ -76,22 +77,44 @@ class JobController extends Controller
                                 ->first();
 
       //Getting Tutors responses on this Job
-      $data['tutor_responses'] = Job_request::select('job_boards.id as jobboard_id', 'users.first_name' , 'profiles.bio', 'profiles.tution_per_hour', 'job_requests.tutor_id', 'job_requests.description', 'profiles.profile_pic', 'bookings.id as booking_id')
+      $data['tutor_responses'] = Job_request::select('job_boards.id as jobboard_id', 'users.first_name' , 'profiles.bio', 'profiles.tution_per_hour', 'job_requests.tutor_id', 'job_requests.description','job_requests.job_id', 'profiles.profile_pic', 'bookings.id as booking_id','reviews.comment','reviews.rating','reviews.job_id as current_job_id','reviews.student_id as current_student_id','reviews.tutor_id as current_tutor_id')
                                         ->leftjoin('job_boards', 'job_boards.id', '=', 'job_requests.job_id')
+                                         ->leftjoin('reviews', 'reviews.job_id', '=', 'job_requests.job_id')
                                         ->leftjoin('users', 'users.id', '=', 'job_requests.tutor_id')
                                         ->leftjoin('profiles', 'profiles.user_id', '=', 'users.id')
                                         ->leftjoin('bookings', 'bookings.job_id', '=', 'job_boards.id')
                                         ->where('job_requests.job_id', $id)
                                         ->get();
-
       return view('dashboard.job.post-job-detail')->with($data);
     }
 
 
     /** Tutor Job Methods **/
 
+    public function post_rating(Request $request){
+     try {
+      if (isset($request->my_id) && isset($request->job_id) && isset($request->tutor_id) ){        
+          $store = new Review;
+          $store->tutor_id = $request->tutor_id;
+          $store->comment = $request->chat_message;      
+          $store->student_id = $request->my_id;      
+          $store->job_id = $request->job_id;      
+          $store->rating = $request->rate; 
+        if ($store->save()){        
+          return \Response()->Json([ 'status' => 200,'msg'=>'You Have Successfully Rated And Given Your Review About Teacher Skills']);
+        }else{
+          return \Response()->Json([ 'status' => 200,'msg'=>'Something Went Wrong Please Try Again!']); 
+        }     
+      }else{
+        $this->set_session('Please Give The Required Data', false);
+        return redirect()->back();
+      }
+    } catch (QueryException $e) {
+        return \Response()->Json([ 'array' => $e]);
+      }
+    }
     public function get_student_jobs(){
-}
+      }
     //Request Job By Tutor
     public function request_job(Request $request){
 

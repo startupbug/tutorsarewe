@@ -2054,3 +2054,17 @@ button{
 .available {
     background: #0aaf0a;
 }
+
+.close_review_modal{
+    background-color: #ed7275;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: 'ProximaNova-Semibold';
+    text-align: center;
+    width: 28%;
+    margin-top: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 12px;
+    margin-left: 37%;
+}
