@@ -72,11 +72,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 
 	//Listing Of Job Requests
 	Route::get('/job-requests', 'Admin\JobController@index')->name('job_requests');
+	Route::get('/job_boards', 'Admin\JobController@job_boards')->name('job_boards');
 	Route::get('/job-requests-delete/{id}', 'Admin\JobController@delete_job_request')->name('delete_job_request');
+	Route::get('/job-boards-delete/{id}', 'Admin\JobController@delete_job_board')->name('delete_job_board');
 	Route::post('/edit-job-request-data', 'Admin\JobController@edit_job_request')->name('edit_job_request');
 	Route::get('/accept_job_request/{id}/', ["as" => "accept-job-request","uses" => "Admin\JobController@accept_job_request"]);
-	Route::get('/reject_job_request/{id}/', ["as" => "reject-job-request", "uses" => "Admin\JobController@reject_job_request"]);
-
+	
+	Route::get('/accept_job_board/{id}/', ["as" => "accept_job_board","uses" => "Admin\JobController@accept_job_board"]);
+	Route::get('/reject_job_request/{id}/', ["as" => "reject-job-request", "uses" => "Admin\JobController@reject_job_request"]);	
+	Route::get('/reject_job_board/{id}/', ["as" => "reject_job_board", "uses" => "Admin\JobController@reject_job_board"]);
 	// transactions
 	Route::get('transactions', 'Admin\AdminController@transactions')->name('admin_transactions');
 	Route::get('withdraws', 'Admin\AdminController@withdraws')->name('admin_withdraws');
