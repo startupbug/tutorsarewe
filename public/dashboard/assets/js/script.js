@@ -1,10 +1,9 @@
-$(document).ready(function () {
+$(document).ready(function(){
+
   $('body').on( 'click', 'a[href^="#/"]', function() {
     alert( "Thank you for clicking, but that's a demo link." );
     return false;
   });
-});
-$(document).ready(function(){
 
   /* 1. Visualizing things on Hover - See next part for action on click */
   $('#review-stars li').on('mouseover', function(){
@@ -26,7 +25,6 @@ $(document).ready(function(){
     });
   });
 
-
   /* 2. Action to perform on click */
   $('#review-stars li').on('click', function(){
     var onStar = parseInt($(this).data('value'), 10); // The star currently selected
@@ -47,7 +45,37 @@ $(document).ready(function(){
 
   });
 
+  $('[data-toggle="tooltip"]').tooltip();
 
+  $('.custom-tooltip').on('click', function() {
+    var id = $(this).data('id');
+    console.log(id);
+  });
+
+  $('#s-table').on('click', '.create_schedule', function() {
+    var abc = $(this).attr('data-status');
+    if (abc === "0") {
+      $(this).attr('data-status', 1);
+      $(this).attr('title', 'Available');
+      $(this).attr('data-original-title', 'Available');
+      $(this).closest('td').css('background', "#0aaf0a");
+    }
+    if (abc === "1") {
+      $(this).attr('data-status', 2);
+      $(this).attr('title', 'Booked');
+      $(this).attr('data-original-title', 'Booked');
+      $(this).closest('td').css('background', "red");
+    }
+    if (abc === "2") {
+      $(this).attr('data-status', 0);
+      $(this).attr('title', 'Not Available');
+      $(this).attr('data-original-title', 'Not Available');
+      $(this).closest('td').css('background', "transparent");
+    }
+
+    var id = $(this).data('id');
+    // console.log(id);
+  });
 });
 
 
@@ -55,6 +83,5 @@ function responseMessage(msg,ratingValue) {
   $('.success-box').fadeIn(200);
   $('.success-box').removeClass('hidden');
   $('.success-box div.text-message').html("<span>" + msg + "</span>");
-
   $('.review_input').val(ratingValue);
 }

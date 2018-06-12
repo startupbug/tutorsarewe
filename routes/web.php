@@ -172,6 +172,9 @@ Route::get('/tutor-search-ajax/', 'Tutor\TutorController@tutor_search_ajax');
 Route::Post('/contact_tutor_email/', 'Tutor\TutorController@contact_tutor_email')->name('contact_tutor_email');
 
 
-Route::get('lecture_list', function () {
-    return view('dashboard.review.lectures');
+Route::get('scheduling', function () {
+    return view('dashboard.scheduling');
+});
+Route::get('create_schedule', function () {
+    return view('dashboard.create_schedule');
 });
