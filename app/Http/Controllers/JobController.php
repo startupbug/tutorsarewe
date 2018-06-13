@@ -20,22 +20,26 @@ class JobController extends Controller
 
     public function student_postJob_req(Request $request){
 
+         // dd($request->input());
+
           /* Validation */
 
           try{
 
 	    	$job_board = new Job_board();
-	    	$job_board->student_id = Auth::user()->id;
+	    	  
+        $job_board->student_id = Auth::user()->id;
 
 
 
              $job_board->request_status = 0;
 
-             foreach($request->input() as $key => $value){
-               if($key != '_token' && $key != 'student_id' && $key != 'request_status'){
+            foreach($request->input() as $key => $value)
+            {
+              if($key != '_token' && $key != 'student_id' && $key != 'request_status'){
                    $job_board->$key = $value;
-               }
-             }
+              }
+            }
 
 
   	        if($job_board->save()){

@@ -2019,6 +2019,42 @@ button{
   margin: 5px;
 }
 
+.s_table>thead>tr>th {
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    font-family: 'ProximaNovaAlt-Regular' !important;
+}
+.s_table>thead>tr>th:last-child {
+    border-right: 0px solid #ddd;
+}
+.s_table>tbody>tr>td {
+    padding: 0px;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'ProximaNova-Semibold' !important;
+}
+.s_table>tbody>tr>td:last-child {
+    border-right: 0px solid #ddd;
+}
+.custom-tooltip{
+    float: left;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+}
+.create_schedule{
+    float: left;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+}
+.available {
+    background: #0aaf0a;
+}
+
 .close_review_modal{
     background-color: #ed7275;
     color: #ffffff;

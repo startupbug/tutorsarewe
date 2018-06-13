@@ -128,13 +128,13 @@
                <div class="col-md-7 border_search">
                   <h3 class="search_name">{{$value->first_name}} {{$value->last_name}}</h3>
                   <h3 class="f_course">
-                     @foreach($tutor_subjects[$value->id] as $subject)
+                     @foreach($tutor_subjects[$value->user_id] as $subject)
                         {{$subject->subject->subject}}, 
                      @endforeach                    
                   </h3>
-                  <p class="f_findcontent">  @if(isset($value->profile->bio)){{$value->profile->bio}}@endif
+                  <p class="f_findcontent">  @if(isset($value->bio)){{$value->bio}}@endif
                   </p>
-                  <a href="{{route('tutor_profile',['id' => $value->id])}}" class="f_detail">Read More</a>
+                  <a href="{{route('tutor_profile',['id' => $value->user_id])}}" class="f_detail">Read More</a>
                </div>
                <div class="col-md-3">
                   <h3 class="search_name"> @if(isset($value->profile->tution_per_hour))${{$value->profile->tution_per_hour}}/hour @endif</h3>

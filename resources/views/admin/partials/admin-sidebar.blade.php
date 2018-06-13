@@ -140,6 +140,12 @@
           </a>
         </li>
 
+        <li class="treeview">
+          <a href="{{route('job_boards')}}">
+            <i class="fa fa-share"></i> <span>Job Boards</span>
+          </a>
+        </li>
+
     @endif
 
       </ul>
