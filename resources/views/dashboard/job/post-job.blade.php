@@ -50,7 +50,7 @@
 		                 <input type="radio" name="lesson_type" id="lesson_type"  value="3" class="offline">
 		                 <span class="s_checkmark"></span>
 		               </label>
-		             </div>
+		            </div>
 					 </div>
            <div class="form-group profile_form s_profile_form form_address hidden">
 						 <label>Address <span>*</span></label>
@@ -60,9 +60,7 @@
 					 <div class="form-group profile_form s_profile_form">
 						 <label>Details <span>*</span></label>
 						 <br>
-
-             			<textarea name="details" rows="8" cols="80" class="form-control span3" required></textarea>
-
+             	<textarea name="details" rows="8" cols="80" class="form-control span3" required></textarea>
 					 </div>
 					 <div class="form-group">
 					 	<input type="submit" value="Post" class="btn s_save">
