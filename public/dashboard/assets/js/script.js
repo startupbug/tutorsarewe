@@ -54,27 +54,55 @@ $(document).ready(function(){
 
   $('#s-table').on('click', '.create_schedule', function() {
     var abc = $(this).attr('data-status');
+    var status;
     if (abc === "0") {
+      status = 1;
       $(this).attr('data-status', 1);
       $(this).attr('title', 'Available');
       $(this).attr('data-original-title', 'Available');
       $(this).closest('td').css('background', "#0aaf0a");
     }
     if (abc === "1") {
+      status = 2;
       $(this).attr('data-status', 2);
       $(this).attr('title', 'Booked');
       $(this).attr('data-original-title', 'Booked');
       $(this).closest('td').css('background', "red");
     }
     if (abc === "2") {
+      status = 0;
       $(this).attr('data-status', 0);
       $(this).attr('title', 'Not Available');
       $(this).attr('data-original-title', 'Not Available');
       $(this).closest('td').css('background', "transparent");
     }
 
-    var id = $(this).data('id');
-    // console.log(id);
+    var tutor_id = $(this).data('tutor_id');
+    var time = $(this).data('time');
+    var date = $(this).data('date');
+    var href = $(this).data('href');
+    $.ajaxSetup({
+      headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+    });
+    $.ajax({
+        type: "POST",
+        url: href,
+        data: {'tutor_id': tutor_id,'time':time,'date':date,'status':status},
+        success: function (data) {
+          console.log(data);
+          if(data.status == 200){           
+            alertify.success(data.msg);            
+          }else if(data.status == 201){
+            alertify.warning(data.msg);
+          }else{
+            alertify.warning(data.array.errorInfo[2]);
+          }
+        },
+      error: function (data) {
+        alertify.warning("Oops. something went wrong. Please try again");
+      }
+    });
+
   });
 });
 

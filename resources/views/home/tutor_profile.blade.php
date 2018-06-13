@@ -90,12 +90,13 @@
                   <h3 class="f_bio">Schedule</h3>
                </div>
                <div class="col-md-9">
-                  <h3 class="f_hello">SunMidnight - 1:00 am, 4:00 am - 7:00 am, 8:00 pm - Midnight</h3>
-                  <h3 class="f_hello">MonMidnight - 5:00 am, 11:00 pm - Midnight</h3>
-                  <h3 class="f_hello">TueMidnight - 1:00 am, 4:00 am - 7:00 am, 8:00 pm - 11:00 pm</h3>
-                  <h3 class="f_hello">Wed3:00 am - 7:00 am, 8:00 pm - Midnight</h3>
-                  <h3 class="f_hello">ThuMidnight - 1:00 am, 3:00 am - 7:00 am, 11:00 pm - Midnight</h3>
-                  <h3 class="f_hello">FriMidnight - 1:00 am, 6:00 am - 7:00 am, 8:00 pm - Midnight</h3>
+                  @foreach($tutor_schedule_time as $value)
+                    <h3 class="f_hello">{{date('d-F-Y', strtotime($value->date))}} 
+                      @foreach($tutor_schedule_date[$value->id] as $time)
+                      - {{date('H:i', strtotime($time->time))}}
+                      @endforeach
+                    </h3>
+                  @endforeach
                </div>
                <div class="clearfix"></div>
                <hr>

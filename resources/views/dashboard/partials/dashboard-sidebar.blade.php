@@ -67,6 +67,9 @@
           <div class="s_nav_menu">
             <a href="{{route('my_transactions')}}"><i class="fa fa-credit-card f_icon_menu"></i>Transaction</a>
           </div>
+           <div class="s_nav_menu">
+            <a href="{{route('create_schedule')}}"><i class="fa fa-credit-card f_icon_menu"></i>Scheduling</a>
+          </div>
           <div class="s_nav_menu">
             <a href="{{route('my_balance')}}"><i class="fa fa-credit-card f_icon_menu"></i>My Wallet</a>
           </div>

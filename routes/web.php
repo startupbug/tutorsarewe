@@ -176,6 +176,5 @@ Route::Post('/contact_tutor_email/', 'Tutor\TutorController@contact_tutor_email'
 Route::get('scheduling', function () {
     return view('dashboard.scheduling');
 });
-Route::get('create_schedule', function () {
-    return view('dashboard.create_schedule');
-});
+Route::get('create_schedule','Tutor\SchedulingController@create_schedule')->name('create_schedule');
+Route::post('post_scheduling','Tutor\SchedulingController@post_scheduling')->name('post_scheduling');

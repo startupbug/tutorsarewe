@@ -17,13 +17,12 @@ use Mail;
 use DB;
 use App\Available_day;
 use App\Booking;
-
+use Carbon\Carbon;
+use App\Schedule;
 class TutorController extends Controller
 {
 	//Search tutor page & Tutor listing in Front Navbar Find A Tutor    
     public function index(Request $request){
-
-
         $args['days'] = Available_day::get();
 
         $take = 10;
@@ -270,6 +269,15 @@ class TutorController extends Controller
     }
     //Tutor profile
     public function tutor_profile($id){
+        for ($i = 0; $i < 7; $i++) {
+            $day[] = Carbon::now()->addDays($i)->format('Y-m-d');
+        }
+        $time_array = array();
+        $time = "00:00:00";
+        for ($i = 0; $i < 24; $i++) {
+            $time = date("H:i" ,strtotime($time . " + 1 hour"));
+            $time_array[] = $time;
+        }
         $args['tutor_info'] = User::find($id); 
         $args['tutor_subjects'] = Tutor_subject::where('tutor_id',$id)->get();
         $subjects =array();
@@ -277,7 +285,27 @@ class TutorController extends Controller
             $subjects[] = $value->subject_id;
         }
         $args['recommended_users']  = User::leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')->select('users.first_name','users.last_name')->whereIn('tutor_subjects.subject_id',$subjects)->where('users.id','!=',$id)->groupBy('users.id')->get();
-        return view('home.tutor_profile')->with($args);
+        $args['tutor_schedule'] = Schedule::where('tutor_id','=',$id)
+                                            ->where('status',1)
+                                            ->orderBy('date','ASC')
+                                            ->orderBy('time','ASC')                        
+                                            ->limit(7)
+                                            ->get();
+        
+        $args['tutor_schedule_time'] = Schedule::where('tutor_id','=',$id)
+                                            ->groupBy('date')
+                                            ->where('status',1)
+                                            ->orderBy('date','ASC')
+                                            ->get();
+
+        foreach ($args['tutor_schedule_time']  as $key => $value) {
+            $args['tutor_schedule_date'][$value->id] = Schedule::where('tutor_id','=',$id)
+                                                        ->where('date','=',$value->date)
+                                                        ->where('status',1)
+                                                        ->orderBy('time','ASC')
+                                                        ->get();
+        }
+        return view('home.tutor_profile',['day'=>$day,'time_array'=>$time_array])->with($args);
     }
     public function contact_tutor_email(Request $request){
         $email_data['name'] = $request->tutor_name;        
