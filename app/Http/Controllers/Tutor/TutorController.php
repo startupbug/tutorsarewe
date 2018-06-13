@@ -21,7 +21,7 @@ use Carbon\Carbon;
 use App\Schedule;
 class TutorController extends Controller
 {
-	//Search tutor page & Tutor listing in Front Navbar Find A Tutor    
+    //Search tutor page & Tutor listing in Front Navbar Find A Tutor    
     public function index(Request $request){
         $args['days'] = Available_day::get();
 
@@ -33,10 +33,10 @@ class TutorController extends Controller
             $first_name = $words[0];
             $last_name = end($words);
             
-            $args['listing'] = User::where('role_id',3)
-            ->where('verified',1)                                    
-            ->where('first_name','LIKE','%'.$first_name.'%')
-            ->orWhere('last_name','LIKE','%'.$last_name.'%')
+            $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id')->leftJoin('profiles','profiles.user_id','=','users.id')->where('users.role_id',3)
+            ->where('users.verified',1)                                    
+            ->where('users.first_name','LIKE','%'.$first_name.'%')
+            ->orWhere('users.last_name','LIKE','%'.$last_name.'%')
             ->whereExists(function($query)
             {
                 $query->select(DB::raw(1))
@@ -121,7 +121,7 @@ class TutorController extends Controller
             $myString = $request->tution_per_hour;
             $myArray = explode(',', $myString);
 
-            $query = "SELECT * FROM `users` LEFT JOIN `profiles` ON `users`.`id` = `profiles`.`user_id` LEFT JOIN `tutor_subjects` ON `tutor_subjects`.`tutor_id` = `users`.`id` WHERE `users`.`role_id` = 3 AND `users`.`verified` = 1";
+            $query = "SELECT `users`.*, `profiles`.*, `users`.id as `user_id`  FROM `users` LEFT JOIN `profiles` ON `users`.`id` = `profiles`.`user_id` LEFT JOIN `tutor_subjects` ON `tutor_subjects`.`tutor_id` = `users`.`id` WHERE `users`.`role_id` = 3 AND `users`.`verified` = 1";
             $query = $request->online_status ? $query." AND `profiles`.`online_status` = {$request->online_status}" : $query;
             $query = $request->rating ? $query." AND `profiles`.`rating` >= {$request->rating}" : $query;
             $query = $request->address ? $query." AND `profiles`.`address` LIKE '%{$request->address}%'" : $query;
@@ -133,7 +133,7 @@ class TutorController extends Controller
 
 
         }else{
-            $args['listing'] = User::where('role_id',3)
+            $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id')->leftJoin('profiles','profiles.user_id','=','users.id')->where('role_id',3)
             ->where('verified',1)
             ->whereExists(function($query)
             {
@@ -143,10 +143,11 @@ class TutorController extends Controller
             })
             ->limit($take)
             ->get();
+            // dd($args['listing']);
         }
 
         foreach ($args['listing'] as $key => $tutor_subject) {
-            $args['tutor_subjects'][$tutor_subject->id] = Tutor_subject::where('tutor_subjects.tutor_id',$tutor_subject->id)->get();
+            $args['tutor_subjects'][$tutor_subject->user_id] = Tutor_subject::where('tutor_subjects.tutor_id',$tutor_subject->id)->get();
         }
 
         $args['count'] = count($args['listing']);

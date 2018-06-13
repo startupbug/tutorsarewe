@@ -79,15 +79,23 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard_index');
 
-	Route::get('/subjects','DashboardController@subjects')->name('subjects');
-	Route::post('/tutor_subject','DashboardController@tutor_subject')->name('tutor_subject');
+	Route::group(['middleware' => 'isTutor'], function () {
 
-	//Delete subject
-	Route::get('/delete-subject/{id}','DashboardController@subjDel')->name('subjDel');
+		//Get tutor subjects
+		Route::get('/subjects','DashboardController@subjects')->name('subjects');
+		
+		//insert tutor selected subject
+		Route::post('/tutor_subject','DashboardController@tutor_subject')->name('tutor_subject');
+
+		//Delete subject
+		Route::get('/delete-subject/{id}','DashboardController@subjDel')->name('subjDel');
+
+	});
 
 	Route::get('/edit-profile', 'ProfileController@edit_dashboard')->name('edit_dashboard');
 
 	Route::post('/profile_register/ajax',array('as'=>'profile_register.ajax','uses'=>'ProfileController@editcityForCountryAjax'));
+	
 	//Edit profile post
 	Route::post('/edit_profile', 'ProfileController@edit_profile')->name('edit_profile');
 
