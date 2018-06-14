@@ -286,8 +286,13 @@ class TutorController extends Controller
             $subjects[] = $value->subject_id;
         }
         $args['recommended_users']  = User::leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')->select('users.first_name','users.last_name')->whereIn('tutor_subjects.subject_id',$subjects)->where('users.id','!=',$id)->groupBy('users.id')->get();
+        
+        $from = date('Y-m-d');
+        $to = date( "Y-m-d", strtotime( "$from +7 day" ) );
+        
         $args['tutor_schedule'] = Schedule::where('tutor_id','=',$id)
                                             ->where('status',1)
+                                            ->whereBetween('date', array($from, $to))
                                             ->orderBy('date','ASC')
                                             ->orderBy('time','ASC')                        
                                             ->limit(7)
@@ -295,6 +300,7 @@ class TutorController extends Controller
         
         $args['tutor_schedule_time'] = Schedule::where('tutor_id','=',$id)
                                             ->groupBy('date')
+                                            ->whereBetween('date', array($from, $to))
                                             ->where('status',1)
                                             ->orderBy('date','ASC')
                                             ->get();
@@ -303,6 +309,7 @@ class TutorController extends Controller
             $args['tutor_schedule_date'][$value->id] = Schedule::where('tutor_id','=',$id)
                                                         ->where('date','=',$value->date)
                                                         ->where('status',1)
+                                                        ->whereBetween('date', array($from, $to))
                                                         ->orderBy('time','ASC')
                                                         ->get();
         }
