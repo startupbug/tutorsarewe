@@ -72,6 +72,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 
 	//Listing Of Job Requests
 	Route::get('/job-requests', 'Admin\JobController@index')->name('job_requests');
+	Route::get('/manage-reviews', 'Admin\AdminController@profile_reviews')->name('profile_reviews');
+	Route::get('/review-delete/{id}', 'Admin\AdminController@review_delete')->name('review_delete');
+
+	Route::get('/accept_review/{id}/', ["as" => "accept-review","uses" => "Admin\AdminController@accept_review"]);
+	Route::get('/reject_review/{id}/', ["as" => "reject-review", "uses" => "Admin\JobController@reject_review"]);	
+
+
 	Route::get('/job_boards', 'Admin\JobController@job_boards')->name('job_boards');
 	Route::get('/job-requests-delete/{id}', 'Admin\JobController@delete_job_request')->name('delete_job_request');
 	Route::get('/job-boards-delete/{id}', 'Admin\JobController@delete_job_board')->name('delete_job_board');

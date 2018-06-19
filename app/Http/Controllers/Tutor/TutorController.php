@@ -271,7 +271,7 @@ class TutorController extends Controller
     }
     //Tutor profile
     public function tutor_profile($id){
-
+        
         for ($i = 0; $i < 7; $i++) {
             $day[] = Carbon::now()->addDays($i)->format('Y-m-d');
         }
@@ -373,15 +373,15 @@ class TutorController extends Controller
         $email_data['email'] = $request->tutor_email;
         $email_data['description'] = $request->description;
         if (isset($email_data)) {            
-         Mail::send('emails.contact_tutor',['email_data'=>$email_data] , function ($message) use($email_data){
-          $message->from($email_data['email'], 'Contact Email - TutorAreUs');
-          $message->to(env('MAIL_USERNAME'))->subject('TutorAreUs - Contact Email');
-      });
-     }
-     $this->set_session('You Have Successfully Send An Email', true);
-     return redirect()->back();
- }
- public function tutor_earnings(){
+           Mail::send('emails.contact_tutor',['email_data'=>$email_data] , function ($message) use($email_data){
+              $message->from($email_data['email'], 'Contact Email - TutorAreUs');
+              $message->to(env('MAIL_USERNAME'))->subject('TutorAreUs - Contact Email');
+          });
+       }
+       $this->set_session('You Have Successfully Send An Email', true);
+       return redirect()->back();
+   }
+   public function tutor_earnings(){
     $data['tutor_earnings'] = Tutor_earning::join('bookings', 'tutor_earnings.booking_id', '=', 'bookings.id')
     ->leftjoin('job_boards', 'job_boards.id', '=', 'bookings.job_id')
     ->leftjoin('subjects','job_boards.subject_id','=','subjects.id')
