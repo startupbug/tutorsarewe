@@ -179,3 +179,6 @@ Route::get('scheduling', function () {
 Route::get('create_schedule', function () {
     return view('dashboard.create_schedule');
 });
+Route::get('chat_box', function () {
+    return view('dashboard.chat_box');
+});
