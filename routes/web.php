@@ -48,6 +48,8 @@ Route::get('/logout',  'AuthenticationController@logout_user')->name('logout_use
 Route::post('/subscribe','HomeController@subscribe')->name('subscribe');
 //How it works
 Route::get('/how-it-works', 'HomeController@how_it_works')->name('how_it_works');
+// lessons_grade
+Route::get('/lessons_grade', 'HomeController@lessons_grade')->name('lessons_grade');
 
 //Tutor find jobs
 Route::get('/find-job', 'HomeController@find_tutor')->name('find_tutor');

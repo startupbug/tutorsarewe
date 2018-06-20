@@ -9,7 +9,7 @@ $('#subscribe_1').on('submit',function(e){
         type: $(this).attr('method'),
         url: $(this).attr('action'),
         data: formData,
-        success: function (data) {          
+        success: function (data) {
           if(data.status == 200){
             alertify.success(data.msg);
           }else if(data.status == 202){

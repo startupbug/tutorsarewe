@@ -848,15 +848,14 @@ h3.about_us {
     font-family: 'Ubuntu-B';
     color: #646464;
     font-size: 28px;
-
     margin-bottom: 15px;
 }
 
-p.about_content {
+/* p.about_content {
     font-size: 18px;
     color: #747474;
     font-family: 'Ubuntu-B';
-}
+} */
 
 p.about_content {
     font-size: 16px;
@@ -1956,4 +1955,72 @@ span.nav__item-text.active {
 .dropdown a:hover {background-color: #ddd}
 
 .show {display:block;}
-</style>
+
+.mcqs_title {
+    font-family: 'ProximaNovaAlt-Regular';
+    font-weight: 600;
+    color: #646464;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.mcqs_content {
+    font-size: 16px;
+    color: #747474;
+    font-family: 'ProximaNovaAlt-Regular';
+    margin-bottom: 25px;
+}
+.mcqs {
+    border: 1px solid #999;
+    padding: 12px;
+    border-radius: 2px;
+    margin-bottom: 8px;
+}
+.mcqs_question {
+    font-size: 16px;
+    color: #747474;
+    padding-bottom: 10px;
+    font-family: 'ProximaNovaAlt-Regular';
+}
+.mcqs_answer {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    color: #747474;
+    font-family: 'ProximaNovaAlt-Regular';
+}
+.button_mcqs {
+    width: 100%;
+    padding: 10px;
+    color: #797979;
+    font-family: 'ProximaNovaAlt-Regular';
+    font-size: 16px;
+    border: 1px solid #c0bfbf;
+    margin-bottom: 15px;
+}
+.button_mcqs.focus, .button_mcqs:focus, .button_mcqs:hover {
+    color: #797979;
+    background: #d9d9d9;
+    text-decoration: none;
+}
+.menu_width {
+    border-radius: 1px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.s_accordion .menu__header-title {
+  color: #8b8b8b;
+  font-family: 'ProximaNovaAlt-Regular';
+}
+
+.s_accordion {
+    cursor: pointer;
+}
+.s_accordion:hover {
+    background-color: #ccc;
+}
+.active{
+  display: block;
+}
+.s_panel {
+    display: none;
+}
