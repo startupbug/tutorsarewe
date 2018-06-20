@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Job_request;
 use DB;
-
+use App\Job_board;
 class JobController extends Controller
 {
 
@@ -61,6 +61,8 @@ class JobController extends Controller
             $this->set_session('Subject couldnot be deleted', false);
             return redirect()->route('job_requests');
         }
+
+
     }
 
     /**
@@ -182,5 +184,48 @@ class JobController extends Controller
             $this->set_session('Page Couldnot be Deleted.'.$e->getMessage(), false);
             return redirect()->route('pages.index'); 
         }
+    }
+
+    public function job_boards()
+    {
+        $args['job_boards'] = Job_board::leftJoin('users','users.id','=','job_boards.tutor_id')
+                                ->select('job_boards.id','users.first_name','users.last_name','job_boards.request_status','job_boards.title','job_boards.details')
+                                ->get();
+        return view('admin.job_board.index')->with($args);
+    }
+
+    public function delete_job_board($id)
+    {
+       //simple job_request delete
+
+        try{
+            $job_board = Job_board::find($id);
+            $job_board = $job_board->delete();
+            if($job_board){
+               $this->set_session('Job Request Successfully Deleted.', true);
+            }else{
+               $this->set_session('Job Request couldnot be deleted', false);
+            }
+            return redirect()->route('job_boards');
+        }catch(\Exception $e){
+            $this->set_session('Subject couldnot be deleted', false);
+            return redirect()->route('job_boards');
+        } 
+    }
+
+    public function reject_job_board($id){
+        DB::table('job_boards')
+            ->where('id', $id)
+            ->update(['request_status' => 0]);         
+        $this->set_session('Job Request Is Rejected', false); 
+        return redirect()->back();
+    }
+
+    public function accept_job_board($id){
+        DB::table('job_boards')
+            ->where('id', $id)
+            ->update(['request_status' => 1]);        
+        $this->set_session('Job Request Is Accepted', true); 
+        return redirect()->back();
     }
 }

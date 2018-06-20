@@ -11,6 +11,7 @@ use App\Activity_log;
 use App\WithdrawWallet;
 use App\Todo;
 use App\Page;
+use App\Review;
 
 class AdminController extends Controller
 {
@@ -73,5 +74,49 @@ class AdminController extends Controller
       }
     }
 
+    public function profile_reviews(){
+      $args['reviews'] = Review::leftJoin('users','users.id','=','reviews.tutor_id')
+                                ->select('users.first_name','users.last_name','reviews.id','reviews.comment','reviews.status')
+                                ->get();
+      return view('admin.reviews.index')->with($args);
+    }
+    public function accept_review($id){
+        // dd($id);
+        DB::table('reviews')
+            ->where('id', $id)
+            ->update(['status' => 1]);        
+        $this->set_session('Review Request Is Accepted', true); 
+        return redirect()->back();
+    }
+    
+    public function reject_review($id){
+        // dd($id);
+        DB::table('reviews')
+            ->where('id', $id)
+            ->update(['status' => 0]);         
+        $this->set_session('Review Request Is Rejected', false); 
+        return redirect()->back();
+    }
 
+    public function review_delete($id)
+    {
+       //simple job_request delete
+        try{
+            $job_request = Review::find($id);
+            $job_request = $job_request->delete();
+            if($job_request){
+               $this->set_session('Review Successfully Deleted.', true);
+                return redirect()->route('profile_reviews');
+            }else{
+               $this->set_session('Review couldnot be deleted', false);
+                return redirect()->route('profile_reviews');
+            }
+            return redirect()->route('profile_reviews');
+        }catch(\Exception $e){
+            $this->set_session('Subject couldnot be deleted', false);
+            return redirect()->route('profile_reviews');
+        }
+
+
+    }
 }

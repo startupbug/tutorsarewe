@@ -18,9 +18,10 @@ use Response;
 class HomeController extends Controller
 {
 	/* Home Page */
-    public function index(){      
-        $data['countries'] = Country::all();
+    public function index(){  
+        
         $data['subjects'] = Subject::all();
+        $data['countries'] = Country::all();
         return view('home.index')->with($data);
     }
 

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 
-class isAdmin
+class IsTutor
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,12 @@ class isAdmin
     public function handle($request, Closure $next)
     {
         if(Auth::check()){
-            if(!Auth::user()->role_id == 1){
-                return redirect()->route('unauthorized');
-            }else{
+                //dd(Auth::user()->role_id);
+            if(Auth::user()->role_id == 3){
                 return $next($request);
+
+            }else{
+                return redirect()->route('unauthorized');        
             }
         }else{
             return redirect()->route('adminlogin_index');

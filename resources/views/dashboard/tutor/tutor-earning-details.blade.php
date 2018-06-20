@@ -9,9 +9,9 @@
             <h3 class="f_profile_content">Booking Information</h3>
          </div>
       </div>
-      <!-- <div class="col-md-3">
+      <!--<div class="col-md-3">
          <a href="{{route('edit_dashboard')}}" class="btn btn-default f_view_edit">EDIT</a>
-      </div> -->
+      </div>-->
       <div class="col-md-12">
          <p class="f_text">
            <!--  {{ isset($user->bio) ? $user->bio : '' }} -->

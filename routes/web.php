@@ -79,15 +79,23 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/dashboard', 'DashboardController@index')->name('dashboard_index');
 
-	Route::get('/subjects','DashboardController@subjects')->name('subjects');
-	Route::post('/tutor_subject','DashboardController@tutor_subject')->name('tutor_subject');
+	Route::group(['middleware' => 'isTutor'], function () {
 
-	//Delete subject
-	Route::get('/delete-subject/{id}','DashboardController@subjDel')->name('subjDel');
+		//Get tutor subjects
+		Route::get('/subjects','DashboardController@subjects')->name('subjects');
+
+		//insert tutor selected subject
+		Route::post('/tutor_subject','DashboardController@tutor_subject')->name('tutor_subject');
+
+		//Delete subject
+		Route::get('/delete-subject/{id}','DashboardController@subjDel')->name('subjDel');
+
+	});
 
 	Route::get('/edit-profile', 'ProfileController@edit_dashboard')->name('edit_dashboard');
 
 	Route::post('/profile_register/ajax',array('as'=>'profile_register.ajax','uses'=>'ProfileController@editcityForCountryAjax'));
+
 	//Edit profile post
 	Route::post('/edit_profile', 'ProfileController@edit_profile')->name('edit_profile');
 
@@ -176,9 +184,9 @@ Route::Post('/contact_tutor_email/', 'Tutor\TutorController@contact_tutor_email'
 Route::get('scheduling', function () {
     return view('dashboard.scheduling');
 });
-Route::get('create_schedule', function () {
-    return view('dashboard.create_schedule');
-});
+
 Route::get('chat_box', function () {
     return view('dashboard.chat_box');
 });
+Route::get('create_schedule','Tutor\SchedulingController@create_schedule')->name('create_schedule');
+Route::post('post_scheduling','Tutor\SchedulingController@post_scheduling')->name('post_scheduling');
