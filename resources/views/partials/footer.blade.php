@@ -293,6 +293,44 @@ console.log(link);
     
    });
 });
+
+
+$(".mcqTestForm").on('submit', function(e){
+        e.preventDefault();
+        var thisScope = $(this);
+        $(this).find('.button_mcqs').hide();
+        var formData = $(this).serialize();
+        console.log(formData);
+        $.ajaxSetup({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+        });
+    
+        $.ajax({
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: formData,
+            success: function(data){
+                //console.log(data);
+                if(data.ans==1){
+                 thisScope.find('[value="'+data.ans_text+'"]').closest('.border_mcqs').addClass('correct');
+                  thisScope.find('.WyzQuizExplanation').show();
+                  thisScope.find('.define_option').html(data.ans_text);
+                  thisScope.find('.mcqs').addClass('mcqs_correct');
+                }else if(data.ans==0){
+                  thisScope.find('.WyzQuizExplanation').show();
+                  thisScope.find('.define_option').html(data.ans_text);
+                  thisScope.find('[value="'+data.wr_text+'"]').closest('.border_mcqs').addClass('incorrect');
+                  thisScope.find('[value="'+data.wr_text+'"]').closest('.border_mcqs').find('.correct_answer').html("Your Answer");
+                  thisScope.find('[value="'+data.ans_text+'"]').closest('.border_mcqs').addClass('correct');
+                  thisScope.find('.mcqs').addClass('mcqs_incorrect');
+                }
+            },
+            error: function(data){
+                toastr.error("Something went wrong, Please Try again.");
+            }
+        });    
+    });
+
 </script>
 
 <script type="text/javascript">

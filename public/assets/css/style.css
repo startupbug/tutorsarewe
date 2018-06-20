@@ -2024,3 +2024,35 @@ span.nav__item-text.active {
 .s_panel {
     display: none;
 }
+.mcqs_correct{
+    background-color: #abffa6;
+}
+.correct_answer{
+    display: none;
+}
+.border_mcqs{
+    padding: 0 0 0px 5px;
+}
+.correct {
+    border: 1px solid #88b485;
+}
+.correct .correct_answer{
+    display: block;
+    font-family: 'ProximaNovaAlt-Regular';
+}
+.incorrect .correct_answer{
+    display: block;
+    font-family: 'ProximaNovaAlt-Regular';
+}
+.mcqs_incorrect{
+    background-color: #ffa6a6;
+}
+.WyzQuizExplanation {
+    display: none;
+    background-color: #fceaa7;
+    padding: 8px;
+    font-family: 'ProximaNovaAlt-Regular';
+}
+.WyzQuizExplanation p{
+    font-family: 'ProximaNovaAlt-Regular';
+}

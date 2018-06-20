@@ -8,4 +8,7 @@ class Subject extends Model
 {
 	 protected $table = 'subjects';
 
+	public function grade(){
+		return $this->hasOne('App\Grade');
+	}
 }
