@@ -63,16 +63,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 
 	//Edit subject-data 
 	Route::post('/edit-subj-data', 'Admin\SubjectController@edit_subj_data')->name('edit_subj_data');
+	Route::post('/edit-grade-data', 'Admin\SubjectController@edit_grade_data')->name('edit_grade_data');
 
 	//Edit-add data admin subject
 	Route::post('/add-edit-subjectdata', 'Admin\SubjectController@subject_submit')->name('subject_submit');
+	Route::post('/add-edit-gradedata', 'Admin\SubjectController@grade_submit')->name('grade_submit');
 
 	//Subject delete
 	Route::get('/subject-delete/{id}', 'Admin\SubjectController@delete_subject')->name('delete_subject');
+	Route::get('/grade-delete/{id}', 'Admin\SubjectController@delete_grade')->name('delete_grade');
 
 	//Listing Of Job Requests
 	Route::get('/job-requests', 'Admin\JobController@index')->name('job_requests');
 	Route::get('/manage-reviews', 'Admin\AdminController@profile_reviews')->name('profile_reviews');
+	Route::get('/manage-grades', 'Admin\AdminController@profile_grades')->name('profile_grades');
 	Route::get('/review-delete/{id}', 'Admin\AdminController@review_delete')->name('review_delete');
 
 	Route::get('/accept_review/{id}/', ["as" => "accept-review","uses" => "Admin\AdminController@accept_review"]);

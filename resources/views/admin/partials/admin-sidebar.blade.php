@@ -152,6 +152,12 @@
           </a>
         </li>
 
+        <li class="treeview">
+          <a href="{{route('profile_grades')}}">
+            <i class="fa fa-share"></i> <span>Grades</span>
+          </a>
+        </li>
+
         <!-- Tests -->
         <li class="treeview">
         <a href="#">
@@ -165,6 +171,7 @@
           <!-- <li><a href="{{route('roles.index')}}"><i class="fa fa-circle-o"></i> Role Management</a></li> -->
         </ul>
       </li>
+
     @endif
 
       </ul>
