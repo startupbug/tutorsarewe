@@ -119,4 +119,11 @@ class AdminController extends Controller
 
 
     }
+
+    public function profile_grades(){
+      $args['grades'] = DB::table('grades')
+                                ->get();
+                                // dd($args['grades']);
+      return view('admin.grades.index')->with($args);
+    }
 }

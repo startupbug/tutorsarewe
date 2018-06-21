@@ -204,3 +204,8 @@ Route::get('/test/{gradeId}/{subjectId}', 'Test\TestController@test_mcq_index')-
 
 //Check Mcq
 Route::post('/check-answer', 'Test\TestController@check_answer')->name('check_answer');
+
+
+Route::get('mcqs', function () {
+    return view('admin..mcqs.create');
+});
