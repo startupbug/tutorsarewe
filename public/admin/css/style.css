@@ -125,3 +125,35 @@
 .box.box-primary.user_info p{
     padding: 5px 0px;
 }
+.mcqs_label{
+    width: 10%;
+}
+.mcqs_answer{
+    display: inline;
+    width: 70%;
+}
+.mcqs_check{
+  display: inline;
+  width: 20%;
+}
+.mcqs_check .fa{
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.mcqs_answer_add{
+    display: inline;
+    width: 70.5%;
+}
+.mcqs_check_add{
+  display: inline;
+  width: 20%;
+}
+.mcqs_check_add .fa {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.add_answer .row{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
