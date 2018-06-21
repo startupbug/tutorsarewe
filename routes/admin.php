@@ -94,7 +94,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 	Route::get('transaction_details/{id}', 'Admin\AdminController@transaction_detail')->name('admin_transaction_detail');	
 
 	//Test Routes
-	Route::get('/add-test', 'Admin\AdminController@transactions')->name('admin_transactions');	
+	Route::get('/add-test', 'Admin\TestController@add_testindex')->name('admin_addtest_index');
+	
+	//Get grade subjects
+	Route::post('/get-subjects', 'Admin\TestController@get_grade_subjects')->name('get_grade_subjects');
+
+	//Post test mcq
+	Route::post('/add-test', 'Admin\TestController@admin_addtest')->name('admin_addtest');	
 });
 
 	//Admin Login Authentication

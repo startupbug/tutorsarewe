@@ -161,7 +161,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{route('roles.create')}}"><i class="fa fa-circle-o"></i> Add Test</a></li>
+          <li><a href="{{route('admin_addtest_index')}}"><i class="fa fa-circle-o"></i> Add Test </a></li>
           <!-- <li><a href="{{route('roles.index')}}"><i class="fa fa-circle-o"></i> Role Management</a></li> -->
         </ul>
       </li>

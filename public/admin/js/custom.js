@@ -373,6 +373,7 @@ $(document).ready(function(){
 		var question_count = 1;
 		$('#add_question>.row').each(function () {
 			question_count++;
+			$("#ques_count").val(question_count);
 		});
 
 		$(this).closest('#add_question').append('<div class="row question">'+
@@ -389,15 +390,26 @@ $(document).ready(function(){
 						'</div>'+
 					'</div>'+
 					'<div class="row">'+
-						'<div class="col-md-8">'+
+						'<div class="col-md-8 mcq_blank">'+
 							'<label class="mcqs_label">1.</label>'+
-							'<input type="text" name="q'+question_count+'[]" class="form-control mcqs_answer_add">'+
+							'<input type="text" name="q'+question_count+'[]" class="form-control mcqs_answer_add mcqs_answer">'+
 							'<div class="mcqs_check_add">'+
 								'<i class="fa fa-times-circle-o fa-lg"></i>'+
-								'<input type="checkbox" name="q'+question_count+'_check[]">'+
+								'<input type="radio" name="q'+question_count+'_check" class="ques_check" value="1">'+
 							'</div>'+
 						'</div>'+
 					'</div>'+
+
+					'<div class="row">'+
+						'<div class="col-md-8 mcq_blank">'+	
+							'<label class="mcqs_label">2.</label>'+
+							'<input type="text" name="q'+question_count+'[]" class="form-control mcqs_answer_add mcqs_answer">'+
+							'<div class="mcqs_check_add">'+
+								'<i class="fa fa-times-circle-o fa-lg"></i>'+
+								'<input type="radio" name="q'+question_count+'_check" class="ques_check" value="2">'+
+							'</div>'+
+						'</div>'+
+					'</div>'+					
 				'</div>'+
 			'</div>'+
 		'</div>');
@@ -416,11 +428,39 @@ $(document).ready(function(){
           '<input type="text" name="'+q+'[]" class="form-control mcqs_answer_add">'+
           '<div class="mcqs_check_add">'+
             '<i class="fa fa-times-circle-o fa-lg"></i>'+
-            '<input type="checkbox" name="'+q+'_check">'+
+            '<input type="radio" name="'+q+'_check" value="'+colCount+'">'+
           '</div>'+
         '</div>'+
       '</div>'
 		);
 	});
+
+	$(".ques_check").on('click', function(e){
+		console.log(123);
+		console.log( $(this).closest(".mcq_blank").find('.mcqs_answer').val() );
+	});
+
+	//Get Grade subjects
+	$("#grade").on("change", function(e){
+		e.preventDefault();
+		
+		$.ajaxSetup({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+		});
+
+		$.ajax({
+			type: "POST",
+			url: $(this).data('url'),
+			data: {'id': $(this).val()},
+			success: function(data){
+				console.log(data);
+				$("#subject").html(data.html);
+			},
+			error: function(data){
+				toastr.error("Something went wrong, Please Try again.");
+			}
+		});
+
+	});	
 
 });

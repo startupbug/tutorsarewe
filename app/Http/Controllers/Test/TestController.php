@@ -27,10 +27,14 @@ class TestController extends Controller
     }
 
     public function lessons_grade(){
+        //Random Test
+        $this->data['test_mcq'] = Test::with('mcqs')->where(['grade_id' => 1, 'subj_id'=> 3])
+        ->first();
+        
         return view('tests.lessons_grade')->with($this->data);
     }
 
-    public function test_mcq_index($grade_id, $subject_id){
+    public function test_mcq_index($grade_id , $subject_id){
 
         $this->data['test_mcq'] = Test::with('mcqs')->where(['grade_id' => $grade_id, 'subj_id'=> $subject_id])
                                               ->first();

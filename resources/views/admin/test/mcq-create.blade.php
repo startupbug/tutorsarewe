@@ -6,8 +6,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        User Panel
-        <small>- Add MCQS</small>
+        Test Panel
+        <small>- Add Test</small>
       </h1>
     </section>
     @include('partials.error_section')
@@ -26,24 +26,26 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="#" method="post">
+            <form role="form" action="{{route('admin_addtest')}}" method="post">
               <div class="box-body">
                 <div class="form-group profile_form">
                   <label for="exampleInputGender">Title<span>*</span></label>
-                  <input type="text" value="" class="form-control" name="title"/>
+                  <input type="text" value="" class="form-control" name="heading"/>
                 </div>
                 <div class="form-group profile_form">
                   <label for="grade">Grade<span>*</span></label>
-                  <select id="grade" name="grade" class="form-control" required>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
+                  <select id="grade" data-url="{{route('get_grade_subjects')}}" name="grade_id" class="form-control" required>                    
+                        @foreach($grades as $grade)
+                          <option value="{{$grade->id}}">{{$grade->grade}}</option>
+                        @endforeach
                   </select>
                 </div>
                 <div class="form-group profile_form">
                   <label for="subject">Subject<span>*</span></label>
-                  <select id="subject" name="subject" class="form-control" required>
-                    <option value="English">English</option>
-                    <option value="Urdu">Urdu</option>
+                  <select id="subject" name="subj_id" class="form-control" required>
+                        <!-- @foreach($subjects as $subject)
+                          <option value="{{$subject->id}}">{{$subject->subject}}</option>
+                        @endforeach -->
                   </select>
                 </div>
                 <div class="form-group profile_form">
@@ -67,22 +69,22 @@
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-md-8">
+                          <div class="col-md-8 mcq_blank">
                             <label class="mcqs_label">1.</label>
                             <input type="text" name="q1[]" class="form-control mcqs_answer">
                             <div class="mcqs_check">
                               <i class="fa fa-times-circle-o fa-lg"></i>
-                              <input type="checkbox" name="q1_check[]">
+                              <input type="radio" name="q1_check" class="ques_check" value="1">
                             </div>
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-md-8">
+                          <div class="col-md-8 mcq_blank">
                             <label class="mcqs_label">2.</label>
                             <input type="text" name="q1[]" class="form-control mcqs_answer">
                             <div class="mcqs_check">
                               <i class="fa fa-times-circle-o fa-lg"></i>
-                              <input type="checkbox" name="q1_check[]">
+                              <input type="radio" name="q1_check" class="ques_check" value="2">
                             </div>
                           </div>
                         </div>
@@ -98,6 +100,7 @@
 
               <div class="box-footer">
                 <input type="hidden" name="_token" value="{{Session::token()}}">
+                <input type="hidden" name="ques_count" id="ques_count" value="1"/>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </form>
