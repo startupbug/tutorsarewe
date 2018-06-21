@@ -28,7 +28,7 @@ $(document).ready(function(){
 				if(data.status==200){
 					toastr.success(data.msg);
 
-					setTimeout(function(){ 
+					setTimeout(function(){
 						location.reload();
 					}, 1200);
 
@@ -62,7 +62,7 @@ $(document).ready(function(){
 				if(data.status==200){
 					toastr.success(data.msg);
 
-					setTimeout(function(){ 
+					setTimeout(function(){
 						location.reload();
 					}, 1200);
 
@@ -80,7 +80,7 @@ $(document).ready(function(){
 	/* Add Todo Task */
 	$("#addTask, #editTask").on("submit", function(e){
 		e.preventDefault();
-		
+
 		console.log(e.target.id);
 		console.log();
 
@@ -109,7 +109,7 @@ $(document).ready(function(){
 			url: $(this).attr('action'),
 			data: data,
 			success: function(data){
-				console.log(data); 
+				console.log(data);
 		  	//$('#addTask').modal('toggle');
 
 		  	if(data.status==200){
@@ -119,14 +119,14 @@ $(document).ready(function(){
 		  		if(e.target.id == 'addTask'){
 		  			$("#myModalNorm").modal('toggle');
 
-		  			setTimeout(function(){ 
+		  			setTimeout(function(){
 		  				location.reload();
 		  			}, 600);
 
 		  		}else if(e.target.id == 'editTask'){
 		  			$("#myModalNormEdit").modal('toggle');
 
-		  			setTimeout(function(){ 
+		  			setTimeout(function(){
 		  				location.reload();
 		  			}, 600);
 
@@ -188,7 +188,7 @@ $(document).ready(function(){
 		  	if(data.status==200){
 		  		toastr.success(data.msg);
 		  		//$(this).closest('.liTodo').hide();
-		  		setTimeout(function(){ 
+		  		setTimeout(function(){
 		  			location.reload();
 		  		}, 500);
 
@@ -245,13 +245,8 @@ $(document).ready(function(){
 		  	toastr.error("Something went wrong, Please Try again.");
 		  }
 		});
-
-
 	});
 
-
-
-	
 
 	/* Subject handling Jquery */
 
@@ -282,15 +277,14 @@ $(document).ready(function(){
 	 		}
 	 	});
 
-	 //for add
-	}else if($(this).data('flag') == 'add'){
-		$("#subject").val('');
-		$("#subject_code").val('');
-		$("#edit_subj_id").val('');
-		$(".subjModalHeading").text('Add');
-	}
-
-});
+		 //for add
+		}else if($(this).data('flag') == 'add'){
+			$("#subject").val('');
+			$("#subject_code").val('');
+			$("#edit_subj_id").val('');
+			$(".subjModalHeading").text('Add');
+		}
+	});
 
 	/* Job Request handling Jquery */
 
@@ -333,7 +327,7 @@ $(document).ready(function(){
 	// 	$(".subjModalHeading").text('Add');
 	// }
 
-});
+	});
 
 	//editAddSubject
 	$("#editAddSubject").on('submit', function(e){
@@ -350,15 +344,15 @@ $(document).ready(function(){
 			url: $(this).attr('action'),
 			data: formData,
 			processData: false,
-			contentType: false,		  
+			contentType: false,
 			success: function(data){
 
 				if(data.success == true){
 					toastr.success(data.msg);
-					
+
 					$("#editAddSubjectModal").modal('toggle');
 
-					setTimeout(function(){ 
+					setTimeout(function(){
 						location.reload();
 					}, 600);
 
@@ -371,7 +365,6 @@ $(document).ready(function(){
 			}
 		});
 	});
-
 
 	//hasan mehdi
 	$("#editAddGrade").on('submit', function(e){
@@ -438,13 +431,68 @@ $(document).ready(function(){
 	 		}
 	 	});
 
-	 //for add
-	}else if($(this).data('flag') == 'add'){
-		$("#grade").val('');
-		$("#grade_description").val('');
-		$("#edit_grade_id").val('');
-		$(".gradeModalHeading").text('Add');
-	}
+		 //for add
+		}else if($(this).data('flag') == 'add'){
+			$("#grade").val('');
+			$("#grade_description").val('');
+			$("#edit_grade_id").val('');
+			$(".gradeModalHeading").text('Add');
+		}
+	});
+
+	$("#add_question").on('click', '.add_newquestion', function() {
+		var question_count = 1;
+		$('#add_question>.row').each(function () {
+			question_count++;
+		});
+
+		$(this).closest('#add_question').append('<div class="row question">'+
+			'<div class="col-md-12">'+
+				'<div class="form-group profile_form">'+
+					'<label for="q'+question_count+'">Question '+question_count+'<span>*</span></label>'+
+					'<textarea id="q'+question_count+'" name="q'+question_count+'[]" rows="8" class="form-control" required></textarea>'+
+				'</div>'+
+				'<div class="form-group profile_form add_answer">'+
+					'<div class="row">'+
+						'<div class="col-md-8">'+
+							'<label>Answer (Check the correct answer)</label>'+
+							'<label class="pull-right add_mcqs">Add More</label>'+
+						'</div>'+
+					'</div>'+
+					'<div class="row">'+
+						'<div class="col-md-8">'+
+							'<label class="mcqs_label">1.</label>'+
+							'<input type="text" name="q'+question_count+'[]" class="form-control mcqs_answer_add">'+
+							'<div class="mcqs_check_add">'+
+								'<i class="fa fa-times-circle-o fa-lg"></i>'+
+								'<input type="checkbox" name="q'+question_count+'_check[]">'+
+							'</div>'+
+						'</div>'+
+					'</div>'+
+				'</div>'+
+			'</div>'+
+		'</div>');
+	});
+	$("#add_question").on('click', '.add_mcqs', function() {
+		var colCount = 0;
+		var loop = $(this).closest('.add_answer').find('.row');
+		loop.each(function () {
+      		colCount++;
+    	});
+		var q = $(this).closest('.question').find('textarea').attr('id');
+		$(this).closest('.add_answer')
+		.append('<div class="row">'+
+        '<div class="col-md-8">'+
+          '<label class="mcqs_label">'+colCount+'.</label>'+
+          '<input type="text" name="'+q+'[]" class="form-control mcqs_answer_add">'+
+          '<div class="mcqs_check_add">'+
+            '<i class="fa fa-times-circle-o fa-lg"></i>'+
+            '<input type="checkbox" name="'+q+'_check">'+
+          '</div>'+
+        '</div>'+
+      '</div>'
+		);
+	});
 
 });
-});
+

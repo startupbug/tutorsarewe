@@ -18,8 +18,8 @@ use Response;
 class HomeController extends Controller
 {
 	/* Home Page */
-    public function index(){  
-        
+    public function index(){
+
         $data['subjects'] = Subject::all();
         $data['countries'] = Country::all();
         return view('home.index')->with($data);
@@ -33,12 +33,12 @@ class HomeController extends Controller
     //Tutor find jobs page
 
     public function find_tutor(Request $request){
-    
+
        $data['countries'] = Country::all();
 
        $data['subjects'] = Subject::all();
        $data['lesson_types'] = Lesson_type::all();
-       
+
        // / dd($request->input());
 
        $data['all_jobs'] =  Job_board::leftjoin('users','users.id','=','job_boards.student_id')
@@ -55,7 +55,7 @@ class HomeController extends Controller
                    'profiles.country_id',
                    'job_requests.job_id',
                     'users.id as user_id',
-                    'users.last_name', 'job_requests.request_status'                 
+                    'users.last_name', 'job_requests.request_status'
                );
 
          //If course is set
@@ -71,15 +71,15 @@ class HomeController extends Controller
        if(!is_null($request->input('city')))
        {
            $data['all_jobs']->where('profiles.city_id','=',$request->input('city'));
-                          
+
        }
 
        if(!is_null($request->input('typeform')))
        {
            $data['all_jobs']->where('job_boards.lesson_type','=',$request->input('typeform'));
-                          
-       }        
-       
+
+       }
+
        $data['all_jobs'] = $data['all_jobs']->paginate(6);
 
          //If course is set
@@ -98,15 +98,15 @@ class HomeController extends Controller
        {
 
            $data['all_jobs']->appends(['city' => $request->input('city') ]);
-                          
+
        }
 
        if(!is_null($request->input('typeform')))
        {
 
            $data['all_jobs']->appends(['typeform' => $request->input('typeform') ]);
-                          
-       }      
+
+       }
 
        //$data['all_jobs']->appends(['courseform' => $request->input('country') ]);
 
@@ -117,7 +117,7 @@ class HomeController extends Controller
        //}
 
     }
-    
+
     public function filterForCountryAjax(Request $request)
     {
         $country_name = $request->input('countryID');
@@ -138,7 +138,7 @@ class HomeController extends Controller
 
         $data['subjects'] = Subject::all();
         $data['lesson_types'] = Lesson_type::all();
-        
+
         // / dd($request->input());
 
         $data['all_jobs'] =  Job_board::leftjoin('users','users.id','=','job_boards.student_id')
@@ -169,15 +169,15 @@ class HomeController extends Controller
         if(!is_null($request->input('city')))
         {
             $data['all_jobs']->where('profiles.city_id','=',$request->input('city'));
-                           
+
         }
 
         if(!is_null($request->input('typeform')))
         {
             $data['all_jobs']->where('job_boards.lesson_type','=',$request->input('typeform'));
-                           
-        }        
-        
+
+        }
+
         $data['all_jobs'] = $data['all_jobs']->paginate(6);
 
           //If course is set
@@ -196,15 +196,15 @@ class HomeController extends Controller
         {
 
             $data['all_jobs']->appends(['city' => $request->input('city') ]);
-                           
+
         }
 
         if(!is_null($request->input('typeform')))
         {
 
             $data['all_jobs']->appends(['typeform' => $request->input('typeform') ]);
-                           
-        }      
+
+        }
 
         //$data['all_jobs']->appends(['courseform' => $request->input('country') ]);
 
@@ -228,7 +228,7 @@ class HomeController extends Controller
         //  if ($request->type) {
         //      $args['all_jobs'] = $args['all_jobs']->where('job_boards.lesson_type' , $request->type);
         //  }
-         
+
         //  if ($request->course) {
         //      $args['all_jobs'] = $args['all_jobs']->where('job_boards.subject_id' , $request->type);
         //  }
@@ -244,14 +244,14 @@ class HomeController extends Controller
     }
 
 
-    
+
      //Tutor profile
     public function tutor_profile(){
     	return view('home.tutor_profile');
 
     }
-    
-  
+
+
     //Fulltime Tutor page
     public function fulltime_tutor(){
     	return view('home.fulltimetutor');
@@ -275,18 +275,18 @@ class HomeController extends Controller
     public function subscribe(Request $request)
     {
       try {
-        if (isset($request->email)){        
+        if (isset($request->email)){
           $this->validate($request,[
            'email' => 'required|string|unique:users',
          ]);
         // dd($request->input());
           $subscriber = new Subscriber;
           $subscriber->email = Input::get('email');
-          if ($subscriber->save()){        
+          if ($subscriber->save()){
             return \Response()->Json([ 'status' => 200,'msg'=>'You Have Successfully Subscribed Email']);
           }else{
-            return \Response()->Json([ 'status' => 200,'msg'=>'Something Went Wrong Please Try Again!']); 
-          }     
+            return \Response()->Json([ 'status' => 200,'msg'=>'Something Went Wrong Please Try Again!']);
+          }
         }else{
           $this->set_session('Please Give The Required Data', false);
           return redirect()->back();
@@ -304,5 +304,10 @@ class HomeController extends Controller
     //error page
     public function error($message){
         return view('error')->with('message', $message);
+    }
+
+    //How it works page
+    public function lessons_grade(){
+      return view('home.lessons_grade');
     }
 }
