@@ -371,4 +371,80 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+
+	//hasan mehdi
+	$("#editAddGrade").on('submit', function(e){
+		e.preventDefault();
+
+		var formData = new FormData(this);
+		console.log(formData);
+		$.ajaxSetup({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+		});
+
+		$.ajax({
+			type: "POST",
+			url: $(this).attr('action'),
+			data: formData,
+			processData: false,
+			contentType: false,		  
+			success: function(data){
+
+				if(data.success == true){
+					toastr.success(data.msg);
+					
+					$("#editAddGradeModal").modal('toggle');
+
+					setTimeout(function(){ 
+						location.reload();
+					}, 600);
+
+				}else if(data.success == false){
+					toastr.success(data.msg);
+				}
+			},
+			error: function(data){
+				toastr.error(data.msg);
+			}
+		});
+	});
+
+	//hasan mehdi
+	$(".editAddGradeModal").on("click", function(e){
+		e.preventDefault();
+
+	 //for edit
+	 if($(this).data('flag') == 'edit'){
+	 	//Send Ajax request to get data and insert in model.
+	 	var gradeid = $(this).data('id');
+
+	 	$.ajaxSetup({
+	 		headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+	 	});
+
+	 	$.ajax({
+	 		type: "POST",
+	 		url: $(this).data('url'),
+	 		data: {'gradeid': $(this).data('id') },
+	 		success: function(data){
+	 			$("#grade").val(data.grade);
+	 			$("#grade_description").val(data.grade_description);
+	 			$("#edit_grade_id").val(gradeid);
+	 			$(".gradeModalHeading").text('Edit');
+	 		},
+	 		error: function(data){
+	 			toastr.error("Subject couldnot be Loaded.");
+	 		}
+	 	});
+
+	 //for add
+	}else if($(this).data('flag') == 'add'){
+		$("#grade").val('');
+		$("#grade_description").val('');
+		$("#edit_grade_id").val('');
+		$(".gradeModalHeading").text('Add');
+	}
+
+});
 });

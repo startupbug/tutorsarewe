@@ -152,6 +152,12 @@
           </a>
         </li>
 
+        <li class="treeview">
+          <a href="{{route('profile_grades')}}">
+            <i class="fa fa-share"></i> <span>Grades</span>
+          </a>
+        </li>
+
     @endif
 
       </ul>
