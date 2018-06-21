@@ -93,7 +93,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 	Route::get('withdraws', 'Admin\AdminController@withdraws')->name('admin_withdraws');
 	Route::get('transaction_details/{id}', 'Admin\AdminController@transaction_detail')->name('admin_transaction_detail');	
 
-	
+	//Test Routes
+	Route::get('/add-test', 'Admin\AdminController@transactions')->name('admin_transactions');	
 });
 
 	//Admin Login Authentication
