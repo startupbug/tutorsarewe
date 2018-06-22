@@ -24,7 +24,8 @@ class TestController extends Controller
          /* Validation */
         
          //Check if this grade and subject test is already added. 
-         $test_exist = Test::where('grade_id', $request->input('grade_id'))->where('subj_id', $request->input('subj_id'))->exists();
+         $test_exist = Test::where('grade_id', $request->input('grade_id'))
+         ->where('subj_id', $request->input('subj_id'))->exists();
          
          if($test_exist){
             $this->set_session('Test is already added for this Grade and Subject.', false);
