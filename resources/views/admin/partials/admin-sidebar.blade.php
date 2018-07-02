@@ -1,4 +1,5 @@
   <!-- Left side column. contains the logo and sidebar -->
+    
   <aside class="main-sidebar" @if(!isset($login)) style="background-color:#222d32" @endif>
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -26,6 +27,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
+
         <!-- Permissions -->
         @if(Auth::check())
             <li class="treeview">

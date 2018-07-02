@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
@@ -30,7 +28,7 @@ class AuthenticationController extends Controller
 
     public function login_post(Request $request){
      
-          $this->validate($request, [
+        $this->validate($request, [
             'email' => 'required|string|email',
             'password' => 'required',
         ]); 
