@@ -46,8 +46,12 @@ Route::get('/logout',  'AuthenticationController@logout_user')->name('logout_use
 
 // email subscribe
 Route::post('/subscribe','HomeController@subscribe')->name('subscribe');
+
 //How it works
 Route::get('/how-it-works', 'HomeController@how_it_works')->name('how_it_works');
+
+// lessons_grade
+//Route::get('/lessons_grade', 'HomeController@lessons_grade')->name('lessons_grade');
 
 //Tutor find jobs
 Route::get('/find-job', 'HomeController@find_tutor')->name('find_tutor');
@@ -83,7 +87,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 		//Get tutor subjects
 		Route::get('/subjects','DashboardController@subjects')->name('subjects');
-		
+
 		//insert tutor selected subject
 		Route::post('/tutor_subject','DashboardController@tutor_subject')->name('tutor_subject');
 
@@ -95,7 +99,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/edit-profile', 'ProfileController@edit_dashboard')->name('edit_dashboard');
 
 	Route::post('/profile_register/ajax',array('as'=>'profile_register.ajax','uses'=>'ProfileController@editcityForCountryAjax'));
-	
+
 	//Edit profile post
 	Route::post('/edit_profile', 'ProfileController@edit_profile')->name('edit_profile');
 
@@ -184,5 +188,24 @@ Route::Post('/contact_tutor_email/', 'Tutor\TutorController@contact_tutor_email'
 Route::get('scheduling', function () {
     return view('dashboard.scheduling');
 });
+
+Route::get('chat_box', function () {
+    return view('dashboard.chat_box');
+});
+
 Route::get('create_schedule','Tutor\SchedulingController@create_schedule')->name('create_schedule');
 Route::post('post_scheduling','Tutor\SchedulingController@post_scheduling')->name('post_scheduling');
+
+//Test conduct Routes
+Route::get('/lessons_grade', 'Test\TestController@lessons_grade')->name('lessons_grade');
+
+//Get Test MCQs
+Route::get('/test/{gradeId}/{subjectId}', 'Test\TestController@test_mcq_index')->name('test_mcq_index');
+
+//Check Mcq
+Route::post('/check-answer', 'Test\TestController@check_answer')->name('check_answer');
+
+
+Route::get('mcqs', function () {
+    return view('admin..mcqs.create');
+});

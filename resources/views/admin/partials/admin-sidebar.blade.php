@@ -154,6 +154,26 @@
           </a>
         </li>
 
+        <li class="treeview">
+          <a href="{{route('profile_grades')}}">
+            <i class="fa fa-share"></i> <span>Grades</span>
+          </a>
+        </li>
+
+        <!-- Tests -->
+        <li class="treeview">
+        <a href="#">
+          <i class="fa fa-share"></i> <span>Test</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{route('admin_addtest_index')}}"><i class="fa fa-circle-o"></i> Add Test </a></li>
+          <!-- <li><a href="{{route('roles.index')}}"><i class="fa fa-circle-o"></i> Role Management</a></li> -->
+        </ul>
+      </li>
+
     @endif
 
       </ul>
