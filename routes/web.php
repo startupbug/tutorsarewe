@@ -137,3 +137,6 @@ Route::get('/error/{message}', 'HomeController@error')->name('error');
 Route::get('/tutor-search/', 'Tutor\TutorController@index')->name('tutors_listing');
 Route::get('/tutor-search-ajax/', 'Tutor\TutorController@tutor_search_ajax');
 Route::Post('/contact_tutor_email/', 'Tutor\TutorController@contact_tutor_email')->name('contact_tutor_email');
+
+Route::get('/review', 'extraController@review')->name('review');
+
