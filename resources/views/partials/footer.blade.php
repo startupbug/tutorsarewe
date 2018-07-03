@@ -9,7 +9,7 @@
                      <a href="{{route('aboutus')}}">About Us</a>
                   </li>
                   <li class="list-item">
-                     <a href="{{route('signup')}}">Terms And Conditions</a>
+                     <a href="{{route('terms')}}">Terms And Conditions</a>
                   </li>
                   <li class="list-item">
                      <a href="{{route('tutors_listing')}}">Search For A Tutor</a>

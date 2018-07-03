@@ -318,6 +318,11 @@ class HomeController extends Controller
     }
 
 
+    //terms page
+    public function terms(){
+      return view('home.terms');
+    }
+    
     //aboutus page
     public function aboutus(){
       return view('home.aboutus');

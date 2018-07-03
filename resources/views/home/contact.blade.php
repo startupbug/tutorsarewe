@@ -57,28 +57,28 @@
                <div class="menu__body">
                   <ul class="nav">
                      <li class="nav__item">
-                        <a href="http://localhost/tutorsarewe/aboutus" class="nav__item-link">
-                        <span class="nav__item-text">About Us</span>
+                        <a href="{{route('aboutus')}}" class="nav__item-link">
+                           <span class="nav__item-text">About Us</span>
+                        </a>
+                     </li>
+                     <li class="nav__item">
+                        <a href="{{route('terms')}}" class="nav__item-link">
+                           <span class="nav__item-text">Terms And Conditions</span>
+                        </a>   
+                     </li>
+                     <li class="nav__item">
+                        <a href="{{route('tutors_listing')}}" class="nav__item-link">
+                           <span class="nav__item-text">Search For A Tutor</span>
                         </a>   
                      </li>
                      <li class="nav__item">
                         <a href="#" class="nav__item-link">
-                        <span class="nav__item-text">Terms And Conditions</span>
+                           <span class="nav__item-text">Search For A Student</span>
                         </a>   
                      </li>
                      <li class="nav__item">
-                        <a href="http://localhost/tutorsarewe/tutor-search" class="nav__item-link">
-                        <span class="nav__item-text">Search For A Tutor</span>
-                        </a>   
-                     </li>
-                     <li class="nav__item">
-                        <a href="#" class="nav__item-link">
-                        <span class="nav__item-text">Search For A Student</span>
-                        </a>   
-                     </li>
-                     <li class="nav__item">
-                        <a href="http://localhost/tutorsarewe/fulltime-tutor" class="nav__item-link">
-                        <span class="nav__item-text">Become A Tutor</span>
+                        <a href="{{route('fulltime_tutor')}}" class="nav__item-link">
+                           <span class="nav__item-text">Become A Tutor</span>
                         </a>   
                      </li>
                   </ul>
