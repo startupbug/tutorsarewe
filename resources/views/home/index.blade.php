@@ -1,6 +1,8 @@
 @extends('app')
 @section('content')
 
+
+
 <section class="tutor">
    <div class="w3-content  w3-display-container w3-section">
       <img class="mySlides img_home" src="{{ asset('public/assets/images/banner2.png') }}" class="img-responsive">
@@ -72,75 +74,69 @@
                </nav>
                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                   <div class="tab-pane fade active in" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                     <form>
+                     <form action="{{route('tutors_listing')}}" method="get">
+                     
+                        <input type="hidden" name="home" value="1">
                         <div class="form-group col-md-6 f_bottom">
-                           <select class="form-control f_color" id="emailFrom" name="emailFrom">
-                              <option>Type of Course</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
+                           <select class="form-control f_color" id="course" name="course">
+                              <option>Type of Subjects</option>
+                              @foreach($subjects as $subject)
+                                 <option value="{{$subject->id}}">{{$subject->subject}}</option>
+                              @endforeach
                            </select>
                         </div>
                         <div class="form-group col-md-3 f_bottom">
-                           <select class="form-control f_color" id="emailFrom" name="emailFrom">
+                           <select class="form-control f_color" id="location" name="location">
                               <option>Select Location</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
+                              @foreach($countries as $country)
+                                 <option value="{{$country->id}}">{{$country->name}}</option>
+                              @endforeach
                            </select>
                         </div>
                         <div class="col-md-3 f_bottom"><button type="submit" class="btn btn-default f_color button_tour">SEARCH TOUR</button></div>
                      </form>
                   </div>
                   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-contact-tab">
-                     <form>
+                        <form action="{{route('tutors_listing')}}" method="get">
+                     
+                        <input type="hidden" name="home" value="2">
                         <div class="form-group col-md-6 f_bottom">
-                           <select class="form-control f_color" id="emailFrom" name="emailFrom">
-                              <option>Type of Course</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
+                           <select class="form-control f_color" id="course" name="course">
+                              <option>Type of Subject</option>
+                              @foreach($subjects as $subject)
+                                 <option value="{{$subject->id}}">{{$subject->subject}}</option>
+                              @endforeach
                            </select>
                         </div>
                         <div class="form-group col-md-3 f_bottom">
-                           <select class="form-control f_color" id="emailFrom" name="emailFrom">
+                           <select class="form-control f_color" id="location" name="location">
                               <option>Select Location</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
+                              @foreach($countries as $country)
+                                 <option value="{{$country->id}}">{{$country->name}}</option>
+                              @endforeach
                            </select>
                         </div>
                         <div class="col-md-3 f_bottom"><button type="submit" class="btn btn-default f_color button_tour">SEARCH TOUR</button></div>
                      </form>
                   </div>
                   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-about-tab">
-                     <form>
+                       <form action="{{route('tutors_listing')}}" method="get">
+                     
+                        <input type="hidden" name="home" value="3">
                         <div class="form-group col-md-6 f_bottom">
-                           <select class="form-control f_color" id="emailFrom" name="emailFrom">
-                              <option>Type of Course</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
+                           <select class="form-control f_color" id="course" name="course">
+                              <option>Type of Subject</option>
+                              @foreach($subjects as $subject)
+                                 <option value="{{$subject->id}}">{{$subject->subject}}</option>
+                              @endforeach
                            </select>
                         </div>
                         <div class="form-group col-md-3 f_bottom">
-                           <select class="form-control f_color" id="emailFrom" name="emailFrom">
+                           <select class="form-control f_color" id="location" name="location">
                               <option>Select Location</option>
-                              <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
-                              <option value="Silvia Mahoney|silvia.mahoney@tix.com">Silvia</option>
-                              <option value="Steve Moore|steve.moore@tix.com">Steve Moore</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Adam Hettinger</option>
-                              <option value="Luke Perria|luke.perria@tix.com">Luke Perea</option>
+                              @foreach($countries as $country)
+                                 <option value="{{$country->id}}">{{$country->name}}</option>
+                              @endforeach
                            </select>
                         </div>
                         <div class="col-md-3 f_bottom"><button type="submit" class="btn btn-default f_color button_tour">SEARCH TOUR</button></div>
@@ -181,7 +177,7 @@
          <div class="col-md-4 col-md-offset-1">
             <h3 class="f_check">We got you,<br> we can help</h3>
             <p class="f_per">Sed ut perspiciatis unde omnis iste natus error sit voluptatem <br> accusantium doloremque laudantium, totam rem aperiam, eaque ipsa <br>quae ab illo inventore veritatis et quasi architecto beatae vitae dicta <br>sunt explicabo. Nemo enim ipsam volups protatem quia voluptas sit <br>aspernatur aut odit aut fugit.</p>
-            <div class="btn_check"><a href="">CHECK ALL COURSES</a></div>
+            <div class="btn_check"><a href="">CHECK ALL SUBJECTS</a></div>
          </div>
          <div class="col-md-7">
             <div class="row">
@@ -222,7 +218,7 @@
 <section class="images_courses">
    <div class="container">
       <div class="row">
-         <h3 class="added_course">Recent Added Courses</h3>
+         <h3 class="added_course">Recent Added Subjects</h3>
          <div class="col-md-4 col-sm-4 col-xs-12 text-center">
             <img src="{{ asset('public/assets/images/images1.png') }}" class="img-responsive f_margin">
             <h3 class="full_time">Full Time Tutoring</h3>
@@ -273,7 +269,7 @@
             <p class="f_tutor"><i class="fa fa-check"></i>We have qualified tutors to meet your needs</p>
             <br>
             <p class="f_tutor"><i class="fa fa-check"></i> 24/access - Find a tutor anytime, anywhere, using our online tutorial</p>
-            <div class="btn_check"><a href="#">HOW DOES THIS WORK</a></div>
+            <div class="btn_check"><a href="{{route('how_it_works')}}">HOW DOES THIS WORK</a></div>
          </div>
       </div>
    </div>

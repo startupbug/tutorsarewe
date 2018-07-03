@@ -1,5 +1,6 @@
 @extends('app')
 @section('content')
+
 <section class="search">
    <div class="container">
       <div class="row">
@@ -11,13 +12,10 @@
                <input type="hidden" name="limit" value="10">               
                <!--<div id="slider"></div>-->
                <h3 class="f_class">Availability</h3>
-               <input type="checkbox" name="vehicle" value="Bike" class="checkbox_search"><span class="days">Sunday</span><br>
-               <input type="checkbox" name="vehicle" value="Car" class="checkbox_search"><span class="days">Monday</span><br>
-               <input type="checkbox" name="vehicle" value="Bike" class="checkbox_search"><span class="days">Tuesday</span><br>
-               <input type="checkbox" name="vehicle" value="Car" class="checkbox_search"><span class="days">Wednesday</span><br>
-               <input type="checkbox" name="vehicle" value="Bike" class="checkbox_search"><span class="days">Thursday</span><br>
-               <input type="checkbox" name="vehicle" value="Car" class="checkbox_search"><span class="days">Friday</span><br>
-               <input type="checkbox" name="vehicle" value="Bike" class="checkbox_search"><span class="days">Saturday</span><br>
+               @foreach($days as $key => $day)
+               <input type="checkbox" name="available_day" value="{{$key+1}}" class="checkbox_search"><span class="days">{{$day->days}}</span><br>
+               @endforeach
+               
                <div class="form-group">
                   <label for="exampleInputcourse" class="f_label f_course">Subject</label>
                   <select class="form-control select_f" id="courseFrom" name="subject">
@@ -29,7 +27,7 @@
                </div>
                <div class="form-group">
                   <label for="exampleInputlocation" class="f_label f_course">Location</label>
-                  <input type="text" name="location" class="form-control select_f" id="locationFrom">
+                  <input type="text" name="address" class="form-control select_f" id="locationFrom">
                   <!-- <select class="form-control select_f" id="locationFrom" name="locationFrom">
                      <option>Select</option>
                      <option value="Sergio Rodriguez|sergio.rodriguez@tix.com">Sergio</option>
@@ -130,13 +128,13 @@
                <div class="col-md-7 border_search">
                   <h3 class="search_name">{{$value->first_name}} {{$value->last_name}}</h3>
                   <h3 class="f_course">
-                     @foreach($tutor_subjects[$value->id] as $subject)
+                     @foreach($tutor_subjects[$value->user_id] as $subject)
                         {{$subject->subject->subject}}, 
                      @endforeach                    
                   </h3>
-                  <p class="f_findcontent">  @if(isset($value->profile->bio)){{$value->profile->bio}}@endif
+                  <p class="f_findcontent">  @if(isset($value->bio)){{$value->bio}}@endif
                   </p>
-                  <a href="{{route('tutor_profile',['id' => $value->id])}}" class="f_detail">Read More</a>
+                  <a href="{{route('tutor_profile',['id' => $value->user_id])}}" class="f_detail">Read More</a>
                </div>
                <div class="col-md-3">
                   <h3 class="search_name"> @if(isset($value->profile->tution_per_hour))${{$value->profile->tution_per_hour}}/hour @endif</h3>

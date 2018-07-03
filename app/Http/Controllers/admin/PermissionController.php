@@ -48,7 +48,11 @@ class PermissionController extends Controller
     public function store(Request $request)
     {
         try{
-            
+            $this->validate($request, [
+            'name' => 'required|string|max:15',
+            'display_name' => 'required|string|max:15',
+            'description' => 'required|string|max:150|min:10',
+        ]);
             $this->logActivity('Permission added');
 
             //Checking for Permission

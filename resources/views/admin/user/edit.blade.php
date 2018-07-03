@@ -51,21 +51,29 @@
 
                 <div class="form-group">
                   <label for="">Password</label>
-
                   <input type="text" class="form-control" name="admin-password" value="">
+                </div>
 
+                <div class="form-group">
+                  <label for="exampleInputQualification">Qualifications</label>
+                  <input type="text" class="form-control" name="qualifications" id="exampleInputqualifications" placeholder="Qualifications">
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputQualifications">Qualifications From</label>
+                  <input type="text" class="form-control" name="qualification_from" id="exampleInputqualifications_form" placeholder="Qualifications From">
                 </div>
 
                 <div class="form-group profile_form">
                   <label for="exampleInputRate">Rates / Hour <span>*</span></label>
                   <br>
-                  <input type="text" name="tution_per_hour" id="exampleInputRate" value="{{ isset($user->tution_per_hour) ? $user->tution_per_hour : '' }}" class="span3 form-control " required>
+                  <input type="text" name="tution_per_hour" id="exampleInputRate" value="{{ isset($profile->tution_per_hour) ? $profile->tution_per_hour : '' }}" class="span3 form-control " required>
                 </div>
 
                 <div class="form-group profile_form">
-                  <label for="Bio">Bio <span>*</span></label>
+                  <label for="Bio">Bio </label>
                   <br>
-                  <textarea name="bio" class="span3 form-control" >{{$user->bio}}</textarea>
+                  <textarea name="bio" class="span3 form-control" >{{$profile->bio}}</textarea>
                 </div>
 
                 <div class="form-group profile_form">
@@ -78,11 +86,10 @@
                   </select>                  
      
                 </div>
-                
                 <div class="form-group profile_form">
                   <label for="exampleInputage">Age<span>*</span></label>
                   <br>
-                  <input type="text" name="age" id="exampleInputage" value="{{$user->age}}" class="form-control span3" required>
+                  <input type="text" name="age" id="exampleInputage" value="{{$profile->age}}" class="form-control span3" required>
                 </div>
 
                 <div class="form-group">

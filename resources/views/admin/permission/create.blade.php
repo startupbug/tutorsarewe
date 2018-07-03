@@ -20,6 +20,9 @@
             <div class="box-header with-border">
               <h3 class="box-title">Add Permission</h3>
               @include('admin.partials.error_section')
+              @foreach($errors->all() as $erroring)
+                  <li>{{$erroring}}  </li>
+              @endforeach
             </div>
             <!-- /.box-header -->
               <!-- form start -->

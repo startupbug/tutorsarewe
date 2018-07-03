@@ -1,4 +1,5 @@
   <!-- Left side column. contains the logo and sidebar -->
+    
   <aside class="main-sidebar" @if(!isset($login)) style="background-color:#222d32" @endif>
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -26,10 +27,9 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
+
         <!-- Permissions -->
         @if(Auth::check())
-        
-
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-share"></i> <span>Permissions</span>
@@ -40,15 +40,11 @@
               <ul class="treeview-menu">
                
                 <li><a href="{{route('permissions.create')}}"><i class="fa fa-circle-o"></i> Add Permission</a></li>
-             
-
                
                 <li><a href="{{route('permissions.index')}}"><i class="fa fa-circle-o"></i> Permission Management</a></li>
              
-
               </ul>
-            </li> 
-         
+            </li>          
 
           <!-- Roles -->
           <li class="treeview">
@@ -125,12 +121,7 @@
 <!-- 
             <li><a href="{{route('pages.index')}}"><i class="fa fa-circle-o"></i> Calendar </a></li>
             <li> -->
-            <li>
-              
-              <a href="{{ route('analytics') }}">
-                <i class="fa fa-share"></i> <span>Analytics</span>
-              </a>
-            </li>
+          
 
             <!-- <li><a href="{{route('pages.index')}}"><i class="fa fa-circle-o"></i> Calendar </a></li> -->
 
@@ -143,6 +134,45 @@
             <i class="fa fa-share"></i> <span>Subjects</span>
           </a>
         </li>
+
+        <!-- Subjects -->
+        <li class="treeview">
+          <a href="{{route('job_requests')}}">
+            <i class="fa fa-share"></i> <span>Job Requests</span>
+          </a>
+        </li>
+
+        <li class="treeview">
+          <a href="{{route('job_boards')}}">
+            <i class="fa fa-share"></i> <span>Job Boards</span>
+          </a>
+        </li>
+
+        <li class="treeview">
+          <a href="{{route('profile_reviews')}}">
+            <i class="fa fa-share"></i> <span>Reviews</span>
+          </a>
+        </li>
+
+        <li class="treeview">
+          <a href="{{route('profile_grades')}}">
+            <i class="fa fa-share"></i> <span>Grades</span>
+          </a>
+        </li>
+
+        <!-- Tests -->
+        <li class="treeview">
+        <a href="#">
+          <i class="fa fa-share"></i> <span>Test</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{route('admin_addtest_index')}}"><i class="fa fa-circle-o"></i> Add Test </a></li>
+          <!-- <li><a href="{{route('roles.index')}}"><i class="fa fa-circle-o"></i> Role Management</a></li> -->
+        </ul>
+      </li>
 
     @endif
 

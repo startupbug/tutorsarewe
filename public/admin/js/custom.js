@@ -28,7 +28,7 @@ $(document).ready(function(){
 				if(data.status==200){
 					toastr.success(data.msg);
 
-					setTimeout(function(){ 
+					setTimeout(function(){
 						location.reload();
 					}, 1200);
 
@@ -62,7 +62,7 @@ $(document).ready(function(){
 				if(data.status==200){
 					toastr.success(data.msg);
 
-					setTimeout(function(){ 
+					setTimeout(function(){
 						location.reload();
 					}, 1200);
 
@@ -80,7 +80,7 @@ $(document).ready(function(){
 	/* Add Todo Task */
 	$("#addTask, #editTask").on("submit", function(e){
 		e.preventDefault();
-		
+
 		console.log(e.target.id);
 		console.log();
 
@@ -109,7 +109,7 @@ $(document).ready(function(){
 			url: $(this).attr('action'),
 			data: data,
 			success: function(data){
-				console.log(data); 
+				console.log(data);
 		  	//$('#addTask').modal('toggle');
 
 		  	if(data.status==200){
@@ -119,14 +119,14 @@ $(document).ready(function(){
 		  		if(e.target.id == 'addTask'){
 		  			$("#myModalNorm").modal('toggle');
 
-		  			setTimeout(function(){ 
+		  			setTimeout(function(){
 		  				location.reload();
 		  			}, 600);
 
 		  		}else if(e.target.id == 'editTask'){
 		  			$("#myModalNormEdit").modal('toggle');
 
-		  			setTimeout(function(){ 
+		  			setTimeout(function(){
 		  				location.reload();
 		  			}, 600);
 
@@ -188,7 +188,7 @@ $(document).ready(function(){
 		  	if(data.status==200){
 		  		toastr.success(data.msg);
 		  		//$(this).closest('.liTodo').hide();
-		  		setTimeout(function(){ 
+		  		setTimeout(function(){
 		  			location.reload();
 		  		}, 500);
 
@@ -245,13 +245,8 @@ $(document).ready(function(){
 		  	toastr.error("Something went wrong, Please Try again.");
 		  }
 		});
-
-
 	});
 
-
-
-	
 
 	/* Subject handling Jquery */
 
@@ -282,18 +277,97 @@ $(document).ready(function(){
 	 		}
 	 	});
 
-	 //for add
-	}else if($(this).data('flag') == 'add'){
-		$("#subject").val('');
-		$("#subject_code").val('');
-		$("#edit_subj_id").val('');
-		$(".subjModalHeading").text('Add');
-	}
+		 //for add
+		}else if($(this).data('flag') == 'add'){
+			$("#subject").val('');
+			$("#subject_code").val('');
+			$("#edit_subj_id").val('');
+			$(".subjModalHeading").text('Add');
+		}
+	});
 
-});
+	/* Job Request handling Jquery */
+
+	$(".editAddJobRequestModal").on("click", function(e){
+		e.preventDefault();
+
+	 //for edit
+	 if($(this).data('flag') == 'edit'){
+	 	//Send Ajax request to get data and insert in model.
+	 	var subjId = $(this).data('id');
+
+	 	$.ajaxSetup({
+	 		headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+	 	});
+
+	 	$.ajax({
+	 		type: "POST",
+	 		url: $(this).data('url'),
+	 		data: {'jobRequestId': $(this).data('id') },
+	 		success: function(data){
+	 			$("#title").val(data.subject);
+	 			$("#details").val(data.subject_code);
+	 			$("#description").val(data.subject_code);
+	 			$("#first_name").val(data.subject_code);
+	 			$("#last_name").val(data.subject_code);
+	 			$("#jobRequest_Id").val(jobRequestId);
+	 			$(".subjModalHeading").text('Edit');
+	 		},
+	 		error: function(data){
+	 			toastr.error("Subject couldnot be Loaded.");
+	 		}
+	 	});
+
+	 //for add
+	}
+	// else if($(this).data('flag') == 'add'){
+	// 	$("#subject").val('');
+	// 	$("#subject_code").val('');
+	// 	$("#edit_subj_id").val('');
+	// 	$(".subjModalHeading").text('Add');
+	// }
+
+	});
 
 	//editAddSubject
 	$("#editAddSubject").on('submit', function(e){
+		e.preventDefault();
+
+		var formData = new FormData(this);
+		console.log(formData);
+		$.ajaxSetup({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+		});
+
+		$.ajax({
+			type: "POST",
+			url: $(this).attr('action'),
+			data: formData,
+			processData: false,
+			contentType: false,
+			success: function(data){
+
+				if(data.success == true){
+					toastr.success(data.msg);
+
+					$("#editAddSubjectModal").modal('toggle');
+
+					setTimeout(function(){
+						location.reload();
+					}, 600);
+
+				}else if(data.success == false){
+					toastr.success(data.msg);
+				}
+			},
+			error: function(data){
+				toastr.error(data.msg);
+			}
+		});
+	});
+
+	//hasan mehdi
+	$("#editAddGrade").on('submit', function(e){
 		e.preventDefault();
 
 		var formData = new FormData(this);
@@ -313,7 +387,7 @@ $(document).ready(function(){
 				if(data.success == true){
 					toastr.success(data.msg);
 					
-					$("#editAddSubjectModal").modal('toggle');
+					$("#editAddGradeModal").modal('toggle');
 
 					setTimeout(function(){ 
 						location.reload();
@@ -327,6 +401,138 @@ $(document).ready(function(){
 				toastr.error(data.msg);
 			}
 		});
-
 	});
+
+	//hasan mehdi
+	$(".editAddGradeModal").on("click", function(e){
+		e.preventDefault();
+
+	 //for edit
+	 if($(this).data('flag') == 'edit'){
+	 	//Send Ajax request to get data and insert in model.
+	 	var gradeid = $(this).data('id');
+
+	 	$.ajaxSetup({
+	 		headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+	 	});
+
+	 	$.ajax({
+	 		type: "POST",
+	 		url: $(this).data('url'),
+	 		data: {'gradeid': $(this).data('id') },
+	 		success: function(data){
+	 			$("#grade").val(data.grade);
+	 			$("#grade_description").val(data.grade_description);
+	 			$("#edit_grade_id").val(gradeid);
+	 			$(".gradeModalHeading").text('Edit');
+	 		},
+	 		error: function(data){
+	 			toastr.error("Subject couldnot be Loaded.");
+	 		}
+	 	});
+
+		 //for add
+		}else if($(this).data('flag') == 'add'){
+			$("#grade").val('');
+			$("#grade_description").val('');
+			$("#edit_grade_id").val('');
+			$(".gradeModalHeading").text('Add');
+		}
+	});
+
+	$("#add_question").on('click', '.add_newquestion', function() {
+		var question_count = 1;
+		$('#add_question>.row').each(function () {
+			question_count++;
+			$("#ques_count").val(question_count);
+		});
+
+		$(this).closest('#add_question').append('<div class="row question">'+
+			'<div class="col-md-12">'+
+				'<div class="form-group profile_form">'+
+					'<label for="q'+question_count+'">Question '+question_count+'<span>*</span></label>'+
+					'<textarea id="q'+question_count+'" name="q'+question_count+'[]" rows="8" class="form-control" required></textarea>'+
+				'</div>'+
+				'<div class="form-group profile_form add_answer">'+
+					'<div class="row">'+
+						'<div class="col-md-8">'+
+							'<label>Answer (Check the correct answer)</label>'+
+							'<label class="pull-right add_mcqs">Add More</label>'+
+						'</div>'+
+					'</div>'+
+					'<div class="row">'+
+						'<div class="col-md-8 mcq_blank">'+
+							'<label class="mcqs_label">1.</label>'+
+							'<input type="text" name="q'+question_count+'[]" class="form-control mcqs_answer_add mcqs_answer">'+
+							'<div class="mcqs_check_add">'+
+								'<i class="fa fa-times-circle-o fa-lg"></i>'+
+								'<input type="radio" name="q'+question_count+'_check" class="ques_check" value="1">'+
+							'</div>'+
+						'</div>'+
+					'</div>'+
+
+					'<div class="row">'+
+						'<div class="col-md-8 mcq_blank">'+	
+							'<label class="mcqs_label">2.</label>'+
+							'<input type="text" name="q'+question_count+'[]" class="form-control mcqs_answer_add mcqs_answer">'+
+							'<div class="mcqs_check_add">'+
+								'<i class="fa fa-times-circle-o fa-lg"></i>'+
+								'<input type="radio" name="q'+question_count+'_check" class="ques_check" value="2">'+
+							'</div>'+
+						'</div>'+
+					'</div>'+					
+				'</div>'+
+			'</div>'+
+		'</div>');
+	});
+	$("#add_question").on('click', '.add_mcqs', function() {
+		var colCount = 0;
+		var loop = $(this).closest('.add_answer').find('.row');
+		loop.each(function () {
+      		colCount++;
+    	});
+		var q = $(this).closest('.question').find('textarea').attr('id');
+		$(this).closest('.add_answer')
+		.append('<div class="row">'+
+        '<div class="col-md-8">'+
+          '<label class="mcqs_label">'+colCount+'.</label>'+
+          '<input type="text" name="'+q+'[]" class="form-control mcqs_answer_add">'+
+          '<div class="mcqs_check_add">'+
+            '<i class="fa fa-times-circle-o fa-lg"></i>'+
+            '<input type="radio" name="'+q+'_check" value="'+colCount+'">'+
+          '</div>'+
+        '</div>'+
+      '</div>'
+		);
+	});
+
+	$(".ques_check").on('click', function(e){
+		console.log(123);
+		console.log( $(this).closest(".mcq_blank").find('.mcqs_answer').val() );
+	});
+
+	//Get Grade subjects
+	$("#grade").on("change", function(e){
+		e.preventDefault();
+		
+		$.ajaxSetup({
+			headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+		});
+
+		$.ajax({
+			type: "POST",
+			url: $(this).data('url'),
+			data: {'id': $(this).val()},
+			success: function(data){
+				console.log(data);
+				$("#subject").html(data.html);
+			},
+			error: function(data){
+				toastr.error("Something went wrong, Please Try again.");
+			}
+		});
+
+	});	
+
 });
+

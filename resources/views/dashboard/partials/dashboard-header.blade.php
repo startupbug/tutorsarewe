@@ -5,6 +5,10 @@
    <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+      <!-- Session Token -->
+      <meta name="_token" content="{{ Session::token() }}"/>
+            
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
       <title>TutorAreUs</title>
@@ -18,6 +22,7 @@
       <link href="{{ asset('public/dashboard/assets/css/bootstrap-slider.min.css') }}" rel="stylesheet">
       <!-- Animate -->
       <link href="{{ asset('public/dashboard/assets/css/animate.css') }}" rel="stylesheet">
+      <link href="{{ asset('public/assets/css/alertify.min.css') }}" rel="stylesheet">
       <!-- Owl Slider -->
       <link href="{{ asset('public/dashboard/assets/css/owl.carousel.css') }}" rel="stylesheet">
       <!-- Owl Slider Theme -->
@@ -63,7 +68,7 @@
                <div class="top-header">
                   <ul class="top-header-nav">
                      <li><i class="fa fa-phone f_phone" aria-hidden="true"></i>:  1-877-3- TUTORS 1877-388-8677</li>
-                     <li class="f_right"><i class="fa fa-search f_phone"></i>: Search For Tutors</li>
+                     <a href="{{route('tutors_listing')}}"><li class="f_right"><i class="fa fa-search f_phone"></i>: Search For Tutors</li></a>
                    <!--   <li class="f_right"><i class="fa fa-user f_phone"></i><a href="login.php">: Login</a>/<a href="signup_faq.php">Register</a></li> -->
                   </ul>
                </div>
@@ -76,73 +81,10 @@
                            <span class="icon-bar"></span>
                            <span class="icon-bar"></span>
                            </button>
-                           <a href="index.php"><img src="{{ asset('public/assets/images/logo.png') }}" alt="tutorareus Logo" class="img-responsive"></a>
+                           <a href="{{route('home')}}"><img src="{{ asset('public/assets/images/logo.png') }}" alt="tutorareus Logo" class="img-responsive"></a>
                         </div>
-                        <div class="collapse navbar-collapse" id="myNavbar">
-                           <ul class="nav navbar-nav header-nav">
-                              <li class="">
-                                 <a class="f_dropdown" href="<?php echo $base_url; ?>search.php">FIND A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-                              <!--<li class="dropdown">
-                                 <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" href="howitworks.php">HOW IT WORKS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>
-                              </li>-->
-                              <li class="">
-                                 <a class="f_dropdown" href="howitworks.php">HOW IT WORKS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-
-                              <li class="">
-                                 <a class="f_dropdown" href="fulltimetutor.php">BECOME A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-                              <li class="">
-                                 <a class="f_dropdown" href="publication.php">PUBLICATIONS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-                              <li class="">
-                                 <a class="f_dropdown" href="aboutus.php">ABOUT US  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                 <!--<ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                 </ul>-->
-                              </li>
-
-                              @if(Auth::check())
-                                 <li class="dropdown user_page">
-                                    <a class="dropdown-toggle f_dropdown" data-toggle="dropdown" >{{Auth::user()->first_name}}  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
-                                    <ul class="dropdown-menu">
-                                       <li><a href="{{route('dashboard_index')}}">Dashboard</a></li>
-                                       <li><a href="{{route('logout_user')}}">Logout</a></li>
-                                    </ul>
-                                 </li>
-                              @endif
-
-
-                           </ul>
-                        </div>
+ 
+                        @include('partials.nav_partial')
                      </div>
                   </nav>
                </div>

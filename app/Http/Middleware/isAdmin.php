@@ -15,7 +15,7 @@ class isAdmin
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {   
+    {
         if(Auth::check()){
             if(!Auth::user()->role_id == 1){
                 return redirect()->route('unauthorized');
@@ -25,9 +25,5 @@ class isAdmin
         }else{
             return redirect()->route('adminlogin_index');
         }
-
-
-
-
     }
 }

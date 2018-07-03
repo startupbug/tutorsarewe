@@ -11,6 +11,7 @@
 |
 
 /* Admin Panel Routes */
+
 Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 
 	//User Home page.
@@ -63,19 +64,48 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 
 	//Edit subject-data 
 	Route::post('/edit-subj-data', 'Admin\SubjectController@edit_subj_data')->name('edit_subj_data');
+	Route::post('/edit-grade-data', 'Admin\SubjectController@edit_grade_data')->name('edit_grade_data');
 
 	//Edit-add data admin subject
 	Route::post('/add-edit-subjectdata', 'Admin\SubjectController@subject_submit')->name('subject_submit');
+	Route::post('/add-edit-gradedata', 'Admin\SubjectController@grade_submit')->name('grade_submit');
 
 	//Subject delete
 	Route::get('/subject-delete/{id}', 'Admin\SubjectController@delete_subject')->name('delete_subject');
+	Route::get('/grade-delete/{id}', 'Admin\SubjectController@delete_grade')->name('delete_grade');
 
+	//Listing Of Job Requests
+	Route::get('/job-requests', 'Admin\JobController@index')->name('job_requests');
+	Route::get('/manage-reviews', 'Admin\AdminController@profile_reviews')->name('profile_reviews');
+	Route::get('/manage-grades', 'Admin\AdminController@profile_grades')->name('profile_grades');
+	Route::get('/review-delete/{id}', 'Admin\AdminController@review_delete')->name('review_delete');
+
+	Route::get('/accept_review/{id}/', ["as" => "accept-review","uses" => "Admin\AdminController@accept_review"]);
+	Route::get('/reject_review/{id}/', ["as" => "reject-review", "uses" => "Admin\JobController@reject_review"]);	
+
+
+	Route::get('/job_boards', 'Admin\JobController@job_boards')->name('job_boards');
+	Route::get('/job-requests-delete/{id}', 'Admin\JobController@delete_job_request')->name('delete_job_request');
+	Route::get('/job-boards-delete/{id}', 'Admin\JobController@delete_job_board')->name('delete_job_board');
+	Route::post('/edit-job-request-data', 'Admin\JobController@edit_job_request')->name('edit_job_request');
+	Route::get('/accept_job_request/{id}/', ["as" => "accept-job-request","uses" => "Admin\JobController@accept_job_request"]);
+	
+	Route::get('/accept_job_board/{id}/', ["as" => "accept_job_board","uses" => "Admin\JobController@accept_job_board"]);
+	Route::get('/reject_job_request/{id}/', ["as" => "reject-job-request", "uses" => "Admin\JobController@reject_job_request"]);	
+	Route::get('/reject_job_board/{id}/', ["as" => "reject_job_board", "uses" => "Admin\JobController@reject_job_board"]);
 	// transactions
 	Route::get('transactions', 'Admin\AdminController@transactions')->name('admin_transactions');
 	Route::get('withdraws', 'Admin\AdminController@withdraws')->name('admin_withdraws');
 	Route::get('transaction_details/{id}', 'Admin\AdminController@transaction_detail')->name('admin_transaction_detail');	
 
+	//Test Routes
+	Route::get('/add-test', 'Admin\TestController@add_testindex')->name('admin_addtest_index');
 	
+	//Get grade subjects
+	Route::post('/get-subjects', 'Admin\TestController@get_grade_subjects')->name('get_grade_subjects');
+
+	//Post test mcq
+	Route::post('/add-test', 'Admin\TestController@admin_addtest')->name('admin_addtest');	
 });
 
 	//Admin Login Authentication

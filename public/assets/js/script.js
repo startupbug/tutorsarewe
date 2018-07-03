@@ -1,6 +1,30 @@
 $(document).ready(function () {
-    //for jquery functions
 
+    //for jquery functions
+$('#subscribe_1').on('submit',function(e){
+    e.preventDefault();
+    console.log("herezz");
+    var formData = $(this).serialize();
+    $.ajax({
+        type: $(this).attr('method'),
+        url: $(this).attr('action'),
+        data: formData,
+        success: function (data) {
+          if(data.status == 200){
+            alertify.success(data.msg);
+          }else if(data.status == 202){
+            alertify.warning(data.msg);
+          }else if(data.status == 203){
+            alertify.warning(data.msg);
+          }else{
+            alertify.warning(data.array.errorInfo[2]);
+          }
+        },
+    error: function (data) {
+      alertify.warning("Oops. something went wrong. Please try again");
+    }
+    });
+});
 
   // call validation on form
   // $("#Sign_up_form").validate();
@@ -54,5 +78,7 @@ $(function() {
     }
   );
 });
+
+
 
 //for custom javascript functions function

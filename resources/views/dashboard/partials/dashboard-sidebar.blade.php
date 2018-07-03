@@ -50,6 +50,10 @@
           <div class="s_nav_menu">
             <a href="{{route('subjects')}}"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>Subjects</a>
           </div>
+          <div class="s_nav_menu">
+            <a href="{{route('tutor_earnings')}}"><i class="fa fa-user f_icon_menu" aria-hidden="true"></i>Earnings </a>
+          </div>
+
           @endif
           <div class="s_nav_menu">
             <a href="#"><i class="fa fa-user-plus f_icon_menu"></i>Invite Friends</a>
@@ -58,10 +62,13 @@
             <a href="#"><i class="fa fa-envelope f_icon_menu" aria-hidden="true"></i>Messages</a>
           </div>
           <div class="s_nav_menu">
-            <a href="#"><i class="fa fa-calendar-check-o f_icon_menu"></i>Booking</a>
+            <a href="{{route('bookings_list')}}"><i class="fa fa-calendar-check-o f_icon_menu"></i>Booking</a>
           </div>
           <div class="s_nav_menu">
             <a href="{{route('my_transactions')}}"><i class="fa fa-credit-card f_icon_menu"></i>Transaction</a>
+          </div>
+           <div class="s_nav_menu">
+            <a href="{{route('create_schedule')}}"><i class="fa fa-credit-card f_icon_menu"></i>Scheduling</a>
           </div>
           <div class="s_nav_menu">
             <a href="{{route('my_balance')}}"><i class="fa fa-credit-card f_icon_menu"></i>My Wallet</a>
