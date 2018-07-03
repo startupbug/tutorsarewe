@@ -12,6 +12,9 @@ $('#subscribe_1').on('submit',function(e){
         success: function (data) {
           if(data.status == 200){
             alertify.success(data.msg);
+             setTimeout(function(){
+         window.location.reload(1);
+       }, 1000);
           }else if(data.status == 202){
             alertify.warning(data.msg);
           }else if(data.status == 203){

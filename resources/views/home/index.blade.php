@@ -14,9 +14,9 @@
             </h2>
             <br>
             <h3>
-               Search - Register - Excel
+              <a href="{{route('tutors_listing')}}">Search</a>  - <a href="{{route('signup')}}">Register</a>  - <a href="">Excel</a>
             </h3>
-            <p>Tutors Are US is a subsidiary of Available Group LLC. We are here to meet your needs. Our teaching philosophy is <br>teaching with fun and to create “A” student. Lets turn you into an A student in 3 easy steps</p>
+            <p>Tutors Are US is a subsidiary of Available Group LLC. We are here to meet your needs.  Our teaching philosophy is <br> teaching with fun. We want to create “A” students.  We don’t just tutor, we test the student first</p>
             <br>
             <div class="">
                <a class="btn btn-theme btn-sm btn-min-block f_about f_size f_btnpadding" href="{{route('aboutus')}}">ABOUT US</a><a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="{{route('contactus')}}">CONTACT US</a>
@@ -173,7 +173,9 @@
       <div class="row">
          <div class="col-md-4 col-md-offset-1">
             <h3 class="f_check">We got you,<br> we can help</h3>
-            <p class="f_per">Sed ut perspiciatis unde omnis iste natus error sit voluptatem <br> accusantium doloremque laudantium, totam rem aperiam, eaque ipsa <br>quae ab illo inventore veritatis et quasi architecto beatae vitae dicta <br>sunt explicabo. Nemo enim ipsam volups protatem quia voluptas sit <br>aspernatur aut odit aut fugit.</p>
+            <p class="f_per">You do not have to worry at all; we have suggested curriculum that we share with you and our tutors and monitor student’s progress. We reward student’s performance at the end of a year when they improve. We are here to motivate our students and we value their progress. </p>
+            <br>            
+            <strong>Feel free to call us at - 1-877-3- TUTORS (1-877-388- 8677)</strong>
             <div class="btn_check"><a href="">CHECK ALL SUBJECTS</a></div>
          </div>
          <div class="col-md-7">
@@ -259,13 +261,16 @@
          </div>
          <div class="col-md-6">
             <h3 class="f_text">Why choose us?</h3>
-            <p class="f_tutor"><i class="fa fa-check"></i>We conduct a pretest to know where the student stands</p>
+            <p class="f_tutor">
+               <i class="fa fa-check"></i>
+            We conduct a <a href="">pre test</a>  to know where the student stands 
+            </p>
             <br>
-            <p class="f_tutor"><i class="fa fa-check"></i>We tutor based on the pre test and specific child needs</p>
+            <p class="f_tutor"><i class="fa fa-check"></i>We tutor based on the <a href="">pre test</a> and specific child needs</p>
             <br>
             <p class="f_tutor"><i class="fa fa-check"></i>We have qualified tutors to meet your needs</p>
             <br>
-            <p class="f_tutor"><i class="fa fa-check"></i> 24/access - Find a tutor anytime, anywhere, using our online tutorial</p>
+            <p class="f_tutor"><i class="fa fa-check"></i> 24/access - Find a tutor anytime, anywhere.</p>
             <div class="btn_check"><a href="{{route('how_it_works')}}">HOW DOES THIS WORK</a></div>
          </div>
       </div>

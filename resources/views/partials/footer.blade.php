@@ -44,7 +44,7 @@
             </div>
             <div class="col-md-8 col-sm-12 col-xs-12">
                <h3 class="f_get">FIND A TUTOR FAST.GET OUR APP.</h3>
-               <p class="f_sed">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque<br>            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore </p>
+               <p class="f_sed"></p>
                <form action="{{route('subscribe')}}" method="post" id="subscribe_1">
                 {{csrf_field()}}
                   <div class="form-group">

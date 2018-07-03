@@ -334,11 +334,14 @@ class HomeController extends Controller
         if (isset($request->email)){
           $this->validate($request,[
            'email' => 'required|string|unique:users',
-         ]);
-        // dd($request->input());
+         ]);        
           $subscriber = new Subscriber;
           $subscriber->email = Input::get('email');
           if ($subscriber->save()){
+             Mail::send('emails.subscribe_email',['subscriber_data'=>$subscriber] , function ($message) use($subscriber){
+                  $message->from(env('MAIL_USERNAME'), 'Subscribe Email - Tutor Are Us');
+                  $message->to($subscriber->email)->subject('Tutor Are Us - Subscribe Email');
+                   });
             return \Response()->Json([ 'status' => 200,'msg'=>'You Have Successfully Subscribed Email']);
           }else{
             return \Response()->Json([ 'status' => 200,'msg'=>'Something Went Wrong Please Try Again!']);
