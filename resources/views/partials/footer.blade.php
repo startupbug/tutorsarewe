@@ -79,7 +79,7 @@
             </div>
          </div>
          <div class="col-md-2 col-sm-6 col-xs-6">
-            <h3 class="f_get">TUTORS BY COURSE</h3>
+            <h3 class="f_get">TUTORS BY SUBJECTS</h3>
             <ul class="f_list">
                <li class="list-item">
                   Algebra

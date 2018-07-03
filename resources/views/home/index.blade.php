@@ -1,6 +1,7 @@
-
 @extends('app')
 @section('content')
+
+
 
 <section class="tutor">
    <div class="w3-content  w3-display-container w3-section">
@@ -78,7 +79,7 @@
                         <input type="hidden" name="home" value="1">
                         <div class="form-group col-md-6 f_bottom">
                            <select class="form-control f_color" id="course" name="course">
-                              <option>Type of Course</option>
+                              <option>Type of Subjects</option>
                               @foreach($subjects as $subject)
                                  <option value="{{$subject->id}}">{{$subject->subject}}</option>
                               @endforeach
@@ -101,7 +102,7 @@
                         <input type="hidden" name="home" value="2">
                         <div class="form-group col-md-6 f_bottom">
                            <select class="form-control f_color" id="course" name="course">
-                              <option>Type of Course</option>
+                              <option>Type of Subject</option>
                               @foreach($subjects as $subject)
                                  <option value="{{$subject->id}}">{{$subject->subject}}</option>
                               @endforeach
@@ -124,7 +125,7 @@
                         <input type="hidden" name="home" value="3">
                         <div class="form-group col-md-6 f_bottom">
                            <select class="form-control f_color" id="course" name="course">
-                              <option>Type of Course</option>
+                              <option>Type of Subject</option>
                               @foreach($subjects as $subject)
                                  <option value="{{$subject->id}}">{{$subject->subject}}</option>
                               @endforeach
@@ -176,7 +177,7 @@
          <div class="col-md-4 col-md-offset-1">
             <h3 class="f_check">We got you,<br> we can help</h3>
             <p class="f_per">Sed ut perspiciatis unde omnis iste natus error sit voluptatem <br> accusantium doloremque laudantium, totam rem aperiam, eaque ipsa <br>quae ab illo inventore veritatis et quasi architecto beatae vitae dicta <br>sunt explicabo. Nemo enim ipsam volups protatem quia voluptas sit <br>aspernatur aut odit aut fugit.</p>
-            <div class="btn_check"><a href="">CHECK ALL COURSES</a></div>
+            <div class="btn_check"><a href="">CHECK ALL SUBJECTS</a></div>
          </div>
          <div class="col-md-7">
             <div class="row">
@@ -217,7 +218,7 @@
 <section class="images_courses">
    <div class="container">
       <div class="row">
-         <h3 class="added_course">Recent Added Courses</h3>
+         <h3 class="added_course">Recent Added Subjects</h3>
          <div class="col-md-4 col-sm-4 col-xs-12 text-center">
             <img src="{{ asset('public/assets/images/images1.png') }}" class="img-responsive f_margin">
             <h3 class="full_time">Full Time Tutoring</h3>
