@@ -1,8 +1,5 @@
 @extends('app')
 @section('content')
-
-
-
 <section class="tutor">
    <div class="w3-content  w3-display-container w3-section">
       <img class="mySlides img_home" src="{{ asset('public/assets/images/banner2.png') }}" class="img-responsive">
@@ -22,7 +19,7 @@
             <p>Tutors Are US is a subsidiary of Available Group LLC. We are here to meet your needs. Our teaching philosophy is <br>teaching with fun and to create “A” student. Lets turn you into an A student in 3 easy steps</p>
             <br>
             <div class="">
-               <a class="btn btn-theme btn-sm btn-min-block f_about f_size f_btnpadding" href="{{route('aboutus')}}">ABOUT US</a><a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="#">CONTACT US</a>
+               <a class="btn btn-theme btn-sm btn-min-block f_about f_size f_btnpadding" href="{{route('aboutus')}}">ABOUT US</a><a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="{{route('contactus')}}">CONTACT US</a>
             </div>
          </div>
       </div>
@@ -51,7 +48,7 @@
             </div>
          </div>
       </div>
-      </div> -->
+   </div> -->
    <div class="container">
       <div class="row">
          <div class="col-md-12 f_main">
@@ -75,13 +72,13 @@
                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                   <div class="tab-pane fade active in" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                      <form action="{{route('tutors_listing')}}" method="get">
-                     
+
                         <input type="hidden" name="home" value="1">
                         <div class="form-group col-md-6 f_bottom">
                            <select class="form-control f_color" id="course" name="course">
                               <option>Type of Subjects</option>
                               @foreach($subjects as $subject)
-                                 <option value="{{$subject->id}}">{{$subject->subject}}</option>
+                              <option value="{{$subject->id}}">{{$subject->subject}}</option>
                               @endforeach
                            </select>
                         </div>
@@ -89,7 +86,7 @@
                            <select class="form-control f_color" id="location" name="location">
                               <option>Select Location</option>
                               @foreach($countries as $country)
-                                 <option value="{{$country->id}}">{{$country->name}}</option>
+                              <option value="{{$country->id}}">{{$country->name}}</option>
                               @endforeach
                            </select>
                         </div>
@@ -97,14 +94,14 @@
                      </form>
                   </div>
                   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-contact-tab">
-                        <form action="{{route('tutors_listing')}}" method="get">
-                     
+                     <form action="{{route('tutors_listing')}}" method="get">
+
                         <input type="hidden" name="home" value="2">
                         <div class="form-group col-md-6 f_bottom">
                            <select class="form-control f_color" id="course" name="course">
                               <option>Type of Subject</option>
                               @foreach($subjects as $subject)
-                                 <option value="{{$subject->id}}">{{$subject->subject}}</option>
+                              <option value="{{$subject->id}}">{{$subject->subject}}</option>
                               @endforeach
                            </select>
                         </div>
@@ -112,7 +109,7 @@
                            <select class="form-control f_color" id="location" name="location">
                               <option>Select Location</option>
                               @foreach($countries as $country)
-                                 <option value="{{$country->id}}">{{$country->name}}</option>
+                              <option value="{{$country->id}}">{{$country->name}}</option>
                               @endforeach
                            </select>
                         </div>
@@ -120,56 +117,56 @@
                      </form>
                   </div>
                   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-about-tab">
-                       <form action="{{route('tutors_listing')}}" method="get">
-                     
-                        <input type="hidden" name="home" value="3">
-                        <div class="form-group col-md-6 f_bottom">
-                           <select class="form-control f_color" id="course" name="course">
-                              <option>Type of Subject</option>
-                              @foreach($subjects as $subject)
-                                 <option value="{{$subject->id}}">{{$subject->subject}}</option>
-                              @endforeach
-                           </select>
-                        </div>
-                        <div class="form-group col-md-3 f_bottom">
-                           <select class="form-control f_color" id="location" name="location">
-                              <option>Select Location</option>
-                              @foreach($countries as $country)
-                                 <option value="{{$country->id}}">{{$country->name}}</option>
-                              @endforeach
-                           </select>
-                        </div>
-                        <div class="col-md-3 f_bottom"><button type="submit" class="btn btn-default f_color button_tour">SEARCH TOUR</button></div>
-                     </form>
-                  </div>
+                    <form action="{{route('tutors_listing')}}" method="get">
+
+                     <input type="hidden" name="home" value="3">
+                     <div class="form-group col-md-6 f_bottom">
+                        <select class="form-control f_color" id="course" name="course">
+                           <option>Type of Subject</option>
+                           @foreach($subjects as $subject)
+                           <option value="{{$subject->id}}">{{$subject->subject}}</option>
+                           @endforeach
+                        </select>
+                     </div>
+                     <div class="form-group col-md-3 f_bottom">
+                        <select class="form-control f_color" id="location" name="location">
+                           <option>Select Location</option>
+                           @foreach($countries as $country)
+                           <option value="{{$country->id}}">{{$country->name}}</option>
+                           @endforeach
+                        </select>
+                     </div>
+                     <div class="col-md-3 f_bottom"><button type="submit" class="btn btn-default f_color button_tour">SEARCH TOUR</button></div>
+                  </form>
                </div>
-            </section>
+            </div>
+         </section>
+      </div>
+   </div>
+</div>
+<section class="info">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-4 col-md-offset-0 col-sm-6 col-xs-12 text-center">
+            <img src="{{ asset('public/assets/images/image1.png') }}" class="img-responsive info_img">
+            <h3 class="f_online">Online and Offline</h3>
+            <p class="f_meet">We can meet the student online or we can come <br>to your home or designated location. You don’t <br>have to worry. We have tutors ASAP (AS SOON <br>AS POSSIBLE) and PRN (AS needed). We can <br>help you or your child succeed.</p>
+         </div>
+         <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+            <img src="{{ asset('public/assets/images/image2.png') }}" class="img-responsive info_img">
+            <h3 class="f_online">Quality Scores</h3>
+            <p class="f_meet">We have highly qualified tutors to meet you or <br>your child’s tutoring needs</p>
+         </div>
+         <div class="col-md-4 col-sm-6 col-xs-12 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0">
+            <img src="{{ asset('public/assets/images/image3.png') }}" class="img-responsive info_img">
+            <h3 class="f_online">Reviews & Ratings</h3>
+            <p class="f_meet">No more emails, Calls or messaging friends for <br>recommendations - Get acces to real reviews<br>
+               in seconds
+            </p>
          </div>
       </div>
    </div>
-   <section class="info">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-4 col-md-offset-0 col-sm-6 col-xs-12 text-center">
-               <img src="{{ asset('public/assets/images/image1.png') }}" class="img-responsive info_img">
-               <h3 class="f_online">Online and Offline</h3>
-               <p class="f_meet">We can meet the student online or we can come <br>to your home or designated location. You don’t <br>have to worry. We have tutors ASAP (AS SOON <br>AS POSSIBLE) and PRN (AS needed). We can <br>help you or your child succeed.</p>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-               <img src="{{ asset('public/assets/images/image2.png') }}" class="img-responsive info_img">
-               <h3 class="f_online">Quality Scores</h3>
-               <p class="f_meet">We have highly qualified tutors to meet you or <br>your child’s tutoring needs</p>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0">
-               <img src="{{ asset('public/assets/images/image3.png') }}" class="img-responsive info_img">
-               <h3 class="f_online">Reviews & Ratings</h3>
-               <p class="f_meet">No more emails, Calls or messaging friends for <br>recommendations - Get acces to real reviews<br>
-                  in seconds
-               </p>
-            </div>
-         </div>
-      </div>
-   </section>
+</section>
 </section>
 <section class="check">
    <div class="container-fluid">
@@ -299,5 +296,4 @@
       </div>
    </div>
 </section>
-
 @endsection
