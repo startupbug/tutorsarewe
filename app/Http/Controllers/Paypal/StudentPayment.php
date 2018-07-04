@@ -212,13 +212,7 @@ class StudentPayment extends Controller
 
             $profile_update = Profile::where('user_id', Auth::user()->id)->update(['pre_test_paid'=> 1]);
 
-            $transaction_model = TransactionModel::create([
-              'user_id' => Auth::user()->id,
-              'description' => 'Pre Test Payment for Student',
-              'type' => 'pre-test',
-            ]);
-
-            if($wallet_decrement && $transaction_model && $profile_update){
+            if($wallet_decrement && $profile_update){
 
               $this->set_session('Payment Successfully Completed', true);
               return redirect()->route('pre_test_payment_index', ['name' => '3']);            
