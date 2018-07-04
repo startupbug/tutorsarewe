@@ -11,6 +11,7 @@
 |
 
 /* Admin Panel Routes */
+
 Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 
 	//User Home page.

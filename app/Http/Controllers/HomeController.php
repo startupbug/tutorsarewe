@@ -9,11 +9,14 @@ use App\Subject;
 use App\Country;
 use App\State;
 use App\City;
+use App\Contact;
 use DB;
 use App\Subscriber;
 use Illuminate\Support\Facades\Input;
 use Session;
 use Response;
+use Mail;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -267,9 +270,62 @@ class HomeController extends Controller
         return view('authentication.forget_password');
     }
 
+    // contact page
+    public function contactus(){
+      return view('home.contact');
+    }
+    
+    public function contactus_post(Request $request){      
+      // "full_name" => "dsaad"
+      // "email" => "fariha.aimviz@gmail.com"
+      // "phone" => "asdad"
+      // "subject" => "asd"
+      // "your_message" => "asdsad"
+      // dd($request);
+
+       try {
+                if (isset($request->email)) {
+                    $store = new Contact;
+                    $store->full_name =$request->full_name;
+                    $store->email =$request->email;
+                    $store->phone =$request->phone;
+                    $store->message_description =$request->message_description;
+                    $store->subject_description =$request->subject_description;
+                    if ($store->save()){
+                        if (isset($store)) {            
+                            Mail::send('emails.contact_email',['email_data'=>$store] , function ($message) use($store){
+                              $message->from($store['email'], 'Contact Email - Tutor Are Us');
+                              $message->to(env('MAIL_USERNAME'))->subject('Tutor Are Us - Contact Email');
+                          });
+                        }       
+                        // return \Response()->Json([ 'status' => 200,'msg'=>'You Have Successfully Send The Email']);
+                        $this->set_session('You Have Successfully Send The Email', true);
+                        // dd('You Have Successfully Send The Email');
+                        return redirect()->back();
+
+                    }else{                        
+                      $this->set_session('Something Went Wrong, Please Try Again', false);
+                        return redirect()->back();
+                    }
+                }else{
+                  $this->set_session('Please Provide The Email Address!', false);                  
+                  return redirect()->back();
+                }
+           
+        } catch (QueryException $e) {
+            return \Response()->Json([ 'array' => $e]);
+        }
+    }
+
+
+    //terms page
+    public function terms(){
+      return view('home.terms');
+    }
+    
     //aboutus page
     public function aboutus(){
-    	return view('home.aboutus');
+      return view('home.aboutus');
     }
 
     public function subscribe(Request $request)
@@ -278,11 +334,14 @@ class HomeController extends Controller
         if (isset($request->email)){
           $this->validate($request,[
            'email' => 'required|string|unique:users',
-         ]);
-        // dd($request->input());
+         ]);        
           $subscriber = new Subscriber;
           $subscriber->email = Input::get('email');
           if ($subscriber->save()){
+             Mail::send('emails.subscribe_email',['subscriber_data'=>$subscriber] , function ($message) use($subscriber){
+                  $message->from(env('MAIL_USERNAME'), 'Subscribe Email - Tutor Are Us');
+                  $message->to($subscriber->email)->subject('Tutor Are Us - Subscribe Email');
+                   });
             return \Response()->Json([ 'status' => 200,'msg'=>'You Have Successfully Subscribed Email']);
           }else{
             return \Response()->Json([ 'status' => 200,'msg'=>'Something Went Wrong Please Try Again!']);

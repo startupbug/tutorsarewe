@@ -6,19 +6,19 @@
                <h3 class="f_get">GET TO KNOW US</h3>
                <ul f_list>
                   <li class="list-item">
-                     About Us
+                     <a href="{{route('aboutus')}}">About Us</a>
                   </li>
                   <li class="list-item">
-                     Terms And Conditions
+                     <a href="{{route('terms')}}">Terms And Conditions</a>
                   </li>
                   <li class="list-item">
-                     Search For A Tutor
+                     <a href="{{route('tutors_listing')}}">Search For A Tutor</a>
                   </li>
                   <li class="list-item">
-                     Search For A Student
+                     <a href="#">Search For A Student</a>
                   </li>
                   <li class="list-item">
-                     Become A Tutor
+                     <a href="{{route('fulltime_tutor')}}">Become A Tutor</a>
                   </li>
                </ul>
             </div>
@@ -26,25 +26,25 @@
                <h3 class="f_get">QUICK LINK</h3>
                <ul f_list>
                   <li class="list-item">
-                     How it Works
+                     <a href="{{route('how_it_works')}}">How it Works</a>
                   </li>
                   <li class="list-item">
-                     Start Tutoring
+                     <a href="{{route('find_tutor')}}">Start Tutoring</a>
                   </li>
                   <li class="list-item">
-                     Publications
+                     <a href="{{route('publications')}}">Publications</a>
                   </li>
                   <li class="list-item">
-                     Partners
+                     <a href="#">Partners</a>
                   </li>
                   <li class="list-item">
-                     Contact Us
+                    <a href="{{route('contactus')}}">Contact Us</a>
                   </li>
                </ul>
             </div>
             <div class="col-md-8 col-sm-12 col-xs-12">
                <h3 class="f_get">FIND A TUTOR FAST.GET OUR APP.</h3>
-               <p class="f_sed">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque<br>            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore </p>
+               <p class="f_sed"></p>
                <form action="{{route('subscribe')}}" method="post" id="subscribe_1">
                 {{csrf_field()}}
                   <div class="form-group">
@@ -79,7 +79,7 @@
             </div>
          </div>
          <div class="col-md-2 col-sm-6 col-xs-6">
-            <h3 class="f_get">TUTORS BY COURSE</h3>
+            <h3 class="f_get">TUTORS BY SUBJECTS</h3>
             <ul class="f_list">
                <li class="list-item">
                   Algebra

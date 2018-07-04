@@ -74,6 +74,9 @@ Route::get('/publications', 'HomeController@publications')->name('publications')
 
 //aboutus
 Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
+Route::get('/terms', 'HomeController@terms')->name('terms');
+Route::get('/contactus', 'HomeController@contactus')->name('contactus');
+Route::post('/contactus_post', 'HomeController@contactus_post')->name('contactus_post');
 
 // Route::post('/home_tutor_filter','HomeController@home_tutor_filter')->name('home_tutor_filter');
 
@@ -135,7 +138,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/post-job', 'JobController@student_postJob_req')->name('student_postJob_req');
 
 	/* Job Booking Lesson Routes */
-	Route::get('/book-lesson/{jobid}', 'BookingController@booking_view')->name('booking_index');
+	Route::get('/book-lesson/{jobid}','BookingController@booking_view')->name('booking_index');
 
 	//Student Book Lesson
 	//Book Lesson By Student
@@ -183,6 +186,7 @@ Route::get('/error/{message}', 'HomeController@error')->name('error');
 Route::get('/tutor-search/', 'Tutor\TutorController@index')->name('tutors_listing');
 Route::get('/tutor-search-ajax/', 'Tutor\TutorController@tutor_search_ajax');
 Route::Post('/contact_tutor_email/', 'Tutor\TutorController@contact_tutor_email')->name('contact_tutor_email');
+Route::get('/review', 'extraController@review')->name('review');
 
 
 Route::get('scheduling', function () {

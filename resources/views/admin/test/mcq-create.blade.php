@@ -30,11 +30,12 @@
               <div class="box-body">
                 <div class="form-group profile_form">
                   <label for="exampleInputGender">Title<span>*</span></label>
-                  <input type="text" value="" class="form-control" name="heading"/>
+                  <input type="text" value="" class="form-control" name="heading" required/>
                 </div>
                 <div class="form-group profile_form">
                   <label for="grade">Grade<span>*</span></label>
                   <select id="grade" data-url="{{route('get_grade_subjects')}}" name="grade_id" class="form-control" required>                    
+                           <option value="" select="selected">Select Grade</option>
                         @foreach($grades as $grade)
                           <option value="{{$grade->id}}">{{$grade->grade}}</option>
                         @endforeach

@@ -30,9 +30,9 @@ class TestController extends Controller
         //Random Test
         $this->data['test_mcq'] = Test::with('mcqs')->where(['grade_id' => 1, 'subj_id'=> 3])
         ->first();
-        //dd(count($this->data['test_mcq']) );
-        //echo phpinfo();
-           // die();
+
+        //dd(count($this->data['test_mcq']));
+
         return view('tests.lessons_grade')->with($this->data);
     }
 

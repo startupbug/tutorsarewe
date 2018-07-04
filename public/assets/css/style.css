@@ -305,7 +305,11 @@ ul.top-header-nav li {
     color: #ed7174;
     font-family: 'ProximaNova-Semibold';
 }
-
+.header-text h3 a{
+    font-size: 60px;
+    color: #ed7174;
+    font-family: 'ProximaNova-Semibold';
+}
 .header-text p {
     font-size: 18px;
     color: #ffffff;
@@ -545,6 +549,12 @@ h3.f_text {
 }
 
 p.f_tutor {
+    font-size: 16px;
+    color: #747474;
+    font-family: 'ProximaNova-Semibold';
+}
+
+p.f_tutor a{
     font-size: 16px;
     color: #747474;
     font-family: 'ProximaNova-Semibold';
@@ -2055,4 +2065,58 @@ span.nav__item-text.active {
 }
 .WyzQuizExplanation p{
     font-family: 'ProximaNovaAlt-Regular';
+}
+
+.list-item a {
+    color: #afabaa;
+    font-size: 16px;
+    font-family: 'ProximaNovaAlt-Regular';
+    padding-bottom: 5px;
+}
+h3.about_text {
+    font-family: 'Ubuntu-B';
+    color: #646464;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+p.f_contact {
+    font-size: 16px;
+    color: #747474;
+    font-family: 'ProximaNovaAlt-Regular';
+    margin-bottom: 40px;
+}
+
+.f_contact_group label {
+    font-size: 18px;
+    color: #646464;
+    font-family: 'ProximaNovaAlt-Regular';
+}
+
+.f_submit_contact {
+    border: 1px solid #ed7275 !important;
+    background-color: #ed7275 !important;
+    font-family: 'ProximaNovaAlt-Regular';
+    color: #fff;
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.f_submit_contact:active {
+    border: 1px solid #ed7275 !important;
+    background-color: #ed7275 !important;
+    font-family: 'ProximaNovaAlt-Regular';
+    color: #fff;
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-bottom: 25px;
+    text-align: center;
 }
