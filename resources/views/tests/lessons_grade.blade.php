@@ -26,7 +26,7 @@
             @endforeach
          </div>
 
-        @if(isset($test_mcq) && count($test_mcq) > 0)
+        @if(isset($test_mcq))
          <div class="col-md-8">
             <h3 class="mcqs_title">{{$test_mcq->heading}}</h3>
             <p class="mcqs_content">
