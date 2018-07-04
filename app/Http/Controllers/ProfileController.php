@@ -168,10 +168,11 @@ class ProfileController extends Controller
     public function transaction_detail($id)
     {
         try {
-
+            ///dd('adasda');
             $data['transaction'] = Transaction::where('user_id', Auth::user()->id)->find($id);
             $data['description'] = json_decode($data['transaction']->description);
-            // dd($data['description']);
+            //dd($data['description']);
+
             return view('dashboard.transactions.transaction_detail')->with($data);
             
         } catch (Exception $e) {
