@@ -31,7 +31,8 @@ class AuthenticationController extends Controller
         $this->validate($request, [
             'email' => 'required|string|email',
             'password' => 'required',
-        ]); 
+        ]);
+
           try{
 
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {
@@ -45,9 +46,17 @@ class AuthenticationController extends Controller
                 }    
 
                $this->logActivity(Auth::user()->first_name.'Logged in on Tutor');
+
                DB::table('profiles')
                     ->where('user_id', Auth::user()->id)
                     ->update(['online_status' => 1]);
+
+               //Student Pre-test handling Workz -- 4 July.
+
+               if(Auth::user()->role_id == 2 && Auth::user()->profile->pre_test_paid == 0){
+                 return redirect()->route('pre_test_payment_index', ['name' => '1']);
+               } 
+
                return redirect()->route('home');
             }else{
                $this->set_session('invalid username or password', false);
@@ -146,8 +155,8 @@ class AuthenticationController extends Controller
             $user->phone_no = $request->input('countryCode').$request->input('phonenum1');
 
             $user->status_id = 1; 
-
-
+            $user->pre_test = 0;
+            $user->pre_test_paid = 0;
 
             if($user->save()){
                 

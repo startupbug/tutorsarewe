@@ -188,50 +188,100 @@ class StudentPayment extends Controller
     //Pretest Payment Pretest Module -- START
     public function pay_pretest_student(){
 
-     try{
-
-        //Pre-test fixed amount $40;
-        //Check if wall has the desired amount that is $40      
-
-        $walletQueryScope = Wallet::where('user_id', Auth::user()->id);
-        $wallet = $walletQueryScope->first();
-        
-        if($wallet->balance < 40){
-
-            //No Amount in Wallet to Pay Pre test Amount.
-            $this->set_session('Your wallet doesnot have the desired Amount, Please add money to your wallet to Pay', false);
-
-            return redirect()->route('pre_test_payment_index', ['name' => '4']);
-
-        }else{
-            //Wallet has the desired amount
-            //Cut the Amount from wallet
-            $wallet_decrement = $walletQueryScope->decrement('balance', 40);
+      //Pre-test fixed amount $40;
+      //Check if wall has the desired amount that is $40
+      $walletQueryScope = Wallet::where('user_id', Auth::user()->id)
+      $wallet = $walletQueryScope->first();
+      
+      if($wallet->balance < 40){
+          //No Amount in Wallet to Pay Pre test Amount.
+          $this->set_session('Your wallet doesnot have the desired Amount, Please add money to your wallet to Pay', false);        
+          return redirect()->route('pre_test_payment_index', ['name' => '4']);
+      }else{
+          //Wallet has the desired amount
+          //Cut the Amount from wallet
+          $wallet_decrement = $walletQueryScope->decrement('balance', 40);
+          
+          if($wallet_decrement){
             
-            //Update Profile and Update Transaction record table
+          }else{
+            
+          }
+      }
 
-            $profile_update = Profile::where('user_id', Auth::user()->id)->update(['pre_test_paid'=> 1]);
+      $deposit = (float) 40;
 
-            $transaction_model = TransactionModel::create([
-              'user_id' => Auth::user()->id,
-              'description' => 'Pre Test Payment for Student',
-              'type' => 'pre-test',
-            ]);
+       // dd(gettype($amount));
+      $payer = new Payer();
+      $payer->setPaymentMethod("paypal");
 
-            if($wallet_decrement && $transaction_model && $profile_update){
+      $amount = new Amount();
+      $amount->setCurrency("USD")
+        ->setTotal($deposit);
 
-              $this->set_session('Payment Successfully Completed', true);
-              return redirect()->route('pre_test_payment_index', ['name' => '3']);            
-            }else{
+      $transaction = new Transaction();
+      $transaction->setAmount($amount)
+          ->setDescription("this is paypal Pre-test Payment Deposit")
+          ->setInvoiceNumber(md5(mt_rand()));
 
-              $this->set_session('Payment Coudlnot be Completed',false);
-              return redirect()->route('pre_test_payment_index', ['name' => '4']);            
-            }
-        }
-     }catch(Exception $ex){
-         $this->set_session('Payment Coudlnot be Completed',$ex->getMessage());
-         return redirect()->route('pre_test_payment_index', ['name' => '4']);  
-     } 
+      //$baseUrl = getBaseUrl();
+      $redirectUrls = new RedirectUrls();
+      $redirectUrls->setReturnUrl(action('Paypal\StudentPayment@getPreTestDone'))
+          ->setCancelUrl(action('Paypal\StudentPayment@getPreTestCancel'));
+
+      $payment = new Payment();
+      $payment->setIntent("sale")
+          ->setPayer($payer)
+          ->setRedirectUrls($redirectUrls)
+          ->setTransactions(array($transaction));
+
+
+    $response = $payment->create($this->apiContext);
+    $redirectUrl = $response->links[1]->href;
+    $this->logActivity(Auth::user()->first_name.' Pretest Test Payment ');
+    return \Redirect::to( $redirectUrl );
+
+    }
+
+    //Pretest Payment Done
+    public function getPreTestDone(Request $request){
+
+        $paymentId = $request->paymentId;
+        $token = $request->token;
+        $payer_id = $request->PayerID;
+
+        $payment = Payment::get($paymentId, $this->apiContext);
+
+
+        $execution = new PaymentExecution();
+          $execution->setPayerId($payer_id);
+
+
+          $result = $payment->execute($execution, $this->apiContext);
+
+          $payment = Payment::get($paymentId, $this->apiContext);
+
+          //Payment successful further functionality
+          //$profile = Profile::where('user_id', Auth::user()->id)->update(['pre_test_paid'=> 1]);
+          // TransactionModel::create([
+          //   'user_id' => Auth::user()->id,
+          //   'description' => $result,
+          //   'type' => 'deposit',
+          // ]);
+          // $balance = Wallet::where('user_id', Auth::user()->id)->first(['balance']); 
+          // Wallet::where('user_id', Auth::user()->id)->update([
+          //   'balance' => $balance->balance + $result->transactions[0]->amount->total
+          // ]);
+          
+          $this->set_session('Payment Successfully Completed', true);
+          return redirect()->route('pre_test_payment_index', ['name' => '3']);
+    }
+
+    //Pretest Payment Cancel
+    public function getPreTestCancel(){
+
+        $this->set_session('Payment Have been Cancelled', false);
+        return redirect()->route('pre_test_payment_index', ['name' => '4']);
 
     }
 

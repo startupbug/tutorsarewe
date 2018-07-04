@@ -2163,7 +2163,7 @@ section.aboutus {
   padding-bottom: 50px;
   margin-top: 0px;
 }
-p.about_content a{
+p.about_content a, p.about_content a:hover{
   font-size: 16px;
   color: #ed7275;
   font-family: 'ProximaNovaAlt-Regular';
@@ -2181,5 +2181,17 @@ p.f_per strong{
     font-weight: 600;
     font-family: 'ProximaNova-Semibold';
     line-height: 20px;
+}
+.alert, .alert strong {
+    font-family: 'ProximaNovaAlt-Regular';
+}
+.about_us_a {
+    font-family: 'Ubuntu-B';
+    color: #ed7275;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+.about_us_a:hover {
+    color: #ed7275;
 }
 /* End New Css */

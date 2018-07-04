@@ -19,7 +19,8 @@
             <p>Tutors Are US is a subsidiary of Available Group LLC. We are here to meet your needs.  Our teaching philosophy is <br> teaching with fun. We want to create “A” students.  We don’t just tutor, we test the student first</p>
             <br>
             <div class="">
-               <a class="btn btn-theme btn-sm btn-min-block f_about f_size f_btnpadding" href="{{route('aboutus')}}">ABOUT US</a><a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="{{route('contactus')}}">CONTACT US</a>
+               <a class="btn btn-theme btn-sm btn-min-block f_about f_size f_btnpadding" href="{{route('aboutus')}}">ABOUT US</a>
+               <a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="{{route('student_pretest')}}">Pre - Test </a>
             </div>
          </div>
       </div>
@@ -281,10 +282,10 @@
             <h3 class="f_text">Why choose us?</h3>
             <p class="f_tutor">
                <i class="fa fa-check"></i>
-            We conduct a <a href="">pre test</a>  to know where the student stands
+               We conduct a <a href="{{route('student_pretest')}}">pre test</a>  to know where the student stands
             </p>
             <br>
-            <p class="f_tutor"><i class="fa fa-check"></i>We tutor based on the <a href="">pre test</a> and specific child needs</p>
+            <p class="f_tutor"><i class="fa fa-check"></i>We tutor based on the <a href="{{route('student_pretest')}}">pre test</a> and specific child needs</p>
             <br>
             <p class="f_tutor"><i class="fa fa-check"></i>We have qualified tutors to meet your needs</p>
             <br>
