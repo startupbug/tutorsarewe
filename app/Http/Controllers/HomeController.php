@@ -339,8 +339,8 @@ class HomeController extends Controller
           $subscriber->email = Input::get('email');
           if ($subscriber->save()){
              Mail::send('emails.subscribe_email',['subscriber_data'=>$subscriber] , function ($message) use($subscriber){
-                  $message->from(env('MAIL_USERNAME'), 'Subscribe Email - Tutor Are Us');
-                  $message->to($subscriber->email)->subject('Tutor Are Us - Subscribe Email');
+                  $message->from(env('MAIL_USERNAME'), 'Subscribe Email');
+                  $message->to($subscriber->email)->subject('Tutor Are Us');
                    });
             return \Response()->Json([ 'status' => 200,'msg'=>'You Have Successfully Subscribed Email']);
           }else{

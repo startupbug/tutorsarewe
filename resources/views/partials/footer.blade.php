@@ -82,9 +82,6 @@
             <h3 class="f_get">TUTORS BY SUBJECTS</h3>
             <ul class="f_list">
                <li class="list-item">
-                  Algebra
-               </li>
-               <li class="list-item">
                   Homework
                </li>
                <li class="list-item">
@@ -94,14 +91,20 @@
                   Projects
                </li>
                <li class="list-item">
+                  Early Childhood Tutors
+               </li>
+               <li class="list-item">
                   Math
                </li>
                <li class="list-item">
-                  Science Fair Help
+                  Algebra
                </li>
-               <li class="list-item">
+               <li class="list-item"> 
                   Calculus
                </li>
+               <li class="list-item">
+                  Social studies
+               </li>              
             </ul>
          </div>
          <div class="col-md-3 col-sm-6 col-xs-6">
@@ -111,29 +114,12 @@
                   Trigonometry
                </li>
                <li class="list-item">
-                  Early Childhood Tutoring
-               </li>
-               <li class="list-item">
                   English
-               </li>
-               <li class="list-item">
-                  French
-               </li>
-               <li class="list-item">
-                  Social Studies
                </li>
                <li class="list-item">
                   Reading
                </li>
                <li class="list-item">
-                  Full Time Tutoring
-               </li>
-            </ul>
-         </div>
-         <div class="col-md-3 col-sm-6 col-xs-6">
-            <!--<h3 class="f_get">TUTORS BY LOCATION</h3>-->
-            <ul class="f_list f_list1 f_borderright f_spanish">
-               <li class="list-item padding_top">
                   Spanish
                </li>
                <li class="list-item">
@@ -146,14 +132,43 @@
                   Swahili
                </li>
                <li class="list-item">
+                  Science fair help
+               </li>
+               <li class="list-item"> 
+                  Chemistry
+               </li>                                 
+            </ul>
+         </div>
+         <div class="col-md-3 col-sm-6 col-xs-6">
+            <!--<h3 class="f_get">TUTORS BY LOCATION</h3>-->
+            <ul class="f_list f_list1 f_borderright f_spanish">
+               <li class="list-item padding_top">
                   Yoruba
+               </li>
+               <li class="list-item">
+                  French
+               </li>
+               <li class="list-item">
+                  Other Language
                </li>
                <li class="list-item">
                   Music
                </li>
                <li class="list-item">
+                  Science
+               </li>
+               <li class="list-item">
                   Biology
                </li>
+               <li class="list-item">
+                  Physics
+               </li> 
+               <li class="list-item">
+                  Other subject
+               </li>
+               <li class="list-item">
+                  Full time Tutors
+               </li>                        
             </ul>
          </div>
          <div class="col-md-offset-1 col-md-3 col-sm-6 col-xs-6">
@@ -179,7 +194,10 @@
                </li>
                <li class="list-item">
                   Fowler
-               </li>
+               </li> 
+               <li class="list-item">
+                  Full time Tutors
+               </li>                
             </ul>
          </div>
       </div>

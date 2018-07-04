@@ -5,14 +5,14 @@
 </head>
 <body>
  <div style="
-   background:  #06c;
+   
    padding: 20px;
-   text-align:  center;
+   text-align:  left;
    font-family:  sans-serif;
-   color: #fff;
+   color: #000;
    font-size: 20px;
  ">
-   <h2>This is the Link <a href="https://www.google.com/">Click Me/</a></h2>
+   <h2>You can download our application from this Link<a href="{{route('home')}}">Tutor are us App/</a></h2>
  </div>
  <div style="
    padding: 20px;

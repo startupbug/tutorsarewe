@@ -176,7 +176,7 @@
             <h3 class="f_check">We got you,<br> we can help</h3>
             <p class="f_per">You do not have to worry at all; we have suggested curriculum that we share with you and our tutors and monitor student’s progress. We reward student’s performance at the end of a year when they improve. We are here to motivate our students and we value their progress. </p>
             <!-- <br>  -->           
-            <p class="f_per">Feel free to call us at - 1-877-3- TUTORS (1-877-388- 8677)</p>
+            <p class="f_per_free">Feel free to call us at - 1-877-3- TUTORS (1-877-388- 8677)</p>
             <div class="btn_check"><a href="">CHECK ALL SUBJECTS</a></div>
          </div>
          <div class="col-md-7">
