@@ -9,6 +9,7 @@ use App\Test;
 use App\Grade;
 use App\Mcq;
 use App\Mcq_answer;
+use Auth;
 
 class TestController extends Controller
 {
@@ -77,5 +78,22 @@ class TestController extends Controller
         }catch(\Exception $e){
             return \Response()->json(['msg' => "Something went wrong", 'status' => 422]);
         }
+    }
+
+    //Student pretest Routes
+    public function student_pretest(){
+
+        //Payment Check to give Pre-test by student
+       if(Auth::user()->profile->pre_test_paid == 0){
+         return redirect()->route('pre_test_payment_index', ['name' => '1']);
+       } 
+
+        //Random Test
+        $this->data['test_mcq'] = Test::with('mcqs')->where(['grade_id' => 1, 'subj_id'=> 3])
+        ->first();
+
+        //dd(count($this->data['test_mcq']));
+
+        return view('tests.pretest')->with($this->data);        
     }
 }
