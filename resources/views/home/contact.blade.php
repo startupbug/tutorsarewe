@@ -6,7 +6,9 @@
       <div class="row">
          <div class="col-md-8">
             <h3 class="about_text">Contact Us</h3>
-            <p class="f_contact">Please fill in the information below and we'll get back as soon as possible.</p>
+            <p class="f_contact s-margin-bottom-0">We are here to help</p>
+            <p class="f_contact s-margin-bottom-0">Contact us by Phone - We are not automated!!!</p>
+            <p class="f_contact">1 -877-3-TUTORS</p>
             <form class="main_form" action="{{route('contactus_post')}}" method="post">
                {{csrf_field()}}
                <div class="row">
@@ -22,7 +24,7 @@
                         <input type="email" name="email" class="form-control f_control_contact" placeholder="(required)">
                      </div>
                   </div>
-                  <div class="col-xs-6">
+                  <!-- <div class="col-xs-6">
                      <div class="form-group f_contact_group">
                         <label>Phone</label>
                         <input type="text" name="phone" class="form-control f_control_contact" placeholder="(required)">
@@ -33,7 +35,7 @@
                         <label>Subject</label>
                         <input type="type" name="subject_description" class="form-control f_control_contact" placeholder="(required)">
                      </div>
-                  </div>
+                  </div> -->
                   <div class="col-xs-12">
                      <div class="form-group f_contact_group">
                         <label>Your Message</label>
@@ -64,22 +66,22 @@
                      <li class="nav__item">
                         <a href="{{route('terms')}}" class="nav__item-link">
                            <span class="nav__item-text">Terms And Conditions</span>
-                        </a>   
+                        </a>
                      </li>
                      <li class="nav__item">
                         <a href="{{route('tutors_listing')}}" class="nav__item-link">
                            <span class="nav__item-text">Search For A Tutor</span>
-                        </a>   
+                        </a>
                      </li>
                      <li class="nav__item">
                         <a href="#" class="nav__item-link">
                            <span class="nav__item-text">Search For A Student</span>
-                        </a>   
+                        </a>
                      </li>
                      <li class="nav__item">
                         <a href="{{route('fulltime_tutor')}}" class="nav__item-link">
                            <span class="nav__item-text">Become A Tutor</span>
-                        </a>   
+                        </a>
                      </li>
                   </ul>
                </div>

@@ -20,7 +20,7 @@
             <br>
             <div class="">
                <a class="btn btn-theme btn-sm btn-min-block f_about f_size f_btnpadding" href="{{route('aboutus')}}">ABOUT US</a>
-               <a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="{{route('student_pretest')}}">Pre - Test </a>               
+               <a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="{{route('student_pretest')}}">Pre - Test </a>
             </div>
          </div>
       </div>
@@ -138,36 +138,36 @@
                         </select>
                      </div>
                      <div class="col-md-3 f_bottom"><button type="submit" class="btn btn-default f_color button_tour">SEARCH TOUR</button></div>
-                  </form>
-               </div>
-            </div>
-         </section>
+                    </form>
+                  </div>
+              </div>
+           </section>
+        </div>
       </div>
-   </div>
-</div>
-<section class="info">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-4 col-md-offset-0 col-sm-6 col-xs-12 text-center">
-            <img src="{{ asset('public/assets/images/image1.png') }}" class="img-responsive info_img">
-            <h3 class="f_online">Online and Offline</h3>
-            <p class="f_meet">We can meet the student online or we can come <br>to your home or designated location. You don’t <br>have to worry. We have tutors ASAP (AS SOON <br>AS POSSIBLE) and PRN (AS needed). We can <br>help you or your child succeed.</p>
-         </div>
-         <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-            <img src="{{ asset('public/assets/images/image2.png') }}" class="img-responsive info_img">
-            <h3 class="f_online">Quality Scores</h3>
-            <p class="f_meet">We have highly qualified tutors to meet you or <br>your child’s tutoring needs</p>
-         </div>
-         <div class="col-md-4 col-sm-6 col-xs-12 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0">
-            <img src="{{ asset('public/assets/images/image3.png') }}" class="img-responsive info_img">
-            <h3 class="f_online">Reviews & Ratings</h3>
-            <p class="f_meet">No more emails, Calls or messaging friends for <br>recommendations - Get acces to real reviews<br>
-               in seconds
-            </p>
-         </div>
-      </div>
-   </div>
-</section>
+    </div>
+    <section class="info">
+       <div class="container">
+          <div class="row">
+             <div class="col-md-4 col-md-offset-0 col-sm-6 col-xs-12 text-center">
+                <img src="{{ asset('public/assets/images/image1.png') }}" class="img-responsive info_img">
+                <h3 class="f_online">Online and Offline</h3>
+                <p class="f_meet">We can meet the student online or we can come <br>to your home or designated location. You don’t <br>have to worry. We have tutors ASAP (AS SOON <br>AS POSSIBLE) and PRN (AS needed). We can <br>help you or your child succeed.</p>
+             </div>
+             <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+                <img src="{{ asset('public/assets/images/image2.png') }}" class="img-responsive info_img">
+                <h3 class="f_online">Quality Scores</h3>
+                <p class="f_meet">We have highly qualified tutors to meet you or <br>your child’s tutoring needs</p>
+             </div>
+             <div class="col-md-4 col-sm-6 col-xs-12 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0">
+                <img src="{{ asset('public/assets/images/image3.png') }}" class="img-responsive info_img">
+                <h3 class="f_online">Reviews & Ratings</h3>
+                <p class="f_meet">No more emails, Calls or messaging friends for <br>recommendations - Get acces to real reviews<br>
+                   in seconds
+                </p>
+             </div>
+          </div>
+       </div>
+    </section>
 </section>
 <section class="check">
    <div class="container-fluid">
@@ -175,8 +175,10 @@
          <div class="col-md-4 col-md-offset-1">
             <h3 class="f_check">We got you,<br> we can help</h3>
             <p class="f_per">You do not have to worry at all; we have suggested curriculum that we share with you and our tutors and monitor student’s progress. We reward student’s performance at the end of a year when they improve. We are here to motivate our students and we value their progress. </p>
-            <!-- <br>  -->           
-            <p class="f_per_free">Feel free to call us at - 1-877-3- TUTORS (1-877-388- 8677)</p>
+            <br>
+            <p class="f_per">
+              <strong>Feel free to call us at - 1-877-3- TUTORS (1-877-388- 8677)</strong>
+            </p>
             <div class="btn_check"><a href="">CHECK ALL SUBJECTS</a></div>
          </div>
          <div class="col-md-7">
@@ -215,6 +217,22 @@
       </div>
    </div>
 </section>
+<!--Start New Html -->
+<section class="quality_scores">
+   <div class="container">
+      <div class="row">
+         <h3 class="f_check text-center">Quality scores</h3>
+         <div class="col-md-6 col-sm-6 col-xs-12 ">
+          <h3 class="added_course">We have highly qualified tutors to meet you or your child’s tutoring needs.</h3>
+          <p class="sub_heading_qs">We can meet the student online or we can come to your home or designated location. You don’t have to worry. We have tutors ASAP (AS SOON AS POSSIBLE) and PRN (AS needed). We can help you or your child succeed.</p>
+         </div>
+         <div class="col-md-6 col-sm-6 col-xs-12 text-center">
+          <img src="{{ asset('public/assets/images/qs.jpg') }}" class="img-responsive f_margin">
+         </div>
+       </div>
+   </div>
+</section>
+<!-- End New Html -->
 <section class="images_courses">
    <div class="container">
       <div class="row">
@@ -264,7 +282,7 @@
             <h3 class="f_text">Why choose us?</h3>
             <p class="f_tutor">
                <i class="fa fa-check"></i>
-            We conduct a <a href="{{route('student_pretest')}}">pre test</a>  to know where the student stands 
+               We conduct a <a href="{{route('student_pretest')}}">pre test</a>  to know where the student stands
             </p>
             <br>
             <p class="f_tutor"><i class="fa fa-check"></i>We tutor based on the <a href="{{route('student_pretest')}}">pre test</a> and specific child needs</p>
@@ -272,7 +290,10 @@
             <p class="f_tutor"><i class="fa fa-check"></i>We have qualified tutors to meet your needs</p>
             <br>
             <p class="f_tutor"><i class="fa fa-check"></i> 24/access - Find a tutor anytime, anywhere.</p>
-            <div class="btn_check"><a href="{{route('how_it_works')}}">HOW DOES THIS WORK</a></div>
+            <div class="btn_check">
+              <a href="{{route('how_it_works')}}">HOW DOES THIS WORK</a>
+              <a href="{{route('signup')}}">SIGN UP FOR DIAGNOSTIC TEST</a>
+            </div>
          </div>
       </div>
    </div>

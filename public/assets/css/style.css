@@ -2128,3 +2128,78 @@ p.f_contact {
     margin-bottom: 25px;
     text-align: center;
 }
+
+
+/* Start New Css */
+section.f_choose {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 70px;
+    padding-bottom: 30px;
+}
+section.quality_scores {
+  padding-bottom: 60px;
+  background-color: #f6f6f6;
+  padding-top: 60px;
+}
+section.images_courses {
+  background-color: #fff;
+}
+section.f_choose {
+  background-color: #f6f6f6;
+}
+section.logo_f {
+  background-color: #fff !important;
+}
+.quality_scores h3.added_course {
+  margin-bottom: 20px !important;
+  text-align: left;
+}
+.quality_scores h3.f_check{
+  margin-top: 0px;
+  margin-bottom: 40px;
+}
+.sub_heading_qs{
+  font-size: 16px;
+  color: #747474;
+  font-family: 'ProximaNova-Semibold';
+  margin-bottom: 50px;
+  text-align: left;
+}
+section.aboutus {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 0px;
+}
+p.about_content a, p.about_content a:hover{
+  font-size: 16px;
+  color: #ed7275;
+  font-family: 'ProximaNovaAlt-Regular';
+  margin-bottom: 40px;
+}
+.s-margin-bottom-0{
+  margin-bottom: 5px !important;
+}
+a {
+    font-family: 'ProximaNovaAlt-Regular';
+}
+p.f_per strong{
+    color: #747474;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'ProximaNova-Semibold';
+    line-height: 20px;
+}
+.alert, .alert strong {
+    font-family: 'ProximaNovaAlt-Regular';
+}
+.about_us_a {
+    font-family: 'Ubuntu-B';
+    color: #ed7275;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+.about_us_a:hover {
+    color: #ed7275;
+}
+/* End New Css */

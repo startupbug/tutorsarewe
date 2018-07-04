@@ -11,17 +11,17 @@
                           <h1 class="menu__header-title">{{$grade->grade}}</h1>
                       </header>
                       <div class="menu__body s_panel">
-                        <ul class="nav">                      
+                        <ul class="nav">
                       @foreach($grade->subjects as $subject)
                           <li class="nav__item">
-                              <a href="{{route('test_mcq_index', ['gradeId'=> $grade->id, 'subjectId'=> $subject->id])}}" 
+                              <a href="{{route('test_mcq_index', ['gradeId'=> $grade->id, 'subjectId'=> $subject->id])}}"
                                  class="nav__item-link" >
                                  <span class="nav__item-text">{{$subject->subject}}</span>
                               </a>
-                          </li>                                                     
+                          </li>
                       @endforeach
                         </ul>
-                      </div>                      
+                      </div>
                   </div>
             @endforeach
          </div>
@@ -54,10 +54,10 @@
 
                     </div>
                   </div>
-                  
+
                   <input type="hidden" value="{{$test_mcq->id}}" name="test_id"/>
                   <input type="hidden" value="{{$mcq->id}}" name="mcq_id"/>
-                
+
                   <button type="submit" class="btn button_mcqs" name="button">Check Answer</button>
                 </form>
               </div>
@@ -102,7 +102,7 @@
           <div class="col-md-8">
               <h3 class="mcqs_title">No Test Found.</h3>
           </div>
-         @endif 
+         @endif
       </div>
    </div>
 </section>

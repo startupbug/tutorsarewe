@@ -20,12 +20,14 @@ use App\Available_day;
 use App\Booking;
 use Carbon\Carbon;
 use App\Schedule;
+use App\Grade;
 
 class StudentController extends Controller
 {
     //Pre test route page for students
     public function pre_test_payment_index(Request $request){
-        
+
+        $data['grades'] = Grade::with('subjects')->get();
         $data['flag'] = $request->segment(count(request()->segments()));
 
         return view('tests.pretest_payment')->with($data);
