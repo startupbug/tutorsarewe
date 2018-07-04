@@ -162,6 +162,19 @@ Route::group(['middleware' => 'auth'], function () {
 	//Tutor earnings
 	Route::get('/tutor-earnings', 'Tutor\TutorController@tutor_earnings')->name('tutor_earnings');
 
+	/* Pre test Routes */
+
+	//Pre test payment route page for students
+	Route::get('/pre-test-payment/{name?}', 'Student\StudentController@pre_test_payment_index')->name('pre_test_payment_index');
+
+	Route::get('/pay-pretest-student', 'Paypal\StudentPayment@pay_pretest_student')->name('pay_pretest_student');
+
+	// Route::get('getPretestDone', 'Paypal\StudentPayment@getPreTestDone');
+	// Route::get('getPreTestCancel', 'Paypal\StudentPayment@getPreTestCancel');
+
+	//Pre test routes
+	Route::get('/pre-test', 'Test\TestController@student_pretest')->name('student_pretest');
+
 });
 
 Route::post('depositWallet', 'Paypal\StudentPayment@depositWallet')->name('depositWallet');
@@ -213,16 +226,3 @@ Route::post('/check-answer', 'Test\TestController@check_answer')->name('check_an
 Route::get('mcqs', function () {
     return view('admin..mcqs.create');
 });
-
-/* Pre test Routes */
-
-//Pre test payment route page for students
-Route::get('/pre-test-payment/{name?}', 'Student\StudentController@pre_test_payment_index')->name('pre_test_payment_index');
-
-Route::get('/pay-pretest-student', 'Paypal\StudentPayment@pay_pretest_student')->name('pay_pretest_student');
-
-// Route::get('getPretestDone', 'Paypal\StudentPayment@getPreTestDone');
-// Route::get('getPreTestCancel', 'Paypal\StudentPayment@getPreTestCancel');
-
-//Pre test routes
-Route::get('/pre-test', 'Test\TestController@student_pretest')->name('student_pretest');

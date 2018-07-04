@@ -20,8 +20,7 @@
             <br>
             <div class="">
                <a class="btn btn-theme btn-sm btn-min-block f_about f_size f_btnpadding" href="{{route('aboutus')}}">ABOUT US</a>
-               <a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="{{route('contactus')}}">CONTACT US</a>
-               <a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="{{route('signup')}}">SIGNUP</a>               
+               <a class="btn btn-theme btn-sm btn-min-block f_about f_size" href="{{route('student_pretest')}}">Pre - Test </a>               
             </div>
          </div>
       </div>

@@ -83,6 +83,12 @@ class TestController extends Controller
     //Student pretest Routes
     public function student_pretest(){
 
+        //Check if Student
+       if(Auth::user()->role_id != 2){
+          $this->set_session('Only Students can access this link', false);
+          return redirect()->route('home');
+       } 
+
         //Payment Check to give Pre-test by student
        if(Auth::user()->profile->pre_test_paid == 0){
          return redirect()->route('pre_test_payment_index', ['name' => '1']);

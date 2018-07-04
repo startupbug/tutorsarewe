@@ -52,8 +52,8 @@ class AuthenticationController extends Controller
                     ->update(['online_status' => 1]);
 
                //Student Pre-test handling Workz -- 4 July.
-               
-               if(Auth::user()->profile->pre_test_paid == 0){
+
+               if(Auth::user()->role_id == 2 && Auth::user()->profile->pre_test_paid == 0){
                  return redirect()->route('pre_test_payment_index', ['name' => '1']);
                } 
 
