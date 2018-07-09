@@ -27,13 +27,16 @@
                                  <ul class="dropdown-menu">
                                     <li><a href="{{route('how_it_works')}}">For Studens</a></li>
                                     <li><a href="{{route('faqs')}}">FAQ's</a></li>
-                                    <li><a href="{{route('how_it_works')}}">Testimonials</a></li>
+                                    <li><a href="{{route('testimonials')}}">Testimonials</a></li>
                                  </ul>
                               </li>
                               <li class="">
                                  <a class="f_dropdown" data-toggle="dropdown" href="{{route('find_tutor')}}">START TUTORING  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <ul class="dropdown-menu">
+                                    <li><a href="{{route('fulltime_tutor')}}">Apply Now</a></li>
                                     <li><a href="{{route('fulltime_tutor')}}">About Tutoring Jobs</a></li>
+                                    <li><a href="{{route('find_tutor')}}">Find Tutoring Jobs</a></li>
+                                    <li><a href="{{route('faqs')}}">FAQ's</a></li>
                                  </ul>
                               </li>
                            @if(!Auth::check())
@@ -41,7 +44,7 @@
                                  <a class="f_dropdown" data-toggle="dropdown" href="{{route('fulltime_tutor')}}">BECOME A TUTOR  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <ul class="dropdown-menu">
                                     <li>
-                                       <a href="{{route('fulltime_tutor')}}">BECOME A TUTOR</a>
+                                       <a href="{{route('fulltime_tutor')}}">Register to Tutor</a>
                                     </li>
                                  </ul>
                               </li>
@@ -50,15 +53,27 @@
                                  <a class="f_dropdown" data-toggle="dropdown" href="">PUBLICATIONS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <ul class="dropdown-menu">
                                     <li>
-                                       <a href="{{route('publications')}}">PUBLICATIONS</a>
+                                       <a href="{{route('publications')}}">Publications to help your child</a>
                                     </li>
                                  </ul>
                               </li>
                               <li class="">
                                  <a class="f_dropdown" data-toggle="dropdown" href="">ABOUT US  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <ul class="dropdown-menu">
+                                     <li>
+                                       <a href="{{route('fulltime_tutor')}}">Full Time Tutors</a>
+                                    </li>
+                                     <li>
+                                       <a href="{{route('fulltime_tutor')}}">Blogs</a>
+                                    </li>
                                     <li>
-                                       <a href="{{route('aboutus')}}">ABOUT US</a>
+                                       <a href="{{route('aboutus')}}">About Us</a>
+                                    </li>
+                                    <li>
+                                       <a href="{{route('contactus')}}">Contact Us</a>
+                                    </li>
+                                    <li>
+                                       <a href="{{route('signin')}}">Login</a>
                                     </li>
                                  </ul>
                               </li>

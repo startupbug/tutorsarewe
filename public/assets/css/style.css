@@ -219,7 +219,7 @@ ul.top-header-nav li:last-child{
 
 .dropdown-menu>li>a {
 
-width: 178px;
+width: 245px;
 }
 
 a.f_dropdown {
@@ -938,6 +938,12 @@ section.howitworks {
 }
 
 h3.f_take {
+    color: #646464;
+    font-size: 28px;
+    font-family: 'Ubuntu-B';
+    margin-top: 79px;
+}
+h3.f_take a{
     color: #646464;
     font-size: 28px;
     font-family: 'Ubuntu-B';

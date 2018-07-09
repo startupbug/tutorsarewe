@@ -210,9 +210,8 @@
             </div>
             <div class="col-md-6">
                <ul class="f_site">
-                  <li><a href="testimonial.php">Testimonial</a></li>
-                  <li><a href="blog.php">Blog</a></li>
-                  <li><a href="faq.php">FAQ</a></li>
+                  <li><a href="{{ route('testimonials') }}">Testimonial</a></li>
+                  <li><a href="{{ route('faq') }}">FAQ</a></li>
                   <!--<li>Sitemap</li>
                      <li>Terms of Use</li>
                      <li>Privacy Policy</li>-->
