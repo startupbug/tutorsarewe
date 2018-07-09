@@ -39,6 +39,12 @@ Route::group(['middleware' => 'guest'], function () {
 	//Login Post
 	Route::post('/login', 'AuthenticationController@login_post')->name('login_post');
 
+	Route::get('full_time_tutor_form','HomeController@full_time_tutor')->name('full_time_tutor');
+
+	Route::post('full_time_email','HomeController@full_time_email')->name('full_time_email');
+
+	Route::get('faqs','HomeController@faqs')->name('faqs');
+
 });
 
 //Logout Route

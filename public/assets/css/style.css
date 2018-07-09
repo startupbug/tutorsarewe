@@ -219,7 +219,7 @@ ul.top-header-nav li:last-child{
 
 .dropdown-menu>li>a {
 
-    width: 158px;
+width: 178px;
 }
 
 a.f_dropdown {
@@ -1750,7 +1750,7 @@ ul.search_list {
 }
 
 .f_margintop h2 {
-    margin-top: 135px;
+    margin-top: 114px;
 }
 
 .f_iconcomma {
@@ -2203,3 +2203,7 @@ p.f_per strong{
     color: #ed7275;
 }
 /* End New Css */
+
+div#myNavbar ul.nav.navbar-nav>li:hover .dropdown-menu{
+     display: block;
+}
