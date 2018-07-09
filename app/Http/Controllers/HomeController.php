@@ -33,6 +33,16 @@ class HomeController extends Controller
     	return view('home.howitworks');
     }
 
+    //testimonials page
+    public function testimonials(){
+      return view('home.testimonials');
+    }
+
+    //faq page
+    public function faq(){
+      return view('home.faq');
+    }
+
     //Tutor find jobs page
 
     public function find_tutor(Request $request){
