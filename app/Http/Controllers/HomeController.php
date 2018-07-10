@@ -413,4 +413,9 @@ class HomeController extends Controller
     {
       return view('home.faq'); 
     }
+
+    public function write_testimonial(Request $request)
+    {
+      dd($request->input());
+    }
 }

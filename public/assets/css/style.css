@@ -51,6 +51,10 @@ ol, ul {
     list-style: none;
 }
 
+.btn-default:hover {
+    background-color: #3c3838;
+    border-color: #3c3838;
+}
 table { /* tables still need 'cellspacing="0"' in the markup */
 border-collapse: separate;
 border-spacing: 0;
@@ -1492,16 +1496,38 @@ p.f_posted {
 .f_viewjob {
     font-size: 18px;
     background-color: #ed7275;
+    color: #fff;
     border: 1px solid #ed7275;
     font-family: 'ProximaNova-Semibold';
     padding-left: 25px;
+    padding-top:  10px;
     padding-right: 25px;
+    padding-bottom: 8px;
 }
 
 .f_buttonview {
     margin-top: 25px;
 }
 .f_viewjob:hover {
+    font-size: 18px;
+    background-color: #ed7275;
+    border: 1px solid #ed7275;
+    font-family: 'ProximaNova-Semibold';
+    padding-left: 25px;
+    padding-right: 25px;
+    color: white;
+}
+
+.f_viewjob:active {
+    font-size: 18px;
+    background-color: #ed7275;
+    border: 1px solid #ed7275;
+    font-family: 'ProximaNova-Semibold';
+    padding-left: 25px;
+    padding-right: 25px;
+    color: white;
+}
+.f_viewjob:focus {
     font-size: 18px;
     background-color: #ed7275;
     border: 1px solid #ed7275;
@@ -2212,4 +2238,11 @@ p.f_per strong{
 
 div#myNavbar ul.nav.navbar-nav>li:hover .dropdown-menu{
      display: block;
+}
+.f_viewjob.btn-default[disabled]:hover{
+    background-color: #ed7275;
+    border-color: #ed7275;
+}
+.modal-title, label, textarea.form-control, button.btn.btn-default, button.btn.btn-primary{
+     font-family: 'ProximaNovaAlt-Regular';
 }
