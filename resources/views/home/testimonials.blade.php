@@ -26,7 +26,7 @@
                <p class="content_testimonial">Available Tutors helped my child. I wanted my child to read really fast and I enrolled for 1 hour daily. In 3 months my child was <br>reading 3rd grade level in Kindergarten. The teacher called me to find out how it happened, from my son just being able to sound <br>out words in September to 3rd grade level reading in December. I strongly recommend them. I did not stop there, I immediately <br>enrolled my daughter too and same thing happen, she was reading second grade level in 1st Quarter kindergarten. I am really 
                   <br>impressed. I strongly recommend them.
                </p>
-               <p class="right_f">Joy, New Carrollton, MD</p>
+               <p class="right_f">Faye, Bowie, MD</p>
             </div>
          </div>
       </div>
