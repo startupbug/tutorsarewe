@@ -289,7 +289,6 @@
             <br>
             <p class="f_tutor"><i class="fa fa-check"></i>We have qualified tutors to meet your needs</p>
             <br>
-            <p class="f_tutor"><i class="fa fa-check"></i> 24/access - Find a tutor anytime, anywhere.</p>
             <div class="btn_check">
               <a href="{{route('how_it_works')}}">HOW DOES THIS WORK</a>
               <a href="{{route('signup')}}">SIGN UP FOR DIAGNOSTIC TEST</a>

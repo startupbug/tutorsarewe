@@ -51,6 +51,10 @@ ol, ul {
     list-style: none;
 }
 
+.btn-default:hover {
+    background-color: #3c3838;
+    border-color: #3c3838;
+}
 table { /* tables still need 'cellspacing="0"' in the markup */
 border-collapse: separate;
 border-spacing: 0;
@@ -219,7 +223,7 @@ ul.top-header-nav li:last-child{
 
 .dropdown-menu>li>a {
 
-    width: 158px;
+width: 245px;
 }
 
 a.f_dropdown {
@@ -943,6 +947,12 @@ h3.f_take {
     font-family: 'Ubuntu-B';
     margin-top: 79px;
 }
+h3.f_take a{
+    color: #646464;
+    font-size: 28px;
+    font-family: 'Ubuntu-B';
+    margin-top: 79px;
+}
 
 p.p_take {
     font-size: 18px;
@@ -1486,16 +1496,38 @@ p.f_posted {
 .f_viewjob {
     font-size: 18px;
     background-color: #ed7275;
+    color: #fff;
     border: 1px solid #ed7275;
     font-family: 'ProximaNova-Semibold';
     padding-left: 25px;
+    padding-top:  10px;
     padding-right: 25px;
+    padding-bottom: 8px;
 }
 
 .f_buttonview {
     margin-top: 25px;
 }
 .f_viewjob:hover {
+    font-size: 18px;
+    background-color: #ed7275;
+    border: 1px solid #ed7275;
+    font-family: 'ProximaNova-Semibold';
+    padding-left: 25px;
+    padding-right: 25px;
+    color: white;
+}
+
+.f_viewjob:active {
+    font-size: 18px;
+    background-color: #ed7275;
+    border: 1px solid #ed7275;
+    font-family: 'ProximaNova-Semibold';
+    padding-left: 25px;
+    padding-right: 25px;
+    color: white;
+}
+.f_viewjob:focus {
     font-size: 18px;
     background-color: #ed7275;
     border: 1px solid #ed7275;
@@ -1750,7 +1782,7 @@ ul.search_list {
 }
 
 .f_margintop h2 {
-    margin-top: 135px;
+    margin-top: 114px;
 }
 
 .f_iconcomma {
@@ -2203,3 +2235,14 @@ p.f_per strong{
     color: #ed7275;
 }
 /* End New Css */
+
+div#myNavbar ul.nav.navbar-nav>li:hover .dropdown-menu{
+     display: block;
+}
+.f_viewjob.btn-default[disabled]:hover{
+    background-color: #ed7275;
+    border-color: #ed7275;
+}
+.modal-title, label, textarea.form-control, button.btn.btn-default, button.btn.btn-primary{
+     font-family: 'ProximaNovaAlt-Regular';
+}

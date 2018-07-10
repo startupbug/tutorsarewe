@@ -97,18 +97,14 @@
                     <form role="form" id="sendRequest" action="{{route('request_job')}}">
                       <div class="form-group">
                         <label for="task">Offer Description</label>
-                          <textarea class="form-control" name="description" required></textarea>
+                          <textarea class="form-control" name="description" rows="4" required></textarea>
                           <input type="hidden" name="job_id" id="job_id" value="">
                       </div>           
                 </div>
             
                 <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default"
-                            data-dismiss="modal">
-                                Close
-                    </button>
-                    <button type="submit" name="submit" class="btn btn-primary">
+                    <button type="submit" name="submit" class="btn f_viewjob ">
                         
                         <span class="subjModalHeading"></span> Send Request
                     </button>

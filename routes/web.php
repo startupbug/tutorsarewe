@@ -39,6 +39,14 @@ Route::group(['middleware' => 'guest'], function () {
 	//Login Post
 	Route::post('/login', 'AuthenticationController@login_post')->name('login_post');
 
+	Route::get('full_time_tutor_form','HomeController@full_time_tutor')->name('full_time_tutor');
+
+	Route::post('full_time_email','HomeController@full_time_email')->name('full_time_email');
+
+	Route::get('faqs','HomeController@faqs')->name('faqs');
+
+	Route::post('write_testimonial','HomeController@write_testimonial')->name('write_testimonial');
+
 });
 
 //Logout Route
@@ -77,6 +85,8 @@ Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
 Route::get('/terms', 'HomeController@terms')->name('terms');
 Route::get('/contactus', 'HomeController@contactus')->name('contactus');
 Route::post('/contactus_post', 'HomeController@contactus_post')->name('contactus_post');
+Route::get('/testimonials', 'HomeController@testimonials')->name('testimonials');
+Route::get('/faq', 'HomeController@faq')->name('faq');
 
 // Route::post('/home_tutor_filter','HomeController@home_tutor_filter')->name('home_tutor_filter');
 
