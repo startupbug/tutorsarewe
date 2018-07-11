@@ -424,26 +424,35 @@ class HomeController extends Controller
     {
 
       try {
-                   
-        if($request->has('testComment')){
 
-          $test_comment = $request->input('testComment');
-          $testimonial = new Testimonial();
-          $testimonial->user = Auth::user()->id;
-          $testimonial->comment = $request->input('testComment');
-          
-          if($testimonial->save()){
-              return \Response()->Json([ 'status' => 200,'msg'=>'Testimonial Successfully Saved']);
-          }else{
-              return \Response()->Json([ 'status' => 202,'msg'=>'Testimonial couldnot be Saved']);
-          }
+        if(Auth::check()){
+                     
+            if($request->has('testComment')){
 
-        }else{
-             return \Response()->Json([ 'status' => 202,'msg'=>'Testimonial couldnot be Saved']);
-        }
+              $test_comment = $request->input('testComment');
+              $testimonial = new Testimonial();
+              $testimonial->user = Auth::user()->id;
+              $testimonial->comment = $request->input('testComment');
+              
+              if($testimonial->save()){
+                  return \Response()->Json([ 'status' => 200,'msg'=>'Testimonial Successfully Saved']);
+              }else{
+                  return \Response()->Json([ 'status' => 202,'msg'=>'Testimonial couldnot be Saved']);
+              }
 
-      } catch (Exception $e) {
-            return \Response()->Json([ 'status' => 202, 'msg'=>'Testimonial couldnot be Saved'.$ex->getMessage() ]);
-      }  
+            }else{
+                 return \Response()->Json([ 'status' => 202,'msg'=>'Testimonial couldnot be Saved']);
+            }
+
+
+
+         }else{
+              return \Response()->Json([ 'status' => 202,'msg'=>'Please Login to write Testimonials']);
+         }
+
+        } catch (Exception $e) {
+              return \Response()->Json([ 'status' => 202, 'msg'=>'Testimonial couldnot be Saved'.$ex->getMessage() ]);
+        }     
+
     }
 }
