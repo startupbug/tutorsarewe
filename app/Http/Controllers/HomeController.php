@@ -19,6 +19,7 @@ use Mail;
 use Auth;
 use App\Full_time_email;
 use App\Mail\TestMail;
+use App\Testimonial;
 
 class HomeController extends Controller
 {
@@ -37,7 +38,12 @@ class HomeController extends Controller
 
     //testimonials page
     public function testimonials(){
-      return view('home.testimonials');
+      $data['testimonials'] = Testimonial::leftjoin('profiles', 'profiles.user_id', '=', 'testimonials.user')
+                                          ->leftjoin('cities', 'cities.id', '=', 'profiles.city_id')
+                                          ->leftjoin('countries', 'countries.id', '=', 'profiles.country_id')
+                                          ->get();
+                                
+      return view('home.testimonials')->with($data);
     }
 
     //faq page
@@ -416,6 +422,28 @@ class HomeController extends Controller
 
     public function write_testimonial(Request $request)
     {
-      dd($request->input());
+
+      try {
+                   
+        if($request->has('testComment')){
+
+          $test_comment = $request->input('testComment');
+          $testimonial = new Testimonial();
+          $testimonial->user = Auth::user()->id;
+          $testimonial->comment = $request->input('testComment');
+          
+          if($testimonial->save()){
+              return \Response()->Json([ 'status' => 200,'msg'=>'Testimonial Successfully Saved']);
+          }else{
+              return \Response()->Json([ 'status' => 202,'msg'=>'Testimonial couldnot be Saved']);
+          }
+
+        }else{
+             return \Response()->Json([ 'status' => 202,'msg'=>'Testimonial couldnot be Saved']);
+        }
+
+      } catch (Exception $e) {
+            return \Response()->Json([ 'status' => 202, 'msg'=>'Testimonial couldnot be Saved'.$ex->getMessage() ]);
+      }  
     }
 }

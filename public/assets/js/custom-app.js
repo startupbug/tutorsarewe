@@ -19,42 +19,39 @@ $(document).ready(function(){
 
   	});
 
-    $("#sendRequest").on('submit', function(e){
-		    e.preventDefault();
-		    console.log("assad");
-		    var formData = new FormData(this);
-		    console.log(formData);
+    $("#sendRequestTestimonial").on('submit', function(e){
+        e.preventDefault();
+        console.log("assad");
+        var formData = new FormData(this);
+        console.log(formData);
 
-		    $.ajaxSetup({
-		      headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
-		    });
+        $.ajaxSetup({
+          headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+        });
 
-		    $.ajax({
-		      type: "POST",
-		      url: $(this).attr('action'),
-		      data: formData,
-		      processData: false,
-		      contentType: false,     
-		      success: function(data){
+        $.ajax({
+          type: "POST",
+          url: $(this).attr('action'),
+          data: {'testComment':$("#testComment").val()},   
+          success: function(data){
+            
+            console.log(data);
 
-		        if(data.success == true){
-		          toastr.success(data.msg);
-		          
-		          $("#jobRequestModal").modal('toggle');
+            if(data.status == 200){
 
-		          // setTimeout(function(){ 
-		          //   location.reload();
-		          // }, 600);
+              toastr.success(data.msg);
+	              
+              $("#jobRequestModal").modal('toggle');
 
-		        }else if(data.success == false){
-		          toastr.success(data.msg);
-		        }
-		      },
-		      error: function(data){
-		        toastr.error(data.msg);
-		      }
-		    });
+            }else if(data.status == 202){
+              toastr.error(data.msg);
+            }
+          },
+          error: function(data){
+            toastr.error(data.msg);
+          }
+        });
 
-    });  
+    }); 
 
 });
