@@ -262,8 +262,10 @@ class JobController extends Controller
     }
     
     public function care_all_jobs(){
+
+        $career_job_applications = Career_job::get();
         
-        return view('admin.career.all-career-jobs');
+        return view('admin.career.all-career-jobs',['career_job_applications' => $career_job_applications]);
     }
 
     public function care_applications_jobs(){
