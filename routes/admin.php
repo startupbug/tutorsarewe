@@ -113,11 +113,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 	//Career - Save Job 
 	Route::post('/save-job', 'Admin\JobController@care_jobs_save')->name('care_jobs_save');	
 
-	//Career - All Jobs
-	Route::post('/all-jobs', 'Admin\JobController@care_all_jobs')->name('care_jobs_save');	
-	
-	//Career - All Applications 
-	Route::post('/job-applications', 'Admin\JobController@care_applications_jobs')->name('care_jobs_save');		
+  //Career - All Jobs
+    Route::get('/all-jobs', 'Admin\JobController@care_all_jobs')->name('care_all_jobs');    
+    
+    //Career - All Applications 
+    Route::get('/job-applications', 'Admin\JobController@care_applications_jobs')->name('care_applications_jobs');     
 });
 
 	//Admin Login Authentication
