@@ -444,8 +444,6 @@ class HomeController extends Controller
                  return \Response()->Json([ 'status' => 202,'msg'=>'Testimonial couldnot be Saved']);
             }
 
-
-
          }else{
               return \Response()->Json([ 'status' => 202,'msg'=>'Please Login to write Testimonials']);
          }
