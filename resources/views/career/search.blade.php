@@ -284,3 +284,18 @@
 </section>
 
 @endsection
+
+@section('custom-script')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#btn_apply_now").on('click', function(e){
+            e.preventDefault();
+            $("#applyForm").submit();
+        });
+          
+    })
+
+</script>
+
+
+@endsection

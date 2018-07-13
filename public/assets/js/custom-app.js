@@ -6,8 +6,9 @@ $(document).ready(function(){
   $("#btn_apply_now").on('click', function(e){
     e.preventDefault();
     $("#applyForm").submit();
+
   });
-  
+
   $("#roleSelect").change(function(e){
   		e.preventDefault();
   		if($(this).val() == 3){
