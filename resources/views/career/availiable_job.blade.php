@@ -30,11 +30,7 @@
                                 <div class="col-md-2">
                                 <date>
                                     <span>Apply by</span>
-                                    <?php 
-                                        $monthNum  = date('m', strtotime($career_job->job_apply_date));
-                                        $dateObj   = DateTime::createFromFormat('!m', $monthNum);
-                                        $monthName = $dateObj->format('F');
-                                    ?>
+                            
                                     <day>{{ date('d', strtotime($career_job->job_apply_date)) }} </day>
                                     <month>{{ $monthName }}</month>
                                 </date>
@@ -56,8 +52,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-10">
-                                    <p>
-                                    {!!$career_job->job_desc!!}
+                                    <p> {!! str_limit($career_job->job_desc, 50) !!}  
                                     </p>
                                     </div>
                                 </div>

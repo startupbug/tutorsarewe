@@ -218,15 +218,16 @@ class JobController extends Controller
     public function apply_job_post(Request $request){
       //dd($request->input());
       /* Validation */
+
       $career_job_application =new Career_job_application();
-      //dd(storage_path());
+
       if(Input::hasFile('resume')){
         $file = Input::file('resume');
-        $tmpFilePath = storage_path();
+        $tmpFilePath = storage_path().'/resume/';
         $tmpFileName = time() . '-' . $file->getClientOriginalName();
         $file = $file->move($tmpFilePath, $tmpFileName);
         $path = $tmpFileName;
-
+        //dd($path);
         $career_job_application->resume = $path;
       }
 

@@ -6,6 +6,7 @@ use App\Job_request;
 use DB;
 use App\Job_board;
 use App\Career_job;
+use App\Career_job_application;
 
 class JobController extends Controller
 {
@@ -261,11 +262,17 @@ class JobController extends Controller
     }
     
     public function care_all_jobs(){
+        
         return view('admin.career.all-career-jobs');
     }
 
     public function care_applications_jobs(){
-        return view('admin.career.all-applications');
+        $data['career_job_applications'] = Career_job_application::leftjoin('career_jobs', 'career_jobs.id', '=', 'career_job_applications.car_job_id')->get();        
+        return view('admin.career.all-applications')->with($data);
+    }
+
+    public function application_detail($app_id){
+        dd($app_id . ' under construction');
     }
 
 }
