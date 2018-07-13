@@ -73,6 +73,9 @@
                                        <a href="{{route('contactus')}}">Contact Us</a>
                                     </li>
                                     <li>
+                                      <a href="{{route('avail_jobs')}}">Jobs</a>
+                                    </li>
+                                    <li>
                                        <a href="{{route('signin')}}">Login</a>
                                     </li>
                                  </ul>
@@ -84,8 +87,8 @@
                                        @if(Auth::user()->role_id == 1)
                                            <li><a href="{{route('admin-index')}}">Dashboard</a></li>
                                        @else
-                                           <li><a href="{{route('dashboard_index')}}">Dashboard</a></li>                                       
-                                       @endif                                    
+                                           <li><a href="{{route('dashboard_index')}}">Dashboard</a></li>
+                                       @endif
                                        <li><a href="{{route('logout_user')}}">Logout</a></li>
                                     </ul>
                                  </li>

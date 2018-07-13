@@ -3,6 +3,11 @@
 
 $(document).ready(function(){
 
+  $("#btn_apply_now").on('click', function(e){
+    e.preventDefault();
+    $("#applyForm").submit();
+  });
+  
   $("#roleSelect").change(function(e){
   		e.preventDefault();
   		if($(this).val() == 3){
@@ -32,15 +37,15 @@ $(document).ready(function(){
         $.ajax({
           type: "POST",
           url: $(this).attr('action'),
-          data: {'testComment':$("#testComment").val()},   
+          data: {'testComment':$("#testComment").val()},
           success: function(data){
-            
+
             console.log(data);
 
             if(data.status == 200){
 
               toastr.success(data.msg);
-	              
+
               $("#jobRequestModal").modal('toggle');
 
             }else if(data.status == 202){
@@ -52,6 +57,6 @@ $(document).ready(function(){
           }
         });
 
-    }); 
+    });
 
 });
