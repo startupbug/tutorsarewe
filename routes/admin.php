@@ -105,7 +105,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 	Route::post('/get-subjects', 'Admin\TestController@get_grade_subjects')->name('get_grade_subjects');
 
 	//Post test mcq
-	Route::post('/add-test', 'Admin\TestController@admin_addtest')->name('admin_addtest');	
+	Route::post('/add-test', 'Admin\TestController@admin_addtest')->name('admin_addtest');
+
+	//Career - Add Job
+	Route::get('/add-job', 'Admin\JobController@admin_addjob')->name('admin_addjob');
+	
+	//Career - Save Job 
+	Route::post('/save-job', 'Admin\JobController@care_jobs_save')->name('care_jobs_save');	
+
+	//Career - All Jobs
+	Route::post('/all-jobs', 'Admin\JobController@care_all_jobs')->name('care_jobs_save');	
+	
+	//Career - All Applications 
+	Route::post('/job-applications', 'Admin\JobController@care_applications_jobs')->name('care_jobs_save');		
 });
 
 	//Admin Login Authentication

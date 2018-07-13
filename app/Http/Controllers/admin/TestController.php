@@ -67,9 +67,6 @@ class TestController extends Controller
                                 
                             }                              
                         }
-
-                    
-
                     }
 
                     $this->set_session('Test mcqs successully Added.', true);
@@ -97,5 +94,6 @@ class TestController extends Controller
 
         return \Response::json(array('status' => 200, 'html' => $subj_html));
     }
-    
+
+
 }

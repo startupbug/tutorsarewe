@@ -162,17 +162,32 @@
 
         <!-- Tests -->
         <li class="treeview">
-        <a href="#">
-          <i class="fa fa-share"></i> <span>Test</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="{{route('admin_addtest_index')}}"><i class="fa fa-circle-o"></i> Add Test </a></li>
-          <!-- <li><a href="{{route('roles.index')}}"><i class="fa fa-circle-o"></i> Role Management</a></li> -->
-        </ul>
-      </li>
+          <a href="#">
+            <i class="fa fa-share"></i> <span>Test</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{route('admin_addtest_index')}}"><i class="fa fa-circle-o"></i> Add Test </a></li>
+            <!-- <li><a href="{{route('roles.index')}}"><i class="fa fa-circle-o"></i> Role Management</a></li> -->
+          </ul>
+         </li>
+
+         <li class="treeview">
+          <a href="#">
+            <i class="fa fa-share"></i> <span>Career Jobs</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{route('admin_addjob')}}"><i class="fa fa-circle-o"></i> Add Job </a></li>
+            <li><a href="{{route('admin_addtest_index')}}"><i class="fa fa-circle-o"></i> All Jobs </a></li>
+            <li><a href="{{route('admin_addtest_index')}}"><i class="fa fa-circle-o"></i> Job Applications </a></li>
+            <!-- <li><a href="{{route('roles.index')}}"><i class="fa fa-circle-o"></i> Role Management</a></li> -->
+          </ul>
+         </li>
 
     @endif
 

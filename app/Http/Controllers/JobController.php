@@ -10,6 +10,10 @@ use App\Chat;
 use App\Chat_message;
 use App\Subject;
 use App\Review;
+use App\Available_day;
+use App\Career_job;
+use Illuminate\Support\Facades\Input;
+use App\Career_job_application;
 
 class JobController extends Controller
 {
@@ -190,5 +194,65 @@ class JobController extends Controller
     //Tutor find jobs page
     public function find_tutor_detail(){
     	return view('dashboard.job.findtutoringjob_detail');
+    }
+
+    //Availiable job 
+    public function avail_job_index(){
+      $data['career_jobs'] = Career_job::all();
+      return view('career.availiable_job')->with($data);
+    }
+
+    //another function
+    public function search_jobs(){
+      $args['days'] = Available_day::get();
+      $args['subjects'] = Subject::get();
+
+      return view('career.search')->with($args);
+    }
+
+    public function apply_job_index($id){
+      $data['career_job'] = Career_job::find($id);
+      return view('career.search')->with($data);
+    }
+
+    public function apply_job_post(Request $request){
+      //dd($request->input());
+      /* Validation */
+      $career_job_application =new Career_job_application();
+      //dd(storage_path());
+      if(Input::hasFile('resume')){
+        $file = Input::file('resume');
+        $tmpFilePath = storage_path();
+        $tmpFileName = time() . '-' . $file->getClientOriginalName();
+        $file = $file->move($tmpFilePath, $tmpFileName);
+        $path = $tmpFileName;
+
+        $career_job_application->resume = $path;
+      }
+
+      $career_job_application->car_job_id = $request->input('car_job_id');
+
+      $career_job_application->full_name = $request->input('full_name');
+
+      $career_job_application->gender = $request->input('gender');
+      $career_job_application->id_num = $request->input('id_num');
+      $career_job_application->contact_num = $request->input('contact_num');
+
+      $career_job_application->shift = $request->input('shift');
+      $career_job_application->source = $request->input('source');
+      $career_job_application->age = $request->input('age');
+
+      $career_job_application->education = $request->input('education');
+      $career_job_application->language = $request->input('language');
+      $career_job_application->email_address = $request->input('email_address');       
+      $career_job_application->location = $request->input('location');
+
+      if($career_job_application->save()){
+        $this->set_session('Applied Successfully', true);
+      }else{
+          $this->set_session('Couldnot apply to Job', false);
+      }
+
+      return redirect()->route('apply_job_index', ['jobid' => $request->input('car_job_id')]);      
     }
 }

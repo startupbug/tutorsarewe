@@ -238,3 +238,14 @@ Route::post('/check-answer', 'Test\TestController@check_answer')->name('check_an
 Route::get('mcqs', function () {
     return view('admin..mcqs.create');
 });
+
+/* Jobs Career */
+Route::get('/jobs', 'JobController@avail_job_index')->name('avail_jobs');
+
+Route::get('/search-jobs', 'JobController@search_jobs')->name('search_jobs');
+
+//Apply Job
+Route::get('/apply-job/{jobid}', 'JobController@apply_job_index')->name('apply_job_index');
+
+//Apply Job Post
+Route::post('/apply-job', 'JobController@apply_job_post')->name('apply_job_post');

@@ -91,7 +91,10 @@ function filterFunction() {
     }
 }
 
-
+$("#btn_apply_now").on('click', function(e){
+  e.preventDefault();
+  $("#applyForm").submit();
+});
 
 // $(document).ready(function () {
 
