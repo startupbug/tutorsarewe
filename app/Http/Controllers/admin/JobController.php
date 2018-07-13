@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\Job_request;
 use DB;
 use App\Job_board;
+use App\Career_job;
+
 class JobController extends Controller
 {
 
@@ -228,4 +230,42 @@ class JobController extends Controller
         $this->set_session('Job Request Is Accepted', true); 
         return redirect()->back();
     }
+
+    //Career Job Functions
+    
+    //Admin Add job Index
+    public function admin_addjob(){
+        return view('admin.career.add-job');
+    }
+    
+    //Admin post Job
+    public function care_jobs_save(Request $request){
+        //return view('admin.career.add-job');
+        // /dd($request->input());
+        $career_jobs = new Career_job();
+        $career_jobs->job_desc = $request->input('job_desc');
+        $career_jobs->job_heading = $request->input('job_heading');
+        $career_jobs->job_spec = $request->input('job_spec');
+        $career_jobs->quaification = $request->input('quaification'); 
+        $career_jobs->job_perks = $request->input('job_perks');  
+        $career_jobs->job_city = $request->input('job_city');
+        $career_jobs->job_apply_date = $request->input('job_apply_date');
+
+        if($career_jobs->save()){
+            $this->set_session('Job Successfully Saved', true);
+        }else{
+            $this->set_session('Job couldnot be Saved', false);
+        }
+
+        return redirect()->route('admin_addjob');
+    }
+    
+    public function care_all_jobs(){
+        return view('admin.career.all-career-jobs');
+    }
+
+    public function care_applications_jobs(){
+        return view('admin.career.all-applications');
+    }
+
 }

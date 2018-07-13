@@ -20,20 +20,20 @@
                </div>
              </div>
            </form>
-
+           @include('admin.partials.error_section')
            <section class="job-listing">
               <div class="container">
                  <div class="row">
                     <div class="col-md-9">
-                       <h2>Medical Representative</h2>
-                       <location>karachi</location>
+                       <h2>{{$career_job->job_heading}}</h2>
+                       <location>{{$career_job->job_city}}</location>
                        <div id="applyForm_container" class="careers-form">
-                          <form name="applyForm" id="applyForm" method="post" action="" enctype="multipart/form-data">
+                          <form name="applyForm" id="applyForm" method="post" enctype="multipart/form-data"  action="{{route('apply_job_post')}}" enctype="multipart/form-data">
                              <fieldset>
                                <div class="row">
                                  <div class="col-md-12">
                                    <div class="attach-box">
-                                      <input type="file" name="upload" id="upload" class="inputfile inputfile-6" required="">
+                                      <input type="file" name="resume" id="upload" class="inputfile inputfile-6" required="">
                                       <label for="upload">
                                          <strong>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
@@ -51,7 +51,7 @@
                                  <div class="col-md-6">
                                    <div class="input-group">
                                      <label for="">Full Name</label>
-                                     <input type="text" name="caller_name" id="caller_name" value="" required="">
+                                     <input type="text" name="full_name" id="caller_name" value="" required="">
                                      <div id="caller_name_msg" class="status-msg"></div>
                                    </div>
                                  </div>
@@ -80,8 +80,8 @@
                                  </div>
                                  <div class="col-md-6">
                                    <div class="input-group">
-                                     <label for="">CNIC Number</label>
-                                     <input type="text" name="cnic" id="cnic" value="" required="" maxlength="15">
+                                     <label for="">ID Number</label>
+                                     <input type="text" name="id_num" id="id_num" value="" required="" maxlength="15">
                                      <div id="cnic_msg" class="status-msg"></div>
                                    </div>
                                  </div>
@@ -94,21 +94,21 @@
                                  <div class="col-md-6">
                                    <div class="input-group">
                                      <label for="">Contact Number</label>
-                                     <input type="tel" name="contact_number" id="contact_number" maxlength="12" value="" required="">
+                                     <input type="tel" name="contact_num" id="contact_number" maxlength="12" value="" required="">
                                      <div id="contact_number_msg" class="status-msg"></div>
                                    </div>
                                  </div>
                                  <div class="col-md-6">
                                    <div class="input-group">
                                      <label for="">Email Address</label>
-                                     <input type="email" name="caller_email" id="caller_email" value="" required="">
+                                     <input type="email" name="email_address" id="caller_email" value="" required="">
                                      <div id="caller_email_msg" class="status-msg"></div>
                                    </div>
                                  </div>
                                  <div class="col-md-6">
                                    <div class="input-group select">
                                      <label for="">select preferred Shift</label>
-                                     <select name="shift_availability" id="shift_availability" required="">
+                                     <select name="shift" id="shift_availability" required="">
                                        <option value="" selected="">Select Preferred Shift</option>
                                        <option value="all-shifts">All Shifts</option>
                                        <option value="evening">Evening Only</option>
@@ -123,11 +123,11 @@
                                  <div class="col-md-6">
                                    <div class="input-group select">
                                      <label for="">Select Location</label>
-                                     <select name="field4" id="field4" required="">
+                                     <select name="location" id="field4" required="">
                                        <option value="" selected="">Select Location</option>
-                                       <option value="islamabad">Islamabad</option>
-                                       <option value="karachi">Karachi</option>
-                                       <option value="lahore">Lahore</option>
+                                       <option value="new york">New york</option>
+                                       <option value="washington">Washington</option>
+                                       <option value="chicago">Chicago</option>
                                      </select>
                                      <div id="field4_msg" class="status-msg"></div>
                                    </div>
@@ -161,28 +161,22 @@
                                 </div>
                                </div>
                              </fieldset>
+                             <input type="hidden" name="car_job_id" value="{{$career_job->id}}"/>
+                             <input type="hidden" name="_token" value="{{Session::token()}}" />
                           </form>
                        </div>
                        <div class="job-details">
                           <h3>Job Description</h3>
                           <ul class="job-list">
-                             <li>Inbound calls of the Patients/their relative and Health Care Providers along with dialing the provided leads for follow up on regular basis. </li>
-                             <li>To make adherence calls to patients according to approved scripts provided.</li>
-                             <li>Providing Virtual Medical Education to patient and Caregivers based on guidelines</li>
-                             <li>Provide Medical or Treatment Information to patients and other customers in a way that avoids giving treatment, medical or personal advice.</li>
-                             <li>Coordinate with different branches of distributors all the Pakistan (e-mail/telephonically) to fulfill request of patients</li>
+                             {!! $career_job->job_desc !!}
                           </ul>
                           <h3>Job Specification</h3>
                           <ul class="job-list">
-                             <li>Proficient with MS Office particularly MS Excel (Spreadsheet)</li>
-                             <li>Possess Knowledge of Call Centre Operations</li>
-                             <li>Must be flexible to work in shifts</li>
-                             <li>Excellent communication skills</li>
-                             <li>Product knowledge and FAQs.</li>
+                             {!! $career_job->job_spec !!}
                           </ul>
                           <h3>Qualification</h3>
                           <ul class="job-list">
-                             <li>Pharm D</li>
+                            {!! $career_job->quaification !!}
                           </ul>
                           <!-- <h3>Additional Information</h3>
                           <ul class="info-list">
@@ -221,22 +215,16 @@
                                <span>Apply Now</span>
                                <i class="fa fa-arrow-right"></i>
                              </button>
-                             <button id="btn_submit_now">
+                             <!-- <button id="btn_submit_now">
                                <span>Submit Now</span>
                                <i class="fa fa-arrow-right"></i>
-                             </button>
+                             </button> -->
                              <p>Please contact us if you need any information or assistance regarding the recruitment process.</p>
                           </div>
                           <div class="job-content">
                              <h5>Perks</h5>
                              <ul class="job-list">
-                                <li>Medical Insurance</li>
-                                <li>Permanent Employment Status</li>
-                                <li>PF &amp; Overtime provided</li>
-                                <li>Internal Job Posting</li>
-                                <li>Annual Leaves</li>
-                                <li>Leaves Encashment</li>
-                                <li>Referral Bonus</li>
+                                {!! $career_job->job_perks !!}
                              </ul>
                           </div>
                        </div>

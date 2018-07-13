@@ -25,8 +25,6 @@ use PayPal\Common\PayPalModel;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 
-
-
 class StudentPayment extends Controller
 {
     //
