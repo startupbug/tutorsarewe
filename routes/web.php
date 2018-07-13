@@ -45,9 +45,11 @@ Route::group(['middleware' => 'guest'], function () {
 
 	Route::get('faqs','HomeController@faqs')->name('faqs');
 
-	Route::post('write_testimonial','HomeController@write_testimonial')->name('write_testimonial');
+	
 
 });
+
+Route::post('write_testimonial','HomeController@write_testimonial')->name('write_testimonial');
 
 //Logout Route
 Route::get('/logout',  'AuthenticationController@logout_user')->name('logout_user');
