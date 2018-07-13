@@ -1,13 +1,10 @@
-//Career - All Jobs
-    Route::get('/all-jobs', 'Admin\JobController@care_all_jobs')->name('care_all_jobs');    
-    
-    //Career - All Applications 
-    Route::get('/job-applications', 'Admin\JobController@care_applications_jobs')->name('care_applications_jobs');      
+
 @extends('admin.admin-app')
 @section('content')
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
@@ -19,7 +16,6 @@ All Jobs
 <!-- Main content -->
 <section class="content">
 <div class="row">
-
 
 <div class="col-xs-12">
 <div class="box">
@@ -51,6 +47,7 @@ All Jobs
 </tbody>
 
 </table>
+
 </div>
 </div>
 </section>

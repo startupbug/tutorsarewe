@@ -183,6 +183,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{route('admin_addjob')}}"><i class="fa fa-circle-o"></i> Add Job </a></li>
+
             <li><a href="{{route('care_all_jobs')}}"><i class="fa fa-circle-o"></i> All Jobs </a></li>
             <li><a href="{{route('care_applications_jobs')}}"><i class="fa fa-circle-o"></i> Job Applications </a></li>
             <!-- <li><a href="{{route('roles.index')}}"><i class="fa fa-circle-o"></i> Role Management</a></li> -->
