@@ -27,37 +27,37 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Job Heading</label>
-                  <input type="text" class="form-control" name="job_heading" id="" value="" placeholder="Enter Job Heading">
+                  <input type="text" class="form-control" name="job_heading" id="" value="" placeholder="Enter Job Heading" required>
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Job description</label>
-                      <textarea name="job_desc" class="form-control" id="editor1" rows="10" cols="60"></textarea>
+                      <textarea name="job_desc" class="form-control" id="editor1" rows="10" cols="60" required></textarea>
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Job Specification</label>
-                      <textarea name="job_spec" class="form-control" id="editor2" rows="10" cols="60"></textarea>
+                      <textarea name="job_spec" class="form-control" id="editor2" rows="10" cols="60" required></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputEmail1">Job Qualification</label>
-                    <textarea name="quaification" class="form-control" id="editor3" rows="10" cols="60"></textarea>
+                    <textarea name="quaification" class="form-control" id="editor3" rows="10" cols="60" required></textarea>
                 </div>         
 
                 <div class="form-group">
                     <label for="exampleInputEmail1">Job Perks</label>
-                    <textarea name="job_perks" class="form-control" id="editor4" rows="10" cols="60"></textarea>
+                    <textarea name="job_perks" class="form-control" id="editor4" rows="10" cols="60" required></textarea>
                 </div>                                         
     
                 <div class="form-group">
                   <label for="exampleInputEmail1">City</label>
-                  <input type="text" class="form-control" name="job_city" id="" value="" placeholder="Enter Job City">
+                  <input type="text" class="form-control" name="job_city" id="" value="" placeholder="Enter Job City" required>
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Apply by</label>
-                  <input type="date" class="form-control" name="job_apply_date" id="" value="" placeholder="Enter Job Heading">
+                  <input type="date" class="form-control" name="job_apply_date" id="" value="" placeholder="Enter Job Heading" required>
                 </div>                    
 <!--            <div class="form-group">
                   <label for="exampleInputEmail1">Role Display name</label>
