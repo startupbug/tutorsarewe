@@ -7,6 +7,7 @@ use DB;
 use App\Job_board;
 use App\Career_job;
 use App\Career_job_application;
+use Auth;
 
 class JobController extends Controller
 {
@@ -268,13 +269,76 @@ class JobController extends Controller
         return view('admin.career.all-career-jobs',['career_job_applications' => $career_job_applications]);
     }
 
+    public function career_job_detail($job_id){
+        //dd($job_id . ' under construction');
+        $data['single_career_job'] = Career_job::find($job_id);
+        //dd($data);
+        return view('admin.career.single-career-job')->with($data);
+    } 
+
     public function care_applications_jobs(){
         $data['career_job_applications'] = Career_job_application::leftjoin('career_jobs', 'career_jobs.id', '=', 'career_job_applications.car_job_id')->get();        
         return view('admin.career.all-applications')->with($data);
     }
 
     public function application_detail($app_id){
-        dd($app_id . ' under construction');
+        // dd($app_id . ' under construction');
+        $details = Career_job::leftjoin('career_job_applications','career_jobs.id','=','career_job_applications.car_job_id')->select('career_jobs.id','career_jobs.job_desc','career_jobs.job_city','career_jobs.job_apply_date','career_jobs.quaification','career_job_applications.resume','career_job_applications.full_name','career_job_applications.gender','career_job_applications.id_num','career_job_applications.contact_num','career_job_applications.shift','career_job_applications.source','career_job_applications.age','career_job_applications.education','career_job_applications.language','career_job_applications.email_address','career_job_applications.location')->where('career_job_applications.car_job_id','=',$app_id)->first();
+        // dd($details);
+        return view('admin.career.single-application',['details'=> $details]);
     }
 
+    public function career_job_editIndex($jobid){
+
+        $data['single_career_job'] = Career_job::find($jobid);
+        return view('admin.career.edit_jobdetail')->with($data);
+    }
+
+    public function career_job_editIndex_post(Request $request){
+
+        $career_job_edit = Career_job::find($request->input('edit_job_id'));
+        $career_job_edit->job_desc = $request->input('job_desc');
+        $career_job_edit->job_heading = $request->input('job_heading');
+        $career_job_edit->job_spec = $request->input('job_spec');
+        $career_job_edit->quaification = $request->input('quaification'); 
+        $career_job_edit->job_perks = $request->input('job_perks');  
+        $career_job_edit->job_city = $request->input('job_city');
+        $career_job_edit->job_apply_date = $request->input('job_apply_date');
+
+        if($career_job_edit->save()){
+            $this->set_session('Job Edited Saved', true);
+        }else{
+            $this->set_session('Job couldnot be Edited', false);
+        }
+
+        return redirect()->route('career_job_editIndex', ['jobid'=> $request->input('edit_job_id')]);        
+    }
+
+    public function career_job_delete($jobid){
+
+        if(Auth::user()->role_id == 1){
+            //Is Admin 
+            $career_app_del = Career_job_application::where('car_job_id', $jobid);
+            $career_job_del = Career_job::find($jobid);
+            
+            $career_app_del = $career_app_del->delete();            
+            $career_job_del = $career_job_del->delete();
+
+            if($career_job_del){
+                $this->set_session('Job Deleted Successfully', true);
+            }else{
+                $this->set_session('Job couldnot be Deleted', false);
+            }
+            
+            return redirect()->route('care_all_jobs');  
+        }
+    }
+
+    public function get_resume($id)
+    {
+        $get_file = Career_job_application::select('resume')->where('car_job_id','=',$id)->first();
+        $file = storage_path('resume/'.$get_file->resume);
+
+        return response()->download($file);
+    }
 }

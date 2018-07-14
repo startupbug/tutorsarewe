@@ -198,16 +198,15 @@ class JobController extends Controller
 
     //Availiable job 
     public function avail_job_index(){
-      $data['career_jobs'] = Career_job::all();
+      $data['career_jobs'] = Career_job::paginate(5);
       return view('career.availiable_job')->with($data);
     }
 
     //another function
-    public function search_jobs(){
-      $args['days'] = Available_day::get();
-      $args['subjects'] = Subject::get();
-
-      return view('career.search')->with($args);
+    public function search_jobs(Request $request){
+      $query = $request->input('query');
+      $data['career_jobs'] = Career_job::where('job_heading', 'like', "%{$query}%")->paginate(5);
+      return view('career.availiable_job')->with($data);
     }
 
     public function apply_job_index($id){

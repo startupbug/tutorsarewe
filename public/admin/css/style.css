@@ -71,9 +71,10 @@
 .f_wrapper {
     min-height: auto !important;
 }
-
-.admin_footer {
-    margin-left: 230px !important;
+@media (min-width: 767px){
+    .admin_footer {
+      margin-left: 230px !important;
+    }
 }
 
 .login ~ .admin_footer {
@@ -162,4 +163,19 @@
     font-size: 16px;
     font-family: 'ProximaNovaAlt-Regular';
     padding-bottom: 5px;
+}
+h3.box-title.s-box-title {
+    font-size: 26px;
+    text-align: center;
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-weight: 600;
+}
+
+.row.s_user_info p {
+    margin: 18px;
+}
+.row.s_user_info p span {
+    font-size: 16px;
 }

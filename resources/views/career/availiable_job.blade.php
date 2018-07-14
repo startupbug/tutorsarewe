@@ -8,17 +8,18 @@
 
             <h1 class="s_available_position">Available Positions</h1>
 
-            <form action="#" method="get" class="form-horizontal">
-               <input type="hidden" name="limit" value="10">
+            <form action="{{route('search_jobs')}}" method="get" class="form-horizontal">
+               <!-- <input type="hidden" name="limit" value="10"> -->
                <div class="form-group">
                   <div class="col-md-9">
                      <div class="icon-addon addon-lg">
-                        <input type="text" placeholder="Search Job ......" class="form-control select_f f_paddingright" id="Name" name="name">
+                        <input type="text" placeholder="Search Job ......" 
+                        class="form-control select_f f_paddingright" id="Name" name="query">
                         <label class="glyphicon glyphicon-search" rel="tooltip" title="email"></label>
                      </div>
                   </div>
                   <div class="col-md-3">
-                     <button type="submit" class="btn btn_search" data-toggle="#jobInfo" name="q" value="search">SEARCH</button>
+                     <button type="submit" class="btn btn_search" data-toggle="#jobInfo">SEARCH</button>
                   </div>
                </div>
             </form>
@@ -74,9 +75,10 @@
 
                 @endforeach
 
-            <!-- <div class="f_resultbtn">
-               <button type="button" id="ref_butn" class="btn btn_result" data-toggle="#jobInfo" data-result="10">SHOW MORE RESULTS</button>
-            </div> -->
+            <div class="f_resultbtn">
+                {{$career_jobs->links()}}
+               <!-- <button type="button" id="ref_butn" class="btn btn_result" data-toggle="#jobInfo" data-result="10">SHOW MORE RESULTS</button> -->
+            </div>
 
         </div>
       </div>
