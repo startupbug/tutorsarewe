@@ -140,6 +140,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 	//Admin Login Authentication
 	Route::get('/admin-login', 'Admin\AuthController@login_index')->name('adminlogin_index');
 	Route::post('/admin-login', 'Admin\AuthController@login_post')->name('admin_login_post');
-
+	Route::get('downlaod_resume/{id}','Admin\JobController@get_resume')->name('get_resume');
 	//Logout
 	Route::get('/admin-logout', 'Admin\AuthController@logout')->name('logout');
