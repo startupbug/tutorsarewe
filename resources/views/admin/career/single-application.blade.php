@@ -110,7 +110,7 @@
                 <span>
                   <i class="fa fa-file-text-o"></i>Job Description :
                 </span>
-                <span>{{$details->job_desc}}</span>
+                <span>{!!$details->job_desc!!}</span>
               </p>
             </div>
           </div><br>
