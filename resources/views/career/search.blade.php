@@ -230,7 +230,7 @@
                        </div>
                     </div>
                  </div>
-                 <article class="row">
+                 <!-- <article class="row">
                     <div class="col-sm-12">
                        <hr class="job-hr">
                        <h2>Other Jobs at Tutors Are Us</h2>
@@ -274,7 +274,7 @@
                           </li>
                        </ul>
                     </div>
-                 </article>
+                 </article> -->
               </div>
            </section>
 
@@ -290,7 +290,19 @@
     $(document).ready(function(){
         $("#btn_apply_now").on('click', function(e){
             e.preventDefault();
-            $("#applyForm").submit();
+         // console.log($("[name='full_name']").val());
+            if ( ($("[name='full_name']").val() == '') || 
+            ($("[name='age']").val() == '') ||
+            ($("[name='education']").val() == '') ||
+            ($("[name='id_num']").val() == '') ||
+            ($("[name='language']").val() == '') ||
+            ($("[name='contact_num']").val() == '') ||
+            ($("[name='email_address']").val() == '')
+            ) {
+              alert('Kindly Fill all fields to Apply');
+            }else{
+             // $("#applyForm").submit();
+            }
         });
           
     })
