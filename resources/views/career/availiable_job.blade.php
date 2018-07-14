@@ -30,12 +30,12 @@
                                 <div class="col-md-2">
                                 <date>
                                     <span>Apply by</span>
-                                    <?php 
-                                       $monthNum  = date('m', strtotime($career_job->job_apply_date));
-                                       $dateObj   = DateTime::createFromFormat('!m', $monthNum);
-                                       $monthName = $dateObj->format('F');
-                                   ?>
-                                                               
+
+                                    <?php
+                                        $monthNum  = date('m', strtotime($career_job->job_apply_date));
+                                        $dateObj   = DateTime::createFromFormat('!m', $monthNum);
+                                        $monthName = $dateObj->format('F');
+                                    ?>
                                     <day>{{ date('d', strtotime($career_job->job_apply_date)) }} </day>
                                     <month>{{ $monthName }}</month>
                                 </date>
@@ -57,13 +57,13 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-10">
-                                    <p> {!! str_limit($career_job->job_desc, 50) !!}  
+                                    <p> {!! str_limit($career_job->job_desc, 50) !!}
                                     </p>
                                     </div>
                                 </div>
                                 </div>
                                 <div class="col-md-2 text-center">
-                                <a href="{{route('apply_job_index', ['jobid' => $career_job->id])}}" 
+                                <a href="{{route('apply_job_index', ['jobid' => $career_job->id])}}"
                                     target="_blank" class="btn btn-gradient">
                                     <span>Apply Now</span>
                                     <i class="fa fa-arrow-right"></i>
@@ -74,9 +74,9 @@
 
                 @endforeach
 
-            <div class="f_resultbtn">
+            <!-- <div class="f_resultbtn">
                <button type="button" id="ref_butn" class="btn btn_result" data-toggle="#jobInfo" data-result="10">SHOW MORE RESULTS</button>
-            </div>
+            </div> -->
 
         </div>
       </div>

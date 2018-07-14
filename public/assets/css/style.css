@@ -2524,6 +2524,7 @@ ul.job-list li {
     display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-family: 'ProximaNovaAlt-Regular';
     overflow: hidden;
     vertical-align: top;
 }
@@ -2545,4 +2546,36 @@ ul.job-list li {
     position: relative;
     top: -11px;
     left: 17px;
+}
+span#selected_file {
+    padding-top: 5px;
+    padding-left: 12px;
+}
+#applyForm .form-group {
+    width: 100%;
+    margin-top: 15px;
+}
+
+#applyForm .form-group .form-control{
+  font-family: 'ProximaNovaAlt-Regular';
+}
+#applyForm .form-group label{
+  font-family: 'ProximaNovaAlt-Regular';
+}
+@media (min-width: 768px){
+  #applyForm .form-group label{
+    width: 40%;
+  }
+  #applyForm .form-group .form-control{
+    width: 59%;
+    font-family: 'ProximaNovaAlt-Regular';
+  }
+}
+ul.job-list pre, .position.latest pre,.position.latest p,.position.latest ul li {
+  background: transparent;
+  font-family: 'ProximaNovaAlt-Regular';
+}
+samp{
+  font-family: 'ProximaNovaAlt-Regular';
+
 }
