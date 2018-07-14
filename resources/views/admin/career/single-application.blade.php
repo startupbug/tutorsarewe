@@ -6,8 +6,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Page Panel
-        <small>- Add Page</small>
+        Career Job
+        <small>- Career Job detail</small>
       </h1>
     </section>
 
@@ -17,21 +17,33 @@
               <div class="col-md-12">
                 <!-- general form elements -->
 
-                    <h1 class="box-title">Page Details</h1>
+                    <h1 class="box-title">{{$single_career_job->job_heading}}</h1>
 
                   <!-- /.box-header -->
                   <!-- form start -->
-                  <h3>{{$page->heading}}</h3>
+                  <h3>Job description</h3>
+                  {!!$single_career_job->job_desc!!}
                     <br>
-                  {!!$page->content!!}
 
-                <b>Title:</b> {{$page->title}}
-                <br>
-                <b>Meta:</b> {{$page->meta}}
-                <br>            
-                <b>Description:</b> {{$page->tags}}
-                <br>
+                    <h3>Job Specifications</h3>
+                  {!!$single_career_job->job_spec!!}
+                    <br>                    
+   
+                    <h3>Job Qualification</h3>
+                  {!!$single_career_job->quaification!!}
+                    <br>    
 
+                    <h3>Job Perks</h3>
+                  {!!$single_career_job->job_perks!!}
+                    <br>
+
+                    <h3>Job City</h3>
+                  {{$single_career_job->job_city}}
+                    <br>
+
+                    <h3>Apply by</h3>
+                  {!!$single_career_job->job_apply_date!!}
+                    <br>                                       
               </div>
             </div>
         </section>

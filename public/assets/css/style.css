@@ -2579,3 +2579,12 @@ samp{
   font-family: 'ProximaNovaAlt-Regular';
 
 }
+
+.f_resultbtn .pagination >.active> span {
+    background-color: #ed7275;
+    border-color: #ed7275;
+}
+
+.f_resultbtn .pagination>li>a:hover{
+    color: #ed7275;
+}
