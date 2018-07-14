@@ -27,11 +27,11 @@
 
                     <h3>Job Specifications</h3>
                   {!!$single_career_job->job_spec!!}
-                    <br>                    
-   
+                    <br>
+
                     <h3>Job Qualification</h3>
                   {!!$single_career_job->quaification!!}
-                    <br>    
+                    <br>
 
                     <h3>Job Perks</h3>
                   {!!$single_career_job->job_perks!!}
@@ -43,7 +43,7 @@
 
                     <h3>Apply by</h3>
                   {!!$single_career_job->job_apply_date!!}
-                    <br>                                       
+                    <br>
               </div>
             </div>
         </section>
