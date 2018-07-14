@@ -38,10 +38,12 @@ All Jobs
 <tbody>
 @foreach($career_job_applications as $career_job_application)
 <tr> 
-<td>{{$career_job_application->job_heading}}</td>
+<td>{{$career_job_application->job_heading}}</td> 
 <td>{{$career_job_application->job_city}}</td>
 <td>{{$career_job_application->job_apply_date}}</td>
-<td><button type="button" class="btn btn-info">View</button><button type="button" class="btn btn-info">Edit</button><button type="button" class="btn btn-danger">Delete</button></td>
+<td><a href="{{route('career_job_detail', ['jobid' => $career_job_application->id])}}"><button type="button" class="btn btn-info">View</button></a>
+<a href="{{route('career_job_editIndex', ['jobid' => $career_job_application->id])}}"><button type="button" class="btn btn-info">Edit</button></a>
+<a href="{{route('career_job_delete', ['jobid' => $career_job_application->id])}}"><button type="button" class="btn btn-danger deleteGroup">Delete</button></a></td>
 </tr> 
 @endforeach 
 </tbody>

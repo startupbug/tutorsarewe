@@ -116,6 +116,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 	//Career - All Jobs
 	Route::get('/all-jobs', 'Admin\JobController@care_all_jobs')->name('care_all_jobs');	
 	
+	//Career - Single Job 
+	Route::get('/career-job/{jobid}', 'Admin\JobController@career_job_detail')->name('career_job_detail');
+
+	//Edit Single Career Job
+	Route::get('/career-edit-job/{jobid}', 'Admin\JobController@career_job_editIndex')->name('career_job_editIndex');
+
+	//Edit Single Career Job Post
+	Route::post('/career-job', 'Admin\JobController@career_job_editIndex_post')->name('career_job_editIndex_post');
+
+	//Delete Single Career Job
+	Route::get('/career-job-delete/{jobid}', 'Admin\JobController@career_job_delete')->name('career_job_delete');
+		
+
 	//Career - All Applications 
 	Route::get('/job-applications', 'Admin\JobController@care_applications_jobs')->name('care_applications_jobs');
 	
