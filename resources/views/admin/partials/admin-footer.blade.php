@@ -1,4 +1,4 @@
-cd  <footer class="main-footer f_footer admin_footer">
+  <footer class="main-footer f_footer admin_footer">
     <strong>Copyright &copy; {{ date('Y') }} All rights
     reserved.
   </footer>
@@ -31,7 +31,7 @@ cd  <footer class="main-footer f_footer admin_footer">
 <!-- jQuery Knob Chart -->
 <script src="{{ asset('public/admin/plugins/knob/jquery.knob.js') }}"></script>
 <!-- daterangepicker -->
-<script src="{{ asset('public/admin/js/moment.min.js') }}"></script> 
+<script src="{{ asset('public/admin/js/moment.min.js') }}"></script>
 <script src="{{ asset('public/admin/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- datepicker -->
 <script src="{{ asset('public/admin/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
@@ -55,7 +55,7 @@ cd  <footer class="main-footer f_footer admin_footer">
 
 <!-- Toaster Alert Files -->
 <script src="{{ asset('public/admin/js/toastr.min.js') }}"></script>
-      
+
 <!-- Custom JS -->
 <script src="{{ asset('public/admin/js/custom.js') }}"></script>
 

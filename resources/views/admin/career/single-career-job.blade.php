@@ -17,33 +17,50 @@
               <div class="col-md-12">
                 <!-- general form elements -->
 
-                    <h1 class="box-title">{{$single_career_job->job_heading}}</h1>
-
                   <!-- /.box-header -->
-                  <!-- form start -->
-                  <h3>Job description</h3>
-                  {!!$single_career_job->job_desc!!}
-                    <br>
 
-                    <h3>Job Specifications</h3>
-                  {!!$single_career_job->job_spec!!}
-                    <br>                    
-   
-                    <h3>Job Qualification</h3>
-                  {!!$single_career_job->quaification!!}
-                    <br>    
 
-                    <h3>Job Perks</h3>
-                  {!!$single_career_job->job_perks!!}
-                    <br>
+                  <h1 class="box-title">{{$single_career_job->job_heading}}</h1>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h3>Job description</h3>
+                        {!!$single_career_job->job_desc!!}
+                        <br>
+                      </div>
+                      <div class="col-md-6">
+                        <h3>Job Specifications</h3>
+                        {!!$single_career_job->job_spec!!}
+                        <br>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h3>Job Qualification</h3>
+                        {!!$single_career_job->quaification!!}
+                        <br>
+                      </div>
+                      <div class="col-md-6">
+                        <h3>Job Perks</h3>
+                        {!!$single_career_job->job_perks!!}
+                        <br>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h3>Apply by</h3>
+                        {!!$single_career_job->job_apply_date!!}
+                        <br>
+                      </div>
+                      <div class="col-md-6">
+                        <h3>Job City</h3>
+                        {{$single_career_job->job_city}}
+                        <br>
+                      </div>
+                    </div>
+                  </div>
 
-                    <h3>Job City</h3>
-                  {{$single_career_job->job_city}}
-                    <br>
 
-                    <h3>Apply by</h3>
-                  {!!$single_career_job->job_apply_date!!}
-                    <br>                                       
               </div>
             </div>
         </section>

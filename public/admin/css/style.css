@@ -71,9 +71,10 @@
 .f_wrapper {
     min-height: auto !important;
 }
-
-.admin_footer {
-    margin-left: 230px !important;
+@media (min-width: 767px){
+    .admin_footer {
+      margin-left: 230px !important;
+    }
 }
 
 .login ~ .admin_footer {
