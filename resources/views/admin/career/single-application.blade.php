@@ -15,60 +15,106 @@
 <section class="content">
    <div class="row">
 
-      <div class="col-xs-12">
+      <div class="col-xs-12 user_info ">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Application list</h3>
-              @include('admin.partials.error_section')              
+              <h3 class="box-title s-box-title">Application Detail</h3>
+              @include('admin.partials.error_section')
           </div>
           <!-- /.box-header -->
-          
-            <h1>Full Name</h1>  
-            <p>{{$details->full_name}}</p>  
-              <br>
-            <h1>Gender</h1>  
-            <p>{{$details->gender}}</p>  
-              <br>   
-            <h1>ID Number</h1>   
-            <p>{{$details->id_num}}</p>  
-              <br>
-            <h1>Contact number</h1>  
-            <p>{{$details->contact_num}}</p>  
-              <br>
-            <h1>Job Description</h1>  
-            <p>{{$details->job_desc}}</p>  
-              <br>
-            <h1>Job City</h1>  
-            <p>{{$details->job_city}}</p>  
-              <br>
-            <h1>Shift</h1>  
-            <p>{{$details->shift}}</p>  
-              <br>
-            <h1>Source</h1>  
-            <p>{{$details->source}}</p>  
-              <br>
-            <h1>Age</h1>  
-            <p>{{$details->age}}</p>  
-              <br>
-            <h1>Education</h1>  
-            <p>{{$details->education}}</p>  
-              <br>   
-            <h1>Language</h1>   
-            <p>{{$details->language}}</p>  
-              <br>
-            <h1>Email Address</h1>  
-            <p>{{$details->email_address}}</p>  
-              <br>
-            <h1>Location</h1>  
-            <p>{{$details->location}}</p>  
-              <br>
-            <h1>Resume</h1><a href="{{route('get_resume',['id'=>$details->id])}}">Download</a>  
-            <p>{{$details->resume}}</p>  
-                                    
-                 
-         
-                        
-        
+          <div class="row s_user_info">
+            <div class="col-md-6 col-xs-12">
+              <p>
+                <span>
+                  <i class="fa fa-user"></i> Full Name :
+                </span>
+                <span>{{$details->full_name}}</span>
+              </p>
+              <p>
+                <span>
+                  <i class="fa fa-envelope"></i> Email :
+                </span>
+                <span>{{$details->email_address}}</span>
+              </p>
+              <p>
+                <span>
+                  <i class="fa fa-child"></i> Age :
+                </span>
+                <span>{{$details->age}}</span>
+              </p>
+              <p>
+                <span>
+                  <i class="fa fa-graduation-cap"></i> Education :
+                </span>
+                <span>{{$details->education}}</span>
+              </p>
+              <p>
+                <span>
+                  <i class="fa fa-transgender"></i> Gender :
+                </span>
+                <span>{{$details->gender}}</span>
+              </p>
+              <p>
+                <span>
+                  <i class="fa fa-phone"></i> Contact No :
+                </span>
+                <span>{{$details->contact_num}}</span>
+              </p>
+              <p>
+                <span>
+                  <i class="fa fa-credit-card"></i> ID Number :
+                </span>
+                <span>{{$details->id_num}}</span>
+              </p>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <p>
+                <span>
+                  <i class="fa fa-map-marker"></i> Location :
+                </span>
+                <span>{{$details->location}}</span>
+              </p>
+              <p>
+                <span>
+                  <i class="fa fa-home"></i> Job City :
+                </span>
+                <span>{{$details->job_city}}</span>
+              </p>
+              <p>
+                <span>
+                  <i class="fa fa-recycle"></i> Shift :
+                </span>
+                <span>{{$details->shift}}</span>
+              </p>
+              <p>
+                <span>
+                  <i class="fa fa-tasks"></i> Source :
+                </span>
+                <span>{{$details->source}}</span>
+              </p>
+              <p>
+                <span>
+                  <i class="fa fa-language"></i> Language :
+                </span>
+                <span>{{$details->language}}</span>
+              </p>
+              <p>
+                <span>
+                  <i class="fa fa-file"></i> Resume :
+                </span>
+                <span><a href="{{route('get_resume',['id'=>$details->id])}}">(Download) {{$details->resume}}</a></span>
+              </p>
+            </div>
+            <div class="col-md-12">
+              <p>
+                <span>
+                  <i class="fa fa-file-text-o"></i>Job Description :
+                </span>
+                <span>{{$details->job_desc}}</span>
+              </p>
+            </div>
+          </div><br>
+
 </div>
 </div>
 </section>
