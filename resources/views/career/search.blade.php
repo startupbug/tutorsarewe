@@ -290,19 +290,7 @@
     $(document).ready(function(){
         $("#btn_apply_now").on('click', function(e){
             e.preventDefault();
-         // console.log($("[name='full_name']").val());
-            if ( ($("[name='full_name']").val() == '') || 
-            ($("[name='age']").val() == '') ||
-            ($("[name='education']").val() == '') ||
-            ($("[name='id_num']").val() == '') ||
-            ($("[name='language']").val() == '') ||
-            ($("[name='contact_num']").val() == '') ||
-            ($("[name='email_address']").val() == '')
-            ) {
-              alert('Kindly Fill all fields to Apply');
-            }else{
-             // $("#applyForm").submit();
-            }
+            $("#applyForm").submit();
         });
           
     })
