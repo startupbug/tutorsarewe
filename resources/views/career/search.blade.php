@@ -33,7 +33,8 @@
                                <div class="row">
                                  <div class="col-md-12">
                                    <div class="attach-box">
-                                      <input type="file" name="resume" id="upload" class="inputfile inputfile-6" required="">
+                                      <input type="file" name="resume" id="upload" class="required inputfile inputfile-6" required="">
+                                      <span class="error hidden">The Attach Resume field is required</span>
                                       <label for="upload">
                                          <strong>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
@@ -51,65 +52,72 @@
                                  <div class="col-md-6">
                                    <div class="form-group">
                                      <label class="" for="">Full Name</label>
-                                     <input type="text" name="full_name" id="caller_name" class="form-control" value="" required="">
-                                     <div id="caller_name_msg" class="status-msg"></div>
+                                     <input type="text" name="full_name" id="caller_name" class="required form-control" value="" required="">
+                                     <span class="error hidden">The Name field is required</span>
                                    </div>
                                  </div>
                                  <div class="col-md-6">
                                    <div class="form-group">
                                      <label for="">Age</label>
-                                     <input type="number" name="age" id="age" class="form-control" value="">
+                                     <input type="number" name="age" id="age" class="required form-control" value="">
+                                     <span class="error hidden">The Age field is required</span>
                                    </div>
                                  </div>
                                  <div class="col-md-6">
                                    <div class="form-group select">
                                      <label for="">Select Gender</label>
-                                     <select name="gender" id="gender" class="form-control" required="">
-                                       <option value="Gender">Select Gender</option>
+                                     <select name="gender" id="gender" class="required form-control" required="">
+                                       <option disabled>Select Gender</option>
                                        <option value="Male">Male</option>
                                        <option value="Female">Female</option>
                                      </select>
+                                     <span class="error hidden">The Select field is required</span>
                                      <div id="gender_msg" class="status-msg"></div>
                                    </div>
                                  </div>
                                  <div class="col-md-6">
                                    <div class="form-group">
                                      <label for="">Education</label>
-                                     <input type="text" name="education" id="education" class="form-control" value="">
+                                     <input type="text" name="education" id="education" class="required form-control" value="">
+                                     <span class="error hidden">The Education field is required</span>
                                    </div>
                                  </div>
                                  <div class="col-md-6">
                                    <div class="form-group">
                                      <label for="">ID Number</label>
-                                     <input type="text" class="form-control" name="id_num" id="id_num" value="" required="" maxlength="15">
+                                     <input type="text" class="required form-control" name="id_num" id="id_num" value="" required="" maxlength="15">
+                                     <span class="error hidden">The ID Number field is required</span>
                                      <div id="cnic_msg" class="status-msg"></div>
                                    </div>
                                  </div>
                                  <div class="col-md-6">
                                    <div class="form-group">
                                      <label for="">Language</label>
-                                     <input type="text" class="form-control" name="language" id="language" value="">
+                                     <input type="text" class="required form-control" name="language" id="language" value="">
+                                     <span class="error hidden">The Language field is required</span>
                                    </div>
                                  </div>
                                  <div class="col-md-6">
                                    <div class="form-group">
                                      <label for="">Contact Number</label>
-                                     <input type="tel" name="contact_num" class="form-control" id="contact_number" maxlength="12" value="" required="">
+                                     <input type="tel" name="contact_num" class="required form-control" id="contact_number" maxlength="12" value="" required="">
+                                     <span class="error hidden">The Contact Number field is required</span>
                                      <div id="contact_number_msg" class="status-msg"></div>
                                    </div>
                                  </div>
                                  <div class="col-md-6">
                                    <div class="form-group">
                                      <label for="">Email Address</label>
-                                     <input type="email" name="email_address" id="caller_email" class="form-control" value="" required="">
+                                     <input type="email" name="email_address" id="caller_email" class="required form-control" value="" required="">
+                                     <span class="error hidden">The Email Address field is required</span>
                                      <div id="caller_email_msg" class="status-msg"></div>
                                    </div>
                                  </div>
                                  <div class="col-md-6">
                                    <div class="form-group select">
-                                     <label for="">select preferred Shift</label>
-                                     <select name="shift" id="shift_availability" class="form-control" required="">
-                                       <option value="" selected="">Select Preferred Shift</option>
+                                     <label for="">Select preferred Shift</label>
+                                     <select name="shift" id="shift_availability" class="required form-control" required="">
+                                       <option disabled>Select Preferred Shift</option>
                                        <option value="all-shifts">All Shifts</option>
                                        <option value="evening">Evening Only</option>
                                        <option value="evening-night">Evening/Night</option>
@@ -117,26 +125,28 @@
                                        <option value="morning-evening">Morning/Evening</option>
                                        <option value="night">Nights Only</option>
                                      </select>
+                                     <span class="error hidden">The Preferred Shift field is required</span>
                                      <div id="shift_availability_msg" class="status-msg"></div>
                                    </div>
                                  </div>
                                  <div class="col-md-6">
                                    <div class="form-group select">
                                      <label for="">Select Location</label>
-                                     <select name="location" id="field4" class="form-control" required="">
-                                       <option value="" selected="">Select Location</option>
+                                     <select name="location" id="field4" class="required form-control" required="">
+                                       <option disabled>Select Location</option>
                                        <option value="new york">New york</option>
                                        <option value="washington">Washington</option>
                                        <option value="chicago">Chicago</option>
                                      </select>
+                                     <span class="error hidden">The Location field is required</span>
                                      <div id="field4_msg" class="status-msg"></div>
                                    </div>
                                  </div>
                                  <div class="col-md-6">
                                    <div class="form-group select">
                                      <label for="">Select Source</label>
-                                     <select id="source" name="source" class="form-control" required="">
-                                       <option value="" selected="">Select Source</option>
+                                     <select id="source" name="source" class="required form-control" required="">
+                                       <option disabled>Select Source</option>
                                        <option value="Advertisements">Advertisements</option>
                                        <option value="BPO Suite">BPO Suite</option>
                                        <option value="Called In">Called In</option>
@@ -150,6 +160,7 @@
                                        <option value="University">University</option>
                                        <option value="Walk In">Walk In</option>
                                      </select>
+                                     <span class="error hidden">The Source field is required</span>
                                      <div id="source_msg" class="status-msg"></div>
                                    </div>
                                  </div>
@@ -292,7 +303,7 @@
             e.preventDefault();
             $("#applyForm").submit();
         });
-          
+
     })
 
 </script>

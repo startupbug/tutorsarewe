@@ -93,14 +93,35 @@ function filterFunction() {
 
 $("#btn_apply_now").on('click', function(e){
   e.preventDefault();
-  $("#applyForm").submit();
+  if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+    $("#applyForm").find('input[name = "resume"]').siblings('.error').removeClass('hidden');
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+    $("#applyForm").find('input[name = "resume"]').siblings('.error').addClass('hidden');
+    $("#applyForm").find('input[name = "resume"]').siblings('.error').removeClass('hidden');
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }
+
+  // $("#applyForm").submit();
 });
 
 // $(document).ready(function () {
 
 
 
-    
+
 // });
-
-

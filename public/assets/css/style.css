@@ -2588,3 +2588,34 @@ samp{
 .f_resultbtn .pagination>li>a:hover{
     color: #ed7275;
 }
+input#upload~.error {
+    position: absolute;
+    top: 30px;
+    font-size: 12px;
+    z-index: 999;
+}
+input[type="text"]~.error {
+    position: absolute;
+    right: 0;
+    z-index: 999;
+}
+input[type="number"]~.error {
+    position: absolute;
+    right: 0;
+    z-index: 999;
+}
+input[type="email"]~.error {
+    position: absolute;
+    right: 0;
+    z-index: 999;
+}
+input[type="tel"]~.error {
+    position: absolute;
+    right: 0;
+    z-index: 999;
+}
+select~.error {
+    position: absolute;
+    right: 0;
+    z-index: 999;
+}
