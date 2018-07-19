@@ -30,18 +30,22 @@ class TutorController extends Controller
 
     if(is_numeric($subject_id)){
         //Show tutors by subject
+        $args['by_subj'] = true;
 
         $args['days'] = Available_day::get();        
         $take = 10;
 
-        $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id')
+        $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id', 'users.id as tutor_id')
+         //\DB::raw('SUM(reviews.rating) as user_rating'))
         ->leftJoin('profiles','profiles.user_id','=','users.id')
-        ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')        
+        ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')  
+        //->leftjoin('reviews','reviews.tutor_id','=','users.id')      
         ->where('users.verified',1)                                    
         ->where('tutor_subjects.subject_id', $subject_id)
         ->take($take)
         ->get();
 
+        // /dd( $args);
     }else{
         //Do as usual
 
@@ -55,7 +59,7 @@ class TutorController extends Controller
                     $first_name = $words[0];
                     $last_name = end($words);
                     
-                    $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id')->leftJoin('profiles','profiles.user_id','=','users.id')->where('users.role_id',3)
+                    $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id', 'users.id as tutor_id')->leftJoin('profiles','profiles.user_id','=','users.id')->where('users.role_id',3)
                     ->where('users.verified',1)                                    
                     ->where('users.first_name','LIKE','%'.$first_name.'%')
                     ->orWhere('users.last_name','LIKE','%'.$last_name.'%')
@@ -155,7 +159,7 @@ class TutorController extends Controller
         
         
                 }else{
-                    $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id')->leftJoin('profiles','profiles.user_id','=','users.id')->where('role_id',3)
+                    $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id', 'users.id as tutor_id')->leftJoin('profiles','profiles.user_id','=','users.id')->where('role_id',3)
                     ->where('verified',1)
                     ->whereExists(function($query)
                     {

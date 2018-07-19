@@ -77,7 +77,7 @@ class JobController extends Controller
     }
 
     public function student_postJob_detail($id){
-
+      
       $data['single_job'] = Job_board::leftjoin('subjects', 'job_boards.subject_id', '=', 'subjects.id')
                                 ->leftjoin('lesson_types', 'lesson_types.id', '=', 'job_boards.lesson_type')
                                 ->where('job_boards.id', $id)
@@ -85,14 +85,23 @@ class JobController extends Controller
                                 ->first();
 
       //Getting Tutors responses on this Job
-      $data['tutor_responses'] = Job_request::select('job_boards.id as jobboard_id', 'users.first_name' , 'profiles.bio', 'profiles.tution_per_hour', 'job_requests.tutor_id', 'job_requests.description','job_requests.job_id', 'profiles.profile_pic', 'bookings.id as booking_id','reviews.comment','reviews.rating','reviews.job_id as current_job_id','reviews.student_id as current_student_id','reviews.tutor_id as current_tutor_id')
-                                        ->leftjoin('job_boards', 'job_boards.id', '=', 'job_requests.job_id')
-                                         ->leftjoin('reviews', 'reviews.job_id', '=', 'job_requests.job_id')
-                                        ->leftjoin('users', 'users.id', '=', 'job_requests.tutor_id')
-                                        ->leftjoin('profiles', 'profiles.user_id', '=', 'users.id')
-                                        ->leftjoin('bookings', 'bookings.job_id', '=', 'job_boards.id')
-                                        ->where('job_requests.job_id', $id)
-                                        ->get();
+      $data['tutor_responses'] = Job_request::select('job_boards.id as jobboard_id', 'users.first_name' , 
+      'profiles.bio', 'profiles.tution_per_hour', 'job_requests.tutor_id', 'job_requests.description',
+      'job_requests.job_id', 'profiles.profile_pic', 'bookings.id as booking_id'
+      //,'reviews.comment',
+      //'reviews.rating','reviews.job_id as current_job_id','reviews.student_id as current_student_id',
+      //'reviews.tutor_id as current_tutor_id'
+      )
+          ->leftjoin('job_boards', 'job_boards.id', '=', 'job_requests.job_id')
+           // ->leftjoin('reviews', 'reviews.job_id', '=', 'job_requests.job_id')
+          ->leftjoin('users', 'users.id', '=', 'job_requests.tutor_id')
+          ->leftjoin('profiles', 'profiles.user_id', '=', 'users.id')
+          ->leftjoin('bookings', 'bookings.job_id', '=', 'job_boards.id')
+          ->where('job_requests.job_id', $id)
+          ->get();
+          
+     //dd( $data['tutor_responses'] );
+
       return view('dashboard.job.post-job-detail')->with($data);
     }
 
