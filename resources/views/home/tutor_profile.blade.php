@@ -25,10 +25,10 @@
        @if($tutor_info->role_id == 3)
        <h1 class="f_hello">$ Hourly rate:$
         @if(isset($tutor_info->profile->tution_per_hour))
-        {{$tutor_info->profile->tution_per_hour}}
+          {{$tutor_info->profile->tution_per_hour}}
         @endif
       </h1>
-      @for ($i = 0; $i <  $tutor_info->profile->rating; $i++)
+      @for ($i = 0; $i < $tutor_info->profile->rating; $i++)
       <i class="fa fa-star f_icon_color"></i>
       @endfor
       <span>
@@ -156,7 +156,7 @@
               </div>
               <div class="middle">
                 <div class="bar-container">
-                 <div class="bar-5" style="width: {{$five_star_width}}%;"></div>
+                 <div class="bar-5" style="width: @if(isset($five_star_width)){{$five_star_width}}@else{{0}}@endif%;"></div>
                </div>
              </div>
              <div class="side right">
@@ -167,7 +167,7 @@
             </div>
             <div class="middle">
               <div class="bar-container">
-               <div class="bar-5" style="width: {{$four_star_width}}%;"></div>
+               <div class="bar-5" style="width: @if(isset($five_star_width)){{$four_star_width}}@else{{0}}@endif%;"></div>
              </div>
            </div>
            <div class="side right">
@@ -178,7 +178,7 @@
           </div>
           <div class="middle">
             <div class="bar-container">
-             <div class="bar-5" style="width: {{$three_star_width}}%;"></div>
+             <div class="bar-5" style="width: @if(isset($five_star_width)){{$three_star_width}}@else{{0}}@endif%;"></div>
            </div>
          </div>
          <div class="side right">
@@ -189,7 +189,7 @@
         </div>
         <div class="middle">
           <div class="bar-container">
-           <div  class="bar-5" style="width: {{$two_star_width}}%;"></div>
+           <div  class="bar-5" style="width: @if(isset($five_star_width)){{$two_star_width}}@else{{0}}@endif%;"></div>
          </div>
        </div>
        <div class="side right">
@@ -200,7 +200,7 @@
       </div>
       <div class="middle">
         <div class="bar-container">
-         <div  class="bar-5" style="width: {{$one_star_width}}%;"></div>
+         <div  class="bar-5" style="width: @if(isset($five_star_width)){{$one_star_width}}@else{{0}}@endif%;"></div>
        </div>
      </div>
      <div class="side right">
@@ -298,7 +298,7 @@
     <h3 class="f-other">Other Tutors Similiar To This Profile</h3>
     <p class="f_palatine">
       @foreach($recommended_users as $value)
-      {{$value->first_name}} {{$value->last_name}},
+      <a href="{{route('tutor_profile', ['id' => $value->user_id])}}">{{$value->first_name}} {{$value->last_name}}</a>,
       @endforeach
     </p>
   </div>

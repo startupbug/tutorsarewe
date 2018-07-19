@@ -20,137 +20,160 @@ use App\Available_day;
 use App\Booking;
 use Carbon\Carbon;
 use App\Schedule;
+
 class TutorController extends Controller
 {
     //Search tutor page & Tutor listing in Front Navbar Find A Tutor    
     public function index(Request $request){
-        $args['days'] = Available_day::get();
+    
+     $subject_id = $request->segment(count(request()->segments()));
 
+    if(is_numeric($subject_id)){
+        //Show tutors by subject
+
+        $args['days'] = Available_day::get();        
         $take = 10;
-        if ($request->name)
-        {
 
-            $words = explode(' ', $request->name);
-            $first_name = $words[0];
-            $last_name = end($words);
-            
-            $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id')->leftJoin('profiles','profiles.user_id','=','users.id')->where('users.role_id',3)
-            ->where('users.verified',1)                                    
-            ->where('users.first_name','LIKE','%'.$first_name.'%')
-            ->orWhere('users.last_name','LIKE','%'.$last_name.'%')
-            ->whereExists(function($query)
-            {
-                $query->select(DB::raw(1))
-                ->from('tutor_subjects')
-                ->whereRaw('tutor_subjects.tutor_id = users.id');
-            })
-            ->take($take)
-            ->get();
-            
-        }elseif(isset($request->course) || isset($request->location)){
-            
-            if ($request->home == 1) {
-                $args['listing'] = User::leftJoin('profiles','profiles.user_id','=','users.id')
-                ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')
-                ->where('users.role_id',3)
-                ->where('users.verified',1)                                    
-                ->where('profiles.country_id','=',$request->location)
-                ->where('tutor_subjects.subject_id','=',$request->course)
-                ->whereExists(function($query)
-                {
-                    $query->select(DB::raw(1))
-                    ->from('tutor_subjects')
-                    ->whereRaw('tutor_subjects.tutor_id = users.id');
-                })
-                ->whereExists(function($query)
-                {
-                    $query->select(DB::raw(1))
-                    ->from('job_boards')
-                    ->where('job_boards.lesson_type','=', 1);
-                })
-                ->take($take)
-                ->get();
-            } 
-            if ($request->home == 2) {
-                $args['listing'] = User::leftJoin('profiles','profiles.user_id','=','users.id')
-                ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')
-                ->where('users.role_id',3)
-                ->where('users.verified',1)                                    
-                ->where('profiles.country_id','=',$request->location)
-                ->where('tutor_subjects.subject_id','=',$request->course)
-                ->whereExists(function($query)
-                {
-                    $query->select(DB::raw(1))
-                    ->from('tutor_subjects')
-                    ->whereRaw('tutor_subjects.tutor_id = users.id');
-                })
-                ->whereExists(function($query)
-                {
-                    $query->select(DB::raw(1))
-                    ->from('job_boards')
-                    ->where('job_boards.lesson_type','=', 2);
-                })
-                ->take($take)
-                ->get();
-            }
-            if ($request->home == 3) {
-                $args['listing'] = User::leftJoin('profiles','profiles.user_id','=','users.id')
-                ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')
-                ->where('users.role_id',3)
-                ->where('users.verified',1)                                    
-                ->where('profiles.country_id','=',$request->location)
-                ->where('tutor_subjects.subject_id','=',$request->course)
-                ->whereExists(function($query)
-                {
-                    $query->select(DB::raw(1))
-                    ->from('tutor_subjects')
-                    ->whereRaw('tutor_subjects.tutor_id = users.id');
-                })
-                ->whereExists(function($query)
-                {
-                    $query->select(DB::raw(1))
-                    ->from('job_boards')
-                    ->where('job_boards.lesson_type','=', 3);
-                })
-                ->take($take)
-                ->get();
-                
-            }              
-            
-        }elseif (isset($request->online_status) || isset($request->address) || isset($request->rating) || isset($request->tution_per_hour) ){
-          
-            $myString = $request->tution_per_hour;
-            $myArray = explode(',', $myString);
+        $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id')
+        ->leftJoin('profiles','profiles.user_id','=','users.id')
+        ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')        
+        ->where('users.verified',1)                                    
+        ->where('tutor_subjects.subject_id', $subject_id)
+        ->take($take)
+        ->get();
 
-            $query = "SELECT `users`.*, `profiles`.*, `users`.id as `user_id`  FROM `users` LEFT JOIN `profiles` ON `users`.`id` = `profiles`.`user_id` LEFT JOIN `tutor_subjects` ON `tutor_subjects`.`tutor_id` = `users`.`id` WHERE `users`.`role_id` = 3 AND `users`.`verified` = 1";
-            $query = $request->online_status ? $query." AND `profiles`.`online_status` = {$request->online_status}" : $query;
-            $query = $request->rating ? $query." AND `profiles`.`rating` >= {$request->rating}" : $query;
-            $query = $request->address ? $query." AND `profiles`.`address` LIKE '%{$request->address}%'" : $query;
-            $query = $request->tution_per_hour ? $query." AND `profiles`.`tution_per_hour` >=  {$myArray[0]}" : $query;
-            $query = $request->tution_per_hour ? $query." AND `profiles`.`tution_per_hour` <=  {$myArray[1]}" : $query;
-            $query .= " GROUP BY `users`.`id` LIMIT {$take}";
+    }else{
+        //Do as usual
 
-            $args['listing'] = DB::select( DB::raw($query) );
-
-
-        }else{
-            $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id')->leftJoin('profiles','profiles.user_id','=','users.id')->where('role_id',3)
-            ->where('verified',1)
-            ->whereExists(function($query)
-            {
-                $query->select(DB::raw(1))
-                ->from('tutor_subjects')
-                ->whereRaw('tutor_subjects.tutor_id = users.id');
-            })
-            ->limit($take)
-            ->get();
-            // dd($args['listing']);
-        }
+        $args['days'] = Available_day::get();
+        
+                $take = 10;
+                if ($request->name)
+                {
+        
+                    $words = explode(' ', $request->name);
+                    $first_name = $words[0];
+                    $last_name = end($words);
+                    
+                    $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id')->leftJoin('profiles','profiles.user_id','=','users.id')->where('users.role_id',3)
+                    ->where('users.verified',1)                                    
+                    ->where('users.first_name','LIKE','%'.$first_name.'%')
+                    ->orWhere('users.last_name','LIKE','%'.$last_name.'%')
+                    ->whereExists(function($query)
+                    {
+                        $query->select(DB::raw(1))
+                        ->from('tutor_subjects')
+                        ->whereRaw('tutor_subjects.tutor_id = users.id');
+                    })
+                    ->take($take)
+                    ->get();
+                    
+                }elseif(isset($request->course) || isset($request->location)){
+                    
+                    if ($request->home == 1) {
+                        $args['listing'] = User::leftJoin('profiles','profiles.user_id','=','users.id')
+                        ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')
+                        ->where('users.role_id',3)
+                        ->where('users.verified',1)                                    
+                        ->where('profiles.country_id','=',$request->location)
+                        ->where('tutor_subjects.subject_id','=',$request->course)
+                        ->whereExists(function($query)
+                        {
+                            $query->select(DB::raw(1))
+                            ->from('tutor_subjects')
+                            ->whereRaw('tutor_subjects.tutor_id = users.id');
+                        })
+                        ->whereExists(function($query)
+                        {
+                            $query->select(DB::raw(1))
+                            ->from('job_boards')
+                            ->where('job_boards.lesson_type','=', 1);
+                        })
+                        ->take($take)
+                        ->get();
+                    } 
+                    if ($request->home == 2) {
+                        $args['listing'] = User::leftJoin('profiles','profiles.user_id','=','users.id')
+                        ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')
+                        ->where('users.role_id',3)
+                        ->where('users.verified',1)                                    
+                        ->where('profiles.country_id','=',$request->location)
+                        ->where('tutor_subjects.subject_id','=',$request->course)
+                        ->whereExists(function($query)
+                        {
+                            $query->select(DB::raw(1))
+                            ->from('tutor_subjects')
+                            ->whereRaw('tutor_subjects.tutor_id = users.id');
+                        })
+                        ->whereExists(function($query)
+                        {
+                            $query->select(DB::raw(1))
+                            ->from('job_boards')
+                            ->where('job_boards.lesson_type','=', 2);
+                        })
+                        ->take($take)
+                        ->get();
+                    }
+                    if ($request->home == 3) {
+                        $args['listing'] = User::leftJoin('profiles','profiles.user_id','=','users.id')
+                        ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')
+                        ->where('users.role_id',3)
+                        ->where('users.verified',1)                                    
+                        ->where('profiles.country_id','=',$request->location)
+                        ->where('tutor_subjects.subject_id','=',$request->course)
+                        ->whereExists(function($query)
+                        {
+                            $query->select(DB::raw(1))
+                            ->from('tutor_subjects')
+                            ->whereRaw('tutor_subjects.tutor_id = users.id');
+                        })
+                        ->whereExists(function($query)
+                        {
+                            $query->select(DB::raw(1))
+                            ->from('job_boards')
+                            ->where('job_boards.lesson_type','=', 3);
+                        })
+                        ->take($take)
+                        ->get();
+                        
+                    }              
+                    
+                }elseif (isset($request->online_status) || isset($request->address) || isset($request->rating) || isset($request->tution_per_hour) ){
+                  
+                    $myString = $request->tution_per_hour;
+                    $myArray = explode(',', $myString);
+        
+                    $query = "SELECT `users`.*, `profiles`.*, `users`.id as `user_id`  FROM `users` LEFT JOIN `profiles` ON `users`.`id` = `profiles`.`user_id` LEFT JOIN `tutor_subjects` ON `tutor_subjects`.`tutor_id` = `users`.`id` WHERE `users`.`role_id` = 3 AND `users`.`verified` = 1";
+                    $query = $request->online_status ? $query." AND `profiles`.`online_status` = {$request->online_status}" : $query;
+                    $query = $request->rating ? $query." AND `profiles`.`rating` >= {$request->rating}" : $query;
+                    $query = $request->address ? $query." AND `profiles`.`address` LIKE '%{$request->address}%'" : $query;
+                    $query = $request->tution_per_hour ? $query." AND `profiles`.`tution_per_hour` >=  {$myArray[0]}" : $query;
+                    $query = $request->tution_per_hour ? $query." AND `profiles`.`tution_per_hour` <=  {$myArray[1]}" : $query;
+                    $query .= " GROUP BY `users`.`id` LIMIT {$take}";
+        
+                    $args['listing'] = DB::select( DB::raw($query) );
+        
+        
+                }else{
+                    $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id')->leftJoin('profiles','profiles.user_id','=','users.id')->where('role_id',3)
+                    ->where('verified',1)
+                    ->whereExists(function($query)
+                    {
+                        $query->select(DB::raw(1))
+                        ->from('tutor_subjects')
+                        ->whereRaw('tutor_subjects.tutor_id = users.id');
+                    })
+                    ->limit($take)
+                    ->get();
+                    // dd($args['listing']);
+                }
+                    
+    }
 
         foreach ($args['listing'] as $key => $tutor_subject) {
             $args['tutor_subjects'][$tutor_subject->user_id] = Tutor_subject::where('tutor_subjects.tutor_id',$tutor_subject->id)->get();
-        }
-
+        }    
+ 
         $args['count'] = count($args['listing']);
         $args['subjects'] = Subject::get();     
 
@@ -287,8 +310,11 @@ class TutorController extends Controller
         foreach($args['tutor_subjects'] as $value){
             $subjects[] = $value->subject_id;
         }
-        $args['recommended_users']  = User::leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')->select('users.first_name','users.last_name')->whereIn('tutor_subjects.subject_id',$subjects)->where('users.id','!=',$id)->groupBy('users.id')->get();
-        
+        $args['recommended_users']  = User::leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')
+                                        ->select('users.first_name','users.last_name', 'users.id as user_id')
+                                        ->whereIn('tutor_subjects.subject_id',$subjects)
+                                        ->where('users.id','!=',$id)->groupBy('users.id')->get();
+
         $from = date('Y-m-d');
         $to = date( "Y-m-d", strtotime( "$from +7 day" ) );
         
@@ -346,26 +372,31 @@ class TutorController extends Controller
         foreach ($args['reviews_ratings'] as $key => $value) {
             $args['rating'] += $value->rating;
         }
-        // dd($args['rating']);
-        $args['five_star_width'] = ($args['five_star'] / $args['reviews_ratings_count'] * 100);
-        $args['five_star_width'] = (int) $args['five_star_width'];
+        //$args['reviews_ratings_count'] = 1;
+        //dd();
+        if($args['reviews_ratings_count']  != 0 )
+        {
 
-        $args['four_star_width'] = ($args['four_star'] / $args['reviews_ratings_count'] * 100);
-        $args['four_star_width'] = (int) $args['four_star_width'];
+            $args['five_star_width'] = ($args['five_star'] / $args['reviews_ratings_count'] * 100);
+            $args['five_star_width'] = (int) $args['five_star_width'];
 
-        $args['three_star_width'] = ($args['three_star'] / $args['reviews_ratings_count'] * 100);
-        $args['three_star_width'] = (int) $args['three_star_width'];
+            $args['four_star_width'] = ($args['four_star'] / $args['reviews_ratings_count'] * 100);
+            $args['four_star_width'] = (int) $args['four_star_width'];
 
-        $args['two_star_width'] = ($args['two_star'] / $args['reviews_ratings_count'] * 100);
-        $args['two_star_width'] = (int) $args['two_star_width'];
-        
-        $args['one_star_width'] = ($args['one_star'] / $args['reviews_ratings_count'] * 100);
-        $args['one_star_width'] = (int) $args['one_star_width'];
-        
-        $args['rating_round_off'] = round($args['rating']/$args['reviews_ratings_count']);
-        DB::table('profiles')
-        ->where('user_id', $id)
-        ->update(['rating' => $args['rating_round_off']]);      
+            $args['three_star_width'] = ($args['three_star'] / $args['reviews_ratings_count'] * 100);
+            $args['three_star_width'] = (int) $args['three_star_width'];
+
+            $args['two_star_width'] = ($args['two_star'] / $args['reviews_ratings_count'] * 100);
+            $args['two_star_width'] = (int) $args['two_star_width'];
+            
+            $args['one_star_width'] = ($args['one_star'] / $args['reviews_ratings_count'] * 100);
+            $args['one_star_width'] = (int) $args['one_star_width'];
+            
+            $args['rating_round_off'] = round($args['rating']/$args['reviews_ratings_count']);
+            DB::table('profiles')
+            ->where('user_id', $id)
+            ->update(['rating' => $args['rating_round_off']]);      
+        }
         return view('home.tutor_profile',['day'=>$day,'time_array'=>$time_array])->with($args);
     }
     public function contact_tutor_email(Request $request){

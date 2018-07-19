@@ -81,10 +81,16 @@
          <div class="col-md-2 col-sm-6 col-xs-6">
             <h3 class="f_get">TUTORS BY SUBJECTS</h3>
             <ul class="f_list">
-               <li class="list-item">
-                  Homework
-               </li>
-               <li class="list-item">
+            
+                @if(\Session::has('subjects'))
+                    @foreach(\Session::get('subjects')[0] as $subject)
+                    <li class="list-item">
+                        <a href="{{route('tutors_listing',['id' => $subject->id])}}">{{$subject->subject}}</a>
+                    </li>                    
+                    @endforeach
+                @endif
+
+               <!-- <li class="list-item">
                   Organization
                </li>
                <li class="list-item">
@@ -104,7 +110,7 @@
                </li>
                <li class="list-item">
                   Social studies
-               </li>              
+               </li>               -->
             </ul>
          </div>
          <div class="col-md-3 col-sm-6 col-xs-6">

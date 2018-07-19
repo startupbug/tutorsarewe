@@ -10,14 +10,17 @@ use App\Activity_log;
 use Auth;
 use App\User;
 use App\Subject;
-
+use App\Tutor_subject;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function __construct(){
+
         $subjects = Subject::all();
+
         \Session::push('subjects', $subjects);
+        //dd(\Session::get('subjects'));
     }
     
     //generic function for initializing session
