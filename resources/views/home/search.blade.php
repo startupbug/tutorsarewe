@@ -8,7 +8,7 @@
             <h3 class="f_tutor">Filters</h3>
             <form action="{{route('tutors_listing')}}" method="get">
                <h3 class="f_class">Hourly rate: 410 -$200+</h3>
-               <input id="ex2" type="text" class="span2" value="" name="tution_per_hour" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/>
+               <input id="ex2" type="text" class="span2" name="tution_per_hour" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/>
                <input type="hidden" name="limit" value="10">
                <!--<div id="slider"></div>-->
                <h3 class="f_class">Availability</h3>

@@ -26,14 +26,11 @@ $( function() {
 
   $( "#slider" ).slider();
 
-// With JQuery
-$("#ex2").slider({});
+  // With JQuery
+  $("#ex2").slider({});
 
-// Without JQuery
-//var slider = new Slider('#ex2', {});
-
-
-
+  // Without JQuery
+  var slider = new Slider('#ex2', {});
 
  } );
 
