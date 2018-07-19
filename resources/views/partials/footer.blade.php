@@ -78,127 +78,82 @@
                <p class="address"> 1-877-3- TUTORS 1877-388-8677</p>
             </div>
          </div>
-         <div class="col-md-2 col-sm-6 col-xs-6">
+         <div class="col-md-8 col-xs-12">
             <h3 class="f_get">TUTORS BY SUBJECTS</h3>
-            <ul class="f_list">
-               <li class="list-item">
-                  Homework
-               </li>
-               <li class="list-item">
-                  Organization
-               </li>
-               <li class="list-item">
-                  Projects
-               </li>
-               <li class="list-item">
-                  Early Childhood Tutors
-               </li>
-               <li class="list-item">
-                  Math
-               </li>
-               <li class="list-item">
-                  Algebra
-               </li>
-               <li class="list-item"> 
-                  Calculus
-               </li>
-               <li class="list-item">
-                  Social studies
-               </li>              
-            </ul>
+
+            <div class="row f_borderright">
+              <div class="col-md-4 col-xs-12">
+                <p class="list-item">Homework</p>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <p class="list-item">Organization</p>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <p class="list-item">Projects</p>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <p class="list-item">Early Childhood Tutors</p>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <p class="list-item">Math</p>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <p class="list-item">Algebra</p>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <p class="list-item">Calculus</p>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <p class="list-item">Social studies</p>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <p class="list-item">Trigonometry</p>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <p class="list-item">English</p>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <p class="list-item">Reading</p>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <p class="list-item">Spanish</p>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <p class="list-item">Italian</p>
+              </div>
+            </div>
+
          </div>
-         <div class="col-md-3 col-sm-6 col-xs-6">
-            <!--<h3 class="f_get">TUTORS BY LOCATION</h3>-->
-            <ul class="f_list f_list1">
-               <li class="list-item">
-                  Trigonometry
-               </li>
-               <li class="list-item">
-                  English
-               </li>
-               <li class="list-item">
-                  Reading
-               </li>
-               <li class="list-item">
-                  Spanish
-               </li>
-               <li class="list-item">
-                  Italian
-               </li>
-               <li class="list-item">
-                  Arabic
-               </li>
-               <li class="list-item">
-                  Swahili
-               </li>
-               <li class="list-item">
-                  Science fair help
-               </li>
-               <li class="list-item"> 
-                  Chemistry
-               </li>                                 
-            </ul>
-         </div>
-         <div class="col-md-3 col-sm-6 col-xs-6">
-            <!--<h3 class="f_get">TUTORS BY LOCATION</h3>-->
-            <ul class="f_list f_list1 f_borderright f_spanish">
-               <li class="list-item padding_top">
-                  Yoruba
-               </li>
-               <li class="list-item">
-                  French
-               </li>
-               <li class="list-item">
-                  Other Language
-               </li>
-               <li class="list-item">
-                  Music
-               </li>
-               <li class="list-item">
-                  Science
-               </li>
-               <li class="list-item">
-                  Biology
-               </li>
-               <li class="list-item">
-                  Physics
-               </li> 
-               <li class="list-item">
-                  Other subject
-               </li>
-               <li class="list-item">
-                  Full time Tutors
-               </li>                        
-            </ul>
-         </div>
-         <div class="col-md-offset-1 col-md-3 col-sm-6 col-xs-6">
+         <div class="col-md-offset-1 col-md-3 col-xs-12">
             <h3 class="f_get f_margin">TUTORS BY LOCATION</h3>
-            <ul class="f_list">
-               <li class="list-item">
-                  Bon Air
-               </li>
-               <li class="list-item">
-                  Woodstock
-               </li>
-               <li class="list-item">
-                  Big Flat
-               </li>
-               <li class="list-item">
-                  Emmet
-               </li>
-               <li class="list-item">
-                  Banning
-               </li>
-               <li class="list-item">
-                  Newman
-               </li>
-               <li class="list-item">
-                  Fowler
-               </li> 
-               <li class="list-item">
-                  Full time Tutors
-               </li>                
-            </ul>
+            <div class="row">
+
+              <div class="col-md-12 col-xs-12">
+                <p class="list-item">Bon Air</p>
+              </div>
+              <div class="col-md-12 col-xs-12">
+                <p class="list-item">Woodstock</p>
+              </div>
+              <div class="col-md-12 col-xs-12">
+                <p class="list-item">Big Flat</p>
+              </div>
+              <div class="col-md-12 col-xs-12">
+                <p class="list-item">Emmet</p>
+              </div>
+              <div class="col-md-12 col-xs-12">
+                <p class="list-item">Banning</p>
+              </div>
+              <div class="col-md-12 col-xs-12">
+                <p class="list-item">Newman</p>
+              </div>
+              <div class="col-md-12 col-xs-12">
+                <p class="list-item">Fowler</p>
+              </div>
+              <div class="col-md-12 col-xs-12">
+                <p class="list-item">Full time Tutors</p>
+              </div>
+              
+            </div>
          </div>
       </div>
    </section>
@@ -257,7 +212,7 @@
         var lastname = $(this).data('lname');
 
         $(this).closest('#myDropdown').siblings('.form-control').val(value);
-        
+
         $(this).closest('#myDropdown').siblings('.fname').val(firstname);
         $(this).closest('#myDropdown').siblings('.lname').val(lastname);
 
@@ -268,7 +223,7 @@
   });
 
 $("#ref_butn").on('click', function(e){
-   e.preventDefault(); 
+   e.preventDefault();
    var url_string = window.location.href;
    var url = new URL(url_string);
    var c = url.searchParams.get("limit") ? url.searchParams.get("limit") : 10;
@@ -284,7 +239,7 @@ console.log(link);
    });
    $.ajax({
       type: "get",
-      url: link,  
+      url: link,
       beforeSend: function(){
          $("#ref_butn").attr('disabled','disabled');
       } ,
@@ -307,7 +262,7 @@ console.log(link);
       alertify.warning("Oops. something went wrong. Please try again");
       $("#ref_butn").removeAttr('disabled');
     }
-    
+
    });
 });
 
@@ -321,7 +276,7 @@ $(".mcqTestForm").on('submit', function(e){
         $.ajaxSetup({
             headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
         });
-    
+
         $.ajax({
             type: $(this).attr('method'),
             url: $(this).attr('action'),
@@ -345,7 +300,7 @@ $(".mcqTestForm").on('submit', function(e){
             error: function(data){
                 toastr.error("Something went wrong, Please Try again.");
             }
-        });    
+        });
     });
 
 </script>
@@ -371,12 +326,12 @@ $(".mcqTestForm").on('submit', function(e){
                 $('#cityDropdown').empty();
                 var myDropdown = '';
                 myDropdown += '<option value=""> Select City </option>';
-                                
+
                 $.each(data, function(key, value) {
-                    myDropdown += '<option value="'+ value.id +'">'+ value.name +'</option>';   
+                    myDropdown += '<option value="'+ value.id +'">'+ value.name +'</option>';
 
                 });
-                
+
                 $('#city').html(myDropdown);
                 }
             });

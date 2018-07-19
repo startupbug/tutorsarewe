@@ -2619,3 +2619,9 @@ select~.error {
     right: 0;
     z-index: 999;
 }
+p.list-item {
+    color: #afabaa;
+    font-size: 16px;
+    font-family: 'ProximaNovaAlt-Regular';
+    padding-bottom: 5px;
+}
