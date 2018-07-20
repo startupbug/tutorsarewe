@@ -25,9 +25,10 @@ class Controller extends BaseController
         //dd(\Session::get('subjects'));
 
         //Get Countries with a listing of tutors
-        $countries = Country::whereIn('id', [240, 231, 230, 167, 239, 231, 64, 21])->get();
+        \Session::forget('countries');
+        $countries = Country::whereIn('id', [240, 231, 230, 167, 231, 64, 21])->get();
         \Session::push('countries', $countries);
-        //dd($countries);
+       // dd($countries);
     }
     
     //generic function for initializing session
