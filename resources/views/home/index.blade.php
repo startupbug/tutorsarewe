@@ -91,7 +91,7 @@
                               @endforeach
                            </select>
                         </div>
-                        <div class="col-md-3 f_bottom"><button type="submit" class="btn btn-default f_color button_tour">SEARCH Tutor</button></div>
+                        <div class="col-md-3 f_bottom"><button type="submit" class="btn btn-default f_color button_tour">SEARCH TUTOR</button></div>
                      </form>
                   </div>
                   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-contact-tab">
