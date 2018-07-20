@@ -19,10 +19,9 @@ class Controller extends BaseController
 
     public function __construct(){
 
-        $subjects = Subject::all();
+        $subjects = Subject::limit(9)->get();
 
         \Session::push('subjects', $subjects);
-        //dd(\Session::get('subjects'));
 
         //Get Countries with a listing of tutors
         \Session::forget('countries');
