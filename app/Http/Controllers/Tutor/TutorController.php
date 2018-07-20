@@ -25,30 +25,48 @@ class TutorController extends Controller
 {
     //Search tutor page & Tutor listing in Front Navbar Find A Tutor    
     public function index(Request $request){
-    
-     $subject_id = $request->segment(count(request()->segments()));
 
-    if(is_numeric($subject_id)){
-        //Show tutors by subject
-        $args['by_subj'] = true;
+     $flag = $request->segment(count(request()->segments())-2);
+     //dd($flag);
+     if($flag=="country"){
 
-        $args['days'] = Available_day::get();        
-        $take = 10;
+            $country_id = $request->segment(count(request()->segments()));
 
-        $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id', 'users.id as tutor_id')
-         //\DB::raw('SUM(reviews.rating) as user_rating'))
-        ->leftJoin('profiles','profiles.user_id','=','users.id')
-        ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')  
-        //->leftjoin('reviews','reviews.tutor_id','=','users.id')      
-        ->where('users.verified',1)                                    
-        ->where('tutor_subjects.subject_id', $subject_id)
-        ->take($take)
-        ->get();
+            $args['by_country'] = true;
 
-        // /dd( $args);
-    }else{
+            $args['days'] = Available_day::get();        
+            $take = 10;
+
+            $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id', 'users.id as tutor_id')
+             //\DB::raw('SUM(reviews.rating) as user_rating'))
+            ->leftJoin('profiles','profiles.user_id','=','users.id')
+                ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')  
+            //->leftjoin('reviews','reviews.tutor_id','=','users.id')      
+            //->where('users.verified',1)                                    
+            ->where('profiles.country_id', $country_id)
+            ->take($take)
+            ->get();    
+           //dd($args);
+     }else if($flag=="subject"){
+
+            $subject_id = $request->segment(count(request()->segments()));
+            $args['by_subj'] = true;
+
+            $args['days'] = Available_day::get();        
+            $take = 10;
+
+            $args['listing'] = User::select('users.*', 'profiles.*', 'users.id as user_id', 'users.id as tutor_id')
+             //\DB::raw('SUM(reviews.rating) as user_rating'))
+            ->leftJoin('profiles','profiles.user_id','=','users.id')
+            ->leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')  
+            //->leftjoin('reviews','reviews.tutor_id','=','users.id')      
+            ->where('users.verified',1)                                    
+            ->where('tutor_subjects.subject_id', $subject_id)
+            ->take($take)
+            ->get();
+            //dd($args);
+     }else{
         //Do as usual
-
         $args['days'] = Available_day::get();
         
                 $take = 10;
@@ -180,7 +198,7 @@ class TutorController extends Controller
  
         $args['count'] = count($args['listing']);
         $args['subjects'] = Subject::get();     
-
+        //dd($args);
         return view('home.search')->with($args);
     }
     //Search tutor page & Tutor listing in Front Navbar Find A Tutor By Ajax
@@ -299,11 +317,15 @@ class TutorController extends Controller
     //Tutor profile
     public function tutor_profile($name){
 
-        //Get id from username
-        $profile = Profile::where('username', $name)->first();
-        $id = $profile->user_id;
-        
+        if(is_numeric($name)){
+            $id = $name;
+        }else{
+            //Get id from username
+            $profile = Profile::where('username', $name)->first();
+            $id = $profile->user_id;
+        }
 
+        
         for ($i = 0; $i < 7; $i++) {
             $day[] = Carbon::now()->addDays($i)->format('Y-m-d');
         }
@@ -321,7 +343,8 @@ class TutorController extends Controller
             $subjects[] = $value->subject_id;
         }
         $args['recommended_users']  = User::leftJoin('tutor_subjects','tutor_subjects.tutor_id','=','users.id')
-                                        ->select('users.first_name','users.last_name', 'users.id as user_id')
+                                        ->select('users.first_name','users.last_name', 'users.id as user_id', 'profiles.username')
+                                        ->leftJoin('profiles','profiles.user_id','=','users.id')
                                         ->whereIn('tutor_subjects.subject_id',$subjects)
                                         ->where('users.id','!=',$id)->groupBy('users.id')->get();
 

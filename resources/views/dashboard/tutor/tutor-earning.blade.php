@@ -30,13 +30,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						@foreach ($tutor_earnings as $key => $value)	
+						@foreach ($tutor_earnings as $key => $value)
+						
 						<tr>
 							<td>{{ ++$key }}</td>
 							<td>{{ $value->booking_id }}</td>
 							<td>{{ $value->title }}</td>
 							<td>{{ $value->details }}</td>
-							<td><a href="{{route('tutor_profile',$value->student_id)}}">{{ $value->first_name }}</a></td>
+							<td><a href="{{route('tutor_profile',['name' => $value->student_id ])}}">{{ $value->first_name }}</a></td>
 		
 							<td>{{ $value->subject }}</td>
 							<td>{{ $value->type }}</td>

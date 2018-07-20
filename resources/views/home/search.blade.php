@@ -79,12 +79,11 @@
                      <!--<input type="text" class="searchField">
                         <label for="search" class="glyphicon glyphicon-search"></label>-->
 
-                     @if(isset($by_subj) && $count == 0)
+                     @if(isset($by_subj) || isset($by_country) && $count == 0)
                      <p class="f_fit">No Tutors Found for this Subject</p>
                      @else
-                      <p class="f_fit">{{$count}} tutors fit your choices</p>            
-                     @endif
-                     
+                      <p class="f_fit">{{$count}} tutors fit your Search</p>            
+                     @endif                                        
 
                   </div>
                   <div class="col-md-3">

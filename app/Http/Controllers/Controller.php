@@ -11,6 +11,8 @@ use Auth;
 use App\User;
 use App\Subject;
 use App\Tutor_subject;
+use App\Country;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -21,6 +23,11 @@ class Controller extends BaseController
 
         \Session::push('subjects', $subjects);
         //dd(\Session::get('subjects'));
+
+        //Get Countries with a listing of tutors
+        $countries = Country::whereIn('id', [240, 231, 230, 167, 239, 231, 64, 21])->get();
+        \Session::push('countries', $countries);
+        //dd($countries);
     }
     
     //generic function for initializing session

@@ -297,8 +297,9 @@
    <div class="col-md-12">
     <h3 class="f-other">Other Tutors Similiar To This Profile</h3>
     <p class="f_palatine">
+
       @foreach($recommended_users as $value)
-      <a href="{{route('tutor_profile', ['id' => $value->user_id])}}">{{$value->first_name}} {{$value->last_name}}</a>,
+      <a href="{{route('tutor_profile', ['name' => $value->username])}}">{{$value->first_name}} {{$value->last_name}}</a>,
       @endforeach
     </p>
   </div>

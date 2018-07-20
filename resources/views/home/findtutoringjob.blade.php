@@ -56,7 +56,7 @@
                <h3 class="f_course">{{$jobs->title}}</h3>
                <p class="f_findcontent">{{$jobs->details}}</p>
                <a href="#" class="f_detail">Show Details</a>
-               <p class="f_posted">- Posted by <a href="{{route('tutor_profile',['id'=>$jobs->user_id])}}">{{$jobs->first_name}} {{$jobs->last_name}}</a> , {{$jobs->created_at->diffForHumans(\Carbon\Carbon::now())}}</p>
+               <p class="f_posted">- Posted by <a href="{{route('tutor_profile',['name'=>$jobs->user_id])}}">{{$jobs->first_name}} {{$jobs->last_name}}</a> , {{$jobs->created_at->diffForHumans(\Carbon\Carbon::now())}}</p>
             </div>
             <div class="col-md-3">
                <div class="f_buttonview">
