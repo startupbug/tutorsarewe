@@ -297,11 +297,17 @@ class TutorController extends Controller
         return \Response()->json(['status' => $status, 'data' => $html, 'msg' => 'check console']);
     }
     //Tutor profile
-    public function tutor_profile($id){
+    public function tutor_profile($name){
+
+        //Get id from username
+        $profile = Profile::where('username', $name)->first();
+        $id = $profile->user_id;
         
+
         for ($i = 0; $i < 7; $i++) {
             $day[] = Carbon::now()->addDays($i)->format('Y-m-d');
         }
+
         $time_array = array();
         $time = "00:00:00";
         for ($i = 0; $i < 24; $i++) {

@@ -133,6 +133,7 @@
                   <img src="{{ asset('public/dashboard/assets/images/profile/1527579609-1.PNG') }}" class="img-responsive img_searchresp">
                   @endif
                </div>
+             
                <div class="col-md-7 border_search">
                   <h3 class="search_name">{{$value->first_name}} {{$value->last_name}}</h3>
                   <h3 class="f_course">
@@ -142,7 +143,7 @@
                   </h3>
                   <p class="f_findcontent">  @if(isset($value->bio)){{$value->bio}}@endif
                   </p>
-                  <a href="{{route('tutor_profile',['id' => $value->user_id])}}" class="f_detail">Read More</a>
+                  <a href="{{route('tutor_profile',['name' => $value->username])}}" class="f_detail">Read More</a>
                </div>
                <div class="col-md-3">
                   <h3 class="search_name"> @if(isset($value->profile->tution_per_hour))${{$value->profile->tution_per_hour}}/hour
@@ -153,7 +154,7 @@
                       @php
                         $rating = App\User::getTutorRating($value->tutor_id)
                         @endphp
-                      @for($i=0; $i<=$rating; $i++)
+                      @for($i=0; $i<=$rating-1; $i++)
                       <li><i class="fa fa-star f_star"></i></li>
                       @endfor
                   
