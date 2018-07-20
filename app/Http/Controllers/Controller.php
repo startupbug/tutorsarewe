@@ -25,6 +25,7 @@ class Controller extends BaseController
 
         //Get Countries with a listing of tutors
         \Session::forget('countries');
+        //Random countries fetch
         $countries = Country::whereIn('id', [240, 231, 230, 167, 231, 64, 21])->get();
         \Session::push('countries', $countries);
        // dd($countries);
