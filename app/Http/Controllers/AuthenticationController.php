@@ -101,7 +101,8 @@ class AuthenticationController extends Controller
             ->join('states', 'states.country_id', '=', 'countries.id')
             ->join('cities', 'cities.state_id', '=', 'states.id')
             ->where("countries.id", '=',$country_id)
-          ->get();
+            ->orderBy('cities.name', 'asc')
+            ->get();
         return $cities;
     }
 
