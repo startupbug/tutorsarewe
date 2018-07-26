@@ -228,3 +228,5 @@ Route::post('/check-answer', 'Test\TestController@check_answer')->name('check_an
 Route::get('mcqs', function () {
     return view('admin..mcqs.create');
 });
+
+
