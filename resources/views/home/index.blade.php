@@ -2,7 +2,7 @@
 @section('content')
 <section class="tutor">
    <div class="w3-content  w3-display-container w3-section">
-      <img class="mySlides img_home" src="{{ asset('public/assets/images/banner2.png') }}" class="img-responsive">
+      <img class="mySlides img_home" src="{{ asset('public/assets/images/banner2.jpg') }}" class="img-responsive">
       <img class="mySlides img_home" src="{{ asset('public/assets/images/slide1.jpg') }}" class="img-responsive">
       <img class="mySlides img_home" src="{{ asset('public/assets/images/timetutor1.jpg') }}" class="img-responsive">
       <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
