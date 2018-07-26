@@ -532,7 +532,13 @@ $(document).ready(function(){
 			}
 		});
 
-	});	
+	});
+
+	$('.deleteGroup').on('click',function(e){
+        if(!confirm('Do you want to delete this Job?')){
+              e.preventDefault();
+        }
+  });
 
 });
 

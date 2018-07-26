@@ -18,6 +18,8 @@ $(document).ready(function(){
     var $select = $('.country');
     $.getJSON('http://site.startupbug.net:6888/actor-pass/frontend/assets/js/countries.json', function(data) {
       $select.html('');
+      console.log('ciuntryzz');
+      
       $.each(data, function(key, val){
         $select.append('<option value="' + val.dial_code+ '">' + val.name + '</option>');
       })

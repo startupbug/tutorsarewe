@@ -51,6 +51,10 @@ ol, ul {
     list-style: none;
 }
 
+.btn-default:hover {
+    background-color: #3c3838;
+    border-color: #3c3838;
+}
 table { /* tables still need 'cellspacing="0"' in the markup */
 border-collapse: separate;
 border-spacing: 0;
@@ -219,7 +223,7 @@ ul.top-header-nav li:last-child{
 
 .dropdown-menu>li>a {
 
-    width: 158px;
+width: 245px;
 }
 
 a.f_dropdown {
@@ -435,7 +439,7 @@ p.f_per {
     font-size: 15px;
     font-family: 'ProximaNova-Semibold';
     margin-top: 16px;
-    line-height: 20px;    
+    line-height: 20px;
 }
 
 .btn_check a {
@@ -943,6 +947,12 @@ h3.f_take {
     font-family: 'Ubuntu-B';
     margin-top: 79px;
 }
+h3.f_take a{
+    color: #646464;
+    font-size: 28px;
+    font-family: 'Ubuntu-B';
+    margin-top: 79px;
+}
 
 p.p_take {
     font-size: 18px;
@@ -1444,7 +1454,7 @@ a.f_forgot {
 }
 
 .select_f {
-
+    padding: 0px 12px;
     color: #a6a6a6;
     font-size: 16px;
     font-family: 'ProximaNovaAlt-Regular';
@@ -1486,16 +1496,38 @@ p.f_posted {
 .f_viewjob {
     font-size: 18px;
     background-color: #ed7275;
+    color: #fff;
     border: 1px solid #ed7275;
     font-family: 'ProximaNova-Semibold';
     padding-left: 25px;
+    padding-top:  10px;
     padding-right: 25px;
+    padding-bottom: 8px;
 }
 
 .f_buttonview {
     margin-top: 25px;
 }
 .f_viewjob:hover {
+    font-size: 18px;
+    background-color: #ed7275;
+    border: 1px solid #ed7275;
+    font-family: 'ProximaNova-Semibold';
+    padding-left: 25px;
+    padding-right: 25px;
+    color: white;
+}
+
+.f_viewjob:active {
+    font-size: 18px;
+    background-color: #ed7275;
+    border: 1px solid #ed7275;
+    font-family: 'ProximaNova-Semibold';
+    padding-left: 25px;
+    padding-right: 25px;
+    color: white;
+}
+.f_viewjob:focus {
     font-size: 18px;
     background-color: #ed7275;
     border: 1px solid #ed7275;
@@ -1750,7 +1782,7 @@ ul.search_list {
 }
 
 .f_margintop h2 {
-    margin-top: 135px;
+    margin-top: 114px;
 }
 
 .f_iconcomma {
@@ -2203,3 +2235,393 @@ p.f_per strong{
     color: #ed7275;
 }
 /* End New Css */
+
+div#myNavbar ul.nav.navbar-nav>li:hover .dropdown-menu{
+     display: block;
+}
+.f_viewjob.btn-default[disabled]:hover{
+    background-color: #ed7275;
+    border-color: #ed7275;
+}
+.modal-title, label, textarea.form-control, button.btn.btn-default, button.btn.btn-primary{
+     font-family: 'ProximaNovaAlt-Regular';
+}
+
+.s_available_position {
+    font-size: 3rem;
+    color: #374252;
+    font-weight: 600;
+    font-family: 'ProximaNovaAlt-Regular';
+    padding-bottom: 20px;
+}
+.position date span {
+    color: #ed7275;
+    font-family: 'ProximaNovaAlt-Regular';
+    font-size: 15px;
+    text-align: center;
+    display: block;
+    text-transform: uppercase;
+}
+.position date day {
+    text-align: center;
+    font-family: 'ProximaNovaAlt-Regular';
+    line-height: 100%;
+    font-size: 3rem;
+    display: block;
+}
+.position date month {
+    text-transform: uppercase;
+    font-family: 'ProximaNovaAlt-Regular';
+    text-align: center;
+    font-size: 1rem;
+    display: block;
+}
+.position position h3, .position location h3 {
+    margin: 6px 0 3px 0;
+    font-family: 'ProximaNovaAlt-Regular';
+    line-height: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.position p:first-child {
+    font-family: 'ProximaNovaAlt-Regular';
+    margin-top: 30px;
+}
+.position .btn.btn-gradient {
+    background-color: transparent;
+    font-family: 'ProximaNovaAlt-Regular';
+    background-image: none;
+    color: #374252;
+    border: 1px solid #ccc;
+    position: relative;
+}
+.position .btn.btn-gradient span {
+    font-family: 'ProximaNovaAlt-Regular';
+    position: relative;
+    z-index: 1;
+}
+
+section.job-listing {
+    padding: 50px 0;
+}
+.job-listing h2 {
+    margin-bottom: 0;
+    font-family: 'ProximaNovaAlt-Regular';
+    font-weight: 600;
+    font-size: 2.6666666667rem;
+}
+.job-listing h2 + location {
+    margin-left: 2px;
+}
+.job-listing location {
+    font-family: 'ProximaNovaAlt-Regular';
+    margin-bottom: 20px;
+    font-size: 1.0666666667rem;
+    color: #ed7275;
+    display: block;
+}
+.careers-form {
+    margin-bottom: 70px;
+}
+.job-listing h3 {
+    margin-bottom: 10px;
+    font-family: 'ProximaNovaAlt-Regular';
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+ul.job-list {
+    list-style: none;
+    margin-bottom: 50px;
+}
+ul.job-list li {
+    padding-left: 15px;
+    font-family: 'ProximaNovaAlt-Regular';
+    font-size: 1rem;
+    color: #666666;
+    margin-bottom: 10px;
+    position: relative;
+}
+.job-list li::before {
+    content: "";
+    background-color: #ed7275;
+    height: 6px;
+    width: 6px;
+    border-radius: 100%;
+    display: inline-block;
+    margin-right: 8px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+.job-listing .info-list li i {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    color: #888;
+}
+.job-listing .info-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    list-style: none;
+    overflow: hidden;
+}
+.job-listing .info-list li:nth-child(3n+1) {
+    margin-left: 0;
+}
+
+.job-listing .info-list li {
+    width: 32%;
+    margin-left: 2%;
+    margin-bottom: 30px;
+    font-family: 'ProximaNovaAlt-Regular';
+    padding-left: 42px;
+    position: relative;
+    float: left;
+}
+.job-listing .info-list li h4 {
+    margin-bottom: 0;
+    font-family: 'ProximaNovaAlt-Regular';
+    font-size: 26px;
+    font-size: 1.7333333333rem;
+    vertical-align: top;
+    display: inline-block;
+}
+.job-listing .info-list li span {
+    text-transform: uppercase;
+    font-family: 'ProximaNovaAlt-Regular';
+    font-size: 14px;
+    color: #666;
+    font-size: 0.9333333333rem;
+    display: block;
+}
+
+.job-listing .other-jobs-list {
+    margin-top: 50px;
+    list-style: none;
+    overflow: hidden;
+}
+.job-listing .other-jobs-list li {
+    width: 23%;
+    margin-left: 2.666666666666667%;
+    float: left;
+    height: 358px;
+}
+.job-listing .other-jobs-list li:nth-child(4n+1) {
+    margin-left: 0;
+}
+.job-listing .other-jobs-list li .job {
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid #f7f4f4;
+    padding: 30px;
+    height: 100%;
+}
+.job p{
+   font-family: 'ProximaNovaAlt-Regular';
+   margin-bottom: 1rem;
+   color: #666;
+}
+
+.job-listing .other-jobs-list li .job:hover, .job-listing .other-jobs-list li .job.active {
+    background: #ffffff;
+    box-shadow: -3.308px 11.535px 68px 0px rgba(0, 0, 0, 0.05);
+    border-color: #ebebeb;
+}
+
+.job a:focus, .job a:hover {
+    color: #333;
+}
+.job-listing .job-sidebar {
+    border: 1px solid #ccc;
+}
+.job-listing .job-sidebar .job-header {
+    padding: 35px;
+    background-image: -webkit-linear-gradient(left, #ed7275 2%, #ed7275 56.7%);
+    background-image: -o-linear-gradient(left, #ff840b 2%, #ff3573 56.7%);
+    background-image: linear-gradient(to left top, #ed7275 2%, #ed7275 56.7%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFF840B', endColorstr='#FFFF3573', GradientType=1);
+}
+.job-listing .job-sidebar .job-header button {
+    background-color: transparent;
+    border: 1px solid #fff;
+    padding: 10px;
+    font-size: 18px;
+    color: #fff;
+    font-family: 'ProximaNovaAlt-Regular';
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 30px;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.job-listing .job-sidebar .job-header button:hover {
+    background-color: #fff;
+    color: #000;
+}
+.job-listing .job-sidebar .job-header button span{
+    font-family: 'ProximaNovaAlt-Regular';
+}
+.job-listing .job-sidebar .job-header p {
+    font-family: 'ProximaNovaAlt-Regular';
+    color: #fff;
+}
+.job-listing .job-sidebar .job-content {
+    background: #ffffff;
+    padding: 30px;
+}
+.job-listing .job-sidebar .job-content h5 {
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+    font-family: 'ProximaNovaAlt-Regular';
+    font-weight: 600;
+}
+.attach-box {
+    background: #fbfbfb;
+    padding: 10px;
+    border: 1px solid #ddd;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.inputfile-6 + label {
+    background-color: transparent;
+    padding: 0;
+}
+.inputfile-6 + label {
+    color: #374252;
+}
+.inputfile + label {
+    max-width: 80%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+    margin-bottom: 0;
+}
+.inputfile-6 + label span {
+    width: 200px;
+    min-height: 2em;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: 'ProximaNovaAlt-Regular';
+    overflow: hidden;
+    vertical-align: top;
+}
+.inputfile-6 + label strong {
+    height: 100%;
+    color: #374252;
+    font-family: 'ProximaNovaAlt-Regular';
+    font-size: 20px;
+    background-color: transparent;
+    display: inline-block;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.careers-form .col-md-12 p {
+    font-size: 12px;
+    font-family: 'ProximaNovaAlt-Regular';
+    position: relative;
+    top: -11px;
+    left: 17px;
+}
+span#selected_file {
+    padding-top: 5px;
+    padding-left: 12px;
+}
+#applyForm .form-group {
+    width: 100%;
+    margin-top: 15px;
+}
+
+#applyForm .form-group .form-control{
+  font-family: 'ProximaNovaAlt-Regular';
+}
+#applyForm .form-group label{
+  font-family: 'ProximaNovaAlt-Regular';
+}
+@media (min-width: 768px){
+  #applyForm .form-group label{
+    width: 40%;
+  }
+  #applyForm .form-group .form-control{
+    width: 59%;
+    font-family: 'ProximaNovaAlt-Regular';
+  }
+}
+ul.job-list pre, .position.latest pre,.position.latest p,.position.latest ul li {
+  background: transparent;
+  font-family: 'ProximaNovaAlt-Regular';
+}
+samp{
+  font-family: 'ProximaNovaAlt-Regular';
+
+}
+
+.f_resultbtn .pagination >.active> span {
+    background-color: #ed7275;
+    border-color: #ed7275;
+}
+
+.f_resultbtn .pagination>li>a:hover{
+    color: #ed7275;
+}
+input#upload~.error {
+    position: absolute;
+    top: 30px;
+    font-size: 12px;
+    z-index: 999;
+}
+input[type="text"]~.error {
+    position: absolute;
+    right: 0;
+    z-index: 999;
+}
+input[type="number"]~.error {
+    position: absolute;
+    right: 0;
+    z-index: 999;
+}
+input[type="email"]~.error {
+    position: absolute;
+    right: 0;
+    z-index: 999;
+}
+input[type="tel"]~.error {
+    position: absolute;
+    right: 0;
+    z-index: 999;
+}
+select~.error {
+    position: absolute;
+    right: 0;
+    z-index: 999;
+}
+p.list-item {
+    color: #afabaa;
+    font-size: 16px;
+    font-family: 'ProximaNovaAlt-Regular';
+    padding-bottom: 5px;
+}

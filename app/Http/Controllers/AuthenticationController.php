@@ -92,14 +92,16 @@ class AuthenticationController extends Controller
 
     public function stateForCountryAjax(Request $request)
     {
+        //return $request->input();
         $country_name = $request->input('countryID');
         $country_id = urldecode($country_name);
-        //return $country_name;
+        //return $country_id;
         $cities = DB::table('countries')
             ->select('cities.id', 'cities.name')
             ->join('states', 'states.country_id', '=', 'countries.id')
             ->join('cities', 'cities.state_id', '=', 'states.id')
             ->where("countries.id", '=',$country_id)
+            ->orderBy('cities.name', 'asc')
             ->get();
         return $cities;
     }
@@ -155,8 +157,8 @@ class AuthenticationController extends Controller
             $user->phone_no = $request->input('countryCode').$request->input('phonenum1');
 
             $user->status_id = 1; 
-            $user->pre_test = 0;
-            $user->pre_test_paid = 0;
+            //$user->pre_test = 0;
+           // $user->pre_test_paid = 0;
 
             if($user->save()){
                 

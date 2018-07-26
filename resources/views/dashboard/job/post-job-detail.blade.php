@@ -45,9 +45,9 @@
             </ul>
             <ul class="search_list">
                <li><i class="fa fa-clock-o f_clock"></i></li>
-               <li>
-                  <h3 class="search_name ">1,722 <span>hours tutoring</span></h3>
-               </li>
+                <!-- <li>
+                    <h3 class="search_name ">1,722 <span>hours tutoring</span></h3>
+                </li> -->
                <li class="sl_padding_left"> 
                  <a href=""><button class="btn btn-success">Book Lesson</button></a>
                </li>
@@ -73,21 +73,33 @@
          </div>
          <div class="col-md-3">
             <h3 class="search_name">${{$tutor_response->tution_per_hour}}/hour</h3>
+            
             <ul class="search_list">
-               <li><i class="fa fa-star f_star"></i></li>
-               <li><i class="fa fa-star f_star"></i></li>
-               <li><i class="fa fa-star f_star"></i></li>
-               <li><i class="fa fa-star f_star"></i></li>
-               <li><i class="fa fa-star f_star"></i></li>
-               <li>
-                  <h3 class="search_name f_iphone">5.0(367)</h3>
-               </li>
+                      <!-- Desperate time desperate measures -->
+                      @php
+                      $rating = App\User::getTutorRating($tutor_response->tutor_id)
+                      @endphp
+                    @for($i=0; $i<=$rating; $i++)
+                    <li><i class="fa fa-star f_star"></i></li>
+                    @endfor
+                
+                   <li>
+                      <h3 class="search_name f_iphone">
+                      @if($rating == 0)
+                          not rated
+                      @else
+                      ({{$rating}})
+                      @endif
+                     
+                      
+                      </h3>
+                   </li>
             </ul>              
             <ul class="search_list">
                <li><i class="fa fa-clock-o f_clock"></i></li>
-               <li>
+               <!-- <li>
                   <h3 class="search_name ">1,722 <span>hours tutoring</span></h3>
-               </li>
+               </li> -->
                <li class="sl_padding_left">
                   @if(!is_null($tutor_response->booking_id))
                       <button class="btn btn-info">Booked</button>

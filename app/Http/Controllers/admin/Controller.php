@@ -14,14 +14,16 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-
+    protected $footer_subjs;
+    
     public function __construct(){
-        //$user = User::find(Auth::user()->id);
-       // dd(User::find(4)->notifications);
+    //     $user = User::find(Auth::user()->id);
+    //    dd(User::find(4)->notifications);
 
-        //foreach ($user->notifications as $notification) {
-         //   dd($notification);
-        //}
+    //     foreach ($user->notifications as $notification) {
+    //        dd($notification);
+    //     }
+
     }
 
     //generic function for initializing session

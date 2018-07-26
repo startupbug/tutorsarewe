@@ -3,6 +3,21 @@ $(this).parent().find(".fa fa-chevron-right").removeClass("fa fa-chevron-right")
 }).on('hidden.bs.collapse', function(){
 $(this).parent().find(".fa fa-angle-down").removeClass("fa fa-angle-down").addClass("fa fa-chevron-right");
 });*/
+
+    $(".student_faq").show();
+    $(".tutor_faq").hide();
+    $('#for_student').on("click", function(e){
+      e.preventDefault();
+    $(".student_faq").show();
+    $(".tutor_faq").hide();
+  });
+
+    $('#for_tutor').on("click", function(e){
+      e.preventDefault();
+    $(".tutor_faq").show();
+    $(".student_faq").hide();
+  });
+
 $( function() {
 
   $(".s_accordion").click(function(){
@@ -11,26 +26,28 @@ $( function() {
 
   $( "#slider" ).slider();
 
-// With JQuery
-$("#ex2").slider({});
+  // With JQuery
+  $("#ex2").slider({});
 
-// Without JQuery
-var slider = new Slider('#ex2', {});
+  // Without JQuery
+  var slider = new Slider('#ex2', {});
 
  } );
 
 
 $(".f_tab").click(function(){
-$(".f_tab").removeClass("active-tab");
-$(this).addClass("active-tab")
+  $(".f_tab").removeClass("active-tab");
+  $(this).addClass("active-tab")
 })
 
 var myIndex = 0;
 var slideIndex = 1;
 carousel();
+
 function plusDivs(n) {
  showDivs(slideIndex += n);
 }
+
 function showDivs(n) {
  var i;
  var x = document.getElementsByClassName("mySlides");
@@ -53,6 +70,8 @@ function carousel() {
    x[myIndex-1].style.display = "block";
    setTimeout(carousel, 3000); // Change image every 2 seconds
 }
+
+
 function filterFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
     var input, filter, ul, li, a, i;
@@ -69,3 +88,37 @@ function filterFunction() {
     }
 }
 
+$("#btn_apply_now").on('click', function(e){
+  e.preventDefault();
+  if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+    $("#applyForm").find('input[name = "resume"]').siblings('.error').removeClass('hidden');
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+    $("#applyForm").find('input[name = "resume"]').siblings('.error').addClass('hidden');
+    $("#applyForm").find('input[name = "resume"]').siblings('.error').removeClass('hidden');
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }else if ($("#applyForm").find('input[name = "resume"]').val() == "") {
+
+  }
+
+  // $("#applyForm").submit();
+});
+
+// $(document).ready(function () {
+
+
+
+
+// });

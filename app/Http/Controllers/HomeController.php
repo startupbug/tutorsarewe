@@ -17,6 +17,9 @@ use Session;
 use Response;
 use Mail;
 use Auth;
+use App\Full_time_email;
+use App\Mail\TestMail;
+use App\Testimonial;
 
 class HomeController extends Controller
 {
@@ -35,7 +38,12 @@ class HomeController extends Controller
 
     //testimonials page
     public function testimonials(){
-      return view('home.testimonials');
+      $data['testimonials'] = Testimonial::leftjoin('profiles', 'profiles.user_id', '=', 'testimonials.user')
+                                          ->leftjoin('cities', 'cities.id', '=', 'profiles.city_id')
+                                          ->leftjoin('countries', 'countries.id', '=', 'profiles.country_id')
+                                          ->get();
+                                
+      return view('home.testimonials')->with($data);
     }
 
     //faq page
@@ -378,5 +386,71 @@ class HomeController extends Controller
     //How it works page
     public function lessons_grade(){
       return view('home.lessons_grade');
+    }
+
+    public function full_time_tutor()
+    {
+      return view('home.full_time_tutor_form');
+    }
+
+
+    public function full_time_email(Request $request)
+    {
+      // dd($request->input());
+      $valueArray = [
+          'email' => $request->input('email'),
+          'message' => $request->input('message'),
+        ];
+        $email_info = new Full_time_email;
+        $email_info->email = $request->input('email');
+        $email_info->message = $request->input('message');
+        $email_info->save();
+        // Test mail...
+        
+        try {
+            Mail::to('hasan.aimviz@gmail.com')->send(new TestMail($valueArray));
+            echo 'Mail send successfully';
+        } catch (\Exception $e) {
+            echo 'Error - '.$e;
+        }
+    }
+
+    public function faqs()
+    {
+      return view('home.faq'); 
+    }
+
+    public function write_testimonial(Request $request)
+    {
+
+      try {
+
+        if(Auth::check()){
+                     
+            if($request->has('testComment')){
+
+              $test_comment = $request->input('testComment');
+              $testimonial = new Testimonial();
+              $testimonial->user = Auth::user()->id;
+              $testimonial->comment = $request->input('testComment');
+              
+              if($testimonial->save()){
+                  return \Response()->Json([ 'status' => 200,'msg'=>'Testimonial Successfully Saved']);
+              }else{
+                  return \Response()->Json([ 'status' => 202,'msg'=>'Testimonial couldnot be Saved']);
+              }
+
+            }else{
+                 return \Response()->Json([ 'status' => 202,'msg'=>'Testimonial couldnot be Saved']);
+            }
+
+         }else{
+              return \Response()->Json([ 'status' => 202,'msg'=>'Please Login to write Testimonials']);
+         }
+
+        } catch (Exception $e) {
+              return \Response()->Json([ 'status' => 202, 'msg'=>'Testimonial couldnot be Saved'.$ex->getMessage() ]);
+        }     
+
     }
 }

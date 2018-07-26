@@ -39,7 +39,17 @@ Route::group(['middleware' => 'guest'], function () {
 	//Login Post
 	Route::post('/login', 'AuthenticationController@login_post')->name('login_post');
 
+	Route::get('full_time_tutor_form','HomeController@full_time_tutor')->name('full_time_tutor');
+
+	Route::post('full_time_email','HomeController@full_time_email')->name('full_time_email');
+
+	Route::get('faqs','HomeController@faqs')->name('faqs');
+
+	
+
 });
+
+Route::post('write_testimonial','HomeController@write_testimonial')->name('write_testimonial');
 
 //Logout Route
 Route::get('/logout',  'AuthenticationController@logout_user')->name('logout_user');
@@ -63,7 +73,7 @@ Route::get('/find-job-filter', 'HomeController@filter_jobs')->name('filter_jobs'
 
      //Tutor profile
 
-Route::get('/profile/{id}', 'Tutor\TutorController@tutor_profile')->name('tutor_profile');
+Route::get('/profile/{name}', 'Tutor\TutorController@tutor_profile')->name('tutor_profile');
 
 Route::get('/tutor_earnings_details/{id}','Tutor\TutorController@tutor_earnings_details')->name('tutor_earnings_details');
 //Fulltime Tutor
@@ -198,7 +208,7 @@ Route::get('/401', 'HomeController@unauthorized')->name('unauthorized');
 Route::get('/error/{message}', 'HomeController@error')->name('error');
 
 //Tutor Search
-Route::get('/tutor-search/', 'Tutor\TutorController@index')->name('tutors_listing');
+Route::get('/tutor-search/{flag?}/{subject?}/{id?}', 'Tutor\TutorController@index')->name('tutors_listing');
 Route::get('/tutor-search-ajax/', 'Tutor\TutorController@tutor_search_ajax');
 Route::Post('/contact_tutor_email/', 'Tutor\TutorController@contact_tutor_email')->name('contact_tutor_email');
 Route::get('/review', 'extraController@review')->name('review');
@@ -229,4 +239,15 @@ Route::get('mcqs', function () {
     return view('admin..mcqs.create');
 });
 
+
+/* Jobs Career */
+Route::get('/jobs', 'JobController@avail_job_index')->name('avail_jobs');
+
+Route::get('/search-jobs', 'JobController@search_jobs')->name('search_jobs');
+
+//Apply Job
+Route::get('/apply-job/{jobid}', 'JobController@apply_job_index')->name('apply_job_index');
+
+//Apply Job Post
+Route::post('/apply-job', 'JobController@apply_job_post')->name('apply_job_post');
 

@@ -126,4 +126,8 @@ class AdminController extends Controller
                                 // dd($args['grades']);
       return view('admin.grades.index')->with($args);
     }
+
+    public function admin_addjob(){
+        return view('admin.career.add-job');
+    }
 }

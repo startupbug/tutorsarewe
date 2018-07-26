@@ -82,6 +82,15 @@ $(function() {
   );
 });
 
+$('#upload').change(function() {
+    var filename = $('#upload').val();
+    $('#selected_file').html(filename);
+});
 
+$('#apply_button_now').on('click', function() {
+  $('#applyForm_container').removeClass('hidden');
+  $('#btn_apply_now').removeClass('hidden');
+  $(this).addClass('hidden');
+});
 
 //for custom javascript functions function

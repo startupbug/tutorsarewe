@@ -10,6 +10,10 @@ use App\Chat;
 use App\Chat_message;
 use App\Subject;
 use App\Review;
+use App\Available_day;
+use App\Career_job;
+use Illuminate\Support\Facades\Input;
+use App\Career_job_application;
 
 class JobController extends Controller
 {
@@ -73,7 +77,7 @@ class JobController extends Controller
     }
 
     public function student_postJob_detail($id){
-
+      
       $data['single_job'] = Job_board::leftjoin('subjects', 'job_boards.subject_id', '=', 'subjects.id')
                                 ->leftjoin('lesson_types', 'lesson_types.id', '=', 'job_boards.lesson_type')
                                 ->where('job_boards.id', $id)
@@ -81,14 +85,23 @@ class JobController extends Controller
                                 ->first();
 
       //Getting Tutors responses on this Job
-      $data['tutor_responses'] = Job_request::select('job_boards.id as jobboard_id', 'users.first_name' , 'profiles.bio', 'profiles.tution_per_hour', 'job_requests.tutor_id', 'job_requests.description','job_requests.job_id', 'profiles.profile_pic', 'bookings.id as booking_id','reviews.comment','reviews.rating','reviews.job_id as current_job_id','reviews.student_id as current_student_id','reviews.tutor_id as current_tutor_id')
-                                        ->leftjoin('job_boards', 'job_boards.id', '=', 'job_requests.job_id')
-                                         ->leftjoin('reviews', 'reviews.job_id', '=', 'job_requests.job_id')
-                                        ->leftjoin('users', 'users.id', '=', 'job_requests.tutor_id')
-                                        ->leftjoin('profiles', 'profiles.user_id', '=', 'users.id')
-                                        ->leftjoin('bookings', 'bookings.job_id', '=', 'job_boards.id')
-                                        ->where('job_requests.job_id', $id)
-                                        ->get();
+      $data['tutor_responses'] = Job_request::select('job_boards.id as jobboard_id', 'users.first_name' , 
+      'profiles.bio', 'profiles.tution_per_hour', 'job_requests.tutor_id', 'job_requests.description',
+      'job_requests.job_id', 'profiles.profile_pic', 'bookings.id as booking_id'
+      //,'reviews.comment',
+      //'reviews.rating','reviews.job_id as current_job_id','reviews.student_id as current_student_id',
+      //'reviews.tutor_id as current_tutor_id'
+      )
+          ->leftjoin('job_boards', 'job_boards.id', '=', 'job_requests.job_id')
+           // ->leftjoin('reviews', 'reviews.job_id', '=', 'job_requests.job_id')
+          ->leftjoin('users', 'users.id', '=', 'job_requests.tutor_id')
+          ->leftjoin('profiles', 'profiles.user_id', '=', 'users.id')
+          ->leftjoin('bookings', 'bookings.job_id', '=', 'job_boards.id')
+          ->where('job_requests.job_id', $id)
+          ->get();
+          
+     //dd( $data['tutor_responses'] );
+
       return view('dashboard.job.post-job-detail')->with($data);
     }
 
@@ -190,5 +203,65 @@ class JobController extends Controller
     //Tutor find jobs page
     public function find_tutor_detail(){
     	return view('dashboard.job.findtutoringjob_detail');
+    }
+
+    //Availiable job 
+    public function avail_job_index(){
+      $data['career_jobs'] = Career_job::paginate(5);
+      return view('career.availiable_job')->with($data);
+    }
+
+    //another function
+    public function search_jobs(Request $request){
+      $query = $request->input('query');
+      $data['career_jobs'] = Career_job::where('job_heading', 'like', "%{$query}%")->paginate(5);
+      return view('career.availiable_job')->with($data);
+    }
+
+    public function apply_job_index($id){
+      $data['career_job'] = Career_job::find($id);
+      return view('career.search')->with($data);
+    }
+
+    public function apply_job_post(Request $request){
+      //dd($request->input());
+      /* Validation */
+
+      $career_job_application =new Career_job_application();
+
+      if(Input::hasFile('resume')){
+        $file = Input::file('resume');
+        $tmpFilePath = storage_path().'/resume/';
+        $tmpFileName = time() . '-' . $file->getClientOriginalName();
+        $file = $file->move($tmpFilePath, $tmpFileName);
+        $path = $tmpFileName;
+        //dd($path);
+        $career_job_application->resume = $path;
+      }
+
+      $career_job_application->car_job_id = $request->input('car_job_id');
+
+      $career_job_application->full_name = $request->input('full_name');
+
+      $career_job_application->gender = $request->input('gender');
+      $career_job_application->id_num = $request->input('id_num');
+      $career_job_application->contact_num = $request->input('contact_num');
+
+      $career_job_application->shift = $request->input('shift');
+      $career_job_application->source = $request->input('source');
+      $career_job_application->age = $request->input('age');
+
+      $career_job_application->education = $request->input('education');
+      $career_job_application->language = $request->input('language');
+      $career_job_application->email_address = $request->input('email_address');       
+      $career_job_application->location = $request->input('location');
+
+      if($career_job_application->save()){
+        $this->set_session('Applied Successfully', true);
+      }else{
+          $this->set_session('Couldnot apply to Job', false);
+      }
+
+      return redirect()->route('apply_job_index', ['jobid' => $request->input('car_job_id')]);      
     }
 }

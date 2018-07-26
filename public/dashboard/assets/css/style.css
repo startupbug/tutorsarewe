@@ -2733,3 +2733,16 @@ button{
 #frame .content .message-input .wrap button:focus {
   outline: none;
 }
+table#s-table {
+    margin-bottom: 0px;
+}
+.table-responsive.table-bordered {
+    margin-bottom: 25px;
+}
+.tooltip>.tooltip-inner {
+   font-family: 'ProximaNovaAlt-Regular' !important;
+}
+.alertify-notifier.ajs-bottom.ajs-right>.ajs-message{
+  color: #fff;
+  font-family: 'ProximaNovaAlt-Regular' !important;
+}

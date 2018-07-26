@@ -10,14 +10,25 @@ use App\Activity_log;
 use Auth;
 use App\User;
 use App\Subject;
+use App\Tutor_subject;
+use App\Country;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function __construct(){
-        $subjects = Subject::all();
+
+        $subjects = Subject::limit(9)->get();
+
         \Session::push('subjects', $subjects);
+
+        //Get Countries with a listing of tutors
+        \Session::forget('countries');
+        //Random countries fetch
+        $countries = Country::whereIn('id', [240, 231, 230, 167, 231, 64, 21])->get();
+        \Session::push('countries', $countries);
+       // dd($countries);
     }
     
     //generic function for initializing session

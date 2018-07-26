@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use App\Review;
 
 class User extends Authenticatable
 {
@@ -70,6 +71,18 @@ class User extends Authenticatable
                      ->select('users.id', 'roles.id as role_id', 'users.first_name', 'users.email', 'roles.display_name', 'users.password', 'statuses.status', 'users.verified')
                      ->where('users.id', $id)
                      ->first();        
-    }    
+    }
+
+    public static function getTutorRating($userid){
+        //dd($userid);
+        $rating_count = Review::where('tutor_id', $userid)->count();
+        
+        if($rating_count == 0){
+            return 0;
+        }else{
+            $rating_sum = Review::where('tutor_id', $userid)->sum('rating');
+            return round($rating_sum/$rating_count);
+        }
+    }
 
 }
