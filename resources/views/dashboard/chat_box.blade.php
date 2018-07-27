@@ -77,7 +77,7 @@
                     @endforeach
          		</div>
                 
-         		<div id="bottom-bar">
+         		<!-- <div id="bottom-bar">
          			<button id="addcontact">
                 <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>
                 <span>Add contact</span>
@@ -86,7 +86,7 @@
                 <i class="fa fa-cog fa-fw" aria-hidden="true"></i>
                 <span>Settings</span>
               </button>
-         		</div>
+         		</div> -->
          	</div>
          	<div class="content">
          	<!-- 	<div class="contact-profile">

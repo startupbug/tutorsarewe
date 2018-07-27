@@ -2,7 +2,7 @@
                
                <div class="contact-profile">
                   <img src="{{asset('public/dashboard/assets/images/profile/'.$profile->profile_pic)}}" alt="" />
-                  <p>{{$profile->username}}</p>
+                  <p>{{$profile->first_name}}</p>
                </div>
                <div class="messages">
                   <ul>

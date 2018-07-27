@@ -54,6 +54,7 @@ class MessageController extends Controller
     	->get();
     	// return $chat_messages;
   		$profile = Profile::leftjoin('chat_messages','profiles.user_id','=','chat_messages.to_id')
+        ->leftjoin('users', 'users.id', '=', 'profiles.user_id')
   		->where('to_id', '!=', Auth::user()->id)
   		->first();
 
