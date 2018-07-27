@@ -1,12 +1,26 @@
 @extends('app')
 @section('content')
-<section class="tutor">
-   <div class="w3-content  w3-display-container w3-section">
-      <img class="mySlides img_home" src="{{ asset('public/assets/images/banner2.jpg') }}" class="img-responsive">
-      <img class="mySlides img_home" src="{{ asset('public/assets/images/slide1.jpg') }}" class="img-responsive">
-      <img class="mySlides img_home" src="{{ asset('public/assets/images/timetutor1.jpg') }}" class="img-responsive">
-      <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-      <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+<style>
+@-webkit-keyframes agujoe {
+  0% {background-size: 50%;}
+  
+  100% {background-size: 100%;}
+} 
+  
+.agujoe{
+  
+  -webkit-animation-name: agujoe; 
+  -webkit-animation-duration: 5s; 
+  -webkit-animation-iteration-count: infinite;  
+  } 
+</style>
+<section class="tutor agujoe" style="background-color: #534051; background: url('{{ asset('public/assets/images/banner2.jpg') }}') no-repeat center; background-size: 100%;transition: background-image 1s;">
+   <div class="w3-content">
+      <!-- <img class="mySlides img_home" src="{{ asset('public/assets/images/banner2.jpg') }}" class="img-responsive"> -->
+      <!-- <img class="mySlides img_home" src="{{ asset('public/assets/images/slide1.jpg') }}" class="img-responsive">
+      <img class="mySlides img_home" src="{{ asset('public/assets/images/timetutor1.jpg') }}" class="img-responsive"> -->
+      <!-- <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+      <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button> -->
       <div class="header-text">
          <div class="col-md-12 text-center">
             <h2>
@@ -145,7 +159,8 @@
         </div>
       </div>
     </div>
-    <section class="info">
+  </section>
+    <section class="info" style="margin-top: 100px">
        <div class="container">
           <div class="row">
              <div class="col-md-4 col-md-offset-0 col-sm-6 col-xs-12 text-center">
@@ -169,6 +184,7 @@
        </div>
     </section>
 </section>
+<div class="clearfix"></div>
 <section class="check">
    <div class="container-fluid">
       <div class="row">
