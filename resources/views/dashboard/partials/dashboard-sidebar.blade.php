@@ -65,7 +65,7 @@
             <a href="#"><i class="fa fa-user-plus f_icon_menu"></i>Invite Friends</a>
           </div>
           <div class="s_nav_menu">
-            <a href="#"><i class="fa fa-envelope f_icon_menu" aria-hidden="true"></i>Messages</a>
+            <a href="{{route('chat_box')}}"><i class="fa fa-envelope f_icon_menu" aria-hidden="true"></i>Messages</a>
           </div>
           <div class="s_nav_menu">
             <a href="{{route('bookings_list')}}"><i class="fa fa-calendar-check-o f_icon_menu"></i>Booking</a>

@@ -116,6 +116,8 @@ $("#btn_apply_now").on('click', function(e){
   // $("#applyForm").submit();
 });
 
+
+
 // $(document).ready(function () {
 
 

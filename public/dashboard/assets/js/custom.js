@@ -141,9 +141,9 @@ $(document).ready(function(){
 
               $("#myModal").modal('toggle');
 
-              // setTimeout(function(){
-              //   location.reload();
-              // }, 600);
+              setTimeout(function(){
+                location.reload();
+              }, 5000);
 
             }else if(data.success == false){
               toastr.success(data.msg);
@@ -154,5 +154,111 @@ $(document).ready(function(){
           }
         });
   });
+
+  $(".contact").on('click', function(e){
+        var id = $(this).data("id");
+        console.log(id);
+        var route = $(this).data('action');
+        $.ajaxSetup({
+          headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+        });
+
+        $.ajax({
+          type: "POST",
+          url: $(this).data('action'),
+          data: {'chatId': id},
+          success: function(data){
+            console.log(data);
+
+            $(".content").html(data.html);
+
+            $('.messages').scrollTop($('.messages')[0].scrollHeight - $('.messages')[0].clientHeight);
+            
+            setInterval(function(){ 
+              
+              reloadChat(id, route);
+
+            }, 9000);
+
+            loadJS();
+
+          },
+          error: function(data){
+             console.log(data);
+           // toastr.error(data.msg);
+          }
+        });
+
+  });
+
+  //Form submit Chat Ajax
+function loadJS(){
+
+    $("#chatSubmit").on('submit', function(e){
+        e.preventDefault();
+
+        $.ajaxSetup({
+          headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+        });
+
+        $.ajax({
+          type: "POST",
+          url: $(this).attr('action'),
+          data: {'chatId': $('#chat_id').val(), 'chat_msg': $('#chat_msg').val()},
+          success: function(data){
+            console.log(data);
+
+            if(data!=0){
+              //msg sent reload chat 
+              //sending chat id
+                reloadChat(data.chat_id, data.route);
+
+            }else{
+              //msg not sent show error
+              alertify.warning("Message not Sent");
+            }
+          },
+          error: function(data){
+             console.log(data);
+           // toastr.error(data.msg);
+          }
+        });
+
+  });
+
+}
+
+function reloadChat(chatId, route){
+
+    console.log('reload chat');
+    console.log(route);
+
+      var chat_id = chatId;
+      $.ajaxSetup({
+          headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+        });
+
+        $.ajax({
+          type: "POST",
+          url: route,
+          data: {'chatId': chat_id},
+          success: function(data){
+            console.log(data);
+
+            $(".content").html(data.html);
+
+            $('.messages').scrollTop($('.messages')[0].scrollHeight - $('.messages')[0].clientHeight);
+
+            loadJS();
+
+
+          },
+          error: function(data){
+             console.log(data);
+           // toastr.error(data.msg);
+          }
+        });
+
+}
 
 });

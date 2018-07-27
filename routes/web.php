@@ -218,9 +218,10 @@ Route::get('scheduling', function () {
     return view('dashboard.scheduling');
 });
 
-Route::get('chat_box', function () {
-    return view('dashboard.chat_box');
-});
+Route::get('chat_box','MessageController@user_list')->name('chat_box');
+
+//Ajax route for getting chat messages
+Route::post('chat_messages','MessageController@chat_messages')->name('chat_messages');
 
 Route::get('create_schedule','Tutor\SchedulingController@create_schedule')->name('create_schedule');
 Route::post('post_scheduling','Tutor\SchedulingController@post_scheduling')->name('post_scheduling');
@@ -250,4 +251,6 @@ Route::get('/apply-job/{jobid}', 'JobController@apply_job_index')->name('apply_j
 
 //Apply Job Post
 Route::post('/apply-job', 'JobController@apply_job_post')->name('apply_job_post');
+
+Route::post('/message_from','MessageController@message_from')->name('message_from');
 
