@@ -59,15 +59,20 @@ class MessageController extends Controller
         
         if(Auth::user()->role_id == 2){
 
-            $all_chat_users = $all_chat_users->leftjoin('users', 'users.id', '=', 'chat_messages.to_id')->where('chat_messages.to_id', '!=' , Auth::user()->id);
+            $all_chat_users = $all_chat_users->leftjoin('users', 'users.id', '=', 'chat_messages.to_id')->where('chat_messages.to_id', '!=' , Auth::user()->id)
+            ->where('job_boards.student_id', Auth::user()->id);
+
         }else if(Auth::user()->role_id == 3){
+
             $all_chat_users = $all_chat_users->leftjoin('users', 'users.id', '=', 'chat_messages.from_id')
-            ->where('chat_messages.from_id', '!=' , Auth::user()->id);
+            ->where('chat_messages.from_id', '!=' , Auth::user()->id)
+            ->where('job_boards.tutor_id', Auth::user()->id);
         }
 
         $all_chat_users = $all_chat_users->leftjoin('profiles','users.id','=','profiles.user_id')
         ->distinct('chat_messages.to_id')
-
+        
+        
         ->select('users.id as user_id','users.first_name','profiles.profile_pic','chat_messages.chat_id','chat_messages.from_id','chat_messages.to_id')
                         ->get();
 		// $all_chat_users = User::leftjoin('profiles','users.id','=','profiles.user_id')
