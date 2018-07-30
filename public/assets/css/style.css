@@ -190,7 +190,7 @@ header{
     background-color: #2a2929;
  }
 .index header{
-    position: absolute;
+    /*position: absolute;*/
  }
  .navbar-inverse {
 
@@ -259,7 +259,7 @@ ul.top-header-nav li {
 
 
 .header-text {
-    position: absolute;
+    /*position: absolute;*/
     top: 20%;
     left: 10%;
     right: 10%;
@@ -388,8 +388,8 @@ h3.f_content {
     border: 1px solid #e1e1e1;
     background-color: white;
     position: relative;
-    top: -99px;
-        padding: 0px;
+    bottom: -99px;
+    padding: 0px;
 }
 
 section.tutor {

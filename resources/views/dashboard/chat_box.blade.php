@@ -5,7 +5,7 @@
 
 	 <div class="col-md-9">
      <div class="edit_profile padding_down_s">
-       <h3 class="f_profile_content text-center">Scheduling</h3>
+       <h3 class="f_profile_content text-center">Chat Tutor</h3>
      </div>
      <div class="row">
        <div class="col-md-12">
@@ -14,25 +14,29 @@
          	<div id="sidepanel">
          		<div id="profile">
          			<div class="wrap">
-         				<img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" class="online" alt="" />
-         				<p>Mike Ross</p>
+         				<img id="profile-img" src="{{ asset('public/dashboard/assets/images/profile/' . $user_image->profile_pic) }}" class="online" alt="" />
+         				<p>{{Auth::user()->first_name}}</p>
          			</div>
          		</div>
          		<div id="search">
-         			<label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
-         			<input type="text" placeholder="Search contacts..." />
+         			
+         			<b><input type="text" placeholder="Chat Users List" disabled="" /></b>
          		</div>
+
+                
          		<div id="contacts">
-         			<ul>
-         				<li class="contact">
-         					<div class="wrap">
-         						<span class="contact-status online"></span>
-         						<img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+         		@foreach($all_chat_users as $user)
+                	<ul>
+         				<li class="contact message_to_id" data-action="{{route('chat_messages')}}" data-id="{{$user->chat_id}}">
+         					<div class="wrap" >
+         						<!-- <span class="contact-status online"></span> -->
+         						<img src="{{ asset('public/dashboard/assets/images/profile/' . $user->profile_pic) }}" alt="" />
          						<div class="meta">
-         							<p class="name">Louis Litt</p>
+         							<p class="name">{{$user->first_name}}</p>
          						</div>
          					</div>
          				</li>
+<!-- 
          				<li class="contact active">
          					<div class="wrap">
          						<span class="contact-status"></span>
@@ -68,10 +72,17 @@
          							<p class="name">Jessica Pearson</p>
          						</div>
          					</div>
-         				</li>
+         				</li> -->
          			</ul>
+                    @endforeach
          		</div>
+                
+
          		<div id="bottom-bar">
+         			
+         		</div>
+
+         		<!-- <div id="bottom-bar">
          			<button id="addcontact">
                 <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>
                 <span>Add contact</span>
@@ -80,10 +91,11 @@
                 <i class="fa fa-cog fa-fw" aria-hidden="true"></i>
                 <span>Settings</span>
               </button>
-         		</div>
+         		</div> -->
+
          	</div>
          	<div class="content">
-         		<div class="contact-profile">
+         	<!-- 	<div class="contact-profile">
          			<img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
          			<p>Harvey Specter</p>
          		</div>
@@ -123,12 +135,15 @@
          				</li>
          			</ul>
          		</div>
+                <form action="{{route('message_from')}}" method="post">
+                    {{csrf_field()}}
          		<div class="message-input">
          			<div class="wrap">
-         			<input type="text" placeholder="Write your message..." />
-         			<button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+         			<input type="text" name="msg" placeholder="Write your message..." />
+         			<button type="submit" class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
          			</div>
          		</div>
+                </form>-->
          	</div>
          </div>
 
