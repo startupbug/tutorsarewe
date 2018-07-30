@@ -14,11 +14,12 @@
          	<div id="sidepanel">
          		<div id="profile">
          			<div class="wrap">
-                        @if(empty($user_image->profile_pic))
+                        @if(is_null($user_image->profile_pic))
                         <img id="profile-img" src="{{ asset('public/dashboard/assets/images/dashboard_img.png') }}" class="online" alt="" />    
                         @else
          				<img id="profile-img" src="{{ asset('public/dashboard/assets/images/profile/' . $user_image->profile_pic) }}" class="online" alt="" />
          				<p>{{Auth::user()->first_name}}</p>
+                        @endif
          			</div>
          		</div>
          		<div id="search">
