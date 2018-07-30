@@ -178,7 +178,7 @@ $(document).ready(function(){
               
               reloadChat(id, route);
 
-            }, 9000);
+            }, 18000);
 
             loadJS();
 

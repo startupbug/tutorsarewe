@@ -111,6 +111,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	});
 
+	Route::get('chat_box','MessageController@user_list')->name('chat_box');
 	Route::get('/edit-profile', 'ProfileController@edit_dashboard')->name('edit_dashboard');
 
 	Route::post('/profile_register/ajax',array('as'=>'profile_register.ajax','uses'=>'ProfileController@editcityForCountryAjax'));
@@ -187,6 +188,9 @@ Route::group(['middleware' => 'auth'], function () {
 	//Pre test routes
 	Route::get('/pre-test', 'Test\TestController@student_pretest')->name('student_pretest');
 
+	Route::get('invite_friend','DashboardController@invite_friend')->name('invite_friend');
+	Route::post('invite_request','DashboardController@invite_request')->name('invite_request');
+
 });
 
 Route::post('depositWallet', 'Paypal\StudentPayment@depositWallet')->name('depositWallet');
@@ -218,7 +222,7 @@ Route::get('scheduling', function () {
     return view('dashboard.scheduling');
 });
 
-Route::get('chat_box','MessageController@user_list')->name('chat_box');
+
 
 //Ajax route for getting chat messages
 Route::post('chat_messages','MessageController@chat_messages')->name('chat_messages');

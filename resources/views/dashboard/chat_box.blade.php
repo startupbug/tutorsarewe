@@ -19,8 +19,8 @@
          			</div>
          		</div>
          		<div id="search">
-         			<label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
-         			<input type="text" placeholder="Search contacts..." />
+         			
+         			<b><input type="text" placeholder="Chat Users List" disabled="" /></b>
          		</div>
 
                 
@@ -29,7 +29,7 @@
                 	<ul>
          				<li class="contact message_to_id" data-action="{{route('chat_messages')}}" data-id="{{$user->chat_id}}">
          					<div class="wrap" >
-         						<span class="contact-status online"></span>
+         						<!-- <span class="contact-status online"></span> -->
          						<img src="{{ asset('public/dashboard/assets/images/profile/' . $user->profile_pic) }}" alt="" />
          						<div class="meta">
          							<p class="name">{{$user->first_name}}</p>
@@ -78,14 +78,7 @@
          		</div>
                 
          		<div id="bottom-bar">
-         			<button id="addcontact">
-                <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>
-                <span>Add contact</span>
-              </button>
-         			<button id="settings">
-                <i class="fa fa-cog fa-fw" aria-hidden="true"></i>
-                <span>Settings</span>
-              </button>
+         			
          		</div>
          	</div>
          	<div class="content">
@@ -138,7 +131,7 @@
          			</div>
          		</div>
                 </form>-->
-         	</div> 
+         	</div>
          </div>
 
        </div>

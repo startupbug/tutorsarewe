@@ -10,6 +10,8 @@ use Hash;
 use DB;
 use App\Tutor_subject;
 use App\Booking;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\InviteFriend;
 class DashboardController extends Controller
 {
 
@@ -190,5 +192,18 @@ class DashboardController extends Controller
       //dd($data['bookings']);
 
       return view('dashboard.booking.booking-list')->with($data);
+    }
+
+    public function invite_friend()
+    {
+      return view('dashboard.invite_friend');
+    }
+    public function invite_request(Request $request)
+    {
+      $this->validate($request, [
+            'email' => 'required'
+        ]);
+      Mail::to($request->input('email'))->send(new InviteFriend());
+      return redirect()->back()->with('success', 'Email sent successfully. Check your email.');
     }
 }

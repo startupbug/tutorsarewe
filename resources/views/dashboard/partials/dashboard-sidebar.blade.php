@@ -62,7 +62,7 @@
           </div>          
           @endif          
           <div class="s_nav_menu">
-            <a href="#"><i class="fa fa-user-plus f_icon_menu"></i>Invite Friends</a>
+            <a href="{{route('invite_friend')}}"><i class="fa fa-user-plus f_icon_menu"></i>Invite Friends</a>
           </div>
           <div class="s_nav_menu">
             <a href="{{route('chat_box')}}"><i class="fa fa-envelope f_icon_menu" aria-hidden="true"></i>Messages</a>

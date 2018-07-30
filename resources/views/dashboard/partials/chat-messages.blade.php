@@ -47,11 +47,11 @@
                </div>
                 <form action="{{route('message_from')}}" id="chatSubmit" method="post">
                     {{csrf_field()}}
-               <div class="message-input">
-                  <div class="wrap">
-                  <input type="hidden" name="chat_id" id="chat_id" value="{{$chatid}}">   
-                  <input type="text" name="msg" id="chat_msg" placeholder="Write your message..." />
-                  <button type="submit" class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                  </div>
-               </div>
+                     <div class="message-input">
+                        <div class="wrap">
+                        <input type="hidden" name="chat_id" id="chat_id" value="{{$chatid}}">   
+                        <input type="text" name="msg" id="chat_msg" placeholder="Write your message..." required="" />
+                        <button type="submit" class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                        </div>
+                     </div>
                 </form>
