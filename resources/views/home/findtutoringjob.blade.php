@@ -94,7 +94,7 @@
             
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <form role="form" id="sendRequest" action="{{route('request_job')}}">
+                    <form role="form" id="sendRequest" method="post" action="{{route('request_job')}}">
                       <div class="form-group">
                         <label for="task">Offer Description</label>
                           <textarea class="form-control" name="description" rows="4" required></textarea>
