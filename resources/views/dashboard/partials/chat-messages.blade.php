@@ -50,7 +50,7 @@
                      <div class="message-input">
                         <div class="wrap">
                         <input type="hidden" name="chat_id" id="chat_id" value="{{$chatid}}">   
-                        <input type="text" name="msg" id="chat_msg" placeholder="Write your message..." required="" />
+                        <input type="text" name="msg" id="chat_msg" placeholder="Write your message..." required="" autocomplete="off"/>
                         <button type="submit" class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                         </div>
                      </div>
