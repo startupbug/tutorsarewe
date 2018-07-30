@@ -84,6 +84,7 @@ class MessageController extends Controller
     	$chat_messages = Chat::leftjoin('chat_messages', 'chat_messages.chat_id', '=', 'chats.id')
     	->where('chats.id', $request->input('chatId'))
     	->get();
+
     	//return $chat_messages;
   		$profile = Profile::leftjoin('chat_messages','profiles.user_id','=','chat_messages.to_id');
   		
@@ -96,6 +97,7 @@ class MessageController extends Controller
         
 
   		 $profile =  $profile->first();
+
 
   		//return $profile;
 		$returnHTML = view('dashboard.partials.chat-messages')->with('chat_messages',$chat_messages)->with('profile',$profile)->with('chatid', $request->input('chatId'))->render();
