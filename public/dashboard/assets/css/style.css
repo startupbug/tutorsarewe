@@ -2746,3 +2746,114 @@ table#s-table {
   color: #fff;
   font-family: 'ProximaNovaAlt-Regular' !important;
 }
+.f_up {
+    color: #615e5e;
+    font-size: 35   px;
+    font-family: 'ProximaNova-Semibold';
+    text-align: center;
+}
+
+p.f_content {
+    text-align: center;
+    font-size: 16px;
+    font-family: 'ProximaNovaAlt-Regular';
+    padding-bottom: 10px;
+}
+
+
+.send-button{
+background: #007ee4;
+width:100%;
+font-weight: 600;
+color:#fff;
+padding: 8px 25px;
+}
+.g-button{
+color: #fff !important;
+border: 1px solid #EA4335;
+background: #ea4335 !important;
+width:100%;
+font-weight: 600;
+color:#fff;
+padding: 8px 25px;
+}
+.my-input{
+box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+cursor: text;
+padding: 8px 10px;
+transition: border .1s linear;
+height: 60px;
+}
+.header-title{
+margin: 5rem 0;
+}
+h1{
+font-size: 31px;
+line-height: 40px;
+font-weight: 600;
+color:#4c5357;
+}
+h2{
+color: #5e8396;
+font-size: 21px;
+line-height: 32px;
+font-weight: 400;
+}
+.login-or {
+position: relative;
+color: #aaa;
+margin-top: 10px;
+margin-bottom: 10px;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+.span-or {
+display: block;
+position: absolute;
+left: 50%;
+top: -2px;
+margin-left: -25px;
+background-color: #fff;
+width: 50px;
+text-align: center;
+}
+.hr-or {
+height: 1px;
+margin-top: 0px !important;
+margin-bottom: 0px !important;
+}
+@media screen and (max-width:480px){
+h1{
+font-size: 26px;
+}
+h2{
+font-size: 20px;
+}
+}
+
+.f_group {
+    padding-top: 12px;
+}
+
+.btn_send {
+    height: 45px;
+}
+
+section.f_invite {
+    padding-top: 40px;
+}
+
+.env_icon {
+    padding-right: 10px;
+}
+.invite-form{
+    margin: auto;
+    max-width: 700px;
+}
+.bg_color {
+    
+    padding-top: 40px;
+}
+
+
+
