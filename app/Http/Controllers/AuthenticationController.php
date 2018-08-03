@@ -165,7 +165,7 @@ class AuthenticationController extends Controller
             $email = new EmailVerification(new User(['email_token' => $user->email_token, 'name' => $user->name, 'email'=> $user->email]));
             Mail::to($user->email)->send($email);
             DB::commit();
-            Session::flash('message', 'We have sent you a verification email!');
+            Session::flash('message', ' Email has been sent to your account Please on the link to verify your account!');
 
                 // Saving Profle info of user.
                 $data['user'] = $user;

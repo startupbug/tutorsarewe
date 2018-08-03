@@ -5,7 +5,7 @@
 
 	 <div class="col-md-9">
      <div class="edit_profile padding_down_s">
-       <h3 class="f_profile_content text-center">Chat Tutor</h3>
+       <h3 class="f_profile_content text-center">Chat with a Tutor</h3>
      </div>
      <div class="row">
        <div class="col-md-12">

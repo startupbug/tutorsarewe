@@ -151,7 +151,7 @@
             </div>
          </div>
          <div class="col-md-5 col-md-offset-1 f_signupborder">
-            <h3 class="f_course f_apply">Apply Now</h3>
+            <h3 class="f_course f_apply">Sign Up As A Tutor Or Student</h3>
             <p class="f_easily">Easily find students looking for help in your subjects.</p>
                  @include('partials.error_section')
                  
@@ -167,7 +167,7 @@
                   <label for="exampleInputEmail1" class="f_label">Register As<span>*</span></label>
                   <select class="form-control select_f" id="roleSelect" name="role_id">
                      <option value="2">Student</option>
-                     <option value="3">Teacher</option>
+                     <option value="3">Tutor</option>
                   </select>
                </div>
                <div class="form-group">
