@@ -43,11 +43,14 @@ Route::group(['middleware' => 'guest'], function () {
 
 	Route::post('full_time_email','HomeController@full_time_email')->name('full_time_email');
 
-	Route::get('faqs','HomeController@faqs')->name('faqs');
+	
 
 	
 
 });
+
+Route::get('faqs','HomeController@faqs')->name('faqs');
+
 
 Route::post('write_testimonial','HomeController@write_testimonial')->name('write_testimonial');
 

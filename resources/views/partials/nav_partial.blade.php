@@ -25,7 +25,7 @@
                               <li class="">
                                  <a class="f_dropdown" data-toggle="dropdown" href="">HOW IT WORKS  <span class="glyphicon glyphicon-chevron-down text-muted f_icon"></span></a>
                                  <ul class="dropdown-menu">
-                                    <li><a href="{{route('how_it_works')}}">For Studens</a></li>
+                                    <li><a href="{{route('how_it_works')}}">For Students</a></li>
                                     <li><a href="{{route('faqs')}}">FAQ's</a></li>
                                     <li><a href="{{route('testimonials')}}">Testimonials</a></li>
                                  </ul>

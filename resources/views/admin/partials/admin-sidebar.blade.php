@@ -98,7 +98,7 @@
         <!-- Activity Log -->
         <li class="treeview">
           <a href="{{route('admin_transactions')}}">
-            <i class="fa fa-share"></i> <span>Transcations</span>
+            <i class="fa fa-share"></i> <span>Transactions</span>
           </a>
         </li> 
 
