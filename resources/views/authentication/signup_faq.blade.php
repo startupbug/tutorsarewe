@@ -369,6 +369,7 @@
                </div>
               <!--  <a href="#">CREATE AN ACCOUNT</a> -->
               <input type="hidden" name="_token" value="{{Session::token()}}">
+              <input type="hidden" name="referrer" value="{{ app('request')->input('referrer') }}">
               <input type="submit" class="account_form" name="submit" value="Create An Account">
                <p class="f_account">Already have an account? <span><a href="{{route('signin')}}">Log in</a></span></p>
             </form>

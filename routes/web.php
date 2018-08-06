@@ -19,7 +19,7 @@ Route::group(['middleware' => 'guest'], function () {
 
 	Route::get('/signin', 'AuthenticationController@login_index')->name('signin');
 
-	Route::get('/signup/{optional?}', 'AuthenticationController@register_index')->name('signup');
+	Route::get('/signup/', 'AuthenticationController@register_index')->name('signup');
 
 	Route::post('/user_register/ajax',array('as'=>'user_register.ajax','uses'=>'AuthenticationController@stateForCountryAjax'));
 
