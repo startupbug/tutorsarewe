@@ -1,6 +1,5 @@
 @extends('app')
 @section('content')
-
 <section class="signup_faq">
    <div class="container">
       <div class="row">
