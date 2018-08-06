@@ -98,7 +98,7 @@ class AuthenticationController extends Controller
         $country_id = urldecode($country_name);
         //return $country_id;
         $cities = DB::table('countries')
-            ->select('cities.id', 'cities.name')
+            ->select('cities.id', 'cities.name','countries.phonecode')
             ->join('states', 'states.country_id', '=', 'countries.id')
             ->join('cities', 'cities.state_id', '=', 'states.id')
             ->where("countries.id", '=',$country_id)
