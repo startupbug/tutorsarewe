@@ -28,7 +28,8 @@
 					<img src="{{ asset('public/dashboard/assets/images/invite_friends.jpg') }}" class="img-responsive">
 				</div>
 				<div class="col-md-12">
-					<form class="invite-form" >
+					<form class="invite-form" action="{{route('invite_request')}}" method="POST">
+						{{csrf_field()}}
 						<div class="form-group f_group">
 							<input type="email" name="email"  class="form-control my-input" id="email" placeholder="Email">
 						</div>

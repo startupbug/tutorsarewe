@@ -19,7 +19,7 @@ Route::group(['middleware' => 'guest'], function () {
 
 	Route::get('/signin', 'AuthenticationController@login_index')->name('signin');
 
-	Route::get('/signup', 'AuthenticationController@register_index')->name('signup');
+	Route::get('/signup/{optional?}', 'AuthenticationController@register_index')->name('signup');
 
 	Route::post('/user_register/ajax',array('as'=>'user_register.ajax','uses'=>'AuthenticationController@stateForCountryAjax'));
 
@@ -88,6 +88,7 @@ Route::get('/publications', 'HomeController@publications')->name('publications')
 //aboutus
 Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
 Route::get('/terms', 'HomeController@terms')->name('terms');
+Route::get('/privacy', 'HomeController@privacy')->name('privacy');
 Route::get('/contactus', 'HomeController@contactus')->name('contactus');
 Route::post('/contactus_post', 'HomeController@contactus_post')->name('contactus_post');
 Route::get('/testimonials', 'HomeController@testimonials')->name('testimonials');

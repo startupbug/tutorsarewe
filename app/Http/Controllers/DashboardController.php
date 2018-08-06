@@ -200,10 +200,17 @@ class DashboardController extends Controller
     }
     public function invite_request(Request $request)
     {
+     $referel_email = $request->email;
       $this->validate($request, [
             'email' => 'required'
         ]);
-      Mail::to($request->input('email'))->send(new InviteFriend());
+
+        Mail::send('emails.invite_mail',['email'=>$referel_email] , function ($message) use($referel_email){
+              $message->from(env('MAIL_USERNAME'), 'Referel Email - TutorAreUs');
+              $message->to($referel_email)->subject('TutorAreUs - Referel Email');
+          });
+
+      // Mail::to($request->input('email'))->send(new InviteFriend());
       return redirect()->back()->with('success', 'Email sent successfully. Check your email.');
     }
 }

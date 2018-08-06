@@ -340,6 +340,10 @@ class HomeController extends Controller
     public function terms(){
       return view('home.terms');
     }
+    //terms page
+    public function privacy(){
+      return view('home.privacy');
+    }
     
     //aboutus page
     public function aboutus(){

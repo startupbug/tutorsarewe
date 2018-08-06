@@ -8,7 +8,7 @@
             <h3 class="about_text">Contact Us</h3>
             <p class="f_contact s-margin-bottom-0">We are here to help</p>
             <p class="f_contact s-margin-bottom-0">Contact us by Phone - We are not automated!!!</p>
-            <p class="f_contact">1 -877-3-TUTORS</p>
+            <p class="f_contact"> +44 1 -877-3-TUTORS</p>
             <form class="main_form" action="{{route('contactus_post')}}" method="post">
                {{csrf_field()}}
                <div class="row">
@@ -67,6 +67,11 @@
                         <a href="{{route('terms')}}" class="nav__item-link">
                            <span class="nav__item-text">Terms And Conditions</span>
                         </a>
+                     </li>
+                     <li class="nav__item">
+                        <a href="{{route('privacy')}}" class="nav__item-link">
+                        <span class="nav__item-text">Privacy Policy</span>
+                        </a>   
                      </li>
                      <li class="nav__item">
                         <a href="{{route('tutors_listing')}}" class="nav__item-link">

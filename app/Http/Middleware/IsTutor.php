@@ -25,7 +25,7 @@ class IsTutor
                 return redirect()->route('unauthorized');        
             }
         }else{
-            return redirect()->route('adminlogin_index');
+            return redirect()->route('dashboard_index');
         }
     }
 }
