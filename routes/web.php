@@ -88,6 +88,7 @@ Route::get('/publications', 'HomeController@publications')->name('publications')
 //aboutus
 Route::get('/aboutus', 'HomeController@aboutus')->name('aboutus');
 Route::get('/terms', 'HomeController@terms')->name('terms');
+Route::get('/privacy', 'HomeController@privacy')->name('privacy');
 Route::get('/contactus', 'HomeController@contactus')->name('contactus');
 Route::post('/contactus_post', 'HomeController@contactus_post')->name('contactus_post');
 Route::get('/testimonials', 'HomeController@testimonials')->name('testimonials');
