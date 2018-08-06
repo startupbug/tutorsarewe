@@ -116,6 +116,7 @@ class AuthenticationController extends Controller
          /* Validation */
 
 
+
          $this->validate($request, [
             'first_name' => 'required|string|max:15',
             'last_name' => 'required|string|max:15',
@@ -162,7 +163,7 @@ class AuthenticationController extends Controller
 
             if($user->save()){
                 
-            $email = new EmailVerification(new User(['email_token' => $user->email_token, 'name' => $user->name, 'email'=> $user->email]));
+            $email = new EmailVerification(new User(['email_token' => $user->email_token, 'name' => $user->first_name, 'email'=> $user->email, 'role_id' => $user->role_id]));
             Mail::to($user->email)->send($email);
             DB::commit();
             Session::flash('message', ' Email has been sent to your account Please on the link to verify your account!');
