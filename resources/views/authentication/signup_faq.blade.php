@@ -327,16 +327,11 @@
                        <!--<input type="phonenum" name="phonenum" class="span3">-->
                        <div class="date">
                          <select name="countryCode" id="" class="form-control select_f">
-                            <option data-countryCode="GB" value="44" Selected><span class="country_f">United States +1</span></option>
-                            <option data-countryCode="US" value="1">USA (+1)</option>
-                            <optgroup label="Other countries">
-                               <option data-countryCode="DZ" value="213">Algeria (+213)</option>
-                               <option data-countryCode="AD" value="376">Andorra (+376)</option>
-                               <option data-countryCode="AO" value="244">Angola (+244)</option>
-                               <option data-countryCode="AI" value="1264">Anguilla (+1264)</option>
-                               <option data-countryCode="AG" value="1268">Antigua & Barbuda (+1268)</option>
-                            <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
-                            </optgroup>
+                           @foreach($countries as $phonecode)
+                           <option value="{{$phonecode->phonecode}}">
+                              {{$phonecode->name}} +{{$phonecode->phonecode}}
+                           </option>
+                           @endforeach
                          </select>
                        </div>
                      </div>
