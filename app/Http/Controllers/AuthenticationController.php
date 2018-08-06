@@ -19,6 +19,7 @@ use App\Wallet;
 use App\State;
 use App\Country;
 use App\City;
+use App\ReferrerPivotTable;
 
 class AuthenticationController extends Controller
 {
@@ -116,6 +117,7 @@ class AuthenticationController extends Controller
          /* Validation */
 
 
+
          $this->validate($request, [
             'first_name' => 'required|string|max:15',
             'last_name' => 'required|string|max:15',
@@ -127,19 +129,6 @@ class AuthenticationController extends Controller
         ]); 
 
 
-        //Inserting user
-        // $validator = Validator::make(
-        //     ['name' => 'required|string|max:255'],
-        //     ['email' => 'required|string|email|max:255|unique:users'],
-        //     ['username'=>'required|string|without_spaces|max:255|unique:users|regex:/(^([a-zA-Z]+)(\d+)?$)/u'],
-        //     ['password' => 'required|string|min:6|confirmed'],
-        //     ['phone_no' => 'required|regex:/(01)[0-9]{9}/']
-        // );
-        
-      //  dd($validator);
-
-        //if(isset(123))
-      //  {
            try{
             $user = new User();
 
@@ -161,8 +150,15 @@ class AuthenticationController extends Controller
            // $user->pre_test_paid = 0;
 
             if($user->save()){
+                if($request->input('referrer')){
+                    $r = Profile::where('username', $request->input('referrer'))->first();
+                    $ref = new ReferrerPivotTable();
+                    $ref->user_id = $user->id;
+                    $ref->ref_id = $r->user_id;
+                    $ref->save();
+                }
                 
-            $email = new EmailVerification(new User(['email_token' => $user->email_token, 'name' => $user->name, 'email'=> $user->email]));
+            $email = new EmailVerification(new User(['email_token' => $user->email_token, 'name' => $user->first_name, 'email'=> $user->email, 'role_id' => $user->role_id]));
             Mail::to($user->email)->send($email);
             DB::commit();
             Session::flash('message', ' Email has been sent to your account Please on the link to verify your account!');

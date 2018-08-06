@@ -18,11 +18,10 @@ class isAdmin
     {
         if(Auth::check()){
 
-            if(!Auth::user()->role_id == 1){
-
-                return redirect()->route('unauthorized');
-            }else{
+            if(Auth::user()->role_id == 1){
                 return $next($request);
+            }else{
+                return redirect()->route('unauthorized');
             }
         }else{
             return redirect()->route('adminlogin_index');

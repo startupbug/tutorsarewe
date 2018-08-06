@@ -18,7 +18,7 @@
          <div class="row">
             <div class="col-md-6">
                <h3 class="f_register">Online Tutor</h3>
-               <div class="time_click"><a href="#">REGISTER HERE</a></div>
+               <div class="time_click"><a href="{{ route('signup') }}">REGISTER HERE</a></div>
             </div>
             <div class="col-md-6">
                <img src="{{ asset('public/assets/images/timetutor1.jpg') }}" class="img-responsive fulltime_img">
@@ -28,7 +28,7 @@
          <div class="row f_xs_view">
             <div class="col-xs-12 text-center">
                <h3 class="f_register">Offline Tutor</h3>
-               <div class="time_click"><a href="#">REGISTER HERE</a></div>
+               <div class="time_click"><a href="{{ route('signup') }}">REGISTER HERE</a></div>
                <img src="{{ asset('public/assets/images/timetutor3.png') }}" class="img-responsive fulltime_img">
             </div>
          </div>
@@ -39,7 +39,7 @@
             </div>
             <div class="col-md-6">
                <h3 class="f_register">Offline Tutor</h3>
-               <div class="time_click"><a href="#">REGISTER HERE</a></div>
+               <div class="time_click"><a href="{{ route('signup') }}">REGISTER HERE</a></div>
             </div>
          </div>
 
