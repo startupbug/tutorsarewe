@@ -83,28 +83,25 @@
 
 
             <div class="row f_borderright">
+             
 
-            @if(\Session::has('subjects'))
-                    @foreach(\Session::get('subjects')[0] as $subject)
+                    @foreach($data['subs'] as $subject)
                         <div class="col-md-4 col-xs-12">
-                            <p class="list-item"><a href="{{route('tutors_listing',['flag' => 'subject','id' => $subject->id, 'subject' => $subject->subject])}}">{{$subject->subject}}</a></p>
+                            <p class="list-item"><a href="{{route('tutors_listing',['flag' => 'subject','id' => $subject->id, 'subject' => $subject->subject])}}">{{ $subject->subject}}</a></p>
                         </div>
                     @endforeach
-            @endif
 
          </div>
          </div>
          <div class="col-md-offset-1 col-md-3 col-xs-12">
             <h3 class="f_get f_margin">TUTORS BY COUNTRY</h3>
             <div class="row">
-            @if(\Session::has('countries'))
-                    @foreach(\Session::get('countries')[0] as $country)
+              @foreach($data['con'] as $country)
 
-                        <div class="col-md-12 col-xs-12">
-                            <p class="list-item"><a href="{{route('tutors_listing',['flag' => 'country','id' => $country->id, 'subject' => $country->name])}}">{{$country->name}}</a></p>
-                        </div>
-                    @endforeach     
-            @endif
+                  <div class="col-md-12 col-xs-12">
+                      <p class="list-item"><a href="{{route('tutors_listing',['flag' => 'country','id' => $country->id, 'subject' => $country->name])}}">{{$country->name}}</a></p>
+                  </div>
+              @endforeach    
 
 <!-- 
               <div class="col-md-12 col-xs-12">
@@ -209,7 +206,7 @@ $("#ref_butn").on('click', function(e){
    var d = $("#ref_butn").attr('data-result');
    link = url_string.replace("limit="+c, "limit="+(parseInt(d)+10));
    link = link.replace("tutor-search", "tutor-search-ajax");
-console.log(link);
+    console.log(link);
    $.ajaxSetup({
       headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
    });

@@ -20,6 +20,13 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
          view()->composer('*', function ($view) {
+            $data['subs'] = DB::table('subjects')->take(30)->get();
+            $data['con'] = DB::table('countries')->limit(10)->get();
+
+            View::composer('partials.footer', function($view) use($data)
+                {
+                    $view->with('data', $data);
+                });
                  
             if(Auth::check())
             {
