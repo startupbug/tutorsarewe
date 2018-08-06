@@ -59,7 +59,8 @@
 				</div>
 			</div>
 			@include('partials.error_section')
-			<div class="row">
+			@if(Auth::user()->role_id == 3)
+				<div class="row">
 				<div class="col-md-12">
 					<h3 class="sub_heading">Withdraw</h3>
 					<form action="{{route('walletWithdraw')}}" method="post">
@@ -73,7 +74,8 @@
 							</div>
 						</form>
 					</div>
-				</div><br>
+				</div>
+				<br>
 				<div class="row">
 					<div class="col-md-12">
 						<table class="data_table_apply display" width="100%" data-page-length="10" class="table table-dark">
@@ -98,6 +100,7 @@
 						</table>
 					</div>
 				</div>
+			@endif
 			</div>
 		</div>
 		@endsection
