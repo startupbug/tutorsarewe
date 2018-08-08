@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,7 +19,7 @@ class SubjectController extends Controller
     	return view('admin.subject.index')->with($data);
     }
 
-    //edit-subject-viewdata 
+    //edit-subject-viewdata
     public function edit_subj_data(Request $request){
     	// return($request->input());
     	return Subject::find($request->input('subjId'));
@@ -29,9 +29,9 @@ class SubjectController extends Controller
     //Add-edit subject
     public function subject_submit(Request $request){
 
-    		
+
     	try{
-    		
+
 			if(is_null($request->input('edit_subj_id')) ) {
 				//add subject
 				$subject = new Subject();
@@ -42,16 +42,16 @@ class SubjectController extends Controller
 
 			$subject->subject = $request->input('subject');
 			$subject->subject_code = $request->input('subject_code');
-			$subject->grade_id = $request->input('grade_name');				
+			$subject->grade_id = $request->input('grade_name');
 
 			if($subject->save()){
-				return \Response::json(array('success' => true, 'msg' => 'Success. Operation Completed')); 
+				return \Response::json(array('success' => true, 'msg' => 'Success. Operation Completed'));
 			}else{
-				return \Response::json(array('success' => false, 'msg' => 'Error. Operation failed'));  
+				return \Response::json(array('success' => false, 'msg' => 'Error. Operation failed'));
 			}
 
       	}catch(\Exception $e){
-				return \Response::json(array('success' => false, 'msg' => 'Error. Operation failed'.$e->getMessage()));  
+				return \Response::json(array('success' => false, 'msg' => 'Error. Operation failed'.$e->getMessage()));
         }
     }
 
@@ -67,15 +67,15 @@ class SubjectController extends Controller
 	           $this->set_session('Subject Successfully Deleted.', true);
 
 	    	}else{
-	           $this->set_session('Subject couldnot be deleted', false);                     		
+	           $this->set_session('Subject couldnot be deleted', false);
 	    	}
 
 	        return redirect()->route('subject_admin');
 
 	   	}catch(\Exception $e){
-	   		$this->set_session('Subject couldnot be deleted', false);   
+	   		$this->set_session('Subject couldnot be deleted', false);
 			return redirect()->route('subject_admin');
-	    }        
+	    }
     }
 
     public function edit_grade_data(Request $request){
@@ -94,19 +94,19 @@ class SubjectController extends Controller
 	           $this->set_session('Grade Successfully Deleted.', true);
 
 	    	}else{
-	           $this->set_session('Grade couldnot be deleted', false);                     		
+	           $this->set_session('Grade couldnot be deleted', false);
 	    	}
 
 	        return redirect()->route('profile_grades');
 
 	   	}catch(\Exception $e){
-	   		$this->set_session('Grade couldnot be deleted', false);   
+	   		$this->set_session('Grade couldnot be deleted', false);
 			return redirect()->route('Grade_admin');
-	    }        
+	    }
     }
 
     public function grade_submit(Request $request){
-    	
+
     	try{
 			if(is_null($request->input('edit_grade_id')) ) {
 				//add subject
@@ -117,16 +117,16 @@ class SubjectController extends Controller
 			}
 
 			$grade->grade = $request->input('grade');
-			$grade->grade_description = $request->input('grade_description');				
+			$grade->grade_description = $request->input('grade_description');
 
 			if($grade->save()){
-				return \Response::json(array('success' => true, 'msg' => 'Success. Operation Completed')); 
+				return \Response::json(array('success' => true, 'msg' => 'Success. Operation Completed'));
 			}else{
-				return \Response::json(array('success' => false, 'msg' => 'Error. Operation failed'));  
+				return \Response::json(array('success' => false, 'msg' => 'Error. Operation failed'));
 			}
 
       	}catch(\Exception $e){
-				return \Response::json(array('success' => false, 'msg' => 'Error. Operation failed'.$e->getMessage()));  
+				return \Response::json(array('success' => false, 'msg' => 'Error. Operation failed'.$e->getMessage()));
         }
     }
 }
