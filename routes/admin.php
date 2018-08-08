@@ -35,23 +35,23 @@ Route::group(['prefix' => 'admin', 'middleware' => 'isAdmin'], function () {
 
 	/* Activity Log Routes */
 
-	Route::get('/activity-log', 'admin\AdminController@activitylog_index')->name('activitylog_index');
+	Route::get('/activity-log', 'Admin\AdminController@activitylog_index')->name('activitylog_index');
 
 	/* Todo List Routes */
 	//Todo custom update
-	Route::post('/todos_update', 'admin\TodoController@todos_update')->name('todos_update');
+	Route::post('/todos_update', 'Admin\TodoController@todos_update')->name('todos_update');
 
 	//Todo custom delete
-	Route::post('/todos_delete', 'admin\TodoController@todos_delete')->name('todos_delete');
+	Route::post('/todos_delete', 'Admin\TodoController@todos_delete')->name('todos_delete');
 
 	//Task done undone, change status
-	Route::post('/task_status', 'admin\TodoController@task_status')->name('task_status');
+	Route::post('/task_status', 'Admin\TodoController@task_status')->name('task_status');
 
 	//Task sorting
-	Route::post('/task_sort', 'admin\TodoController@task_sort')->name('task_sort');
+	Route::post('/task_sort', 'Admin\TodoController@task_sort')->name('task_sort');
 
 	/*Todo Resource*/
-	Route::resource('todos', 'admin\TodoController');
+	Route::resource('todos', 'Admin\TodoController');
 
 	/* Pages resource */
 	Route::resource('pages', 'Admin\PageController');
