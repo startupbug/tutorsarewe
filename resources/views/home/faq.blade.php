@@ -179,12 +179,12 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseeleven">
                         How do I search for tutors?
                         </a>
                      </h4>
                   </div>
-                  <div id="collapseOne" class="panel-collapse collapse">
+                  <div id="collapseeleven" class="panel-collapse collapse">
                      <div class="panel-body f_body">
                         Click on Search tutors; we you find a tutor of your choice; the system will require you to sign up. After signing up, you are good to go.
                      </div>
@@ -193,12 +193,12 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve">
                         How do I sign up for tutoring?
                         </a>
                      </h4>
                   </div>
-                  <div id="collapseTwo" class="panel-collapse collapse">
+                  <div id="collapseTwelve" class="panel-collapse collapse">
                      <div class="panel-body f_body">
                         Click on Search tutors; we you find a tutor of your choice; the system will require you to sign up. After signing up, you are good to go.
                      </div>
@@ -207,12 +207,12 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThirteen">
                         What happens after I sign up?
                         </a>
                      </h4>
                   </div>
-                  <div id="collapseThree" class="panel-collapse collapse">
+                  <div id="collapseThirteen" class="panel-collapse collapse">
                      <div class="panel-body f_body">
                         Click on Search tutors; we you find a tutor of your choice; the system will require you to sign up. After signing up, you are good to go.
                      </div>
@@ -221,12 +221,12 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFourteen">
                         Must the student take the pre test?
                         </a>
                      </h4>
                   </div>
-                  <div id="collapseFour" class="panel-collapse collapse">
+                  <div id="collapseFourteen" class="panel-collapse collapse">
                      <div class="panel-body f_body">
                         Click on Search tutors; we you find a tutor of your choice; the system will require you to sign up. After signing up, you are good to go.
                      </div>
@@ -235,12 +235,12 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFiveteen">
                         How much does the pre test cost?
                         </a>
                      </h4>
                   </div>
-                  <div id="collapseFive" class="panel-collapse collapse">
+                  <div id="collapseFiveteen" class="panel-collapse collapse">
                      <div class="panel-body f_body">
                         Click on Search tutors; we you find a tutor of your choice; the system will require you to sign up. After signing up, you are good to go.
                      </div>
@@ -249,12 +249,12 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSixteen">
                         How much does the online class cost?
                         </a>
                      </h4>
                   </div>
-                  <div id="collapseSix" class="panel-collapse collapse">
+                  <div id="collapseSixteen" class="panel-collapse collapse">
                      <div class="panel-body f_body">
                         Click on Search tutors; we you find a tutor of your choice; the system will require you to sign up. After signing up, you are good to go.
                      </div>
@@ -263,12 +263,12 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeventeen">
                         I want to hire a full time or a travel tutor- what do I do?
                         </a>
                      </h4>
                   </div>
-                  <div id="collapseSeven" class="panel-collapse collapse">
+                  <div id="collapseSeventeen" class="panel-collapse collapse">
                      <div class="panel-body f_body">
                         Click on Search tutors; we you find a tutor of your choice; the system will require you to sign up. After signing up, you are good to go.
                      </div>
@@ -277,12 +277,12 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEighteen">
                         Do you check the background check of tutors?
                         </a>
                      </h4>
                   </div>
-                  <div id="collapseEight" class="panel-collapse collapse">
+                  <div id="collapseEighteen" class="panel-collapse collapse">
                      <div class="panel-body f_body">
                         Click on Search tutors; we you find a tutor of your choice; the system will require you to sign up. After signing up, you are good to go.
                      </div>
@@ -291,12 +291,12 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNineteen">
                         How can I get a copy of tutor’s background check?
                         </a>
                      </h4>
                   </div>
-                  <div id="collapseNine" class="panel-collapse collapse">
+                  <div id="collapseNineteen" class="panel-collapse collapse">
                      <div class="panel-body f_body">
                         Click on Search tutors; we you find a tutor of your choice; the system will require you to sign up. After signing up, you are good to go.
                      </div>
@@ -305,12 +305,12 @@
                <div class="panel panel-default f_mainfaq">
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
-                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">
+                        <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwenty">
                         How does the client referral program work?
                         </a>
                      </h4>
                   </div>
-                  <div id="collapseTen" class="panel-collapse collapse">
+                  <div id="collapseTwenty" class="panel-collapse collapse">
                      <div class="panel-body f_body">
                         Click on Search tutors; we you find a tutor of your choice; the system will require you to sign up. After signing up, you are good to go.
                      </div>

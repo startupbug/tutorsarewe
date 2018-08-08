@@ -1,5 +1,6 @@
 @extends('app')
 @section('content')
+
 <section class="aboutus">
    <div class="container">
       <div class="row">
