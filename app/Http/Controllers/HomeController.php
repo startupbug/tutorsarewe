@@ -50,6 +50,10 @@ class HomeController extends Controller
     public function faq(){
       return view('home.faq');
     }
+    //referral page
+    public function referral(){
+      return view('home.referral');
+    }
 
     //Tutor find jobs page
 

@@ -50,6 +50,7 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::get('faqs','HomeController@faqs')->name('faqs');
+Route::get('referral','HomeController@referral')->name('referral');
 
 
 Route::post('write_testimonial','HomeController@write_testimonial')->name('write_testimonial');

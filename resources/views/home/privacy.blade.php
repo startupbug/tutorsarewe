@@ -281,6 +281,11 @@
                         </a>   
                      </li>
                      <li class="nav__item">
+                        <a href="{{route('referral')}}" class="nav__item-link">
+                        <span class="nav__item-text">Referral</span>
+                        </a>   
+                     </li>
+                     <li class="nav__item">
                         <a href="{{route('tutors_listing')}}" class="nav__item-link">
                         <span class="nav__item-text">Search For A Tutor</span>
                         </a>   
