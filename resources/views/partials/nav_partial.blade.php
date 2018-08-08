@@ -27,6 +27,7 @@
                                  <ul class="dropdown-menu">
                                     <li><a href="{{route('how_it_works')}}">For Students</a></li>
                                     <li><a href="{{route('faqs')}}">FAQ's</a></li>
+                                    <li><a href="{{route('referral')}}">Referral FAQ's</a></li>
                                     <li><a href="{{route('testimonials')}}">Testimonials</a></li>
                                  </ul>
                               </li>
