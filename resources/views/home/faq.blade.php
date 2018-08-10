@@ -190,7 +190,8 @@ There is no distinction between the price of the online session and the price of
                   <div class="panel-heading s_border_header">
                      <h4 class="panel-title">
                         <a class="accordion-toggle f_faqcontent collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseeleven">
-                        How do I search for tutors?
+                      How do I sign up  to be a  tutor?
+
                         </a>
                      </h4>
                   </div>
