@@ -305,37 +305,64 @@ There is no distinction between the price of the online session and the price of
                   </div>
                   <div id="collapseEighteen" class="panel-collapse collapse">
                      <div class="panel-body f_body">
-                       When a tutor refer a student, they receive 100% of their fee  less $5 service fee  if the student is tutored by the referring tutors. If the student does not get tutored by  the same tutor, they will receive a $10 referral bonus at the end of the first session.
-
-Tutorsareus fee structure
-
-Tutorsareus takes a percentage from every session listed. Below is Tutorsareus commission 
-
-
-Hours Worked
-Tutorsareus %
-0 – 20
-35
-21 – 50
-30
-51 – 200
-25
-201 – 400
-20
-401+
-15
-
-
-Referral Program
-
-Clients making extra money
- Thank you for using our service. Hope we are serving you the best you can. You can make money while using our services. You may refer your friend and get paid. We will pay you $10 for every friend you refer. Not only that, your friend receives $10 off their fifth lesson or diagnostic test.
-
-Tutor Referral Program
-Refer a tutor and get paid. When a tutor refers a tutor, you will receive a $10, referral bonus after the fifth session of the referred tutor. The referred tutor also receives $5. All you need to do is email the name of the tutor to tutors@tutorsareus.org before the referred tutor signs up.
-
-If you refer a student and you are the tutor, you will receive 100% of your fee, less $5 service fee per session. If the student does not get tutored by the referring tutor, the referring tutor will receive a $10 referral bonus.
-
+                      When a tutor refer a student, they receive 100% of their fee  less $5 service fee  if the student is tutored by the referring tutors. If the student does not get tutored by  the same tutor, they will receive a $10 referral bonus at the end of the first session.
+                        <br>
+                        Tutorsareus fee structure
+                        <br>
+                        Tutorsareus takes a percentage from every session listed. Below is Tutorsareus commission 
+                        <br>
+                        <!-- <p class="f_hour"> Hours Worked</p>                <p class="f_hour">Tutorsareus %</p>
+                           0 – 20                                      35
+                                                             
+                           21 – 50                                     30
+                           
+                           51 – 200                                    25
+                           
+                           201 – 400                                   20
+                           
+                           401+                                        15
+                           -->
+                        <table class="f_table">
+                           <tr>
+                              <th class="f_hour">Hours Worked</th>
+                              <th class="f_hour">Tutorsareus</th>
+                           </tr>
+                           <tr>
+                              <td class="f_td">0 – 20 </td>
+                              <td class="f_td">35</td>
+                           </tr>
+                           <tr>
+                              <td class="f_td">21-50</td>
+                              <td class="f_td">30</td>
+                           </tr>
+                           <tr>
+                              <td class="f_td">51-200</td>
+                              <td class="f_td">25</td>
+                           </tr>
+                           <tr>
+                              <td class="f_td">201-400</td>
+                              <td class="f_td">20</td>
+                           </tr>
+                           <tr>
+                              <td class="f_td">401+</td>
+                              <td class="f_td">15</td>
+                           </tr>
+                        </table>
+                        <br>
+                        Referral Program
+                        <br>
+                        Clients making extra money
+                        <br>
+                        <br>
+                        Thank you for using our service. Hope we are serving you the best you 
+                        can. You can make money while using our services. You may refer your 
+                        friend and get paid. We will pay you $10 for every friend you refer. Not only that, your friend receives $10 off their fifth lesson or diagnostic test.
+                        <br>
+                        <br>
+                        Tutor Referral Program
+                        Refer a tutor and get paid. When a tutor refers a tutor, you will receive a $10, referral bonus after the fifth session of the referred tutor. The referred tutor also receives $5. All you need to do is email the name of the tutor to tutors@tutorsareus.org before the referred tutor signs up.
+                        <br>
+                        If you refer a student and you are the tutor, you will receive 100% of your fee, less $5 service fee per session. If the student does not get tutored by the referring tutor, the referring tutor will receive a $10 referral bonus.
                      </div>
                   </div>
                </div>
