@@ -4,6 +4,10 @@ $(this).parent().find(".fa fa-chevron-right").removeClass("fa fa-chevron-right")
 $(this).parent().find(".fa fa-angle-down").removeClass("fa fa-angle-down").addClass("fa fa-chevron-right");
 });*/
 
+$(".nav__item-text").click(function(){
+  $('.nav__item-text').removeClass('active');
+  $(this).addClass('active')
+});
     $(".student_faq").show();
     $(".tutor_faq").hide();
     $('#for_student').on("click", function(e){
@@ -116,7 +120,10 @@ $("#btn_apply_now").on('click', function(e){
   // $("#applyForm").submit();
 });
 
-
+$(".nav__item-text").click(function(){
+  $('.nav__item-text').removeClass('active');
+  $(this).addClass('active')
+});
 
 // $(document).ready(function () {
 
