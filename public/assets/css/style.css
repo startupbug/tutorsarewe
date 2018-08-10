@@ -2625,3 +2625,25 @@ p.list-item {
     font-family: 'ProximaNovaAlt-Regular';
     padding-bottom: 5px;
 }
+p.f_hour {
+    color: #646464;
+    font-size: 20px;
+    font-family: 'ProximaNovaAlt-Regular';
+}
+
+table.f_table {
+    text-align: center;
+    margin: 0 auto;
+}
+
+th.f_hour {
+    color: #646464;
+    font-size: 20px;
+    font-family: 'ProximaNovaAlt-Regular';
+    padding-right: 88px;
+    padding-top: 27px;
+}
+
+td.f_td {
+    font-family: 'ProximaNovaAlt-Regular';
+}
