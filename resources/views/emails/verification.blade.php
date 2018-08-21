@@ -22,7 +22,7 @@
 			<p>Thank you for joining the family of successful people. We would like to make you successful by tutoring as many students as possible. </p>
 		@endif
 		<p>But , first, <a href="{{route('verified_email',['email_token' => $user->email_token])}}">Verify email address</a></p>
-		<p>Also, don’t forget our  referral program <a href="{{ route('invite_friend') }}">here</a>.</p> 
+		<p>Also, don’t forget our referral program <a href="{{ route('invite_friend') }}">here</a>.</p> 
 		
 		@if($user->role_id == 2)
 			<p>You can also get a copy of the tutors background check here (hyperlink).</p>

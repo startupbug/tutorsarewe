@@ -75,7 +75,7 @@
             </div>
             <div class="col-md-4 f_borderlast">
                <h3 class="f_get1">FEELING A LITTLE LOST?</h3>
-               <p class="address"> 1-877-3- TUTORS +44 1877-388-8677</p>
+               <p class="address"> 1-877-3- TUTORS  1877-388-8677</p>
             </div>
          </div>
          <div class="col-md-8 col-xs-12">
