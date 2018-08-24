@@ -71,7 +71,7 @@ class DashboardController extends Controller
         $password_updated = $user->save();
 
         if($password_updated)
-        {   
+        {
             $this->logActivity(Auth::user()->first_name.' update password ');
             $this->set_session('Password Updated', true);
         }else{
@@ -176,7 +176,7 @@ class DashboardController extends Controller
       if(Auth::user()->role_id == 2){
           //student bookings
           $data['bookings'] = Booking::leftjoin('job_boards', 'job_boards.id', '=', 'bookings.job_id')
-                                      ->select('bookings.id as id', 'bookings.date', 'bookings.location', 'bookings.amount', 'bookings.status_id')          
+                                      ->select('bookings.id as id', 'bookings.date', 'bookings.location', 'bookings.amount', 'bookings.status_id')
                                       ->where('job_boards.student_id', Auth::user()->id)
                                       ->get();
 
@@ -187,7 +187,7 @@ class DashboardController extends Controller
                                       ->select('bookings.id as id', 'bookings.date', 'bookings.location', 'bookings.amount', 'bookings.status_id')
                                       ->where('job_requests.tutor_id', Auth::user()->id)
                                       ->get();
-          
+
       }
       //dd($data['bookings']);
 

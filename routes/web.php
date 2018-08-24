@@ -43,9 +43,9 @@ Route::group(['middleware' => 'guest'], function () {
 
 	Route::post('full_time_email','HomeController@full_time_email')->name('full_time_email');
 
-	
 
-	
+
+
 
 });
 
@@ -101,7 +101,7 @@ Route::get('/faq', 'HomeController@faq')->name('faq');
 /* Dashboard Controller Routes */
 Route::group(['middleware' => 'auth'], function () {
 
-	Route::get('/dashboard', 'DashboardController@index')->name('dashboard_index');
+	Route::get('/dashboard/home', 'DashboardController@index')->name('dashboard_index');
 
 	Route::group(['middleware' => 'isTutor'], function () {
 
@@ -262,4 +262,3 @@ Route::get('/apply-job/{jobid}', 'JobController@apply_job_index')->name('apply_j
 Route::post('/apply-job', 'JobController@apply_job_post')->name('apply_job_post');
 
 Route::post('/message_from','MessageController@message_from')->name('message_from');
-
